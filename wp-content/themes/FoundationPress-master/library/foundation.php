@@ -133,7 +133,12 @@ function dashboard($user_id) {
 	
 	echo "<div class='right_widget'>";
 	if(get_user_role() == 'doctor' || get_user_role() == 'administrator')	{
-		echo "YAY";
+		echo '<div class="dashboard_icons" id="soap_notes">Soap Notes</div>';
+		echo '<div class="dashboard_icons" id="meds"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_icon.png"></div>';
+		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
+		echo '<div class="dashboard_icons" id="referrals">Referrals</div>';
+		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
+
 	}
 	echo "</div>";
 	echo "</div>";
