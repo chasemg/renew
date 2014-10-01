@@ -6,6 +6,7 @@ URL: http://chasemg.com
 error_reporting(E_ALL);
 include "db_include.php";
 $id = $_POST['id'];
+$patient_id = $_POST['patient_id'];
 $html = '';
 $html .= '<div class="dashboard_large_widget">';
 $html .= '<div class="container">';
@@ -13,12 +14,12 @@ $html .= '<div class="icon"><img src="'.get_template_directory_uri().'/dashboard
 $html .= '<div class="title">Medical History</div>';
 $html .= '<hr>';
 
-$exam_dates = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "exams WHERE user_id='$id' AND exam_type='1' ORDER BY exam_date DESC LIMIT 1");
+$exam_dates = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "exams WHERE user_id='$patient_id' AND exam_type='1' ORDER BY exam_date DESC LIMIT 1");
 foreach($exam_dates as $exam)	{
 	$exam_date = $exam->exam_date;
 }
 
-$medical = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "medical_history WHERE user_id='$id' LIMIT 1");
+$medical = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "medical_history WHERE user_id='$patient_id' LIMIT 1");
 foreach($medical as $m)	{
 	$html .= '<div class="last_exam">Date of last pysical exam: <font style="color: #00af41;">'.date("m/d/Y", $exam_date).'</font></div>';
 	$html .= '<div class="text" style="padding-bottom: 5px;">'.$m->notes.'</div>';

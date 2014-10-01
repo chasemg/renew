@@ -10,20 +10,20 @@ $html = '';
 $id = $_POST['id'];
 $patient_id = $_POST['patient_id'];
 
-if($_POST['id'])	{
+if($_POST['patient_id'])	{
 	if(get_user_role() == 'doctor' || get_user_role() == 'administrator')	{
-		$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$id");
+		$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$patient_id");
 		foreach($lookup as $lu)	{
 			
 		}
 		echo $html;
 	} else {
-		$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$id");
+		$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$patient_id");
 		foreach($lookup as $lu)	{
 			$html .= '<div class="dashboard_goals">';
 			$html .= '<div class="goal_container">';
 			$html .= '<div class="user_image">';
-			$patient = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id=$id");
+			$patient = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id=$patient_id");
 			foreach($patient as $p)	{
 				$goal = $p->top_goal;
 				if($p->image != '')	{
@@ -49,7 +49,7 @@ if($_POST['id'])	{
 			$html .= '<div class="dashboard_large_widget">';
 			$html .= '<h5>recent vitals</h5>';
 			$html .= '<div class="dashboard_vitals_row">';
-			$vitals = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "vitals WHERE user_id='$id' ORDER BY taken_date DESC LIMIT 1");
+			$vitals = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "vitals WHERE user_id='$patient_id' ORDER BY taken_date DESC LIMIT 1");
 			foreach($vitals as $v)	{
 				$bp = unserialize($v->bp);
 				$html .= '<div class="dashboard_vitals"><div class="title">Blood Pressure</div><div class="bp">'.$bp.'</div><div><img src="'.get_template_directory_uri().'/dashboard/images/bp_icon.png"></div></div>';

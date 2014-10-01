@@ -5,6 +5,7 @@ URL: http://chasemg.com
 */
 include "db_include.php";
 $id = $_POST['id'];
+$patient_id = $_POST['patient_id'];
 $html = '';
 $html .= '<div class="dashboard_large_widget">';
 $html .= '<div class="container">';
@@ -12,7 +13,7 @@ $html .= '<div class="icon"><img src="'.get_template_directory_uri().'/dashboard
 $html .= '<div class="title">Vitals</div>';
 $html .= '<hr>';
 
-$vitals = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "vitals WHERE user_id='$id' ORDER BY taken_date DESC LIMIT 1");
+$vitals = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "vitals WHERE user_id='$patient_id' ORDER BY taken_date DESC LIMIT 1");
 foreach($vitals as $v)	{
 	$taken_date = $v->taken_date;
 	$converted_date = date("m/d/Y", $taken_date);

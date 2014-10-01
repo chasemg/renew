@@ -3,42 +3,45 @@ $(document).ready(function() {
 /******************* Dashboard *******************************/
 $(".search_patients").click(function()	{
 	if($(".patient_results").html() == '')	{
-	var doctor_id = $("#user_id").val();
-	$.ajax({
-		type: 'POST',
-		data: 'id='+doctor_id,
-		url: 'wp-content/themes/FoundationPress-master/dashboard/patient_list.php',
-		success: function(success)	{
-			$(".patient_results").html(success);
-		},
-		error: function(error)	{
-			console.log(error);
-		}
-	});
+		var doctor_id = $("#user_id").val();
+		$.ajax({
+			type: 'POST',
+			data: 'id='+doctor_id,
+			url: 'wp-content/themes/FoundationPress-master/dashboard/patient_list.php',
+			success: function(success)	{
+				$(".patient_results").html(success);
+				$('#patient_input').fastLiveFilter('#patients');
+				$(".patient").click(function()	{
+					var patient = $(this).attr('id');
+					$("#patient_id").val(patient);
+					user_dashboard();
+				});
+			},
+			error: function(error)	{
+				console.log(error);
+			}
+		});
 	}
 	$(".left_widget").animate({
-		width: "250px",
-		position: "absolute"
+		width: "250px"
 	},200);
-	$(".search_box").fadeIn();
-	$(".close_search").click(function()	{
-		$(".search_box").fadeOut();
-		$(".left_widget").animate({
-			width: "75px",
-			position: "absolute"
-		},200);
-		
-	});
-	$('#patient_input').fastLiveFilter('#patients');
+	$(".search_box").delay(200).fadeIn('slow');
+});
+$(".close_search").click(function()	{
+	$(".search_box").fadeOut();
+	$(".left_widget").delay(200).animate({
+		width: "75px"
+	},200);		
 });
 $(".dashboard_icons").click(function()	{
 	var function_name = $(this).attr('id');
 
 	$("#dashboard").empty();
 	var user_id = $("#user_id").val();
+	var patient_id = $("#patient_id").val();
 	$.ajax({
 		type: 'post',
-		data: 'id='+ user_id,
+		data: 'id='+ user_id+'&patient_id='+patient_id,
 		url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
 		success: function(success)	{
 			$("#dashboard").html(success);
@@ -115,9 +118,10 @@ $(".dashboard_icons").click(function()	{
 function user_dashboard()	{
 	$("#dashboard").empty();
 	var user_id = $("#user_id").val();
+	var patient_id = $("#patient_id").val();
 	$.ajax({
 		type: 'post',
-		data: 'id='+ user_id,
+		data: 'id='+ user_id+'&patient_id='+patient_id,
 		url: 'wp-content/themes/FoundationPress-master/dashboard/user_dashboard.php',
 		success: function(success)	{
 			$("#dashboard").html(success);
@@ -126,9 +130,10 @@ function user_dashboard()	{
 				var function_name = $(this).attr('id');
 				$("#dashboard").empty();
 				var user_id = $("#user_id").val();
+				var patient_id = $("#patient_id").val();
 				$.ajax({
 					type: 'post',
-					data: 'id='+ user_id,
+					data: 'id='+ user_id+'&patient_id='+patient_id,
 					url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
 					success: function(success)	{
 						$("#dashboard").html(success);
@@ -174,9 +179,10 @@ function user_dashboard()	{
 				var function_name = $(this).attr('id');
 				$("#dashboard").empty();
 				var user_id = $("#user_id").val();
+				var patient_id = $("#patient_id").val();
 				$.ajax({
 					type: 'post',
-					data: 'id='+ user_id,
+					data: 'id='+ user_id+'&patient_id='+patient_id,
 					url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
 					success: function(success)	{
 						$("#dashboard").html(success);
@@ -193,9 +199,10 @@ function user_dashboard()	{
 				var function_name = $(this).attr('id');
 				$("#dashboard").empty();
 				var user_id = $("#user_id").val();
+				var patient_id = $("#patient_id").val();
 				$.ajax({
 					type: 'post',
-					data: 'id='+ user_id,
+					data: 'id='+ user_id+'&patient_id='+patient_id,
 					url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
 					success: function(success)	{
 						$("#dashboard").html(success);

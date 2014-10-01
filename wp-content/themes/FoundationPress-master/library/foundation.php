@@ -93,7 +93,12 @@ function dashboard($user_id) {
 	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/jquery/dist/jquery.min.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.fastLiveFilter.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/dashboard.js'></script>";
-	echo "<input type='hidden' value='".$user_id."' id='user_id'><input type='hidden' value='' id='patient_id'>";
+	if(get_user_role() == 'doctor' || get_user_role() == 'administrator')	{
+		echo "<input type='hidden' value='".$user_id."' id='user_id'><input type='hidden' value='' id='patient_id'>";
+	} else {
+		echo "<input type='hidden' value='".$user_id."' id='user_id'><input type='hidden' value='".$user_id."' id='patient_id'>";
+	}
+	
 	echo "<div class='dashboard_container'>";
 	echo "<div class='dashboard'>";
 	

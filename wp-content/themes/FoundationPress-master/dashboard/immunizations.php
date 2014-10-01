@@ -5,6 +5,7 @@ URL: http://chasemg.com
 */
 include "db_include.php";
 $id = $_POST['id'];
+$patient_id = $_POST['patient_id'];
 $html = '';
 $html .= '<div class="dashboard_large_widget">';
 $html .= '<div class="container">';
@@ -12,7 +13,7 @@ $html .= '<div class="icon"><img src="'.get_template_directory_uri().'/dashboard
 $html .= '<div class="title">Immunizations</div>';
 $html .= '<hr>';
 
-$immunizations = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "immunizations WHERE user_id='$id' LIMIT 1");
+$immunizations = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id' LIMIT 1");
 foreach($immunizations as $i)	{
 	$html .= '<div class="text"><font style="font-weight: bold; text-transform: lowercase; font-variant: small-caps; font-size: 14px;">Here is a detailed look</font> at your immunizations. You can downlaod a complete schedule below.</div>';
 	$html .= '<div class="immun_container">';

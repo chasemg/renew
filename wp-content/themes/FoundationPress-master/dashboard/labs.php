@@ -7,7 +7,8 @@ URL: http://chasemg.com
 echo "LABS";
 include "db_include.php";
 $id = $_POST['id'];
-$immun = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "immunizations WHERE user_id='$id' ORDER BY date DESC LIMIT 1");
+$patient_id = $_POST['patient_id'];
+$immun = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id' ORDER BY date DESC LIMIT 1");
 foreach($immun as $i)	{
 	
 
