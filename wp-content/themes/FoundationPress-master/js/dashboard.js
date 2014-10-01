@@ -1,6 +1,36 @@
 $(document).ready(function() {
 
 /******************* Dashboard *******************************/
+$(".search_patients").click(function()	{
+	if($(".patient_results").html() == '')	{
+	var doctor_id = $("#user_id").val();
+	$.ajax({
+		type: 'POST',
+		data: 'id='+doctor_id,
+		url: 'wp-content/themes/FoundationPress-master/dashboard/patient_list.php',
+		success: function(success)	{
+			$(".patient_results").html(success);
+		},
+		error: function(error)	{
+			console.log(error);
+		}
+	});
+	}
+	$(".left_widget").animate({
+		width: "250px",
+		position: "absolute"
+	},200);
+	$(".search_box").fadeIn();
+	$(".close_search").click(function()	{
+		$(".search_box").fadeOut();
+		$(".left_widget").animate({
+			width: "75px",
+			position: "absolute"
+		},200);
+		
+	});
+	$('#patient_input').fastLiveFilter('#patients');
+});
 $(".dashboard_icons").click(function()	{
 	var function_name = $(this).attr('id');
 

@@ -2283,7 +2283,7 @@ body	{
 }
 .dashboard	{
 	background: #fff;
-	width: 900px;
+	width: 820px;
 	min-height: 100%;
 	height: 100%;
 	margin: 0 auto;
@@ -2297,9 +2297,13 @@ body	{
 }
 .left_widget	{
 	float: left;
+	position: absolute;
 }
 .right_widget	{
 	float: right;
+	margin-left: 745px;
+	position: absolute;
+	top: 0;
 }
 .center-dashboard	{
 	background: url(../assets/img/dashboard/cream_pixels.png) repeat;
@@ -2725,7 +2729,27 @@ body	{
 .add_entry	{
 	text-align: right;
 }
-
+.search_patients	{
+	width: 100%;
+	text-align: center;
+	padding: 25px 0;
+}
+.search_patients:hover	{
+	cursor: pointer;
+}
+.close_search:hover	{
+	cursor: pointer;
+}
+.search_box	{
+	display: none;
+	padding: 10px;
+}
+.search_results	{
+	width: 100%;
+}
+.patient_results	{
+	margin-top: 10px;
+}
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{
 	.nav_logo img	{

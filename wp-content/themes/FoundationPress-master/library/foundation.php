@@ -91,6 +91,7 @@ function dashboard($user_id) {
 
 	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/modernizr/modernizr.min.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/jquery/dist/jquery.min.js'></script>";
+	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.fastLiveFilter.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/dashboard.js'></script>";
 	echo "<input type='hidden' value='".$user_id."' id='user_id'><input type='hidden' value='' id='patient_id'>";
 	echo "<div class='dashboard_container'>";
@@ -100,7 +101,14 @@ function dashboard($user_id) {
 	
 	echo "<div class='left_widget'>";
 	if(get_user_role() == 'doctor' || get_user_role() == 'administrator')	{
-	
+		echo '<div class="search_patients">Search</div>';
+		echo '<div class="search_box">';
+		echo '<div class="search_results">';
+		echo '<input type="text" id="patient_input">';
+		echo '<div class="patient_results"></div>';
+		echo '</div>';
+		echo '<div class="close_search">Close</div>';
+		echo '</div>';
 	} 
 	elseif(get_user_role() == 'subscriber')	{
 		echo '<div class="dashboard_icons" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
@@ -128,17 +136,26 @@ function dashboard($user_id) {
 	</div>
 	
 	
+	
 	<?php
 	// Right Widget
 	
 	echo "<div class='right_widget'>";
-	if(get_user_role() == 'doctor' || get_user_role() == 'administrator')	{
+	if(get_user_role() == 'doctor')	{
 		echo '<div class="dashboard_icons" id="soap_notes">Soap Notes</div>';
 		echo '<div class="dashboard_icons" id="meds"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="referrals">Referrals</div>';
 		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
-		echo "test";
+		echo '<div class="dashboard_icons" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
+	}
+	elseif(get_user_role() == 'administrator')	{
+		echo '<div class="dashboard_icons" id="soap_notes">Soap Notes</div>';
+		echo '<div class="dashboard_icons" id="meds"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_icon.png"></div>';
+		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
+		echo '<div class="dashboard_icons" id="referrals">Referrals</div>';
+		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
+		echo '<div class="dashboard_icons" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
 	}
 	echo "</div>";
 	echo "</div>";
