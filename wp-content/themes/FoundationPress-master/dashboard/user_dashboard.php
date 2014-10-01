@@ -11,13 +11,7 @@ $id = $_POST['id'];
 $patient_id = $_POST['patient_id'];
 
 if($_POST['patient_id'])	{
-	if(get_user_role() == 'doctor' || get_user_role() == 'administrator')	{
-		$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$patient_id");
-		foreach($lookup as $lu)	{
-			
-		}
-		echo $html;
-	} else {
+
 		$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$patient_id");
 		foreach($lookup as $lu)	{
 			$html .= '<div class="dashboard_goals">';
@@ -143,8 +137,7 @@ if($_POST['patient_id'])	{
 			$html .= '</div>';				
 		}		
 		echo $html;
-	}
 } else {
-	echo "No user id selected.";
+	echo "Doctor's dashboard";
 }
 ?>

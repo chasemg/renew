@@ -2298,6 +2298,7 @@ body	{
 .left_widget	{
 	float: left;
 	position: absolute;
+	z-index: 1000;
 }
 .right_widget	{
 	float: right;

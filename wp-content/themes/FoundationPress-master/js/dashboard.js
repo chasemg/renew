@@ -15,6 +15,10 @@ $(".search_patients").click(function()	{
 					var patient = $(this).attr('id');
 					$("#patient_id").val(patient);
 					user_dashboard();
+					$(".search_box").fadeOut();
+					$(".left_widget").delay(200).animate({
+						width: "75px"
+					},200);							
 				});
 			},
 			error: function(error)	{
