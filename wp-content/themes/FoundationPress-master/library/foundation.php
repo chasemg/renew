@@ -107,12 +107,13 @@ function dashboard($user_id) {
 	echo "<div class='left_widget'>";
 	if(get_user_role() == 'doctor' || get_user_role() == 'administrator')	{
 		echo '<div class="search_patients">Search</div>';
+		echo '<div class="close_search"><-</div>';
 		echo '<div class="search_box">';
 		echo '<div class="search_results">';
-		echo '<input type="text" id="patient_input">';
+		echo '<input type="text" id="patient_input" placeholder="Enter patient name">';
+		echo '<button id="clear_search">Clear</button>';
 		echo '<div class="patient_results"></div>';
 		echo '</div>';
-		echo '<div class="close_search">Close</div>';
 		echo '</div>';
 	} 
 	elseif(get_user_role() == 'subscriber')	{
@@ -152,7 +153,7 @@ function dashboard($user_id) {
 		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="referrals">Referrals</div>';
 		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
-		echo '<div class="dashboard_icons" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
+		echo '<div class="doctor_dash" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
 	}
 	elseif(get_user_role() == 'administrator')	{
 		echo '<div class="dashboard_icons" id="soap_notes">Soap Notes</div>';
@@ -160,7 +161,7 @@ function dashboard($user_id) {
 		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="referrals">Referrals</div>';
 		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
-		echo '<div class="dashboard_icons" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
+		echo '<div class="doctor_dash" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
 	}
 	echo "</div>";
 	echo "</div>";

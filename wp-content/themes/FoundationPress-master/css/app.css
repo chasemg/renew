@@ -2325,7 +2325,12 @@ body	{
 	text-align: center;
 	padding: 25px 0;
 }
-.dashboard_icons:hover	{
+.doctor_dash	{
+	width: 100%;
+	text-align: center;
+	padding: 25px 0;
+}
+.dashboard_icons:hover, .doctor_dash:hover	{
 	cursor: pointer;
 }
 .dashboard_bottom_icons	{
@@ -2741,6 +2746,9 @@ body	{
 .close_search:hover	{
 	cursor: pointer;
 }
+.close_search	{
+	display: none;
+}
 .search_box	{
 	display: none;
 	padding: 10px;
@@ -2780,6 +2788,16 @@ body	{
 .patient_search_name	{
 	display: inline-block;
 	padding: 30px 0;
+}
+#clear_search	{
+	width: 100%;
+	padding: 5px 0;
+	margin: 0;
+	background: #00af41;
+	border: 1px solid #00af41;
+}
+#patient_input	{
+	margin: 0;
 }
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{

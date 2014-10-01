@@ -1,41 +1,55 @@
 $(document).ready(function() {
 
 /******************* Dashboard *******************************/
+function patient_list()	{
+	var doctor_id = $("#user_id").val();
+	$.ajax({
+		type: 'POST',
+		data: 'id='+doctor_id,
+		url: 'wp-content/themes/FoundationPress-master/dashboard/patient_list.php',
+		success: function(success)	{
+			$(".patient_results").html(success);
+			$('#patient_input').fastLiveFilter('#patients');
+			$(".patient").click(function()	{
+				var patient = $(this).attr('id');
+				$("#patient_id").val(patient);
+				user_dashboard();
+				$(".search_box").fadeOut();
+				$(".close_search").fadeOut();
+				$(".left_widget").delay(200).animate({
+					width: "75px"
+				},200);							
+			});
+		},
+		error: function(error)	{
+			console.log(error);
+		}
+	});
+}
 $(".search_patients").click(function()	{
 	if($(".patient_results").html() == '')	{
-		var doctor_id = $("#user_id").val();
-		$.ajax({
-			type: 'POST',
-			data: 'id='+doctor_id,
-			url: 'wp-content/themes/FoundationPress-master/dashboard/patient_list.php',
-			success: function(success)	{
-				$(".patient_results").html(success);
-				$('#patient_input').fastLiveFilter('#patients');
-				$(".patient").click(function()	{
-					var patient = $(this).attr('id');
-					$("#patient_id").val(patient);
-					user_dashboard();
-					$(".search_box").fadeOut();
-					$(".left_widget").delay(200).animate({
-						width: "75px"
-					},200);							
-				});
-			},
-			error: function(error)	{
-				console.log(error);
-			}
-		});
+		patient_list();
 	}
 	$(".left_widget").animate({
 		width: "250px"
 	},200);
 	$(".search_box").delay(200).fadeIn('slow');
+	$(".close_search").delay(200).fadeIn('slow');
 });
 $(".close_search").click(function()	{
 	$(".search_box").fadeOut();
+	$(".close_search").fadeOut();
 	$(".left_widget").delay(200).animate({
 		width: "75px"
 	},200);		
+});
+$(".doctor_dash").click(function()	{
+	$("#patient_id").val('');
+	user_dashboard();
+});
+$("#clear_search").click(function()	{
+	$("#patient_input").val('');
+	patient_list();
 });
 $(".dashboard_icons").click(function()	{
 	var function_name = $(this).attr('id');
