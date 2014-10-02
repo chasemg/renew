@@ -138,6 +138,14 @@ if($_POST['patient_id'])	{
 		}		
 		echo $html;
 } else {
-	echo "Doctor's dashboard";
+	
+	if (get_user_role() == 'lab_doctor')
+	{
+		include('lab_dashboard.php');
+	}
+	else
+	{
+		echo "Doctor's dashboard";
+	}
 }
 ?>
