@@ -82,6 +82,7 @@ function dashboard_icons()	{
 				$(".goback img").click(function()	{
 					user_dashboard();
 				});	
+				message();
 				$(".dashboard_small_widget_lip").click(function()	{
 					var function_name = $(this).attr('id');
 					$("#dashboard").empty();
@@ -141,7 +142,8 @@ function dashboard_icons()	{
 							console.log(error);
 						}
 					}); 
-				});				
+				});	
+
 			},
 			error: function(error)	{
 				console.log(error);
@@ -255,7 +257,40 @@ function user_dashboard()	{
 		}
 	}); 
 }
-
+function message()	{
+	$('.message').click(function()	{
+		var messageId = $(this).attr('id');
+		$.ajax({
+			type: 'POST',
+			data: 'message_id='+messageId,
+			url: 'wp-content/themes/FoundationPress-master/dashboard/message.php',
+			success: function(success)	{
+				$("#dashboard").html(success);
+				$(".message_go_back").click(function()	{
+					var function_name = $(this).attr('id');
+					$("#dashboard").empty();
+					var user_id = $("#user_id").val();
+					var patient_id = $("#patient_id").val();
+					$.ajax({
+						type: 'post',
+						data: 'id='+ user_id+'&patient_id='+patient_id,
+						url: 'wp-content/themes/FoundationPress-master/dashboard/communications.php',
+						success: function(success)	{
+							$("#dashboard").html(success);
+							message();
+						},
+						error: function(error)	{
+							console.log(error);
+						}
+					});
+				});
+			},
+			error: function(error)	{
+				console.log(error);
+			}
+		});
+	});
+}
 /********************* INIT ***************************************/
 
 user_dashboard();

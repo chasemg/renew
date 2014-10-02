@@ -2835,6 +2835,103 @@ body	{
 	padding: 0;
 	list-style: none;
 }
+.message	{
+	border-bottom: 1px solid #eee;
+}
+.message:hover	{
+	cursor: pointer;
+}
+.message_overview.message_overview_unread	{
+	border-left: 4px solid #00af41;
+}
+.message_overview.message_overview_unread:before	{
+	content: "new";
+	position: absolute;
+	/* Safari */
+	-webkit-transform: rotate(-90deg);
+	/* Firefox */
+	-moz-transform: rotate(-90deg);
+	/* IE */
+	-ms-transform: rotate(-90deg);
+	/* Opera */
+	-o-transform: rotate(-90deg);
+	/* Internet Explorer */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);	
+	margin-top: 15px;
+	margin-left: -5px;
+	color: #00af41;
+	font-variant: small-caps;
+	font-size: 22px;
+	font-family: 'montserratbold';
+}
+.message_overview	{
+	width: 640px;
+	display: inline-block;
+
+}
+.message_overview .container	{
+	padding: 10px 0;
+	display: inline-block;
+	width: 100%;
+}
+.message_overview h5	{
+	font-family: 'montserratbold';
+	font-size: 14px;
+	font-variant: small-caps;
+}
+.message_overview .subject	{
+	font-family: 'montserratbold';
+	text-transform: uppercase;
+	text-align: left;
+	display: inline-block;
+	float: left;
+}
+.message_overview .subject_container	{
+	display: inline-block;
+	float: left;
+	padding-left: 30px;
+	
+}
+.message_overview .from	{
+	float: left;
+	display: inline-block;
+}
+.message_overview .message_date	{
+	float: right;
+	display: inline-block;
+	padding-right: 20px;
+	padding-top: 8px;
+}
+.message_header	{
+	display: inline-block;
+	text-align: left;
+	width: 100%;
+}
+.message_text	{
+	width: 100%;
+	text-align: left;
+	margin-bottom: 20px;
+}
+.message_reply_bar	{
+	width: 640px;
+	margin: 0 auto;
+	padding: 10px 0;
+	text-align: left;
+}
+.message_reply_bar button	{
+	padding: 5px 20px;
+	margin: 0;
+	background: #00af41;
+	text-transform: lowercase;
+	font-variant: small-caps;
+	width: 100px;
+}
+.message_reply_bar .message_reply	{
+	float: right;
+}
+.message_reply_bar .message_go_back	{
+	float: left;
+}
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{
 	.nav_logo img	{
