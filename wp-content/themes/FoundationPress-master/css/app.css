@@ -2296,6 +2296,7 @@ body	{
 	background: #4E4E4E;
 	height: 100%;
 	color: #fff;
+	min-height: 950px;
 }
 .left_widget	{
 	float: left;
@@ -2320,6 +2321,7 @@ body	{
 }
 .dashboard-logo	{
 	text-align: center;
+	padding-top: 10px;
 }
 .dashboard_icons	{
 	width: 100%;
@@ -2338,6 +2340,7 @@ body	{
 	width: 100%;
 	text-align: center;
 	padding: 25px 0;
+	display: none;
 }
 .dashboard_icons_disabled:hover	{
 	cursor: not-allowed;
@@ -2345,9 +2348,7 @@ body	{
 .dashboard_bottom_icons	{
 	bottom: 0px;
 	display: inline-block;
-	position: absolute;
 	width: 75px;
-	margin-left: -38px;
 	z-index: 150;
 }
 .dashboard_icons_bottom:hover	{
@@ -2356,10 +2357,29 @@ body	{
 
 #dashboard	{
 	width: 100%;
-	min-height: 300px;
-	min-height: 900px;
+	min-height: 600px;
+	height: 90%;
 	overflow-y: auto;
 }
+
+::-webkit-scrollbar              { 
+	width: 5px;
+}
+::-webkit-scrollbar-button       { 
+	display: none;
+ }
+::-webkit-scrollbar-track        { 
+	background: #4e4e4e;
+}
+::-webkit-scrollbar-track-piece  { 
+
+}
+::-webkit-scrollbar-thumb        { 
+	background: #00af41;
+}
+::-webkit-scrollbar-corner       { /* 6 */ }
+::-webkit-resizer                { /* 7 */ }
+
 #dashboard hr	{
 	margin: 20px auto 0 auto;
 	
@@ -2809,6 +2829,11 @@ body	{
 }
 #patient_input	{
 	margin: 0;
+}
+.messages	{
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{

@@ -21,6 +21,12 @@ function patient_list()	{
 				},200);	
 				$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
 				$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+				$(".doctor_dash").click(function()	{
+					$("#patient_id").val('');
+					$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
+					$("#meds").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
+					user_dashboard();
+				});				
 				dashboard_icons();
 			});
 		},

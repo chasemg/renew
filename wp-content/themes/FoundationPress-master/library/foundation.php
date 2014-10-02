@@ -154,6 +154,11 @@ function dashboard($user_id) {
 		echo '<div class="dashboard_icons" id="referrals">Referrals</div>';
 		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
 		echo '<div class="doctor_dash" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
+		echo '<div class="dashboard_bottom_icons">';
+		echo '<div class="dashboard_icons" id="settings"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/settings_icon.png"></div>';
+		echo '<div class="dashboard_icons"><a href="'. wp_logout_url('index.php') .'"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/logout_icon.png"></a></div>';
+		echo '</div>';
+		
 	}
 	elseif(get_user_role() == 'administrator')	{
 		echo '<div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div>';
@@ -162,6 +167,11 @@ function dashboard($user_id) {
 		echo '<div class="dashboard_icons" id="referrals">Referrals</div>';
 		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
 		echo '<div class="doctor_dash" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
+		echo '<div class="dashboard_bottom_icons">';
+		echo '<div class="dashboard_icons" id="settings"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/settings_icon.png"></div>';
+		echo '<div class="dashboard_icons"><a href="'. wp_logout_url('index.php') .'"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/logout_icon.png"></a></div>';
+		echo '</div>';
+		
 	}
 	echo "</div>";
 	echo "</div>";
