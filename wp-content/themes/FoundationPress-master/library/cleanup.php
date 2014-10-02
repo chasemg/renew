@@ -175,4 +175,14 @@ function img_unautop($pee) {
     return $pee;
 } 
 
+$result = add_role(
+    'lab_doctor',
+    __( 'Lab Doctor' ),
+    array(
+        'read'         => true,  // true allows this capability
+        'edit_posts'   => true,
+        'delete_posts' => false, // Use false to explicitly deny
+    )
+);
+
 ?>

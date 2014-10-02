@@ -21,7 +21,7 @@ foreach($exam_dates as $exam)	{
 
 $medical = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "medical_history WHERE user_id='$patient_id' LIMIT 1");
 foreach($medical as $m)	{
-	$html .= '<div class="last_exam">Date of last pysical exam: <font style="color: #00af41;">'.date("m/d/Y", $exam_date).'</font></div>';
+	$html .= '<div class="last_exam">Date of last physical exam: <font style="color: #00af41;">'.date("m/d/Y", $exam_date).'</font></div>';
 	$html .= '<div class="text" style="padding-bottom: 5px;">'.$m->notes.'</div>';
 	$html .= '<hr>';
 	$html .= '<div class="med_history_container">';
