@@ -18,7 +18,10 @@ function patient_list()	{
 				$(".close_search").fadeOut();
 				$(".left_widget").delay(200).animate({
 					width: "75px"
-				},200);							
+				},200);	
+				$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+				$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+				dashboard_icons();
 			});
 		},
 		error: function(error)	{
@@ -27,6 +30,7 @@ function patient_list()	{
 	});
 }
 $(".search_patients").click(function()	{
+
 	if($(".patient_results").html() == '')	{
 		patient_list();
 	}
@@ -40,99 +44,105 @@ $(".close_search").click(function()	{
 	$(".search_box").fadeOut();
 	$(".close_search").fadeOut();
 	$(".left_widget").delay(200).animate({
-		width: "75px"
+		width: "75px",
 	},200);		
+
 });
 $(".doctor_dash").click(function()	{
 	$("#patient_id").val('');
+	$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
+	$("#meds").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
 	user_dashboard();
 });
 $("#clear_search").click(function()	{
 	$("#patient_input").val('');
 	patient_list();
 });
-$(".dashboard_icons").click(function()	{
-	var function_name = $(this).attr('id');
 
-	$("#dashboard").empty();
-	var user_id = $("#user_id").val();
-	var patient_id = $("#patient_id").val();
-	$.ajax({
-		type: 'post',
-		data: 'id='+ user_id+'&patient_id='+patient_id,
-		url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
-		success: function(success)	{
-			$("#dashboard").html(success);
-			$(".goback img").click(function()	{
-				user_dashboard();
-			});	
-			$(".dashboard_small_widget_lip").click(function()	{
-				var function_name = $(this).attr('id');
-				$("#dashboard").empty();
-				var user_id = $("#user_id").val();
-				$.ajax({
-					type: 'post',
-					data: 'id='+ user_id,
-					url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
-					success: function(success)	{
-						$("#dashboard").html(success);
-						$(".goback img").click(function()	{
-							user_dashboard();
-						});
-						$(".add_entry_family_condition").click(function()	{
-							$(".family_conditions tr:last-child").before("<tr><td><input type='text' name='new_family_condition'></td><td></td></tr>");
-						});
-					},
-					error: function(error)	{
-						console.log(error);
-					}
-				}); 
-			});	
-			$(".dashboard_large_widget_lip").click(function()	{
-				var function_name = $(this).attr('id');
-				$("#dashboard").empty();
-				var user_id = $("#user_id").val();
-				$.ajax({
-					type: 'post',
-					data: 'id='+ user_id,
-					url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
-					success: function(success)	{
-						$("#dashboard").html(success);
-						$(".goback img").click(function()	{
-							user_dashboard();
-						});
-					},
-					error: function(error)	{
-						console.log(error);
-					}
-				}); 
-			});		
-			$(".goals_button").click(function()	{
-				var function_name = $(this).attr('id');
-				$("#dashboard").empty();
-				var user_id = $("#user_id").val();
-				$.ajax({
-					type: 'post',
-					data: 'id='+ user_id,
-					url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
-					success: function(success)	{
-						$("#dashboard").html(success);
-						$(".goback img").click(function()	{
-							user_dashboard();
-						});						
-					},
-					error: function(error)	{
-						console.log(error);
-					}
-				}); 
-			});				
-		},
-		error: function(error)	{
-			console.log(error);
-		}
-	}); 
-});	
+/*************************** Functions *******************************************/
 
+function dashboard_icons()	{
+	$(".dashboard_icons").click(function()	{
+		var function_name = $(this).attr('id');
+		$("#dashboard").empty();
+		var user_id = $("#user_id").val();
+		var patient_id = $("#patient_id").val();
+		$.ajax({
+			type: 'post',
+			data: 'id='+ user_id+'&patient_id='+patient_id,
+			url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
+			success: function(success)	{
+				$("#dashboard").html(success);
+				$(".goback img").click(function()	{
+					user_dashboard();
+				});	
+				$(".dashboard_small_widget_lip").click(function()	{
+					var function_name = $(this).attr('id');
+					$("#dashboard").empty();
+					var user_id = $("#user_id").val();
+					$.ajax({
+						type: 'post',
+						data: 'id='+ user_id,
+						url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
+						success: function(success)	{
+							$("#dashboard").html(success);
+							$(".goback img").click(function()	{
+								user_dashboard();
+							});
+							$(".add_entry_family_condition").click(function()	{
+								$(".family_conditions tr:last-child").before("<tr><td><input type='text' name='new_family_condition'></td><td></td></tr>");
+							});
+						},
+						error: function(error)	{
+							console.log(error);
+						}
+					}); 
+				});	
+				$(".dashboard_large_widget_lip").click(function()	{
+					var function_name = $(this).attr('id');
+					$("#dashboard").empty();
+					var user_id = $("#user_id").val();
+					$.ajax({
+						type: 'post',
+						data: 'id='+ user_id,
+						url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
+						success: function(success)	{
+							$("#dashboard").html(success);
+							$(".goback img").click(function()	{
+								user_dashboard();
+							});
+						},
+						error: function(error)	{
+							console.log(error);
+						}
+					}); 
+				});		
+				$(".goals_button").click(function()	{
+					var function_name = $(this).attr('id');
+					$("#dashboard").empty();
+					var user_id = $("#user_id").val();
+					$.ajax({
+						type: 'post',
+						data: 'id='+ user_id,
+						url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
+						success: function(success)	{
+							$("#dashboard").html(success);
+							$(".goback img").click(function()	{
+								user_dashboard();
+							});						
+						},
+						error: function(error)	{
+							console.log(error);
+						}
+					}); 
+				});				
+			},
+			error: function(error)	{
+				console.log(error);
+			}
+		}); 
+	});	
+}
 function user_dashboard()	{
 	$("#dashboard").empty();
 	var user_id = $("#user_id").val();
@@ -240,6 +250,8 @@ function user_dashboard()	{
 	}); 
 }
 
-user_dashboard();
+/********************* INIT ***************************************/
 
+user_dashboard();
+dashboard_icons();
 });

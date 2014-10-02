@@ -2280,6 +2280,7 @@ body	{
 	background-size: cover;
 	min-width: 100%;
 	min-height: 100%;
+	text-align: center;
 }
 .dashboard	{
 	background: #fff;
@@ -2288,6 +2289,7 @@ body	{
 	height: 100%;
 	margin: 0 auto;
 	text-align: center;
+	display: inline-block;
 }
 .left_widget, .right_widget	{
 	width: 75px;
@@ -2297,28 +2299,27 @@ body	{
 }
 .left_widget	{
 	float: left;
-	position: absolute;
 	z-index: 1000;
+	display: inline-block;
+	height: 100%;
+	position: absolute;
 }
 .right_widget	{
 	float: right;
-	margin-left: 745px;
-	position: absolute;
 	top: 0;
+	display: inline-block;
+	height: 100%;
 }
 .center-dashboard	{
 	background: url(../assets/img/dashboard/cream_pixels.png) repeat;
 	display: inline-block;
-	width: 745px;
+	width: 666px;
 	height: 100%;
 	margin: 0 auto;
+	margin-left: 75px;
 }
 .dashboard-logo	{
-	width: 100%;
-	bottom: 20px;
 	text-align: center;
-	position: absolute;
-	left: 0;
 }
 .dashboard_icons	{
 	width: 100%;
@@ -2332,6 +2333,14 @@ body	{
 }
 .dashboard_icons:hover, .doctor_dash:hover	{
 	cursor: pointer;
+}
+.dashboard_icons_disabled	{
+	width: 100%;
+	text-align: center;
+	padding: 25px 0;
+}
+.dashboard_icons_disabled:hover	{
+	cursor: not-allowed;
 }
 .dashboard_bottom_icons	{
 	bottom: 0px;
@@ -2348,7 +2357,8 @@ body	{
 #dashboard	{
 	width: 100%;
 	min-height: 300px;
-	margin-top: 20px;
+	min-height: 900px;
+	overflow-y: auto;
 }
 #dashboard hr	{
 	margin: 20px auto 0 auto;
@@ -2468,6 +2478,7 @@ body	{
 	font-family: 'adellebold';
 	text-transform: uppercase;
 	padding-bottom: 20px;
+	text-align: center !important;
 }
 .dashboard_vitals:nth-child(odd)	{
 	background: #f5f8f5;
