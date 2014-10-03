@@ -9,7 +9,7 @@ $message_id = $_POST['message_id'];
 $html = '';
 $html .= '<div class="dashboard_large_widget">';
 $html .= '<div class="container">';
-
+$html .= '<input type="hidden" id="message_id" value="'.$message_id.'">';
 
 $message = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication WHERE id='$message_id'");
 foreach($message as $m)	{

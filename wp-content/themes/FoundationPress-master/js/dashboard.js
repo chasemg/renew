@@ -267,13 +267,11 @@ function message()	{
 			success: function(success)	{
 				$("#dashboard").html(success);
 				$(".message_go_back").click(function()	{
-					var function_name = $(this).attr('id');
 					$("#dashboard").empty();
 					var user_id = $("#user_id").val();
-					var patient_id = $("#patient_id").val();
 					$.ajax({
 						type: 'post',
-						data: 'id='+ user_id+'&patient_id='+patient_id,
+						data: 'id='+ user_id,
 						url: 'wp-content/themes/FoundationPress-master/dashboard/communications.php',
 						success: function(success)	{
 							$("#dashboard").html(success);
@@ -284,6 +282,9 @@ function message()	{
 						}
 					});
 				});
+				$('.message_reply').click(function()	{
+					createMessage();
+				});
 			},
 			error: function(error)	{
 				console.log(error);
@@ -291,8 +292,59 @@ function message()	{
 		});
 	});
 }
+function createMessage()	{
+	var messageId = $("#message_id").val();
+	var user_id = $("#user_id").val();
+	$.ajax({
+		type: 'POST',
+		data: 'message_id='+messageId+'&id'+user_id,
+		url: 'wp-content/themes/FoundationPress-master/dashboard/new_message.php',
+		success: function(success)	{
+			$("#dashboard").html(success);
+			message();
+			$(".message_send").click(function()	{
+				sendMessage();
+			});	
+		},
+		error: function(error)	{
+			console.log(error);
+		}
+	});
+}
+function sendMessage()	{
+	var message_to = $("#message_to").val();
+	var subject = $("#subject").val();
+	var message = $("#message").val();
+	var send_date = $("#send_date").val();
+	var user_id = $("#user_id").val();
+	$.ajax({
+		type: 'POST',
+		data: 'message_to='+message_to+'&subject='+subject+'&message='+message+'&send_date='+send_date+'&user_id='+user_id,
+		url: 'wp-content/themes/FoundationPress-master/dashboard/send_email.php',
+		success: function(success)	{
+			$("#dashboard").empty();
+			var user_id = $("#user_id").val();
+			var patient_id = $("#patient_id").val();
+			$.ajax({
+				type: 'post',
+				data: 'id='+ user_id,
+				url: 'wp-content/themes/FoundationPress-master/dashboard/communications.php',
+				success: function(success)	{
+					$("#dashboard").html(success);
+					message();
+				},
+				error: function(error)	{
+					console.log(error);
+				}
+			});
+		},
+		error: function(error)	{
+			console.log(error);
+		}
+	});
+}
 /********************* INIT ***************************************/
 
-user_dashboard();
-dashboard_icons();
+	user_dashboard();
+	dashboard_icons();
 });

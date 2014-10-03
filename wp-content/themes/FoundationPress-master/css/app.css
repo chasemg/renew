@@ -2926,11 +2926,14 @@ body	{
 	font-variant: small-caps;
 	width: 100px;
 }
-.message_reply_bar .message_reply	{
+.message_reply_bar .message_reply, .message_reply_bar .message_send	{
 	float: right;
 }
-.message_reply_bar .message_go_back	{
+.message_reply_bar .message_go_back, .message_reply_bar .message	{
 	float: left;
+}
+.message_text textarea	{
+	height: 50%;
 }
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{
