@@ -115,7 +115,10 @@ function dashboard($user_id) {
 		echo '<button id="clear_search">Clear</button>';
 		echo '<div class="patient_results"></div>';
 		echo '</div>';
+		
 		echo '</div>';
+		
+		echo '<div class="dashboard_icons" id="labs"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';
 	} 
 	elseif(get_user_role() == 'subscriber')	{
 		echo '<div class="dashboard_icons" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
@@ -160,6 +163,11 @@ function dashboard($user_id) {
 		echo '<div class="dashboard_icons"><a href="'. wp_logout_url('index.php') .'"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/logout_icon.png"></a></div>';
 		echo '</div>';
 		
+	}
+	else if (get_user_role() == 'lab_doctor') {
+	?>
+   		<div class="dashboard_icons"><a href="<?php echo wp_logout_url('index.php'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dashboard/logout_icon.png"></a></div>
+    <?php	
 	}
 	elseif(get_user_role() == 'administrator')	{
 		echo '<div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div>';
