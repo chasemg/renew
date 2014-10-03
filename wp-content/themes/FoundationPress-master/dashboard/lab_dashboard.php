@@ -2,7 +2,7 @@
 
 $user = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=" . $id);
 
-$patients = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "labs WHERE labdoctor = " . $id);
+$patients = $wpdb->get_results("SELECT l.*, u.display_name as patient_name, d.display_name as doctor_name, date_format(date_sent, '%M %d, %Y') as date_request FROM ".$wpdb->prefix. "labs l JOIN ".$wpdb->prefix."users u ON u.ID = l.patient_id JOIN ".$wpdb->prefix."users d ON d.ID = l.doctor_id WHERE labdoctor_id = " . $id);
 
 ?>
 
@@ -24,13 +24,24 @@ $patients = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "labs WHERE labdo
     <table width="99%" cellpadding="0" cellspacing="0" style="margin:0 auto;">
     	<thead>
         	<tr>
+            	<th>No.</th>
             	<th>Patient</th>
                 <th>Doctor</th>
+                <th>Date Request</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
         <?php if ($patients) { ?>
+        <?php foreach($patients as $i => $patient) { ?>
+        	<tr>
+            	<td><?php echo $i + 1; ?></td>
+            	<td><?php echo $patient->patient_name; ?></td>
+                <td><?php echo $patient->doctor_name; ?></td>
+                <td><?php echo $patient->date_request; ?></td>
+                <td><a>Upload document</a></td>
+            </tr>
+        <?php } ?>
         <?php } else { ?>
         	<tr>
             	<td colspan="3" style="text-align:center;"> - no patient record found -</td>
