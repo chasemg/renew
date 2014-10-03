@@ -1,2 +1,0 @@
-[29-Sep-2014 14:43:55 UTC] WordPress database error Unknown column 'date' in 'order clause' for query SELECT * FROM rmh_immunizations WHERE user_id='2' ORDER BY date DESC LIMIT 1
-[29-Sep-2014 14:45:31 UTC] WordPress database error Unknown column 'date' in 'order clause' for query SELECT * FROM rmh_immunizations WHERE user_id='2' ORDER BY date DESC LIMIT 1
