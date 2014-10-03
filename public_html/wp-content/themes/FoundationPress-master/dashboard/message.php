@@ -14,7 +14,9 @@ $html .= '<input type="hidden" id="message_id" value="'.$message_id.'">';
 $message = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication WHERE id='$message_id'");
 foreach($message as $m)	{
 	if($m->read == 0)	{
-		$wpdb->update($wpdb->prefix."communication", array('read'=>1), array('id'=>$message_id));
+		$today = date("m/d/Y H:i:s");
+		$now = strtotime($today);
+		$wpdb->update($wpdb->prefix."communication", array('read'=>1,'date_read'=>$now), array('id'=>$message_id));
 	}
 	$html .= '<div class="title">'.$m->subject.'</div>';
 	$html .= '<hr>';
@@ -28,7 +30,7 @@ foreach($message as $m)	{
 	$html .= '<div>Date: '.date("M d, Y", $m->date_sent).'</div>';
 	$html .= '</div>';
 	$html .= '<hr>';
-	$html .= '<div class="message_text">'.$m->message.'</div>';	
+	$html .= '<div class="message_text"><textarea disabled>'.$m->message.'</textarea></div>';	
 }
 
 $html .= '</div>';

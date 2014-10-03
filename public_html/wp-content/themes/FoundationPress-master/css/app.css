@@ -2935,6 +2935,9 @@ body	{
 .message_text textarea	{
 	height: 50%;
 }
+.message_text textarea[disabled]	{
+	background: #fff;
+}
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{
 	.nav_logo img	{

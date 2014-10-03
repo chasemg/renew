@@ -11,6 +11,6 @@ $message = $_POST['message'];
 $send_date = $_POST['send_date'];
 
 if($_POST['message_to'])	{
-	$update_query = $wpdb->insert($wpdb->prefix."divorce_packages", array('package_name'=>$name, 'status'=>$status,'type'=>$type,'price'=>$price,'highlights'=>$highlights,'info'=>$info));
+	$wpdb->insert($wpdb->prefix."communication", array('user_id'=>$message_to, 'read'=>0,'message'=>$message,'date_sent'=>$send_date,'from'=>$user_id,'subject'=>$subject));
 }
 ?>

@@ -16,9 +16,11 @@ $html .= '<div class="text" style="padding: 10px 0;"><font style="font-weight: b
 $html .= "</div>";
 $html .= "</div>";
 $html .= "<hr>";
-$html .= "<div class='dashboard_large_widget'>";
+$html .= '<div class="message_reply_bar"><button class="new_message" style="width: 120px;">New Message</button></div>';
+$html .= "<div class='dashboard_large_widget' style='margin-top: 0;'>";
 $html .= "<ul class='messages'>";
-$messages = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication AS c INNER JOIN ".$wpdb->prefix. "users AS u ON u.ID=c.user_id WHERE c.user_id='$id' LIMIT $limit");
+$html .= '<input type="hidden" id="message_id" value="0">';
+$messages = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication AS c INNER JOIN ".$wpdb->prefix. "users AS u ON u.ID=c.user_id WHERE c.user_id='$id' order by c.id desc LIMIT ".$limit."");
 if($messages)	{
 	foreach($messages as $message)	{
 		$html .= "<li class='message' id='".$message->id."'>";
@@ -29,7 +31,9 @@ if($messages)	{
 		}
 		$html .= '<div class="container">';
 		$html .= "<div class='subject_container'>";
-		$html .= "<div class='subject'>".$message->subject."</div><br>";
+		$subject = $message->subject;
+		$stripped_subject = (strlen($subject) > 50) ? substr($subject,0,50).'...' : $subject;
+		$html .= "<div class='subject'>".$stripped_subject."</div><br>";
 		$from = $message->from;
 		$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
 		foreach($from_query as $f)	{
@@ -52,6 +56,8 @@ if($messages)	{
 }
 
 $html .= "</ul>";
+
 $html .= "</div>";
+$html .= '<div class="message_reply_bar"><button class="new_message" style="width: 120px;">New Message</button></div>';
 echo $html;
 ?>

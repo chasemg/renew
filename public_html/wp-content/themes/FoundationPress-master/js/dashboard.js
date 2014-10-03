@@ -83,6 +83,7 @@ function dashboard_icons()	{
 					user_dashboard();
 				});	
 				message();
+				new_message();
 				$(".dashboard_small_widget_lip").click(function()	{
 					var function_name = $(this).attr('id');
 					$("#dashboard").empty();
@@ -276,6 +277,7 @@ function message()	{
 						success: function(success)	{
 							$("#dashboard").html(success);
 							message();
+							new_message();
 						},
 						error: function(error)	{
 							console.log(error);
@@ -292,6 +294,12 @@ function message()	{
 		});
 	});
 }
+function new_message()	{
+	$('.new_message').click(function()	{
+		
+		createMessage();
+	});
+}
 function createMessage()	{
 	var messageId = $("#message_id").val();
 	var user_id = $("#user_id").val();
@@ -301,10 +309,33 @@ function createMessage()	{
 		url: 'wp-content/themes/FoundationPress-master/dashboard/new_message.php',
 		success: function(success)	{
 			$("#dashboard").html(success);
-			message();
 			$(".message_send").click(function()	{
-				sendMessage();
+				var message_to = $("#message_to").val();
+				alert(message_to);
+				if($("#message_to").val() == '' || $("#message_to").val() == 0)	{
+					console.log("Please choose someone to send this email to.");
+					return false;
+				} else {	
+					sendMessage();
+				}
 			});	
+			$(".cancel_message").click(function()	{
+				$("#dashboard").empty();
+				var user_id = $("#user_id").val();
+				$.ajax({
+					type: 'post',
+					data: 'id='+ user_id,
+					url: 'wp-content/themes/FoundationPress-master/dashboard/communications.php',
+					success: function(success)	{
+						$("#dashboard").html(success);
+						message();
+						new_message()
+					},
+					error: function(error)	{
+						console.log(error);
+					}
+				});
+			});
 		},
 		error: function(error)	{
 			console.log(error);
@@ -314,9 +345,10 @@ function createMessage()	{
 function sendMessage()	{
 	var message_to = $("#message_to").val();
 	var subject = $("#subject").val();
-	var message = $("#message").val();
+	var message = $("#message_text").val();
 	var send_date = $("#send_date").val();
 	var user_id = $("#user_id").val();
+
 	$.ajax({
 		type: 'POST',
 		data: 'message_to='+message_to+'&subject='+subject+'&message='+message+'&send_date='+send_date+'&user_id='+user_id,
@@ -324,14 +356,13 @@ function sendMessage()	{
 		success: function(success)	{
 			$("#dashboard").empty();
 			var user_id = $("#user_id").val();
-			var patient_id = $("#patient_id").val();
 			$.ajax({
 				type: 'post',
 				data: 'id='+ user_id,
 				url: 'wp-content/themes/FoundationPress-master/dashboard/communications.php',
 				success: function(success)	{
 					$("#dashboard").html(success);
-					message();
+
 				},
 				error: function(error)	{
 					console.log(error);
