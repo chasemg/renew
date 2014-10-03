@@ -25,7 +25,39 @@ $patients = get_patient_list();
 
 $labdoctors = get_labdoctor_list();
 
+if ($patient_id)
+{
+	//echo $patient_id;
+	$documents = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."labs l JOIN ".$wpdb->prefix."lab_files f ON f.lab_id = l.lab_id WHERE patient_id = " . $patient_id);
+}
+
 ?>
+<style>
+.pdf-icons
+{
+	list-style:none;
+	margin:20px 0px;
+}
+
+.pdf-icons li
+{
+	float:left;
+	margin:0px 20px 20px 0px;
+	width:50px;
+	overflow:hidden;
+	height:100px;
+}
+
+.pdf-icons a
+{
+	text-outline:none;
+	text-indent:-9999px;
+	display:inline-block;
+	width:46px;
+	height:53px;
+	background:url(wp-content/themes/FoundationPress-master/dashboard/images/pdf-icon.jpg);
+}
+</style>
 <div class="dashboard_large_widget">
 	<div class="container">
 		<div class="icon">
@@ -35,6 +67,23 @@ $labdoctors = get_labdoctor_list();
         <div class="title">Lab Results</div>
 		<hr>
 		<?php if ($patient_id) { ?>
+        
+        <p style="text-align:left;"><strong>Here is a detailed look</strong> at your recent labs results. You can download a PDF of your paperwork or you can view them through your browser.</p>
+        
+        <ul class="pdf-icons">
+        
+        <?php foreach($documents as $doc) { ?>
+        
+        
+        	<li>
+            	<a href="wp-content/themes/FoundationPress-master/lab-result/<?php echo $doc->lab_id; ?>/<?php echo $doc->filename; ?>" target="_blank" class="pdf-icon"><?php echo $doc->filename; ?></a>
+                <p class="doctor-notes"><?php echo $doc->doctor_notes; ?></p>
+                <p class="labdoctor-notes"><?php echo $doc->remarks; ?></p>
+            </li>
+        
+        <?php } ?>
+        
+        </ul>
         
         <?php } else { ?>
         

@@ -21,7 +21,7 @@ $patients = $wpdb->get_results("SELECT l.*, u.display_name as patient_name, d.di
     
     <h1>Patient List</h1>
     
-    <table width="99%" cellpadding="0" cellspacing="0" style="margin:0 auto;">
+    <table id="patient-list-table" width="99%" cellpadding="0" cellspacing="0" style="margin:0 auto;">
     	<thead>
         	<tr>
             	<th>No.</th>
@@ -39,7 +39,7 @@ $patients = $wpdb->get_results("SELECT l.*, u.display_name as patient_name, d.di
             	<td><?php echo $patient->patient_name; ?></td>
                 <td><?php echo $patient->doctor_name; ?></td>
                 <td><?php echo $patient->date_request; ?></td>
-                <td><a>Upload document</a></td>
+                <td><a class="upload-document" data="<?php echo $patient->lab_id; ?>">View document</a></td>
             </tr>
         <?php } ?>
         <?php } else { ?>
@@ -51,3 +51,25 @@ $patients = $wpdb->get_results("SELECT l.*, u.display_name as patient_name, d.di
     </table>
 
 </div>
+
+<script>
+$(document).ready(function()
+{
+	var labdoctor_id = <?php echo $id; ?>;
+	
+	$('#patient-list-table a.upload-document').bind('click', function()
+	{
+		var lab_id = $(this).attr('data');
+		$.ajax(
+		{
+			url: 'wp-content/themes/FoundationPress-master/dashboard/labs_document.php',
+			data: 'lab_id=' + lab_id + '&id=' + labdoctor_id,
+			type: 'post',
+			success:function(html)
+			{
+				$('#dashboard').html(html);
+			}
+		})
+	});
+});
+</script>
