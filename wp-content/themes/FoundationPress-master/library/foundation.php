@@ -186,5 +186,20 @@ function dashboard($user_id) {
 	echo "</div>";
 	echo "</div>";
 }
+
+
+function get_patient_list()
+{
+	$list = get_users(array('role' => 'subscriber'));	
+	
+	return $list;
+}
+
+function get_labdoctor_list()
+{
+	$list = get_users(array('role' => 'lab_doctor'));
+	
+	return $list;
+}
 /*******************************************************************************/
 ?>
