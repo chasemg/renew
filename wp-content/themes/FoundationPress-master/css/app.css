@@ -2843,29 +2843,11 @@ body	{
 }
 .message_overview.message_overview_unread	{
 	border-left: 4px solid #00af41;
+	background: #eee;
 }
-.message_overview.message_overview_unread:before	{
-	content: "new";
-	position: absolute;
-	/* Safari */
-	-webkit-transform: rotate(-90deg);
-	/* Firefox */
-	-moz-transform: rotate(-90deg);
-	/* IE */
-	-ms-transform: rotate(-90deg);
-	/* Opera */
-	-o-transform: rotate(-90deg);
-	/* Internet Explorer */
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);	
-	margin-top: 15px;
-	margin-left: -5px;
-	color: #00af41;
-	font-variant: small-caps;
-	font-size: 22px;
-	font-family: 'montserratbold';
-}
+
 .message_overview	{
-	width: 640px;
+	width: 100%;
 	display: inline-block;
 
 }
@@ -2885,27 +2867,34 @@ body	{
 	text-align: left;
 	display: inline-block;
 	float: left;
+	font-size: 12px;
 }
 .message_overview .subject_container	{
 	display: inline-block;
 	float: left;
-	padding-left: 30px;
+	padding-left: 15px;
 	
 }
 .message_overview .from	{
 	float: left;
 	display: inline-block;
+	font-size: 14px;
+	color: #929497;
+	font-family: 'adellelight';
 }
 .message_overview .message_date	{
 	float: right;
 	display: inline-block;
 	padding-right: 20px;
 	padding-top: 8px;
+    font-family: 'adelleregular';
+	font-size: 12px;
 }
 .message_header	{
 	display: inline-block;
 	text-align: left;
 	width: 100%;
+	
 }
 .message_text	{
 	width: 100%;
@@ -2913,7 +2902,8 @@ body	{
 	margin-bottom: 20px;
 }
 .message_reply_bar	{
-	width: 640px;
+	width: 100%;
+	max-width: 600px;
 	margin: 0 auto;
 	padding: 10px 0;
 	text-align: left;
@@ -2928,15 +2918,24 @@ body	{
 }
 .message_reply_bar .message_reply, .message_reply_bar .message_send	{
 	float: right;
+	margin-top: 10px;
 }
 .message_reply_bar .message_go_back, .message_reply_bar .message	{
 	float: left;
+	margin-top: 10px;
 }
 .message_text textarea	{
 	height: 50%;
 }
 .message_text textarea[disabled]	{
 	background: #fff;
+}
+.message_error	{
+	display: none;
+	color: #ff0000;
+	border: 1px solid #ff0000;
+	width: 100%;
+	padding: 5px;
 }
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{

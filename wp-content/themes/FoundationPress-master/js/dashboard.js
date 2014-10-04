@@ -309,11 +309,11 @@ function createMessage()	{
 		url: 'wp-content/themes/FoundationPress-master/dashboard/new_message.php',
 		success: function(success)	{
 			$("#dashboard").html(success);
+			message();
 			$(".message_send").click(function()	{
 				var message_to = $("#message_to").val();
-				alert(message_to);
-				if($("#message_to").val() == '' || $("#message_to").val() == 0)	{
-					console.log("Please choose someone to send this email to.");
+				if($("#message_to").val() == '' || $("#message_to").val() == 0 || $("#message_text").val() == '' || $("#subject").val() == '')	{
+					$(".message_error").show().html(' Please fill out all of the fields before sending your message.').delay(5000).fadeOut();
 					return false;
 				} else {	
 					sendMessage();
