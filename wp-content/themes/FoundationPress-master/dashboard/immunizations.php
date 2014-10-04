@@ -26,7 +26,7 @@ foreach($immunizations as $i)	{
 		array("immune 3", 1, "1411415705")
 	);
 	$serialized = serialize($array);
-	$unserialized_array = unserialize($serialized);
+	$unserialized_array = unserialize($i->immunizations);
 	$x=0;
 	foreach($unserialized_array as $us)	{
 		if(ceil($x/5) == 2)	{

@@ -45,7 +45,7 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_vitals_row">';
 			$vitals = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "vitals WHERE user_id='$patient_id' ORDER BY taken_date DESC LIMIT 1");
 			foreach($vitals as $v)	{
-				$bp = unserialize($v->bp);
+				$bp = $v->bp;
 				$html .= '<div class="dashboard_vitals"><div class="title">Blood Pressure</div><div class="bp">'.$bp.'</div><div><img src="'.get_template_directory_uri().'/dashboard/images/bp_icon.png"></div></div>';
 				$html .= '<div class="dashboard_vitals"><div class="title">Resting Pulse</div><div class="pulse">'.$v->pulse.'</div><div><img src="'.get_template_directory_uri().'/dashboard/images/pulse_icon.png"></div></div>';
 				$html .= '<div class="dashboard_vitals"><div class="title">Temperature</div><div class="temp">'.$v->temperature.'</div><div><img src="'.get_template_directory_uri().'/dashboard/images/temp_icon.png"></div></div>';
@@ -60,30 +60,37 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="small_widget_container">';
 			
 /********************** Immunizations ***************************************/
+			$html .= '<div class="widgets_left">';
+			
+			
 			$html .= '<div class="dashboard_small_widget left">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Immunizations</div>';
-			$html .= '<div>';
-			
+			$html .= '<div class="immun_container" style="display: inline-block; padding: 0;">';
+			$immun = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id'");
+			foreach($immun as $i)	{
+				$html .= '<table style="margin: 0 auto; float: none;">';
+				$unserialized_array = unserialize($i->immunizations);
+				$html .= '<tr><td></td><td>Doses</td><td>Date</td></tr>';
+				$x=0;
+				foreach($unserialized_array as $us)	{
+					if($x >= 4)	{
+						break;
+					}
+					$html .= '<tr>';
+					$html .= "<td>".$us[0]."</td><td>".$us[1]."</td><td>".date('m/d/Y', $us[2])."</td>";
+					$html .= '</tr>';
+					$x++;
+				}
+				$html .= '</table>';
+			}
 			$html .= '</div>';
 			$html .= '</div>';
 			$html .= '<div class="dashboard_small_widget_lip" id="immunizations">';
 			$html .= '<p>See full immunizations list</p>';
 			$html .= '</div>';
 			$html .= '</div>';
-/********************** Allergies ***************************************/
-			$html .= '<div class="dashboard_small_widget right">';
-			$html .= '<div class="dashboard_small_widget_content">';
-			$html .= '<div class="title">Allergies</div>';
-			$html .= '<div>';
 			
-			$html .= '</div>';
-			$html .= '</div>';
-			$html .= '<div class="dashboard_small_widget_lip" id="allergies">';
-			$html .= '<p>See full allergies list</p>';
-			$html .= '</div>';
-			$html .= '</div>';	
-
 /********************** Labs ***************************************/
 			$html .= '<div class="dashboard_small_widget left">';
 			$html .= '<div class="dashboard_small_widget_content">';
@@ -96,6 +103,36 @@ if($_POST['patient_id'])	{
 			$html .= '<p>See full lab results</p>';
 			$html .= '</div>';
 			$html .= '</div>';
+
+/********************** Medications ***************************************/
+			$html .= '<div class="dashboard_small_widget left">';
+			$html .= '<div class="dashboard_small_widget_content">';
+			$html .= '<div class="title">Medications</div>';
+			$html .= '<div>';
+			
+			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '<div class="dashboard_small_widget_lip" id="meds">';
+			$html .= '<p>See medication list</p>';
+			$html .= '</div>';
+			$html .= '</div>';
+			
+			$html .= '</div>';
+/********************** Allergies ***************************************/
+			$html .= '<div class="widgets_right">';
+
+			$html .= '<div class="dashboard_small_widget right">';
+			$html .= '<div class="dashboard_small_widget_content">';
+			$html .= '<div class="title">Allergies</div>';
+			$html .= '<div>';
+			
+			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '<div class="dashboard_small_widget_lip" id="allergies">';
+			$html .= '<p>See full allergies list</p>';
+			$html .= '</div>';
+			$html .= '</div>';	
+
 
 /********************** Medical History ***************************************/
 			$html .= '<div class="dashboard_small_widget right">';
@@ -110,18 +147,6 @@ if($_POST['patient_id'])	{
 			$html .= '</div>';
 			$html .= '</div>';				
 		
-/********************** Medications ***************************************/
-			$html .= '<div class="dashboard_small_widget left">';
-			$html .= '<div class="dashboard_small_widget_content">';
-			$html .= '<div class="title">Medications</div>';
-			$html .= '<div>';
-			
-			$html .= '</div>';
-			$html .= '</div>';
-			$html .= '<div class="dashboard_small_widget_lip" id="meds">';
-			$html .= '<p>See medication list</p>';
-			$html .= '</div>';
-			$html .= '</div>';
 
 /********************** Social Life ***************************************/
 			$html .= '<div class="dashboard_small_widget right">';
@@ -134,7 +159,10 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget_lip" id="social">';
 			$html .= '<p>My Social Life</p>';
 			$html .= '</div>';
-			$html .= '</div>';				
+			$html .= '</div>';	
+			
+			
+			$html .= '</div>';
 		}		
 		echo $html;
 } else {

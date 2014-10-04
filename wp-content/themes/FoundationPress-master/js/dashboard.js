@@ -88,12 +88,15 @@ function dashboard_icons()	{
 					var function_name = $(this).attr('id');
 					$("#dashboard").empty();
 					var user_id = $("#user_id").val();
+					var patient_id = $("#patient_id").val();
 					$.ajax({
 						type: 'post',
-						data: 'id='+ user_id,
+						data: 'id='+ user_id+'&patient_id='+patient_id,
 						url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
 						success: function(success)	{
 							$("#dashboard").html(success);
+							message();
+							new_message();							
 							$(".goback img").click(function()	{
 								user_dashboard();
 							});
@@ -110,9 +113,10 @@ function dashboard_icons()	{
 					var function_name = $(this).attr('id');
 					$("#dashboard").empty();
 					var user_id = $("#user_id").val();
+					var patient_id = $("#patient_id").val();
 					$.ajax({
 						type: 'post',
-						data: 'id='+ user_id,
+						data: 'id='+ user_id+'&patient_id='+patient_id,
 						url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
 						success: function(success)	{
 							$("#dashboard").html(success);
@@ -173,6 +177,8 @@ function user_dashboard()	{
 					data: 'id='+ user_id+'&patient_id='+patient_id,
 					url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
 					success: function(success)	{
+						message();
+						new_message();
 						$("#dashboard").html(success);
 						$(".goback img").click(function()	{
 							user_dashboard();

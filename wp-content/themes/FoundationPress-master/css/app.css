@@ -2291,6 +2291,17 @@ body	{
 	text-align: center;
 	display: inline-block;
 }
+.widgets_right, .widgets_left	{
+	width: 50%;
+	display: inline-block;	
+}
+.widgets_right	{
+	float: right;
+
+}
+.widgets_left	{
+	float: left;
+}
 .left_widget, .right_widget	{
 	width: 75px;
 	background: #4E4E4E;
@@ -2385,7 +2396,7 @@ body	{
 	
 }
 .dashboard_large_widget	{
-	width: 640px;
+	width: 600px;
 	margin: 20px auto 0 auto;
 	background: #fff;
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
@@ -2401,7 +2412,7 @@ body	{
 }
 
 .small_widget_container	{
-	width: 640px; 
+	width: 600px; 
 	margin: 0 auto;
 }
 .dashboard_small_widget	{
@@ -2526,8 +2537,8 @@ body	{
 }
 
 .dashboard_goals	{
-	width: 640px;
-	margin: 0px auto;
+	width: 600px;
+	margin: 20px auto 0 auto;
 	background: #fff;
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
 	border: 1px solid #eee;
@@ -2580,7 +2591,7 @@ body	{
 	cursor: pointer;
 }
 .goback	{
-	width: 640px;
+	width: 600px;
 	margin: 0 auto;
 	padding: 10px 0;
 	text-align: left;
@@ -2623,7 +2634,7 @@ body	{
 	cursor: pointer;
 }
 .dashboard_large_widget .container	{
-	width: 600px;
+	padding: 20px 50px;
 	margin: 0 auto;
 }
 .dashboard_large_widget hr	{
