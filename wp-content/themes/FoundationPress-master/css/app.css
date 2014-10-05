@@ -3060,6 +3060,52 @@ body	{
 	letter-spacing: 2px;
 	line-height: 75px;
 }
+.settings_container	{
+	display: inline-block;
+}
+.settings_container .profile_image	{
+	width: 50%;
+	display: inline-block;
+	float: left;
+	text-align: center;
+}
+.settings_container .profile_info	{
+	width: 50%;
+	float: right;
+	display: inline-block;
+}
+.settings_container .profile_info div	{
+	padding: 0 20px;
+}
+.settings_container .profile_info div input	{
+	margin: 5px 0;
+}
+.settings_container .profile_info div input[disabled]	{
+	background: #fff;
+	border: none;
+	box-shadow: none;
+}
+.settings_container .password_change	{
+	margin-top: 20px;
+	height: 200px;
+	text-align: left;
+	width: 100%;
+	padding: 0 !important;
+}
+.settings_container button	{
+	padding: 5px 20px;
+	margin: 0;
+	background: #00af41;
+	text-transform: lowercase;
+	font-variant: small-caps;
+	width: 120px;	
+	margin-top: 20px;
+}
+.settings_container button:hover, .settings_container button:active, .settings_container button:focus	{
+	border: none;
+	border-color: #00af41;
+	border-style: none;
+}
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{
 	.nav_logo img	{
