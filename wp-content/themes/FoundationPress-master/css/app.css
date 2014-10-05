@@ -2305,9 +2305,10 @@ body	{
 .left_widget, .right_widget	{
 	width: 75px;
 	background: #4E4E4E;
-	height: 100%;
+	height: 890px;
 	color: #fff;
 	min-height: 950px;
+	padding-bottom: 20px;
 }
 .left_widget	{
 	float: left;
@@ -2329,10 +2330,16 @@ body	{
 	height: 100%;
 	margin: 0 auto;
 	margin-left: 75px;
+
 }
 .dashboard-logo	{
 	text-align: center;
-	padding-top: 10px;
+	padding-top: 30px;
+	bottom: 0px;
+	width: 100%;
+	left: 0;
+	z-index: 5000;
+	border-top: 2px solid #4e4e4e;
 }
 .dashboard_icons	{
 	width: 100%;
@@ -2368,7 +2375,7 @@ body	{
 
 #dashboard	{
 	width: 100%;
-	min-height: 600px;
+	min-height: 890px;
 	height: 90%;
 	overflow-y: auto;
 }
@@ -2419,7 +2426,7 @@ body	{
 	text-align: center;
 	float: left;
 	width: 280px;
-	margin: 20px 0;
+	margin: 10px 0 10px 0;
 }
 .dashboard_small_widget_content	{
 	width: 100%;
@@ -2443,9 +2450,12 @@ body	{
 	margin: 0px auto 0 auto;
 	background: #fff;
 	border: 1px solid #eee;
-	position: absolute;
 	margin-left: 20px;
 	z-index: 0;
+}
+.dashboard_small_widget_content	{
+	height: 185px;
+	overflow: hidden;
 }
 .dashboard_small_widget_lip,	.dashboard_small_widget_content	{
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
@@ -2470,7 +2480,7 @@ body	{
 }
 
 .dashboard_large_widget_lip	{
-	width: 600px;
+	width: 560px;
 	margin: 3px auto 0 auto;
 	background: #fff;
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);

@@ -155,8 +155,18 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget right">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Medical History</div>';
-			$html .= '<div>';
-			
+			$html .= '<div class="dash_widget_content">';
+			$exam_dates = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "exams WHERE user_id='$patient_id' AND exam_type='1' ORDER BY exam_date DESC LIMIT 1");
+			foreach($exam_dates as $exam)	{
+				$exam_date = $exam->exam_date;
+			}
+
+			$medical = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "medical_history WHERE user_id='$patient_id' LIMIT 1");
+			foreach($medical as $m)	{
+				$html .= '<div class="last_exam" style="font-size: 11px; width: 240px; margin: 0 auto;">Date of last physical exam: <font style="color: #00af41; font-size: 14px;">'.date("m/d/Y", $exam_date).'</font></div>';
+				$html .= '<div class="text" style="padding-bottom: 5px; width: 240px; text-align: left; margin: 0 auto; font-family:adellelight; font-size: 12px;">'.$m->notes.'</div>';
+				
+			}
 			$html .= '</div>';
 			$html .= '</div>';
 			$html .= '<div class="dashboard_small_widget_lip" id="medical_history">';
