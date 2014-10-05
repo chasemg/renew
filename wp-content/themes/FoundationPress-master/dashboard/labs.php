@@ -145,6 +145,8 @@ if ($patient_id)
         <?php } ?>
 	</div>
 </div>
+<div class="goback"><img src="<?php echo get_template_directory_uri(); ?>/dashboard/images/goback.png"></div>
+
 <script>
 
 $(document).ready(function()

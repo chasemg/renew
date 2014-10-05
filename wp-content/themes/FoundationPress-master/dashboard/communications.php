@@ -57,5 +57,7 @@ $html .= "</ul>";
 $html .= '<div class="message_reply_bar"><button class="new_message" style="width: 120px;">New Message</button></div>';
 $html .= "</div>";
 $html .= "</div>";
+$html .= '<div class="goback"><img src="'.get_template_directory_uri().'/dashboard/images/goback.png"></div>';
+
 echo $html;
 ?>
