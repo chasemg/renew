@@ -164,7 +164,9 @@ if($_POST['patient_id'])	{
 			$medical = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "medical_history WHERE user_id='$patient_id' LIMIT 1");
 			foreach($medical as $m)	{
 				$html .= '<div class="last_exam" style="font-size: 11px; width: 240px; margin: 0 auto;">Date of last physical exam: <font style="color: #00af41; font-size: 14px;">'.date("m/d/Y", $exam_date).'</font></div>';
-				$html .= '<div class="text" style="padding-bottom: 5px; width: 240px; text-align: left; margin: 0 auto; font-family:adellelight; font-size: 12px;">'.$m->notes.'</div>';
+				$notes = $m->notes;
+				$stripped_notes = (strlen($notes) > 225) ? substr($notes,0,225).'...' : $notes;
+				$html .= '<div class="text" style="padding-bottom: 5px; width: 240px; text-align: left; margin: 0 auto; font-family:adellelight; font-size: 12px;">'.$stripped_notes.'</div>';
 				
 			}
 			$html .= '</div>';
@@ -179,8 +181,42 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget right">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">My Social Life</div>';
-			$html .= '<div>';
-			
+			$html .= '<div class="dash_widget_content">';
+			$social_life = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "social_life WHERE user_id='$patient_id'");
+
+foreach($social_life as $s)	{
+	$smoker = $s->smoker;
+	$marital_state = $s->marital_state;
+	$month = date("m",$s->dob);
+	$day = date("d",$s->dob);
+	$questions = unserialize($s->questions);
+	$html .= '<div class="social_summary">';
+		$html .= '<div>';
+			$html .= '<div class="social_header_icon">';
+				$ms = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "marital_status WHERE id='$marital_state'");
+				foreach($ms as $m)	{
+					$html .= '<div class="title">'.$m->marital_status.'</div>';
+					$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/'.$m->icon.'.png"></div>';
+				}
+			$html .= '</div>';
+			$html .= '<div class="social_header_icon">';
+				$st = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "smoker_type WHERE id='$smoker'");
+				foreach($st as $sp)	{
+					$html .= '<div class="title">'.$sp->smoker_type.'</div>';
+					$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/'.$sp->icon.'.png"></div>';
+				}
+			$html .= '</div>';
+			$html .= '<div class="social_header_icon">';
+				$html .= '<div class="title">Birthday</div>';
+				$html .= '<div><div class="birthday">'.$month.'<font style="color: #00af41;">|</font>'.$day.'</div></div>';
+			$html .= '</div>';
+		$html .= '</div>';
+	$html .= '</div>';
+	$description = $s->description;
+	$stripped_description = (strlen($description) > 120) ? substr($description,0,120).'...' : $description;
+	$html .= '<div class="social_summary" style="padding: 0 20px; width: auto;">'.$stripped_description.'</div>';
+
+}
 			$html .= '</div>';
 			$html .= '</div>';
 			$html .= '<div class="dashboard_small_widget_lip" id="social">';

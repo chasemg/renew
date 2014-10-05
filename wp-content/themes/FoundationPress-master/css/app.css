@@ -2321,6 +2321,7 @@ body	{
 	top: 0;
 	display: inline-block;
 	height: 100%;
+	margin-left: -4px;
 }
 .center-dashboard	{
 	background: url(../assets/img/dashboard/cream_pixels.png) repeat;
@@ -2702,6 +2703,17 @@ body	{
 .dash_widget_content table tr:nth-child(odd) td	{
 	color: #00af41;
 }
+.dash_widget_content .social_header_icon img	{
+	max-width: 35px;
+	height: auto;
+}
+.dash_widget_content .social_header_icon .birthday	{
+	font-size: 24px;
+	line-height: 40px;
+}
+.dash_widget_content .social_summary	{
+	font-size: 12px;
+}
 .vitals	{
 	display: inline-block;
 	width: 100px;
@@ -2870,6 +2882,7 @@ body	{
 .patient_results	{
 	margin-top: 10px;
 	overflow-y: auto;
+	max-height: 80%;
 }
 #patients	{
 	list-style: none;
@@ -3016,6 +3029,36 @@ body	{
 	border: 1px solid #ff0000;
 	width: 100%;
 	padding: 5px;
+}
+.social_summary	{
+	margin-bottom: 20px;
+	width: 100%;
+	display: inline-block;
+	text-align: left;
+}
+.social_header_icon	{
+	width: 33%;
+	float: left;
+	text-align: center;
+}
+.social_header_icon img	{
+	max-width: 75px;
+	height: auto;
+}
+.social_header_icon	.title	{
+	width: 100%;
+	text-align: center;
+	font-size: 14px;
+	color: #00af41;
+	font-family: 'adelleregular';
+	letter-spacing: 2px;
+	padding-bottom: 15px;
+}
+.social_header_icon	.birthday	{
+	font-size: 50px;
+	font-family: 'montserratregular';
+	letter-spacing: 2px;
+	line-height: 75px;
 }
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{
