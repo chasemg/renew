@@ -66,7 +66,7 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget left">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Immunizations</div>';
-			$html .= '<div class="immun_container" style="display: inline-block; padding: 0;">';
+			$html .= '<div class="dash_widget_content">';
 			$immun = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id'");
 			foreach($immun as $i)	{
 				$html .= '<table style="margin: 0 auto; float: none;">';
@@ -124,8 +124,25 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget right">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Allergies</div>';
-			$html .= '<div>';
-			
+			$html .= '<div class="dash_widget_content">';
+			$allergies = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "allergies WHERE user_id='$patient_id'");
+			foreach($allergies as $allergy)	{
+				$x=0;
+				$html .= '<table>';
+				$html .= '<tr><td></td><td>Severity</td></tr>';		
+				$unserialized_allergies = unserialize($allergy->allergies);
+				foreach($unserialized_allergies as $a)	{
+					if($x >= 3)	{
+						break;
+					}			
+					$html .= '<tr>';
+					$html .= "<td>".$a[0]."</td><td>".$a[1]."</td>";
+					$html .= '</tr>';
+					$x++;
+				}
+				$html .= '</table>';
+			}
+			$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/reaction_scale_small.png"></div>';
 			$html .= '</div>';
 			$html .= '</div>';
 			$html .= '<div class="dashboard_small_widget_lip" id="allergies">';

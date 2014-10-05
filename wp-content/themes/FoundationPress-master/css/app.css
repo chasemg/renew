@@ -2651,6 +2651,48 @@ body	{
 	padding: 20px 0;
 	display: inline-block;
 }
+.dash_widget_content	{
+	width: 100%;
+	padding: 0px 0 10px 0;
+	display: inline-block;
+}
+.dash_widget_content table	{	
+	width: 240px;
+	margin: 0 auto 10px auto;
+	border: none;
+}
+.dash_widget_content table tr:first-child td:nth-child(2)	{
+	text-align: center;
+}
+.dash_widget_content table tr:first-child	{
+	color: #00af41;
+}
+.dash_widget_content table tr:first-child td:last-child	{
+	text-align: center;
+}
+.dash_widget_content table tr:first-child td	{
+	background: #fff !important;
+	text-transform: lowercase;
+	font-family: 'adellebold';
+	font-variant: small-caps;
+	letter-spacing: 2px;
+	font-size: 9px;
+}
+.dash_widget_content table tr td		{
+	background: #fff;
+	line-height: 14px;
+	padding: 5px
+}
+.dash_widget_content table tr:not(:first-child) td:first-child	{
+	text-align: left;
+}
+.dash_widget_content table tr:not(:first-child) td	{
+	text-align: center;
+}
+
+.dash_widget_content table tr:nth-child(odd) td	{
+	color: #00af41;
+}
 .vitals	{
 	display: inline-block;
 	width: 100px;
@@ -2693,6 +2735,7 @@ body	{
 .immun_container	{
 	width: 100%;
 	padding: 20px 0;
+	display: inline-block;
 }
 .immun_container table	{
 	float: left;
@@ -2701,6 +2744,23 @@ body	{
 	border: none;
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+.immun_container .description	{
+	min-width: 50%;
+	max-width: 50%;
+	float: right;
+	text-align: left;
+	font-family: 'adelleregular';
+	font-size: 12px;
+}
+.immun_container .description ul	{
+	margin: 20px 25px;
+}
+.immun_container .description li	{
+	color: #00af41;
+	padding: 5px 0;
+	font-family: 'adelleitalic';
+	font-size: 12px;
 }
 .immun_container table tr:first-child td:nth-child(2)	{
 	text-align: center;
