@@ -65,7 +65,8 @@ if(!is_user_logged_in())	{
 	get_footer();	
 } else { 
 	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/css/app.css" />';
-	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/css/fonts/stylesheet.css" />';
+	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/css/fonts/stylesheet.css" />';	
+	
 	$user_ID = get_current_user_id();
 	dashboard($user_ID);
 } 

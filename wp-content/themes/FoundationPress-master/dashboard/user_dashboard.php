@@ -67,23 +67,16 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Immunizations</div>';
 			$html .= '<div class="dash_widget_content">';
-			$immun = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id'");
-			foreach($immun as $i)	{
-				$html .= '<table style="margin: 0 auto; float: none;">';
-				$unserialized_array = unserialize($i->immunizations);
-				$html .= '<tr><td></td><td>Doses</td><td>Date</td></tr>';
-				$x=0;
-				foreach($unserialized_array as $us)	{
-					if($x >= 4)	{
-						break;
-					}
-					$html .= '<tr>';
-					$html .= "<td>".$us[0]."</td><td>".$us[1]."</td><td>".date('m/d/Y', $us[2])."</td>";
-					$html .= '</tr>';
-					$x++;
-				}
-				$html .= '</table>';
+			$immun = $wpdb->get_results("SELECT *, date_format(date, '%m/%d/%Y') as date FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id'");
+			$html .= '<table style="margin: 0 auto; float: none;">';
+			$html .= '<tr><td></td><td>Doses</td><td>Date</td></tr>';
+			foreach($immun as $x => $i)	
+			{
+				
+				$html .= sprintf("<tr><td>immune %s</td><td>%s</td><td>%s</td></tr>", $x + 1, $i->doses, $i->date);
+				
 			}
+			$html .= '</table>';
 			$html .= '</div>';
 			$html .= '</div>';
 			$html .= '<div class="dashboard_small_widget_lip" id="immunizations">';

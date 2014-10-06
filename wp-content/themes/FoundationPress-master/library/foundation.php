@@ -93,6 +93,12 @@ function dashboard($user_id) {
 	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/jquery/dist/jquery.min.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.fastLiveFilter.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/dashboard.js'></script>";
+	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery-ui-1.11.1.custom/jquery-ui.js'></script>";
+	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.timepicker/jquery.timepicker.js'></script>";
+	
+	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery-ui-1.11.1.custom/jquery-ui.css" />';
+	echo '<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />';
+	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery.timepicker/jquery.timepicker.css" />';	
 	
 	if(get_user_role() == 'doctor' || get_user_role() == 'administrator' || get_user_role() == 'lab_doctor')	{
 		echo "<input type='hidden' value='".$user_id."' id='user_id'><input type='hidden' value='' id='patient_id'>";
@@ -199,6 +205,13 @@ function get_patient_list()
 function get_labdoctor_list()
 {
 	$list = get_users(array('role' => 'lab_doctor'));
+	
+	return $list;
+}
+
+function get_doctors_list()
+{
+	$list = get_users(array('role' => 'doctor'));
 	
 	return $list;
 }

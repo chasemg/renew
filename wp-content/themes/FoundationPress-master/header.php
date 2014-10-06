@@ -30,6 +30,10 @@
 		<link rel="apple-touch-icon-precomposed" href="<?php echo get_stylesheet_directory_uri() ; ?>/assets/img/icons/apple-touch-icon-precomposed.png">
 		
 		<?php wp_head(); ?>
+        
+        <?php ?>
+        
+        
 	</head>
 	<body <?php body_class(); ?>>
 		<?php if(is_page('Home'))	{ ?>

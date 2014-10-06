@@ -2789,10 +2789,19 @@ body	{
 .immun_container table tr:first-child	{
 	color: #00af41;
 }
+.immun_container table td
+{
+	vertical-align:top;
+}
 .immun_container table tr:first-child td:last-child	{
 	text-align: center;
 }
-.immun_container table tr:first-child td	{
+.immun_container thead td
+{
+	font-weight:normal;
+}
+.immun_container table tr:first-child td	
+{
 	background: #fff !important;
 	text-transform: uppercase;
 	font-family: 'adelleregular';
@@ -2805,10 +2814,25 @@ body	{
 .immun_container table tr:not(:first-child) td	{
 	text-align: center;
 }
+
+.immun_container table tbody:nth-child(even) td,
 .immun_container table tr:nth-child(even) td	{
 	background: #f9f9f9;
 }
 .immun_container table tr:nth-child(odd) td	{
+	color: #00af41;
+}
+.immun_container table.table-list tbody td
+{
+	background:#fff;
+	line-height:14px;
+	padding:5px;
+	font-size:0.875rem;
+	letter-spacing:normal;
+	color:#222;
+}
+.immun_container table.table-list tbody:nth-child(even) td
+{
 	color: #00af41;
 }
 .immun_schedule	{
@@ -3106,6 +3130,21 @@ body	{
 	border-color: #00af41;
 	border-style: none;
 }
+
+h3
+{
+	text-align:left;
+	font-size:20px;
+}
+
+input.time
+{
+	float:none;
+	width:100px;
+	display:inline-block;
+}
+
+
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{
 	.nav_logo img	{
