@@ -3144,7 +3144,22 @@ input.time
 	display:inline-block;
 }
 
+/******************* Enroll Form *****************************/
 
+  #map_canvas {
+    width:500px;
+    height:500px;
+    margin: 10px;
+  }
+ 
+  #validate {
+    clear: both;
+  }
+ 
+  #results {
+    margin-top: 10px;
+  }
+  
 /***************** RESPONSIVE ***********************************/
 @media (min-width: 768px)	{
 	.nav_logo img	{
