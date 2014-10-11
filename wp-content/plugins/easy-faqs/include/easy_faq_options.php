@@ -18,6 +18,8 @@ along with The Easy FAQs.  If not, see <http://www.gnu.org/licenses/>.
 
 class easyFAQOptions
 {
+	var $textdomain = '';
+
 	function __construct(){
 		//may be running in non WP mode (for example from a notification)
 		if(function_exists('add_action')){
@@ -29,14 +31,29 @@ class easyFAQOptions
 	function add_admin_menu_item(){
 		$title = "Easy FAQ Settings";
 		$page_title = "Easy FAQs Settings";
+		$top_level_slug = "easy-faqs-settings";
 		
 		//create new top-level menu
-		add_menu_page($page_title, $title, 'administrator', __FILE__, array($this, 'settings_page'));
+		add_menu_page($page_title, $title, 'administrator', $top_level_slug , array($this, 'basic_settings_page'));
+		add_submenu_page($top_level_slug , 'Basic Options', 'Basic Options', 'administrator', $top_level_slug, array($this, 'basic_settings_page'));
+		add_submenu_page($top_level_slug , 'Help & Instructions', 'Help & Instructions', 'administrator', 'easy-faqs-help', array($this, 'help_settings_page'));
 
 		//call register settings function
 		add_action( 'admin_init', array($this, 'register_settings'));	
 	}
-
+	
+	//function to produce tabs on admin screen
+	function admin_tabs( $current = 'homepage' ) {
+	
+		$tabs = array( 'easy-faqs-settings' => __('Basic Options', $this->textdomain), 'easy-faqs-help' => __('Help & Instructions', $this->textdomain));
+		echo '<div id="icon-themes" class="icon32"><br></div>';
+		echo '<h2 class="nav-tab-wrapper">';
+			foreach( $tabs as $tab => $name ){
+				$class = ( $tab == $current ) ? ' nav-tab-active' : '';
+				echo "<a class='nav-tab$class' href='?page=$tab'>$name</a>";
+			}
+		echo '</h2>';
+	}
 
 	function register_settings(){
 		//register our settings
@@ -52,9 +69,11 @@ class easyFAQOptions
 		register_setting( 'easy-faqs-settings-group', 'easy_faqs_registered_key' );
 	}
 
-	function settings_page(){
+	function settings_page_top(){
 		$title = "Easy FAQs Settings";
 		$message = "Easy FAQs Settings Updated.";
+		
+		global $pagenow;
 	?>
 	<div class="wrap">
 		<h2><?php echo $title; ?></h2>
@@ -164,7 +183,7 @@ class easyFAQOptions
 						<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 						<div style="position: absolute; left: -5000px;"><input type="text" name="b_403e206455845b3b4bd0c08dc_6ad78db648" tabindex="-1" value=""></div>
 						<div class="clear"><input type="submit" value="Subscribe Now" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-						<p class="explain"><strong>What To Expect:</strong> You'll receive you around one email from us each month, jam-packed with special offers and tips for getting the most out of WordPress. Of course, you can unsubscribe at any time.</p>
+						<p class="explain"><strong>What To Expect:</strong> <br/> As soon as you've confirmed your subscription, you'll receive a coupon code for a big discount on Easy FAQs Pro. After that, you'll receive about one email from us each month, jam-packed with special offers and tips for getting the most out of WordPress. Of course, you can unsubscribe at any time.</p>
 					</form>
 				</div>
 				<p class="u_to_p"><a href="http://goldplugins.com/our-plugins/easy-faqs-details/">Upgrade to Easy FAQs Pro now</a> to remove banners like this one.</p>
@@ -174,12 +193,26 @@ class easyFAQOptions
 		
 		<?php if (isset($_GET['settings-updated']) && $_GET['settings-updated'] == 'true') : ?>
 		<div id="message" class="updated fade"><p><?php echo $message; ?></p></div>
-		<?php endif; ?>	
+		<?php endif;
 		
-		<form method="post" action="options.php">
+		$this->get_and_output_current_tab($pagenow);	
+	}
+	
+	function get_and_output_current_tab($pagenow){
+		$tab = $_GET['page'];
+		
+		$this->admin_tabs($tab); 
+				
+		return $tab;
+	}
+	
+	function basic_settings_page(){	
+		$this->settings_page_top(); ?>	
+		
+		<form method="post" action="options.php">		
 			<?php settings_fields( 'easy-faqs-settings-group' ); ?>			
 			
-			<h3>Basic Options</h3>
+			<h2>Basic Options</h2>
 			
 			<p>Use the below options to control various bits of output.</p>
 			
@@ -254,10 +287,16 @@ class easyFAQOptions
 			
 			<p class="submit">
 				<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-			</p>
+			</p>			
 		</form>
-	</div>
-	<?php } // end settings_page function
+		</div>						
+		<?php
+	}
 	
+	function help_settings_page(){
+		$this->settings_page_top();
+		include('pages/help.html');					
+		?></div><?php			
+	}	
 } // end class
 ?>

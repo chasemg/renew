@@ -9,7 +9,7 @@ $patient_id = $_POST['patient_id'];
 
 $immunizations = $wpdb->get_results("SELECT *, date_format(date, '%m/%d/%Y') as date FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id'");
 
-
+$user_role = get_user_role();
 
 ?>
 <div class="dashboard_large_widget">
@@ -33,7 +33,9 @@ $immunizations = $wpdb->get_results("SELECT *, date_format(date, '%m/%d/%Y') as 
                 		<td>#</td>
                     	<td>Doses</td>
                     	<td>Date</td>
+                        <?php if ($user_role == 'doctor') { ?>
                     	<td>Action</td>
+                        <?php } ?>
                 	</tr>
                     
                	</thead>
@@ -48,8 +50,10 @@ $immunizations = $wpdb->get_results("SELECT *, date_format(date, '%m/%d/%Y') as 
                 
                 	<td nowrap="nowrap"><?php echo $i + 1; ?></td>
                     <td><?php echo $immune->doses; ?></td>
-                    <td><?php echo $immune->date; ?></td>                    
+                    <td><?php echo $immune->date; ?></td>   
+                     <?php if ($user_role == 'doctor') { ?>                 
                     <td><input type="hidden" value='<?php echo json_encode($immune); ?>'><a data="<?php echo $immun_row; ?>" class="edit-button">edit</a></td>
+                    <?php } ?>
                 
                 </tr>
                 </tbody>
@@ -60,17 +64,19 @@ $immunizations = $wpdb->get_results("SELECT *, date_format(date, '%m/%d/%Y') as 
                 
                 <?php } ?>
                 
-                
+                 <?php if ($user_role == 'doctor') { ?>
                 
                 <tfoot>
                 
                 	<tr>
                     
-                    	<td colspan="5" style="text-align:right;"><a class="add-button">+add</a></td>
+                    	<td colspan="4" style="text-align:right;"><a class="add-button">+add</a></td>
                     
                     </tr>
                 
                 </tfoot>
+                
+                <?php } ?>
             
             </table>
         
