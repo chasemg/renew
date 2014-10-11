@@ -97,8 +97,8 @@ if( $('.plus').length > 0 ) { // if target element exists in DOM
 	}
 }
 
-var eTop = $('.plus img').offset().top;
-console.log(eTop - $(window).scrollTop());
+//var eTop = $('.plus img').offset().top;
+//console.log(eTop - $(window).scrollTop());
 
 /*
 $(window).scroll(function(){ // bind window scroll event
@@ -135,5 +135,22 @@ $(window).scroll(function(){ // bind window scroll event
 	}
 });
 */
-
+	$("#validate_address").click(function()	{
+		var street = $('#street').val();
+		var city = $('#city').val();
+		var state = $('#state').val();
+		var zip = $('#zip').val();
+		$.ajax ({
+			type: 'POST',
+			data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip,
+			url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
+			success: function(success)	{
+				$('#address_validated').html(success);
+				validate();
+			},
+			error:	function(error)	{
+				console.log(error);
+			}
+		});
+	});
 })(jQuery);
