@@ -146,14 +146,15 @@ $(window).scroll(function(){ // bind window scroll event
 			url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
 			success: function(success)	{
 				$('#address_validated').html(success);
+				scrollToAnchor('map_canvas')
 				$('.header_image').animate({
 					height: "0px"
 				}, 200);
+				$("#map_canvas").show();
 				var mapHeight = $(".header_map").height();
 				$('.header_map').animate({
-					height: "500px"
+					height: "550px"
 				},200);
-
 			},
 			error:	function(error)	{
 				console.log(error);

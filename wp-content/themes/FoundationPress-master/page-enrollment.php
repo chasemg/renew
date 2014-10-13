@@ -3,7 +3,16 @@
 Template Name: Enrollment
 */
 ?>
-
+<style>
+	.header_image	{
+		max-height: 550px !important;
+	}
+	.row_container	{
+		margin-top: 550px !important;
+		width: 100% !important;
+		background: #fff;	
+	}
+</style>
 <?php get_header(); ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <?php error_reporting(E_ALL); ?>
@@ -13,6 +22,7 @@ Template Name: Enrollment
 	<div id="featured"><?php the_post_thumbnail(); ?></div>
 	
 </div>
+<div class="header_image_title"><?php echo get_the_title(); ?></div>
 <div class="header_map" onload="initialize()">
 	<div id="map_canvas"></div>
 </div>
@@ -44,15 +54,6 @@ Template Name: Enrollment
 				</div>
 				<div class="enroll" id="form_two">
 					<div id="address_validated"></div>
-				
-				  <div id="results">
-					<table>
-					  <tr><td align="right">Valid:</td><td><input type="text" id="valid" size="60"/></td></tr>
-					  <tr><td align="right">Matched:</td><td><input type="text" id="type" size="60"/></td></tr>
-					  <tr><td align="right">Result:</td><td><input type="text" id="result" size="60"/></td></tr>
-					  <tr><td align="right">Lat/Long:</td><td><input type="text" id="latlong" size="60"/></td></tr>
-					</table>
-				  </div>
 				</div>
 				<div class="enroll" id="form_three">
 				

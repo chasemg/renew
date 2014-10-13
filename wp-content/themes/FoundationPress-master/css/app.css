@@ -3215,8 +3215,8 @@ input.time
 
   #map_canvas {
     width:100%;
-	min-height: 500px;
-    max-height: 500px;
+	min-height: 550px;
+    max-height: 550px;
   }
 
   #validate {
@@ -3228,6 +3228,13 @@ input.time
   }
 .header_map	{
 	max-height: 0px;
+	
+}
+.header_image_title	{
+	display: inline-block;
+	top: 0;
+	margin-top: 355px;
+	position: absolute;
 }
 /***************** RESPONSIVE ***********************************/
 
