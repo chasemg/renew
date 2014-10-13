@@ -42,8 +42,6 @@ section	{
 	width:100%;
 	margin: 0 auto;
 	max-width:62.5rem; 
-	background: #fff; 
-	z-index: 199; 
 	display: inline-block;
 	text-align: left;
 }
@@ -1827,12 +1825,14 @@ input[type="submit"]:hover	{
 }
 /************************ Secondary Pages ***********************************************/
 .row_container	{
-	background: #fff;
+	/*background: #fff;
 	z-index: 100;
 	display: inline-block;
 	900px;
 	position: relative;
-	margin-top: 725px;
+	margin-top: 725px;*/
+	width:900px;
+	margin:0 auto;
 }
 .header_image	{
 	max-height: 725px;
@@ -1846,11 +1846,12 @@ input[type="submit"]:hover	{
 	height: auto;
 }
 .header_text	{
-	top: -478px;
+	/*top: -478px;
 	position: absolute;
-	width: 44%;
-	
-	
+	width: 44%;*/	
+	width:44%;
+	float:left;
+	margin:50px 0px 0px 0px;
 }
 .header_text .renew_large_green	{
 	font-size: 30px;
@@ -1864,10 +1865,16 @@ input[type="submit"]:hover	{
 	margin-top: 20px;
 }
 .doctor_patient	{
-	position: absolute;
+	/*position: absolute;
 	top: -465px;
 	width: 50%;
-	right: 0;
+	right: 0;*/
+	margin:96px 0px 0px 0px;
+	float:left;
+}
+.doctor_patient:after
+{
+	clear:both;
 }
 .hero_banner_text	{
 	position: absolute;
@@ -2154,22 +2161,34 @@ footer h1	{
 }
 .about-benefits	{
 	padding: 18px;
-	background: url(../assets/img/side_banner.png) left center no-repeat;
-	min-height: 579px;
+	position:relative;
+	min-height: 485px;
 	padding: 50px 40px 0px 179px;
-	margin-top: -38px;
+	clear:both;
 }
-.about-benefits:before	{
-	content: 'Doctors + Patients';
+.hook
+{
+	background: url(../assets/img/side_banner.png) left center no-repeat;
 	position: absolute;
-	
-	left: -60px;
+	width:81px;
+	height:579px;
+	left:0px;
+	top:-17px;
+}
+.hook span
+{
+	position: absolute;
 	font-size: 20px;
 	letter-spacing: 1px;
 	color: #fff;
-	margin-top: 217px;
 	font-family: 'adellebold';
 	text-transform: uppercase;
+	display:inline-block;
+	width:579px;
+	text-align:center;
+	left:-245px;
+	bottom:275px;
+	text-wrap:none;
 	/* Safari */
 	-webkit-transform: rotate(-90deg);
 
@@ -3209,14 +3228,79 @@ input.time
   }
   
 /***************** RESPONSIVE ***********************************/
-@media (min-width: 768px)	
+
+
+.entry-content
 {
+	margin-top:162px;
+}
+
+.footer_nav .column
+{
+	width:96%;
+}
+
+@media (min-width:321px) and (max-width: 600px)	
+{
+	.doctor_patient,
+	.about-benefits h1
+	{
+		display:none;
+	}
+	
+	.row_container
+	{
+		width:100%;
+	}
+	.header_text
+	{
+		width:100%;
+		margin:50px 0px 50px;
+	}
+	
+	.small-12,
+	.column,
+	.columns
+	{
+		width:auto;
+	}
+	
+	.entry-content
+	{
+		margin:0px;
+	}
+	
+	.about-benefits
+	{
+		padding:40px 0px 0px 110px;
+	}
+	
+	.header_text .renew_large_green
+	{
+		text-align:center;
+	}
+	
+	.fullwidth-wrapper
+	{
+		background-size:1600px 450px !important;
+	}
+	
+	.top-bar-container, 
+	.tab-bar
+	{
+		padding:0px;
+	}
+	
+	
+	.footer_nav .column
+	{
+		width:94%;
+	}
+	
 	
 }
 
-
-
-@media (min-width: 480px) and (max-width: 768px)	
+@media (min-width: 601px) and (max-width: 800px)	
 {
 	.menu-footer-left	{
 		margin-left: 0px;
@@ -3231,7 +3315,62 @@ input.time
 	{
 		padding:10px 0px;
 	}
-
+	
+	.top-bar-section ul li
+	{
+		padding:0px 12px;
+	}
+	
+	.row_container,
+	.top-bar-section
+	{
+		width:768px;
+	}
+	
+	.header_text
+	{
+		margin:10px 0px 0px;
+		width:40%;
+	}
+	
+	.entry-content
+	{
+		margin-top:130px;
+	}
+	
+	.header_text .renew_small_black p
+	{
+		font-size:13px;
+	}
+	
+	.doctor_patient
+	{
+		margin:180px 0px 0px;
+		width:54%;
+		float:right;
+	}
+	
+	.small-12,
+	.column,
+	.columns
+	{
+		width:auto;
+	}
+	
+	.about-benefits
+	{
+		padding:50px 40px 0 120px;
+	}
+	
+	.fullwidth-wrapper
+	{
+		background-size:1600px 735px !important;
+	}
+	
+	.footer_nav .column
+	{
+		width:96%;
+	}
 }
 
 /******************** Triangles Responsive ************************************/ 
@@ -3476,3 +3615,4 @@ input.time
 }
 	
 }
+

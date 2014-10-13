@@ -1,6 +1,6 @@
 <div class='footer_container'>
     <nav class="footer_nav large-4">
-        <div>
+        <div class="column">
 			<div class='nav_logo_footer'>
 			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo_footer.png">
 			<p>Copyright 2014, Renew My Healthcare, All Rights Reserved</p>
