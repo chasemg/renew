@@ -11,9 +11,13 @@ Template Name: Enrollment
 <?php if ( has_post_thumbnail() ) { ?>
 <div class="header_image">
 	<div id="featured"><?php the_post_thumbnail(); ?></div>
+	
+</div>
+<div class="header_map" onload="initialize()">
 	<div id="map_canvas"></div>
 </div>
 <?php } ?>
+
 <div class="row_container">
 	<div class="row">
 		<div class="small-12 columns" role="main">
@@ -26,7 +30,7 @@ Template Name: Enrollment
 				<div class="entry-content">
 					<?php the_content(); ?>
 				</div>
-				<div onload="initialize()">
+				<div>
 				<div class="enroll" id="form_one">
 					  <div>Address</div>
 					  <input type="text" id="street" value="609 E Thatcher Way">

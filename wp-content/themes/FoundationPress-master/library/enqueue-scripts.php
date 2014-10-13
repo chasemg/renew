@@ -34,7 +34,6 @@ add_action( 'wp_enqueue_scripts', 'kitchensink_scripts' );
 
 	function renew_scripts()	{
 		wp_register_script( 'image_scroll', get_template_directory_uri() . '/js/jquery.imageScroll.js', array('jquery'), '1.0.0', true );
-		wp_register_script( 'google_maps', get_template_directory_uri() . '/js/google_maps.js', array('jquery'), '1.0.0', true );
 		wp_register_script( 'renew_custom', get_template_directory_uri() . '/js/renew_custom.js', array('jquery'), '1.0.0', true );
 		wp_register_script( 'skroller', get_template_directory_uri() . '/js/skroller.js', array('jquery'), '1.0.0', true );
 		wp_enqueue_script('image_scroll');

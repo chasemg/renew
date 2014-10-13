@@ -35,11 +35,7 @@
         
         
 	</head>
-	<?php if(is_page_template('page-enrollment.php'))	{ ?>
-		<body <?php body_class(); ?> onload="initialize()">
-	<?php } else { ?>
-		<body <?php body_class(); ?>>
-	<?php } ?>
+	<body <?php body_class(); ?>>
 		<?php if(is_page('Home'))	{ ?>
 				<div class='triangles-left'><div class="tri_left" data-image="<?php echo get_stylesheet_directory_uri() ; ?>/assets/img/left_tri.png"></div></div>
 				<div class='triangles-right'><div class="tri_right" data-image="<?php echo get_stylesheet_directory_uri() ; ?>/assets/img/right_tri.png"></div></div>

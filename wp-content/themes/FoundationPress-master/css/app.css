@@ -3214,11 +3214,11 @@ input.time
 /******************* Enroll Form *****************************/
 
   #map_canvas {
-    width:500px;
-    height:500px;
-    margin: 10px;
+    width:100%;
+	min-height: 500px;
+    max-height: 500px;
   }
- 
+
   #validate {
     clear: both;
   }
@@ -3226,7 +3226,9 @@ input.time
   #results {
     margin-top: 10px;
   }
-  
+.header_map	{
+	max-height: 0px;
+}
 /***************** RESPONSIVE ***********************************/
 
 
