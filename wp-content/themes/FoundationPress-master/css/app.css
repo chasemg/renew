@@ -1074,7 +1074,7 @@ a img {border:none;}
 p {font-family:inherit;font-weight:normal;font-size:1rem;line-height:1.6;margin-bottom: 0;text-rendering:optimizeLegibility;}
 p.lead {font-size:1.21875rem;line-height:1.6;}
 p aside {font-size:0.875rem;line-height:1.35;font-style:italic;}
-h1 ,h2 ,h3 ,h4 ,h5 ,h6 {font-family:"Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;font-weight:normal;font-style:normal;color:#222222;text-rendering:optimizeLegibility;margin-top:0.2rem;margin-bottom:0.5rem;line-height:1.4;}
+h1 ,h2 ,h3 ,h4 ,h5 ,h6 {/*font-family:"Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;font-weight:normal;font-style:normal;color:#222222;text-rendering:optimizeLegibility;margin-top:0.2rem;margin-bottom:0.5rem;line-height:1.4;*/}
 h1 small ,h2 small ,h3 small ,h4 small ,h5 small ,h6 small {font-size:60%;color:#6f6f6f;line-height:0;}
 h1 {font-size:2.125rem;}
 h2 {font-size:1.6875rem;}
@@ -3248,6 +3248,20 @@ input.time
 {
 	width:96%;
 }
+
+h1.page-title
+{
+	text-align:center;
+	margin:250px 0px 200px;
+}
+
+
+.easy-faq
+{
+	color:#333;
+	font-size:18px;
+}
+
 
 @media (min-width:321px) and (max-width: 600px)	
 {

@@ -581,9 +581,13 @@ class easyFAQs
 		$loop = new WP_Query(array( 'post_type' => 'faq','posts_per_page' => $count, 'orderby' => $orderby, 'order' => $order, 'easy-faq-category' => $category));
 		
 		//output QuickLinks, if available and pro
-		if($quicklinks && isValidFAQKey()){
+		/*if($quicklinks && isValidFAQKey()){
 			$this->outputQuickLinks($atts);
-		} 
+		} */
+		
+		if($quicklinks){
+			$this->outputQuickLinks($atts);
+		}
 		
 		while($loop->have_posts()) : $loop->the_post();
 			$postid = get_the_ID();

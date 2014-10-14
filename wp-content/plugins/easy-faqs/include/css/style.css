@@ -1,19 +1,24 @@
 /* CSS */
 .easy-faq{
-    padding: 10px;
+    padding: 10px 80px;
 	margin: 10px auto;
 }
 
 .easy-faq-title {
-    border-bottom: 1px solid #D3D3D3;
-    font-weight: bold;
     margin-bottom: 12px;
     padding-bottom: 3px;
     text-decoration: none;
 	cursor: pointer;
 	cursor: hand;
+	color:#00af41;
+	font-weight:bold;
+	font-style:italic;
 }
 
+a.easy-faq-read-more-link
+{
+	display:none;
+}
 .easy-faq .attachment-easy_faqs_thumb {
     border-radius: 5px;
     float: left;
@@ -22,7 +27,7 @@
 
 .easy-faq .easy-faq-body {
     margin-bottom: 35px;
-    padding-left: 20px;
+   
 }
 
 .easy-faq .easy-faq-body p {
@@ -44,19 +49,40 @@
 	float: left;
 	color: #00af41;
 	padding: 10px 0;
+	
 	font-size: 16px;
 }
 .easy-faq-questions li	{
 	padding: 5px 0;
 }
 .quick-links	{
-	border-bottom: 1px solid #000;
 	font-size: 32px;
-	padding: 60px 0 20px 0;
+	font-weight:300;
+	font-style:italic;
+	color:#333;
+	padding:0px 0px 10px;
+	margin:0px 0px 10px;	
+	border-bottom:solid 1px #333;
 }
-.faq-questions	{
+.faq-questions,
+.faq-questions a	{
 	display: inline-block;
+	color:#00af41;
+	font-weight:bold;
+	font-style:italic;
 }
 .faq_scroll:hover	{
 	cursor: pointer;
+}
+
+.faq_scroll
+{
+	vertical-align:top;
+	margin:0px 15px 15px 0px;
+	padding:0px 0px 0px 10px;
+}
+
+.faq_scroll:nth-child(3)
+{
+	margin:0px 0px 15px;
 }
