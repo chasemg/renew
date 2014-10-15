@@ -1,0 +1,62 @@
+/* CSS */
+.easy-faq{
+    padding: 10px;
+	margin: 10px auto;
+}
+
+.easy-faq-title {
+    border-bottom: 1px solid #D3D3D3;
+    font-weight: bold;
+    margin-bottom: 12px;
+    padding-bottom: 3px;
+    text-decoration: none;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.easy-faq .attachment-easy_faqs_thumb {
+    border-radius: 5px;
+    float: left;
+    margin: 5px 10px 5px 5px;
+}
+
+.easy-faq .easy-faq-body {
+    margin-bottom: 35px;
+    padding-left: 20px;
+}
+
+.easy-faq .easy-faq-body p {
+    width: 100%;
+}
+
+.easy-faq .easy-faq-body p a {
+}
+
+.easy-faq p a:hover{
+}
+
+.widgets .easy-faq{
+	margin: 5px auto;
+}
+.easy-faq-questions	{
+	padding: 10px 0;
+	display: inline-block;
+	float: left;
+	color: #00af41;
+	padding: 10px 0;
+	font-size: 16px;
+}
+.easy-faq-questions li	{
+	padding: 5px 0;
+}
+.quick-links	{
+	border-bottom: 1px solid #000;
+	font-size: 32px;
+	padding: 60px 0 20px 0;
+}
+.faq-questions	{
+	display: inline-block;
+}
+.faq_scroll:hover	{
+	cursor: pointer;
+}
