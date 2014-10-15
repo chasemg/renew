@@ -1877,10 +1877,8 @@ input[type="submit"]:hover	{
 	clear:both;
 }
 .hero_banner_text	{
-	position: absolute;
-	top: -330px;
-	width: 65%;
-	left: 175px;
+	margin:365px auto 0px;
+	width: 55%;	
 	font-size: 18px;
 	line-height: 25px;
 	font-weight: 500;
@@ -1888,7 +1886,7 @@ input[type="submit"]:hover	{
 	text-align: left !important;
 }
 .hero_banner_text h1	{
-	font-size: 55px !important;
+	
 	line-height: 40px;
 	font-weight: 500;
 	font-family: 'adellethin' !important;
@@ -1908,7 +1906,10 @@ input[type="submit"]:hover	{
 	background: #00af41;
 	border: none;
 }
-.entry-content h1	{	
+
+.hero_banner_text h1,
+.entry-content h1	
+{	
 	color: #00af41;
 	font-size: 30px;
 	font-family: 'adellesemibold';
@@ -2004,7 +2005,7 @@ input[type="submit"]:hover	{
 .secondary_text	{
 	font-size: 15px;
 	font-family: 'adellelight';
-
+	line-height:32px;
 }
 .secondary_text p	{
 	margin-top: 20px;
@@ -2216,7 +2217,7 @@ footer h1	{
 	background: url(../assets/img/side_banner.png) left center no-repeat;
 	min-height: 579px;
 	padding: 50px 40px 0px 179px;
-	margin-top: -38px;
+	margin-top: 103px;
 }
 .empower p	{
 	margin-top: 20px;
@@ -2261,7 +2262,7 @@ footer h1	{
 	background: url(../assets/img/side_banner.png) left center no-repeat;
 	min-height: 579px;
 	padding: 50px 40px 0px 179px;
-	margin-top: -38px;
+	margin-top: 98px;
 }
 .control p	{
 	margin-top: 20px;
@@ -3236,6 +3237,14 @@ input.time
 	margin-top: 355px;
 	position: absolute;
 }
+
+/**** EXPERIENCE PAGE ****/
+.page-id-147 .fullwidth-wrapper
+{
+	background-size:100% 26% !important;
+	
+}
+
 /***************** RESPONSIVE ***********************************/
 
 
@@ -3261,6 +3270,68 @@ h1.page-title
 	color:#333;
 	font-size:18px;
 }
+
+@media (max-width:320px)
+{
+	.top-bar-container, 
+	.tab-bar
+	{
+		padding:0px;
+	}
+	
+	.doctor_patient,
+	.about-benefits h1,
+	.hook
+	{
+		display:none;
+	}
+	
+	.about-benefits
+	{
+		padding:0px;
+	}
+	
+	.entry-content
+	{
+		margin:0px;
+		padding:0px 10px;
+	}
+	
+	.row_container
+	{
+		width:100%;
+	}
+	
+	.header_text
+	{
+		width:auto;
+	}
+	
+	.column,
+	.columns
+	{
+		padding:0px;
+	}
+	
+	h3.quick-links,
+	.faq-questions
+	{
+		display:none;
+	}
+	
+	.entry-content h1.page-title
+	{
+		margin:80px 0px 150px;
+		font-size:24px;
+	}
+	
+	.page-id-22 .fullwidth-wrapper
+	{
+		background-size:1600px 250px !important;
+	}
+	
+}
+
 
 
 @media (min-width:321px) and (max-width: 600px)	
@@ -3308,6 +3379,11 @@ h1.page-title
 		background-size:1600px 450px !important;
 	}
 	
+	.page-id-22 .fullwidth-wrapper
+	{
+		background-size:1600px 250px !important;
+	}
+	
 	.top-bar-container, 
 	.tab-bar
 	{
@@ -3320,6 +3396,23 @@ h1.page-title
 		width:94%;
 	}
 	
+	h3.quick-links,
+	.faq-questions
+	{
+		display:none;
+	}
+	
+	.entry-content h1.page-title
+	{
+		margin:80px 0px 150px;
+		font-size:30px;
+	}
+	
+	
+	.easy-faq
+	{
+		padding:0px;
+	}
 	
 }
 
@@ -3390,9 +3483,32 @@ h1.page-title
 		background-size:1600px 735px !important;
 	}
 	
+	.page-id-22 .fullwidth-wrapper
+	{
+		background-size:1600px 375px !important;
+	}
+	
 	.footer_nav .column
 	{
 		width:96%;
+	}
+	
+	h1.page-title
+	{
+		margin:250px 0px 100px;
+	}
+	
+	.faq-questions,
+	.faq-questions a
+	{
+		font-size:11px;
+	}
+	
+	.easy-faq,
+	h3.easy-faq-title,
+	.easy-faq-body p
+	{
+		font-size:11px;
 	}
 }
 
