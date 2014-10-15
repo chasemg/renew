@@ -2248,6 +2248,10 @@ footer h1	{
 	/* Internet Explorer */
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);	
 }
+.doctor-patient
+{
+	margin-top:49px;
+}
 .large-9 .green_slider_button	{
 	margin-top: 40px;
 }
