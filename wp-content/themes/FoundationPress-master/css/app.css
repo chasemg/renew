@@ -1379,7 +1379,7 @@ meta.foundation-mq-topbar {font-family:"/only screen and (min-width:40.063em)/";
 	.top-bar-section .has-dropdown.hover>.dropdown ,.top-bar-section .has-dropdown.not-click:hover>.dropdown {
 		display:inline-block;
 		position:static !important; 
-		padding-top: 29px;
+		padding-top: 35px;
 		height:auto;
 		width:auto;
 		overflow:visible;
@@ -1634,7 +1634,8 @@ blockquote.alignright ,img.alignright {margin:0.4375rem 0 0.4375rem 1.5rem;}
 /************** Header Section ********************/
 .nav_logo	{
 	display: inline-block;
-	margin: 0 auto;
+	float: none;
+	margin: 0 0 0 40px;
 }
 .nav_logo img	{
 	/*margin: 0 70px 25px 70px;*/
@@ -1642,9 +1643,11 @@ blockquote.alignright ,img.alignright {margin:0.4375rem 0 0.4375rem 1.5rem;}
 }
 .nav-left-menu	{
 	display: inline-block;
+	float: left;
 }
 .nav-right-menu	{
 	display: inline-block;
+	float: right;
 }
 .green_slider_button, input[type="submit"]	{
 	background: #00af41;
@@ -3220,8 +3223,7 @@ input.time
 
   #map_canvas {
     width:100%;
-	min-height: 550px;
-    max-height: 550px;
+	height: 550px;
   }
 
   #validate {
@@ -3233,13 +3235,60 @@ input.time
   }
 .header_map	{
 	max-height: 0px;
-	
+	overflow: hidden;
 }
 .header_image_title	{
 	display: inline-block;
 	top: 0;
 	margin-top: 355px;
 	position: absolute;
+	width: 100%;
+	left: 0;
+	color: #00af41;
+}
+.header_image .featured	{
+	position: fixed;
+}
+.enroll_container	{
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	min-height: 500px;
+}
+.enroll	{
+	display: inline-block;
+	overflow: hidden;
+	width: 100%;
+}
+.enroll .left	{
+	border: none;
+	float: left;
+	display: inline-block;
+}
+.enroll .right	{
+	border: none;
+	float: right;
+	display: inline-block;
+}
+.enroll table tr, .enroll table tr td	{
+	background: #fff;
+	padding: 0;
+}
+#form_two	{
+	display: none;
+	height: 500px;
+	overflow: hidden;
+}
+#form_three	{
+	height: 0px;
+	display: inline-block;
+	overflow: hidden;
+}
+.enroll h1, .enroll h2, .enroll h3	{
+	color: #00af41;
+	text-align: left;
+	font-size: 24px;
+	margin-bottom: 20px;
 }
 
 /**** EXPERIENCE PAGE ****/
@@ -3254,7 +3303,7 @@ input.time
 
 .entry-content
 {
-	margin-top:162px;
+	margin-top:40px;
 }
 
 .footer_nav .column

@@ -1,7 +1,7 @@
 <?php
 
 $html = '';
-
+$html .= '<div id="address_validated">';
 if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
 	$html .= "<input type='hidden' value='".$_POST['street']."' id='street_verified'>";
 	$html .= "<input type='hidden' value='".$_POST['city']."' id='city_verified'>";
@@ -14,6 +14,7 @@ if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
 	$html .= '<input type="hidden" id="lat" />';
 	$html .= '<input type="hidden" id="long" />';
 	$html .= '</div>';
+$html .= '</div>';
 ?>
 					
 				
