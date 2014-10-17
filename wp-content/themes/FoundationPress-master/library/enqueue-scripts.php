@@ -34,12 +34,16 @@ add_action( 'wp_enqueue_scripts', 'kitchensink_scripts' );
 
 	function renew_scripts()	{
 		wp_register_script( 'image_scroll', get_template_directory_uri() . '/js/jquery.imageScroll.js', array('jquery'), '1.0.0', true );
+		wp_register_script('password-strength-meter', '/wp-admin/js/password-strength-meter.js', array('jquery'), '1.0.0', true);
 		wp_register_script( 'renew_custom', get_template_directory_uri() . '/js/renew_custom.js', array('jquery'), '1.0.0', true );
 		wp_register_script( 'skroller', get_template_directory_uri() . '/js/skroller.js', array('jquery'), '1.0.0', true );
+		wp_enqueue_script('password-strength-meter');
 		wp_enqueue_script('image_scroll');
 		wp_enqueue_script('skroller');
 		wp_enqueue_script('google_maps');
 		wp_enqueue_script('renew_custom');
+		wp_enqueue_script('utils');
+		wp_enqueue_script('user-profile');
 		
 	}
 	add_action( 'wp_enqueue_scripts', 'renew_scripts' ); 
