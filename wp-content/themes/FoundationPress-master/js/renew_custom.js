@@ -145,16 +145,57 @@ $(window).scroll(function(){ // bind window scroll event
 			data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip,
 			url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
 			success: function(success)	{
-				$('#address_validated').html(success);
-				scrollToAnchor('map_canvas')
-				$('.header_image').animate({
-					height: "0px"
-				}, 200);
-				$("#map_canvas").show();
-				var mapHeight = $(".header_map").height();
-				$('.header_map').animate({
-					height: "550px"
-				},200);
+				$('#form_two').html(success);
+				//scrollToAnchor('map_canvas')
+
+				$("#form_one").slideUp();
+				$("#form_two").delay(1000).slideDown(function() {
+					var hiddenContent = $("#type").val();
+					if(hiddenContent == 'street_address')	{
+						console.log(hiddenContent);
+						$('#map_canvas').animate({
+							height: "550px"
+						},200);					
+						$('.header_image').animate({
+							height: "0px"
+						}, 200);
+						$('.row_container').animate({
+							marginTop: "0px"
+						}, 200);				
+						$("#map_canvas").show();
+						
+						$('.header_map').animate({
+							height: "550px",
+							maxHeight: "550px"
+						},200);						
+					} else {
+						//alert('ERROR');
+						$('#map_canvas').animate({
+							height: "0px"
+						},200);							
+						$('.header_map').animate({
+							height: "0px"
+						},200);
+						$('.header_image').animate({
+							height: "550px"
+						}, 200);							
+						$('#form_two').append("<div>We could not validate your address. Please go back and verify the address you entered.</div><button id='validate_back'>Go Back</button>");
+						$("#validate_back").click(function()	{
+							$('#map_canvas').animate({
+								height: "0px"
+							},200);							
+							$('.header_map').animate({
+								height: "0px"
+							},200);
+							$('.header_image').animate({
+								height: "550px"
+							}, 200);	
+							$("#form_two").delay(200).slideUp(function() {
+								$("#form_one").delay(200).slideDown();
+							});							
+						});
+					}
+				});
 			},
 			error:	function(error)	{
 				console.log(error);

@@ -6,11 +6,13 @@ Template Name: Enrollment
 <style>
 	.header_image	{
 		max-height: 550px !important;
+		height: 550px;
+		position: relative !important;
 	}
 	.row_container	{
-		margin-top: 550px !important;
 		width: 100% !important;
 		background: #fff;	
+		margin-top: 550px;
 	}
 </style>
 <?php get_header(); ?>
@@ -20,9 +22,8 @@ Template Name: Enrollment
 <?php if ( has_post_thumbnail() ) { ?>
 <div class="header_image">
 	<div id="featured"><?php the_post_thumbnail(); ?></div>
-	
 </div>
-<div class="header_image_title"><?php echo get_the_title(); ?></div>
+<div class="header_image_title"><h1><?php echo get_the_title(); ?></h1></div>
 <div class="header_map" onload="initialize()">
 	<div id="map_canvas"></div>
 </div>
@@ -40,20 +41,47 @@ Template Name: Enrollment
 				<div class="entry-content">
 					<?php the_content(); ?>
 				</div>
-				<div>
+				<div class="enroll_container">
 				<div class="enroll" id="form_one">
-					  <div>Address</div>
-					  <input type="text" id="street" value="609 E Thatcher Way">
-					   <div>City</div>
-					  <input type="text" id="city" value="Midvale">
-					  <div>State</div>
-					  <input type="text" id="state" value="UT">
-					  <div>Zip</div>
-					  <input type="text" id="zip" value="84047">
-					<button id="validate_address">Validate</button>
+					<h1>Basic Information</h1>
+					<table class="left">
+						<tr>
+							<td colspan="3">First Name<input type="text" id="fname" value=""></td>
+							<td colspan="3">Last Name<input type="text" id="lname" value=""></td>
+						</tr>
+						<tr>
+							<td colspan="6">Address<input type="text" id="street" value="609 E Thatcher Way"></td>
+						</tr>
+						<tr>
+							<td colspan="6"><input type="text" id="street_two" value=""></td>
+						</tr>
+						<tr>
+							<td colspan="2">City<input type="text" id="city" value="Midvale"></td>
+							<td colspan="2">State<input type="text" id="state" value="UT"></td>
+							<td colspan="2">Zip<input type="text" id="zip" value="84047"></td>
+						</tr>						
+					</table>
+					<table class="right">
+						<tr>
+							<td>Primary Phone<input type="text" id="primary_phone" maxlength="10"></td>
+						</tr>
+						<tr>
+							<td>Mobile Phone<input type="text" id="primary_phone" maxlength="10"></td>
+						</tr>						
+						<tr>
+							<td>Social Security<input type="text" id="primary_phone" maxlength="9"></td>
+						</tr>
+						<tr>
+							<td>D.O.B<input type="text" id="primary_phone" placeholder="mm/dd/YYYY"></td>
+						</tr>						
+					</table>
+
+					  
+					<div style="width: 100%; text-align: right; display: inline-block;"><button id="validate_address">Next</button></div>
 				</div>
 				<div class="enroll" id="form_two">
-					<div id="address_validated"></div>
+					
+					
 				</div>
 				<div class="enroll" id="form_three">
 				
