@@ -6,7 +6,7 @@
 		if( $(window).scrollTop() > stickyRibbonTop ) {
 			$('#sticky-nav').css({position: 'fixed', top: '0px'});
 		} else {
-			$('#sticky-nav').css({position: 'absolute', top: '45px'});
+			$('#sticky-nav').css({position: 'absolute', top: '20px'});
 		}
 	});	
 	
