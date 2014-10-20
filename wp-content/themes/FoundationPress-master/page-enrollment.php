@@ -114,8 +114,7 @@ Template Name: Enrollment
 								</td>
 							</tr>
 							<tr>
-								<td>
-
+								<td style="height: 40px;">
 									<span id="pass-strength-result"></span><br>
 								</td>
 							</tr>													

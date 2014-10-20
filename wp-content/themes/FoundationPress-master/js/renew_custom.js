@@ -140,9 +140,11 @@ $(window).scroll(function(){ // bind window scroll event
 		var city = $('#city').val();
 		var state = $('#state').val();
 		var zip = $('#zip').val();
+		var fname = $('#fname').val();
+		var lname = $('#lname').val();
 		$.ajax ({
 			type: 'POST',
-			data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip,
+			data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname,
 			url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
 			success: function(success)	{
 				$('#form_two').html(success);

@@ -56,8 +56,7 @@ function initialize() {
 		icon: 'images/pat_marker.png'
 	});
 	var patientInfo = new google.maps.InfoWindow({
-		content: "You",
-		closeBoxURL: ""
+		content: "You"
 	});
 	patientInfo.open(map, PatientMarker);
 }	
@@ -124,7 +123,7 @@ initialize();
 				});	
 				//DoctorMarker.set('id', <?php echo $doctor->user_id; ?>)
 				var DocInfo = new google.maps.InfoWindow({
-					content: "<div><?php echo $doctor->name; ?><br><?php echo $doctor->fname." ".$doctor->lname; ?></div>"
+					content: "<?php echo $doctor->fname." ".$doctor->lname; ?>"
 				});
 				DocInfo.open(map, DoctorMarker);
 				//DoctorMarker.setMap(map);
@@ -136,7 +135,7 @@ initialize();
     PatientMarker.setPosition(result.geometry.location);
     PatientMarker.setMap(map);
 	markerLookup(PatientMarker);
-	//DoctorsMapped();
+	DoctorsMapped();
     map.fitBounds(result.geometry.viewport);
 	
   }	
