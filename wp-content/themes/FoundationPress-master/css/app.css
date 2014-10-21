@@ -3395,8 +3395,11 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 	width: 100%;
 	margin-top: 60px;
 }
-.enroll_doctor_list ul li	{
+.enroll_doctor_list .doctor	{
 	display: none;
+}
+.gm-style-iw div	{
+	overflow: hidden !important;
 }
 
 /**** EXPERIENCE PAGE ****/
