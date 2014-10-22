@@ -2217,15 +2217,21 @@ footer h1	{
 }
 .empower	{
 	padding: 18px;
-	background: url(../assets/img/side_banner.png) left center no-repeat;
+	/*background: url(../assets/img/side_banner.png) left center no-repeat;*/
 	min-height: 579px;
 	padding: 50px 40px 0px 179px;
 	margin-top: 103px;
+	position:relative;
 }
 .empower p	{
 	margin-top: 20px;
 }
-.empower:before	{
+
+.empower .hook
+{
+	top:31px;
+}
+/*.empower:before	{
 	content: 'Empowering Better Health';
 	position: absolute;
 	
@@ -2236,21 +2242,22 @@ footer h1	{
 	margin-top: 217px;
 	font-family: 'adellebold';
 	text-transform: uppercase;
-	/* Safari */
+	
 	-webkit-transform: rotate(-90deg);
 
-	/* Firefox */
+	
 	-moz-transform: rotate(-90deg);
 
-	/* IE */
+	
 	-ms-transform: rotate(-90deg);
 
-	/* Opera */
+	
 	-o-transform: rotate(-90deg);
 
-	/* Internet Explorer */
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);	
 }
+*/
+
 .doctor-patient
 {
 	margin-top:49px;
@@ -2266,7 +2273,7 @@ footer h1	{
 }
 .control	{
 	padding: 18px;
-	background: url(../assets/img/side_banner.png) left center no-repeat;
+	/*background: url(../assets/img/side_banner.png) left center no-repeat;*/
 	min-height: 579px;
 	padding: 50px 40px 0px 179px;
 	margin-top: 60px;
@@ -2274,7 +2281,7 @@ footer h1	{
 .control p	{
 	margin-top: 20px;
 }
-.control:before	{
+/*.control:before	{
 	content: 'Take Control Of Your Health';
 	position: absolute;
 	
@@ -2285,21 +2292,21 @@ footer h1	{
 	margin-top: 217px;
 	font-family: 'adellebold';
 	text-transform: uppercase;
-	/* Safari */
+	
 	-webkit-transform: rotate(-90deg);
 
-	/* Firefox */
+	
 	-moz-transform: rotate(-90deg);
 
-	/* IE */
+	
 	-ms-transform: rotate(-90deg);
 
-	/* Opera */
+	
 	-o-transform: rotate(-90deg);
 
-	/* Internet Explorer */
+	
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);	
-}
+} */
 
 .additional-info	{
 	width: 100%;
@@ -3470,8 +3477,35 @@ h1.page-title
 	
 }
 
+
+.top-bar-container, 
+.tab-bar
+{
+	padding:10px 0px;
+	top:20px;
+}
+
+.control
+{
+	position:relative;
+}
+
+.control .hook
+{
+	top:22px;
+}
+
+.page-id-224 .hero_banner_text
+{
+	margin:215px 0px 0px;
+	width:50%;
+}
+
+
 @media (min-width: 601px) and (max-width: 800px)	
 {
+	
+	
 	.menu-footer-left	{
 		margin-left: 0px;
 	}
@@ -3483,18 +3517,39 @@ h1.page-title
 	.top-bar-container, 
 	.tab-bar
 	{
-		padding:10px 0px;
+		padding:0px;
 	}
 	
 	.top-bar-section ul li
 	{
-		padding:0px 12px;
+		padding:0px 12px 0px 0px;
 	}
 	
 	.row_container,
 	.top-bar-section
 	{
 		width:768px;
+	}
+	
+	.top-bar-section
+	{
+		width:650px;
+		margin:0 auto;
+	}
+	
+	.nav_logo
+	{
+		margin:0px auto;
+	}
+	
+	.nav_logo img
+	{
+		width:60%;
+	}
+	
+	.nav-right-menu
+	{
+		float:none;
 	}
 	
 	.header_text
@@ -3515,7 +3570,7 @@ h1.page-title
 	
 	.doctor_patient
 	{
-		margin:180px 0px 0px;
+		margin:166px 0px 0px;
 		width:54%;
 		float:right;
 	}
@@ -3542,9 +3597,96 @@ h1.page-title
 		background-size:1600px 375px !important;
 	}
 	
-	.page-id-270 .fullwidth-wrapper
+	.page-id-270 .image-background
 	{
-		background-size:800px 375px !important;
+		background-size:800px 400px !important;
+	}
+	
+	
+	.page-id-270 .hero_banner_text
+	{
+		margin:130px auto 0px;
+		width:65%;
+	}
+	
+	.page-id-270 .hero_banner_text p
+	{
+		font-size:15px
+	}
+	
+	.page-id-270 .hero_banner_text h1
+	{
+		margin:10px 0px;
+	}
+	
+	.page-id-270 .hero_banner_text button
+	{
+		margin-top:20px;
+		margin-bottom:0px;
+	}
+	
+	.page-id-270 .empower
+	{
+		padding: 1px 40px 0px 179px;
+	}
+	
+	.doctor-patient 
+	{
+		margin-top:0px;
+	}
+	
+	.page-id-224 .image-background
+	{
+		background-size:800px 400px !important;
+	}
+	
+	.page-id-224 .hero_banner_text
+	{
+		margin:0px;
+		width:50%;
+	}
+	
+	.page-id-224 .entry-content
+	{
+		margin-top:100px;
+	}
+	
+	
+	.page-id-224 .hero_banner_text h1
+	{
+		font-size:20px;
+		margin:5px 0px;
+	}
+	
+	.page-id-224 .hero_banner_text p
+	{
+		font-size:11px;
+	}
+	
+	.page-id-224 .hero_banner_text button.green_slider_button
+	{
+		font-size:11px !important;
+		margin-top:20px;
+	}
+	
+	.page-id-224 .control
+	{
+		padding:0px 40px 0px 125px;		
+	}
+	
+	.control
+	{
+		position:relative;
+	}
+	
+	.control h1
+	{
+		margin:20px 0px 20px;
+	}
+	
+	.control .hook
+	{
+		top:-62px;
 	}
 	
 	.footer_nav .column
@@ -3814,12 +3956,6 @@ h1.page-title
 	
 }
 
-.top-bar-container, 
-.tab-bar
-{
-	padding:10px 0px;
-	top:20px;
-}
 
 
 .page-background
@@ -3848,3 +3984,5 @@ h1.page-title
 {
 	max-width:none;
 }
+
+
