@@ -1282,7 +1282,7 @@ meta.foundation-mq-topbar {font-family:"/only screen and (min-width:40.063em)/";
 	
 }
 .top-bar-section  ul li.current_page_item.active>a {
-	border-bottom: 2px solid #00af41;
+	border-bottom: none;
 	border-collapse: collapse;
 }
 .top-bar-section ul li.active > a:hover {
@@ -3265,7 +3265,8 @@ input.time
 .enroll	{
 	display: inline-block;
 	overflow: hidden;
-	width: 100%;
+	width: 80%;
+	margin: 0 auto;
 }
 .enroll .left	{
 	border: none;
@@ -3277,9 +3278,13 @@ input.time
 	float: right;
 	display: inline-block;
 }
+.enroll .right input	{
+	width: 209px;
+}
 .enroll table tr, .enroll table tr td	{
 	background: #fff;
-	padding: 0;
+	padding: 3px;
+	height: 25px;
 }
 #form_two	{
 	display: none;
@@ -3296,6 +3301,112 @@ input.time
 	text-align: left;
 	font-size: 24px;
 	margin-bottom: 20px;
+}
+.mobile_alerts	{
+	width: 100%; 
+	text-align: left;
+	display: inline-block;
+}
+.mobile_alerts:hover	{
+	cursor: pointer;
+}
+.mobile_alerts input[type="checkbox"]	{
+	 position: absolute; 
+	 overflow: hidden; 
+	 clip: rect(0 0 0 0); 
+	 height:1px; 
+	 width:1px; 
+	 margin:-1px; 
+	 padding:0;
+	 border:0;
+}
+
+ .mobile_alerts input[type=checkbox] + .mobile_alerts label {
+ padding-left:20px;
+ height:15px; 
+ display:inline-block;
+ line-height:15px;
+ background-repeat:no-repeat;
+ background-position: 0 0;
+ font-size:15px;
+ vertical-align:middle;
+ cursor:pointer;
+ }
+
+.mobile_alerts input[type=checkbox]:checked + .mobile_alerts label{
+ background-position: 0 -15px;
+ background-repeat: no-repeat;
+ }
+
+ .mobile_alerts label	{ 
+	background-image:url(images/lite-green-check.png); 
+}
+input[type=checkbox].css-checkbox {
+	position: absolute; 
+	overflow: hidden; 
+	clip: rect(0 0 0 0); 
+	height:1px; 
+	width:1px; 
+	margin:-1px; 
+	padding:0;
+	border:0;
+}
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:20px;
+	height:15px; 
+	display:inline-block;
+	line-height:15px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -15px;
+}
+						
+.css-label{ 
+	background-image:url(images/lite-green-check.png);
+}
+.bad	{
+	background-color: #ff0000;
+	color: #fff;
+}
+.good	{
+	background-color: Green;
+	color: #fff;
+}
+.strong	{
+	background-color: Green;
+	color: #fff;
+}
+.short	{
+	background-color: #ff0000;
+	color: #fff;
+
+}
+#pass-strength-result	{
+	display: inline-block;
+	text-align: center;
+	width: 216px;
+	padding: 8px 0;
+}
+.create_profile table	{
+	border: none;
+	width: 70%;
+}
+.create_profile 	{
+	display: inline-block;
+	width: 100%;
+	margin-top: 60px;
+}
+.enroll_doctor_list .doctor	{
+	display: none;
+}
+.gm-style-iw div	{
+	overflow: hidden !important;
 }
 
 /**** EXPERIENCE PAGE ****/

@@ -22,15 +22,13 @@ if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
 	$state = $_POST['state'];
 	$html .= '<div class="enroll_doctor_list">';
 	$html .= '<ul>';
-	$html .= '<li><div>Pick your doctor</div><div>Click on the location icon to select your doctor.</div></li>';
 	$doctors = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "practice as p INNER JOIN ".$wpdb->prefix. "doctors as d ON d.practice_id=p.practice_id WHERE p.state='$state'");
 	foreach($doctors as $doctor)	{
-		$html .= '<li class="doctor" data="'.$doctor->practice_id.'">';
+		$html .= '<li id="doctor-'.$doctor->user_id.'" data="'.$doctor->practice_id.'">';
 		$html .= $doctor->fname.' '.$doctor->lname.'<br>'.$doctor->lat.', '.$doctor->long;
 		$html .= '</li>';
+		
 	}
-	$practices = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "practice WHERE state='$state'");
-
 	$html .= '</ul>';
 	$html .= '</div>';
 ?>
@@ -52,17 +50,15 @@ function initialize() {
 		document.getElementById("map_canvas"),
 		mapOptions
 	);
-	var patientText = "<div style='font-family: adelleregular; font-size: 14px;padding: 10px 10px 10px 15px;'>You</div>";
-	var patient_info = new google.maps.InfoWindow({
-		content: patientText
-	});		
 	PatientMarker = new google.maps.Marker({
 		id: "patient",
 		type: "patient",
-		icon: 'images/pat_marker.png',
-		infowindow: patient_info
+		icon: 'images/pat_marker.png'
 	});
-	patient_info.open(map, PatientMarker);
+	var patientInfo = new google.maps.InfoWindow({
+		content: "You"
+	});
+	patientInfo.open(map, PatientMarker);
 }	
 initialize();  
 	function validate() {
@@ -103,62 +99,49 @@ initialize();
 			var practiceID = this.get("type");
 			if(doctorID == "patient" || practiceID == "patient")	{
 				console.log("This is the patient location.");
-				$(".doctor").hide();
+				$(".enroll_doctor_list ul li").hide();
 			} else {
-				$(".doctor").hide();
-				$(".doctor").each(function()	{
+				//$("#doctor-"+ doctorID).siblings.hide();
+				$("#doctor-"+ doctorID).each(function()	{
 					var practice = $(this).attr('data');
-					if(doctorID == practice)	{
+					if(practiceID == practice)	{
 						$(this).show();
 					}
 				});
 			}
-			this.infowindow.open(map,marker);
-
+		//	map.fitBounds(marker.geometry.viewport);
 		});		
 	}
-		<?php foreach($practices as $p) { ?>
-			$ii = 0;
-			<?php foreach($doctors as $d)	{ 
-				if($d->practice_id == $p->practice_id)	{
-					//if($d->new_patients == 1)	{
-					?>	
-						//alert('<?php echo $p->name . ": " . $ii; ?>'); 
-					<?php	
-						$ii++;
-					//}
-				}
-			} ?>
-			console.log('<?php echo $ii; ?>'); 
-			<?php if($ii > 0)	{ ?>
-			var mytext = "<div style='font-family: adelleregular; font-size: 14px; max-height:100px;max-width:150px;padding:15px 0px 15px 10px;min-height:20px;min-width:150px; overflow: hidden; text-align: center;'><?php echo $p->name; ?></div>";
-			var myinfowindow = new google.maps.InfoWindow({
-				content: mytext
-			});		
-			var ThisLocation_<?php echo $p->practice_id; ?> = new google.maps.LatLng(<?php echo $p->lat; ?>, <?php echo $p->long; ?>);
-			var DoctorMarker_<?php echo $p->practice_id; ?> = new google.maps.Marker({
-				position: ThisLocation_<?php echo $p->practice_id; ?>,
-				map: map,
-				icon: 'images/doc_marker.png',
-				id: <?php echo $p->practice_id; ?>,
-				type: "practice",
-				infowindow: myinfowindow
-			});	
-
-			markerLookup(DoctorMarker_<?php echo $p->practice_id; ?>);
-			<?php } ?>
+		<?php foreach($doctors as $doctor) { ?>
+			var ThisLocation = new google.maps.LatLng(<?php echo $doctor->lat; ?>, <?php echo $doctor->long; ?>);
+				var DoctorMarker = new google.maps.Marker({
+					position: ThisLocation,
+					map: map,
+					icon: 'images/doc_marker.png',
+					id: <?php echo $doctor->user_id; ?>,
+					type: <?php echo $doctor->practice_id; ?>
+				});	
+				//DoctorMarker.set('id', <?php echo $doctor->user_id; ?>)
+				var DocInfo = new google.maps.InfoWindow({
+					content: "<?php echo $doctor->fname." ".$doctor->lname; ?>"
+				});
+				DocInfo.open(map, DoctorMarker);
+				//DoctorMarker.setMap(map);
+			markerLookup(DoctorMarker);
 		<?php } ?>  	
+		//map.fitBounds(DoctorMarker.geometry.viewport);
 		
-function mapAddress(result) {
+  function mapAddress(result) {
     PatientMarker.setPosition(result.geometry.location);
     PatientMarker.setMap(map);
 	markerLookup(PatientMarker);
-    map.fitBounds(result.geometry.viewport);	
-	map.setZoom(15);
-}	
+	DoctorsMapped();
+    map.fitBounds(result.geometry.viewport);
+	
+  }	
 	
   
-validate();
+  validate();
   
 </script>	
 <?php

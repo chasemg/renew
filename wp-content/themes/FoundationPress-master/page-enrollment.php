@@ -14,6 +14,11 @@ Template Name: Enrollment
 		background: #fff;	
 		margin-top: 550px;
 	}
+	@media only screen and (min-width: 40.063em)	{
+		.top-bar-section .has-dropdown.hover>.dropdown, .top-bar-section .has-dropdown.not-click:hover>.dropdown	{
+			padding-top: 31px !important;
+		}
+	}
 </style>
 <?php get_header(); ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -53,7 +58,7 @@ Template Name: Enrollment
 							<td colspan="6">Address<input type="text" id="street" value="609 E Thatcher Way"></td>
 						</tr>
 						<tr>
-							<td colspan="6"><input type="text" id="street_two" value=""></td>
+							<td colspan="6"><br><input type="text" id="street_two" value=""></td>
 						</tr>
 						<tr>
 							<td colspan="2">City<input type="text" id="city" value="Midvale"></td>
@@ -75,8 +80,48 @@ Template Name: Enrollment
 							<td>D.O.B<input type="text" id="primary_phone" placeholder="mm/dd/YYYY"></td>
 						</tr>						
 					</table>
-
-					  
+					<div class="mobile_alerts">
+						<input type="checkbox" class="css-checkbox" id="alerts" checked="checked">
+						<label for="alerts" class="css-label">Recieve message alerts from Renew My Healthcare (requires mobile phone number)</label>
+					</div>
+					
+					<div class="create_profile">
+						<h1>Profile Information</h1>
+						<form>
+						<table>
+							<tr>
+								<td>
+									Email Address(this will be your username)<br>
+									<input type="text" name="email_address" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Verify Email Address<br>
+									<input type="text" name="email_verified" />
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Password
+									<input type="password" name="password" id="pass1"/>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Verify Password
+									<input type="password" name="password_retyped" id="pass2"/>
+								</td>
+							</tr>
+							<tr>
+								<td style="height: 40px;">
+									<span id="pass-strength-result"></span><br>
+								</td>
+							</tr>													
+						</table>
+						</form>
+					</div>
+					
 					<div style="width: 100%; text-align: right; display: inline-block;"><button id="validate_address">Next</button></div>
 				</div>
 				<div class="enroll" id="form_two">
@@ -102,4 +147,5 @@ Template Name: Enrollment
 		
 	</div>
 </div>
+
 <?php get_footer(); ?>
