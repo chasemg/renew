@@ -3401,7 +3401,9 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 .gm-style-iw div	{
 	overflow: hidden !important;
 }
-
+.enroll_doctor_list ul	{
+	list-style: none;
+}
 /**** EXPERIENCE PAGE ****/
 .page-id-147 .fullwidth-wrapper
 {

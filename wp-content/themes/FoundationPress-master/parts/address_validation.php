@@ -21,13 +21,13 @@ if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
 
 	$state = $_POST['state'];
 	$html .= '<div class="enroll_doctor_list">';
+	$html .= '<h1 style="width: 100%; text-align: center; margin-bottom: 5px;">Pick your doctor</h1><div style="display: inline-block; width: 100%; text-align: center; font-family: adellelight; font-size: 15px;">Click on the location icon to select your doctor.</div>';
 	$html .= '<ul>';
-	$html .= '<li><div>Pick your doctor</div><div>Click on the location icon to select your doctor.</div></li>';
-	$doctors = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "practice as p INNER JOIN ".$wpdb->prefix. "doctors as d ON d.practice_id=p.practice_id WHERE p.state='$state'");
+	$doctors = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "practice as p INNER JOIN ".$wpdb->prefix. "doctors as d ON d.practice_id=p.practice_id WHERE p.state='$state' AND d.new_patients='1'");
 	foreach($doctors as $doctor)	{
-		$html .= '<li class="doctor" data="'.$doctor->practice_id.'">';
+		$html .= '<li class="doctor" data="'.$doctor->practice_id.'"><input type="radio" id="doc-'.$doctor->user_id.'" name="doctors" value="'.$doctor->user_id.'"><label for="doc-'.$doctor->user_id.'">';
 		$html .= $doctor->fname.' '.$doctor->lname.'<br>'.$doctor->lat.', '.$doctor->long;
-		$html .= '</li>';
+		$html .= '</label></li>';
 	}
 	$practices = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "practice WHERE state='$state'");
 
@@ -102,14 +102,16 @@ initialize();
 			var doctorID = this.get("id");
 			var practiceID = this.get("type");
 			if(doctorID == "patient" || practiceID == "patient")	{
-				console.log("This is the patient location.");
+				//console.log("This is the patient location.");
 				$(".doctor").hide();
+				$(".no_doctor").show();
 			} else {
-				$(".doctor").hide();
 				$(".doctor").each(function()	{
 					var practice = $(this).attr('data');
 					if(doctorID == practice)	{
 						$(this).show();
+					} else {
+						$(this).hide();
 					}
 				});
 			}
@@ -117,20 +119,15 @@ initialize();
 
 		});		
 	}
-		<?php foreach($practices as $p) { ?>
+		<?php foreach($practices as $p) { 
+			$practice_id = $p->practice_id;
 			$ii = 0;
-			<?php foreach($doctors as $d)	{ 
-				if($d->practice_id == $p->practice_id)	{
-					//if($d->new_patients == 1)	{
-					?>	
-						//alert('<?php echo $p->name . ": " . $ii; ?>'); 
-					<?php	
-						$ii++;
-					//}
-				}
-			} ?>
-			console.log('<?php echo $ii; ?>'); 
-			<?php if($ii > 0)	{ ?>
+			$doctors_count = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors WHERE practice_id='$practice_id' AND new_patients='1'");
+			foreach($doctors_count as $d_count)	{
+				$ii++;
+			}
+			if($ii > 0)	{
+			?>
 			var mytext = "<div style='font-family: adelleregular; font-size: 14px; max-height:100px;max-width:150px;padding:15px 0px 15px 10px;min-height:20px;min-width:150px; overflow: hidden; text-align: center;'><?php echo $p->name; ?></div>";
 			var myinfowindow = new google.maps.InfoWindow({
 				content: mytext
@@ -146,7 +143,7 @@ initialize();
 			});	
 
 			markerLookup(DoctorMarker_<?php echo $p->practice_id; ?>);
-			<?php } ?>
+			<?php } ?>  
 		<?php } ?>  	
 		
 function mapAddress(result) {
@@ -161,12 +158,14 @@ function mapAddress(result) {
 validate();
   
 </script>	
+
+
+	<div class="chosen">
+		You have selected: <div class="doctor_selected"></div>
+	</div>
+
+
 <?php
-
-
-
-
-
 } else {
 	$html .= 0;
 }

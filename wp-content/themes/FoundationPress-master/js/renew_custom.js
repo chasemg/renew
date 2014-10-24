@@ -169,7 +169,10 @@ $(window).scroll(function(){ // bind window scroll event
 						$('.header_map').animate({
 							height: "550px",
 							maxHeight: "550px"
-						},200);						
+						},200);	
+						//$(".doctor label").click(function()	{
+						//	$('.doctor input[type="radio"]').siblings().attr(':');
+						//});						
 					} else {
 						//alert('ERROR');
 						$('#map_canvas').animate({

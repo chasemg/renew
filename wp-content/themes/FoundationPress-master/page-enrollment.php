@@ -4,6 +4,9 @@ Template Name: Enrollment
 */
 ?>
 <style>
+	.entry-content	{
+		margin-top: 15px !important;
+	}
 	.header_image	{
 		max-height: 550px !important;
 		height: 550px;
@@ -124,13 +127,8 @@ Template Name: Enrollment
 					
 					<div style="width: 100%; text-align: right; display: inline-block;"><button id="validate_address">Next</button></div>
 				</div>
-				<div class="enroll" id="form_two">
-					
-					
-				</div>
-				<div class="enroll" id="form_three">
-				
-				</div>	
+				<div class="enroll" id="form_two"></div>
+				<div class="enroll" id="form_three"></div>	
 				</div>				
 				<footer>
 					<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'FoundationPress'), 'after' => '</p></nav>' )); ?>
