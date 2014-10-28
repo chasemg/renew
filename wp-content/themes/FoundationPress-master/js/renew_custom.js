@@ -136,7 +136,19 @@ $(window).scroll(function(){ // bind window scroll event
 });
 */
 	$("#validate_address").click(function()	{
-		var street = $('#street').val();
+		$('#street').removeClass('error_hightlight');
+		$('#city').removeClass('error_hightlight');
+		$('#state').removeClass('error_hightlight');
+		$('#zip').removeClass('error_hightlight');
+		$('#fname').removeClass('error_hightlight');
+		$('#lname').removeClass('error_hightlight');
+		$('#primary_phone').removeClass('error_hightlight');
+		$('#mobil_phone').removeClass('error_hightlight');
+		$('#ssn').removeClass('error_hightlight');
+		$('#dob').removeClass('error_hightlight');
+		var street_one = $('#street').val();
+		var street_two = $('#street_two').val();
+		var street = street_one + ", " + street_two;
 		var city = $('#city').val();
 		var state = $('#state').val();
 		var zip = $('#zip').val();
@@ -146,14 +158,65 @@ $(window).scroll(function(){ // bind window scroll event
 		var mobil_phone = $('#mobil_phone').val();
 		var ssn = $('#ssn').val();
 		var dob = $('#dob').val();
+		/************** Validate first page **********************/
+		
+		if(street == '')	{
+			$('#street').addClass('error_hightlight');
+			scrollToAnchor('street');
+			return false;
+		}
+		if(city == '')	{
+			$('#city').addClass('error_hightlight');
+			scrollToAnchor('city');
+			return false;
+		}		
+		if(state == '')	{
+			$('#state').addClass('error_hightlight');
+			scrollToAnchor('state');
+			return false;
+		}	
+		if(zip == '')	{
+			$('#zip').addClass('error_hightlight');
+			scrollToAnchor('zip');
+			return false;
+		}		
+		if(fname == '')	{
+			$('#fname').addClass('error_hightlight');
+			scrollToAnchor('fname');
+			return false;
+		}		
+		if(lname == '')	{
+			$('#lname').addClass('error_hightlight');
+			scrollToAnchor('lname');
+			return false;
+		}	
+		if(primary_phone == '')	{
+			$('#primary_phone').addClass('error_hightlight');
+			scrollToAnchor('primary_phone');
+			return false;
+		}		
+		if(mobil_phone == '')	{
+			$('#mobil_phone').addClass('error_hightlight');
+			scrollToAnchor('mobil_phone');
+			return false;
+		}	
+		if(ssn == '')	{
+			$('#ssn').addClass('error_hightlight');
+			scrollToAnchor('ssn');
+			return false;
+		}	
+		if(dob == '')	{
+			$('#dob').addClass('error_hightlight');
+			scrollToAnchor('dob');
+			return false;
+		}			
+		/*********************************************************/
 		$.ajax ({
 			type: 'POST',
 			data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone,
 			url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
 			success: function(success)	{
 				$('#form_two').html(success);
-				//scrollToAnchor('map_canvas')
-
 				$("#form_one").slideUp();
 				$("#form_two").delay(1000).slideDown(function() {
 					var hiddenContent = $("#type").val();
@@ -169,16 +232,11 @@ $(window).scroll(function(){ // bind window scroll event
 							marginTop: "0px"
 						}, 200);				
 						$("#map_canvas").show();
-						
 						$('.header_map').animate({
 							height: "550px",
 							maxHeight: "550px"
 						},200);	
-						//$(".doctor label").click(function()	{
-						//	$('.doctor input[type="radio"]').siblings().attr(':');
-						//});						
 					} else {
-						//alert('ERROR');
 						$('#map_canvas').animate({
 							height: "0px"
 						},200);							
@@ -261,7 +319,6 @@ function checkPasswordStrength( $pass1,
     if ( 4 === strength && '' !== pass2.trim() ) {
         $submitButton.removeAttr( 'disabled' );
     }
- 
     return strength;
 }
  

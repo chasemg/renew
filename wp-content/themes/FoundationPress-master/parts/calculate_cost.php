@@ -81,7 +81,12 @@ foreach($pricing as $price)	{
 	}
 }
 $total = $you + $children_cost + $adults_under_twentyseven + $adults_cost + $seniors_cost;
-$monthly = round(($total/12) + 20, 2);
+if($total == 1200)	{
+	$fee = 50;
+} else {
+	$fee == 20;
+}
+$monthly = round(($total/12) + $fee, 2);
 
 /*
 $html .= "You: $" . $you;
@@ -100,11 +105,11 @@ $html .= '<h1 style="border-bottom: none;">Your Price</h1>';
 $html .= '<div>Based off of the information you provided, the annual fee for better healthcare is:</div>';
 $html .= '<h1 style="font-size: 88px; font-family: adellesemibold; border-bottom: none;"><font style="font-size: 67px;">$</font>'.$total.'</h1>';
 $html .= '<div style="color: #00953a; font-size: 17px; font-family: adellebold;">Here is a breakdown of your costs:</div>';
-$html .= '<div style="font-size: 23px; font-family: adellelight; margin: 20px 0;">$'.$total.' annual fee</div>';
+$html .= '<div style="font-size: 23px; font-family: adellelight; margin: 20px 0;">$'.$total.' annual fee<input type="hidden" id="annually" value="'.$total.'"></div>';
 $html .= '<div style="color: #00953a; font-size: 17px; font-family: adellebold;">or</div>';
-$html .= '<div style="font-size: 23px; font-family: adellelight; margin: 20px 0 0 0;">$'.$monthly.' monthly fee*</div>';
-$html .= '<div style="font-size: 12px; font-family: adellelight; margin: 10px 0;">*This includes an additional $20 a month fee for the monthly model.</div>';
-$html .= '<div class="next"></div>';
+$html .= '<div style="font-size: 23px; font-family: adellelight; margin: 20px 0 0 0;">$'.$monthly.' monthly fee*<input type="hidden" id="monthly" value="'.$monthly.'"></div>';
+$html .= '<div style="font-size: 12px; font-family: adellelight; margin: 10px 0;">*This includes an additional $'.$fee.' a month fee for the monthly model.</div>';
+$html .= '<div class="next" id="go_to_payment"></div>';
 echo $html;
 
 ?>

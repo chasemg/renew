@@ -23,7 +23,7 @@ if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
 
 	$state = $_POST['state'];
 	$html .= '<div class="enroll_doctor_list">';
-	$html .= '<h1 style="width: 100%; text-align: center; margin-bottom: 5px;">Pick your doctor</h1><div style="display: inline-block; width: 100%; text-align: center; font-family: adellelight; font-size: 15px;">Click on the location icon to select your doctor.</div>';
+	$html .= '<h1 id="scroll_to_doctors" style="width: 100%; text-align: center; margin-bottom: 5px;">Pick your doctor</h1><div style="display: inline-block; width: 100%; text-align: center; font-family: adellelight; font-size: 15px;">Click on the location icon to select your doctor.</div>';
 	$html .= '<ul>';
 	$doctors = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "practice as p INNER JOIN ".$wpdb->prefix. "doctors as d ON d.practice_id=p.practice_id WHERE p.state='$state' AND d.new_patients='1'");
 	foreach($doctors as $doctor)	{
@@ -40,6 +40,14 @@ if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
 
 
 <script>
+function scrollToAnchor(aid){
+	var aTag = $("#"+ aid +"");
+	var wWidth = $(window).width();
+	var wHeight = $(window).height();
+	topMargin = wHeight/2 - aTag.height()/2;
+	$('html,body').animate({scrollTop: aTag.offset().top - topMargin},'slow');
+}
+
 var geocoder, map, marker;
 var defaultLatLng = new google.maps.LatLng(30,0);
 
@@ -67,6 +75,7 @@ function initialize() {
 	patient_info.open(map, PatientMarker);
 }	
 initialize();  
+$('html,body').animate({scrollTop: '0px'},'slow');
 	function validate() {
 		var street = $('#street_verified').val();
 		var city = $('#city_verified').val();
@@ -96,7 +105,7 @@ initialize();
 			}
 		});
 	}
-	
+
 	function markerLookup(marker)	{
 		google.maps.event.addListener(marker, 'click', function() {
 			map.setZoom(15);
@@ -112,6 +121,7 @@ initialize();
 				$("#doctor_selected").html('');
 				$(".chosen").hide();				
 			} else {
+				scrollToAnchor('scroll_to_doctors');
 				$(".doctor").each(function()	{
 					var practice = $(this).attr('data');
 					if(doctorID == practice)	{
@@ -122,6 +132,7 @@ initialize();
 							$("#doctor_selected").html("Doctor "+ doctorName);
 							$(".chosen").show();
 							$(".calculate_costs").show();
+							scrollToAnchor('calculate_costs');
 						});
 
 					} else {
@@ -212,6 +223,7 @@ initialize();
 						url: 'wp-content/themes/FoundationPress-master/parts/calculate_cost.php',
 						success: function(success)	{
 							$("#calculated").html(success);
+							scrollToAnchor('calculated');
 						},
 						error: function(error)	{
 							console.log(error);
@@ -268,7 +280,7 @@ validate();
 	$html .= 'You have selected: <div id="doctor_selected"></div>';
 	$html .= '</div>';
 	$html .= '<div class="calculate_costs">';
-	$html .= '<h1>Calculate your costs.</h1>';
+	$html .= '<h1 id="calculate_costs">Calculate your costs.</h1>';
 	$html .= '<div>';
 	$html .= '<div style="padding: 30px 0;">Click the add button if you wish to add additional people to the account.</div>';
 	$html .= '<table class="more_patients">';
