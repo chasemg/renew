@@ -142,9 +142,13 @@ $(window).scroll(function(){ // bind window scroll event
 		var zip = $('#zip').val();
 		var fname = $('#fname').val();
 		var lname = $('#lname').val();
+		var primary_phone = $('#primary_phone').val();
+		var mobil_phone = $('#mobil_phone').val();
+		var ssn = $('#ssn').val();
+		var dob = $('#dob').val();
 		$.ajax ({
 			type: 'POST',
-			data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname,
+			data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone,
 			url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
 			success: function(success)	{
 				$('#form_two').html(success);

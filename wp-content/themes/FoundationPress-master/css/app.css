@@ -457,7 +457,7 @@ section	{
 .breadcrumbs {display:block;padding:0.5625rem 0.875rem 0.5625rem;overflow:hidden;margin-left:0;list-style:none;border-style:solid;border-width:1px;background-color:#f4f4f4;border-color:#dcdcdc;border-radius:3px;}
 .breadcrumbs>* {margin:0;float:left;font-size:0.6875rem;line-height:0.6875rem;text-transform:uppercase;color:#008cba;}
 .breadcrumbs > *:hover a ,.breadcrumbs > *:focus a {text-decoration:underline;}
-.breadcrumbs > * a {color:#008cba;}
+.breadcrumbs > * a {color:#00af40;}
 .breadcrumbs > *.current {cursor:default;color:#333333;}
 .breadcrumbs > *.current a {cursor:default;color:#333333;}
 .breadcrumbs > *.current:hover ,.breadcrumbs > *.current:hover a ,.breadcrumbs > *.current:focus ,.breadcrumbs > *.current:focus a {text-decoration:none;}
@@ -466,8 +466,28 @@ section	{
 .breadcrumbs > *.unavailable:hover ,.breadcrumbs > *.unavailable:hover a ,.breadcrumbs > *.unavailable:focus ,.breadcrumbs > *.unavailable a:focus {text-decoration:none;color:#999999;cursor:default;}
 .breadcrumbs > *:before {content:"/";color:#aaaaaa;margin:0 0.75rem;position:relative;top:1px;}
 .breadcrumbs > *:first-child:before {content:" ";margin:0;}
-button ,.button {border-style:solid;border-width:0px;cursor:pointer;font-family:"Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;font-weight:normal;line-height:normal;margin:0 0 1.25rem;position:relative;text-decoration:none;text-align:center;-webkit-appearance:none;-webkit-border-radius:0;display:inline-block;padding-top:1rem;padding-right:2rem;padding-bottom:1.0625rem;padding-left:2rem;font-size:1rem;background-color:#008cba;border-color:#007295;color:#ffffff;transition:background-color 300ms ease-out;}
-button:hover ,button:focus ,.button:hover ,.button:focus {background-color:#007295;}
+button ,.button {
+	border-style:solid;
+	border-width:0px;
+	cursor:pointer;
+	font-family: 'adelleregular';
+	font-weight:normal;
+	line-height:normal;
+	margin:0 0 1.25rem;
+	position:relative;
+	text-decoration:none;
+	text-align:center;
+	-webkit-appearance:none;
+	-webkit-border-radius:0;
+	display:inline-block;
+	padding: 5px 30px;
+	font-size:19px;
+	background-color:#00af40;
+	border-color:#00af40;
+	color:#ffffff;
+	transition:	background-color 300ms ease-out;
+}
+button:hover ,button:focus ,.button:hover ,.button:focus {background-color:#00af40;}
 button:hover ,button:focus ,.button:hover ,.button:focus {color:#ffffff;}
 button.secondary ,.button.secondary {background-color:#e7e7e7;border-color:#b9b9b9;color:#333333;}
 button.secondary:hover ,button.secondary:focus ,.button.secondary:hover ,.button.secondary:focus {background-color:#b9b9b9;}
@@ -3240,7 +3260,7 @@ input.time
 .header_image_title	{
 	display: inline-block;
 	top: 0;
-	margin-top: 355px;
+	margin-top: 260px;
 	position: absolute;
 	width: 100%;
 	left: 0;
@@ -3274,15 +3294,18 @@ input.time
 .enroll .right input	{
 	width: 209px;
 }
+.enroll table	{
+	background: transparent;
+}
 .enroll table tr, .enroll table tr td	{
-	background: #fff;
 	padding: 3px;
 	height: 25px;
 }
 #form_two	{
 	display: none;
-	height: 500px;
+	min-height: 500px;
 	overflow: hidden;
+	padding-bottom: 40px;
 }
 #form_three	{
 	height: 0px;
@@ -3403,6 +3426,77 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 }
 .enroll_doctor_list ul	{
 	list-style: none;
+	margin-top: 20px;
+	margin-left: 0px;
+}
+.enroll_doctor_list li	{
+	padding: 5px 0;
+}
+.enroll_doctor_list input	{
+	margin-bottom: 0px;
+}
+.enroll_doctor_list .doctor div	{
+	font-size: 20px;
+}
+.chosen	{
+	display: none;
+	font-family: 'adelleregular';
+	font-size: 18px;
+}
+#doctor_selected	{
+	display: inline-block;
+	margin-left: 10px;
+	color: #00953a;
+	font-size: 20px;
+}
+.calculate_costs	{
+	display: none;
+	padding-top: 70px;
+}
+.calculate_costs h1	{
+	text-align: center;
+	border-bottom: 1px solid #e5e5e5;
+	font-family: 'adelleregular';
+	font-size: 30px;
+	padding: 10px 0;
+}
+.calculate_costs table	{
+	width: 100%;
+	border: none;
+	border-collapse: collapse;
+}
+.add_cost	{
+	color: #00953a;
+	font-family: 'adelleregular';
+	font-size: 24px;
+}
+.add_cost:hover	{
+	cursor: pointer;
+}
+.error_hightlight	{
+	border: 1px solid #ff0000 !important;
+}
+.access_table td	{
+	vertical-align: middle;
+}
+.access_table input[type="radio"]	{
+	margin: 10px 0 0 0 !important;
+}
+.calculated_price	{
+	border-top: 1px solid #e5e5e5;
+	margin-top: 40px;
+	padding-top: 40px;
+}
+.next	{
+	background: url('images/next.png');
+	width: 87px;
+	height: 22px;
+	display: inline-block;
+	float: right;
+	margin: 80px 0 40px 0;
+}
+.next:hover	{
+	cursor: pointer;
 }
 /**** EXPERIENCE PAGE ****/
 .page-id-147 .fullwidth-wrapper

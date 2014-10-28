@@ -3,6 +3,8 @@
 include '../dashboard/db_include.php';
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
+$dob = $_POST['dob'];
+$ssn = $_POST['ssn'];
 $html = '';
 $html .= '<div id="address_validated">';
 if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
@@ -25,8 +27,8 @@ if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
 	$html .= '<ul>';
 	$doctors = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "practice as p INNER JOIN ".$wpdb->prefix. "doctors as d ON d.practice_id=p.practice_id WHERE p.state='$state' AND d.new_patients='1'");
 	foreach($doctors as $doctor)	{
-		$html .= '<li class="doctor" data="'.$doctor->practice_id.'"><input type="radio" id="doc-'.$doctor->user_id.'" name="doctors" value="'.$doctor->user_id.'"><label for="doc-'.$doctor->user_id.'">';
-		$html .= $doctor->fname.' '.$doctor->lname.'<br>'.$doctor->lat.', '.$doctor->long;
+		$html .= '<li class="doctor" data="'.$doctor->practice_id.'" id="'.$doctor->user_id.'"><input type="radio" id="doc-'.$doctor->user_id.'" name="doctors" value="'.$doctor->user_id.'"><label for="doc-'.$doctor->user_id.'">';
+		$html .= '<div>Doctor '.$doctor->fname.' '.$doctor->lname.'<input type="hidden" id="doctor_name_'.$doctor->user_id.'" value="'.$doctor->fname.' '.$doctor->lname.'"></div>';
 		$html .= '</label></li>';
 	}
 	$practices = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "practice WHERE state='$state'");
@@ -101,19 +103,121 @@ initialize();
 			map.setCenter(marker.getPosition());
 			var doctorID = this.get("id");
 			var practiceID = this.get("type");
+			$(".doctor input[name='doctors']").prop('checked',false);
 			if(doctorID == "patient" || practiceID == "patient")	{
 				//console.log("This is the patient location.");
 				$(".doctor").hide();
 				$(".no_doctor").show();
+				$(".calculate_costs").hide();
+				$("#doctor_selected").html('');
+				$(".chosen").hide();				
 			} else {
 				$(".doctor").each(function()	{
 					var practice = $(this).attr('data');
 					if(doctorID == practice)	{
 						$(this).show();
+						$(this).click(function()	{
+							var doctorID = $(this).attr('id');
+							var doctorName = $("#doctor_name_"+doctorID).val();
+							$("#doctor_selected").html("Doctor "+ doctorName);
+							$(".chosen").show();
+							$(".calculate_costs").show();
+						});
+
 					} else {
 						$(this).hide();
+						$(".chosen").hide();
 					}
 				});
+				function validateEmail(email) {
+					var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+					return emailReg.test( email );
+				}					
+				var v = 0;
+				$("#add_cost").click(function()	{
+					$('.access_table').removeClass('error_hightlight');
+					$('#new_dob').removeClass('error_hightlight');
+					$('#new_fname').removeClass('error_hightlight');
+					$('#new_lname').removeClass('error_hightlight');
+					$('#new_email').removeClass('error_hightlight');
+					var sex = $("#new_patient_sex").val();
+					if(sex == 'M')	{
+						var patientSex = "Male";
+					} else {
+						var patientSex = "Female";
+					}
+					var dob = $("#new_dob").val();
+					if(dob == '')	{
+						$('#new_dob').addClass('error_hightlight');
+						return false;
+					}
+					var new_fname = $("#new_fname").val();
+					if(new_fname == '')	{
+						$('#new_fname').addClass('error_hightlight');
+						return false;
+					}
+					var new_lname = $("#new_lname").val();
+					if(new_lname == '')	{
+						$('#new_lname').addClass('error_hightlight');
+						return false;
+					}					
+					var new_email = $("#new_email").val();
+
+				//	( !validateEmail(new_email) ) ? console.log('no') : console.log('yes'); 
+					if(!validateEmail(new_email) || new_email == '')	{
+						$('#new_email').addClass('error_hightlight');
+						return false;
+					}						
+					var access = '';
+					$(".calculate_costs input[type='radio']").each(function()	{
+						if($(this).is(':checked'))	{
+							access = $(this).val();
+						}
+					});
+					if(access == "0")	{
+						var access_level = "Primary Access";
+					} else if(access == "1") {
+						var access_level = "Secondary Access";
+					} else {
+						console.log("No access level selected");
+						$('.access_table').addClass('error_hightlight');
+						return false;
+					}
+					
+					$(".calculate_costs table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr><tr><td colspan='2'  style='padding-bottom: 15px;'><font style='color: #ccc;'>Email Address</font><br>"+new_email+"<input type='hidden' id='new_email["+ v +"]' value='"+new_email+"'></td><td colspan='2' style='padding-bottom: 15px;'><font style='color: #ccc;'>Account Access:</font><br>"+access_level+"<input id='access["+ v +"]' type='hidden' value='"+access+"'></td></tr>");
+					$(".access_table input[name='access']").prop('checked',false);
+					$('#new_dob').val('');
+					$('#new_fname').val('');
+					$('#new_lname').val('');
+					$('#new_email').val('');
+					$("#new_patient_sex").val('M');
+					v++;
+				});
+				$("#calculate_price").click(function()	{
+					var dataSet = '';
+					var count = 0;				
+					$(".more_patients input[type='hidden']").each(function()	{
+						var fieldName = $(this).attr('id');
+						var fieldValue = $(this).val();
+						if(count == 0)	{
+							dataSet += fieldName+"="+fieldValue;
+						} else {
+							dataSet += "&"+fieldName+"="+fieldValue;
+						}
+						count++;
+					});
+					$.ajax({
+						type: 'POST',
+						data: dataSet,
+						url: 'wp-content/themes/FoundationPress-master/parts/calculate_cost.php',
+						success: function(success)	{
+							$("#calculated").html(success);
+						},
+						error: function(error)	{
+							console.log(error);
+						}
+					});
+				});				
 			}
 			this.infowindow.open(map,marker);
 
@@ -158,14 +262,41 @@ function mapAddress(result) {
 validate();
   
 </script>	
-
-
-	<div class="chosen">
-		You have selected: <div class="doctor_selected"></div>
-	</div>
-
-
 <?php
+
+	$html .= '<div class="chosen">';
+	$html .= 'You have selected: <div id="doctor_selected"></div>';
+	$html .= '</div>';
+	$html .= '<div class="calculate_costs">';
+	$html .= '<h1>Calculate your costs.</h1>';
+	$html .= '<div>';
+	$html .= '<div style="padding: 30px 0;">Click the add button if you wish to add additional people to the account.</div>';
+	$html .= '<table class="more_patients">';
+	$html .= '<tr>';
+	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">M/F<select id="new_patient_sex"><option value="M">Male</option><option value="F">Female</option></select></td>';
+	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">D.O.B<input type="date" id="new_dob"></td>';
+	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">First Name<input type="text" id="new_fname"></td>';
+	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">Last Name<input type="text" id="new_lname"></td>';
+	$html .= '</tr>';	
+	$html .= '<tr>';
+	$html .= '<td colspan="2">Email Address(required)<input type="email" id="new_email"></td>';
+	$html .= '<td colspan="2">';
+	$html .= 'Account Access:';
+	$html .= '<table class="access_table">';
+	$html .= '<tr>';
+	$html .= '<td><input type="radio" id="primary_access" name="access" value="0"><label for="primary_access">Primary Access</label></td>';
+	$html .= '<td><input type="radio" id="secondary_access" name="access" value="1"><label for="secondary_access">Secondary Access</label></td>';	
+	$html .= '</tr>';
+	$html .= '</table>';	
+	$html .= '</td>';
+	$html .= '</tr>';
+	$html .= '<tr>';
+	$html .= '<td colspan="4"><div class="add_cost" id="add_cost">+ add</div></td>';
+	$html .= '</tr>';
+	$html .= '</table>';	
+	$html .= '<div style="text-align: left;"><button class="button" id="calculate_price">calculate</button></div>';
+	$html .= '</div>';
+	$html .= '<div class="calculated_price" id="calculated"></div>';
 } else {
 	$html .= 0;
 }

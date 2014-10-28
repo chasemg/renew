@@ -14,12 +14,12 @@ Template Name: Enrollment
 	}
 	.row_container	{
 		width: 100% !important;
-		background: #fff;	
+		background: url('<?php echo get_template_directory_uri(); ?>/css/images/cream_pixels.png');	
 		margin-top: 550px;
 	}
 	@media only screen and (min-width: 40.063em)	{
 		.top-bar-section .has-dropdown.hover>.dropdown, .top-bar-section .has-dropdown.not-click:hover>.dropdown	{
-			padding-top: 31px !important;
+			padding-top: 11px !important;
 		}
 	}
 </style>
@@ -71,16 +71,16 @@ Template Name: Enrollment
 					</table>
 					<table class="right">
 						<tr>
-							<td>Primary Phone<input type="text" id="primary_phone" maxlength="10"></td>
+							<td>Primary Phone<input type="tel" id="primary_phone" maxlength="10"></td>
 						</tr>
 						<tr>
-							<td>Mobile Phone<input type="text" id="primary_phone" maxlength="10"></td>
+							<td>Mobile Phone<input type="tel" id="mobil_phone" maxlength="10"></td>
 						</tr>						
 						<tr>
-							<td>Social Security<input type="text" id="primary_phone" maxlength="9"></td>
+							<td>Social Security<input type="text" id="ssn" maxlength="9"></td>
 						</tr>
 						<tr>
-							<td>D.O.B<input type="text" id="primary_phone" placeholder="mm/dd/YYYY"></td>
+							<td>D.O.B<input type="date" id="dob"></td>
 						</tr>						
 					</table>
 					<div class="mobile_alerts">
@@ -95,13 +95,13 @@ Template Name: Enrollment
 							<tr>
 								<td>
 									Email Address(this will be your username)<br>
-									<input type="text" name="email_address" />
+									<input type="email" name="email_address" />
 								</td>
 							</tr>
 							<tr>
 								<td>
 									Verify Email Address<br>
-									<input type="text" name="email_verified" />
+									<input type="email" name="email_verified" />
 								</td>
 							</tr>
 							<tr>
