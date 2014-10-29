@@ -109,7 +109,7 @@ $html .= '<div style="font-size: 23px; font-family: adellelight; margin: 20px 0;
 $html .= '<div style="color: #00953a; font-size: 17px; font-family: adellebold;">or</div>';
 $html .= '<div style="font-size: 23px; font-family: adellelight; margin: 20px 0 0 0;">$'.$monthly.' monthly fee*<input type="hidden" id="monthly" value="'.$monthly.'"></div>';
 $html .= '<div style="font-size: 12px; font-family: adellelight; margin: 10px 0;">*This includes an additional $'.$fee.' a month fee for the monthly model.</div>';
-$html .= '<div class="next" id="go_to_payment"></div>';
+
 echo $html;
 
 ?>

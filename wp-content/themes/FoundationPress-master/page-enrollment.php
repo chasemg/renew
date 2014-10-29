@@ -128,7 +128,69 @@ Template Name: Enrollment
 					<div style="width: 100%; text-align: right; display: inline-block;"><div class="next" id="validate_address" style="margin-top: 35px;"></div></div>
 				</div>
 				<div class="enroll" id="form_two"></div>
-				<div class="enroll" id="form_three"></div>	
+				<div class="enroll" id="form_three">
+					<h1 style="padding: 40px 0 0px 0; font-size: 35px; font-weight: 500;">Submit Your Payment</h1>
+					<div style="width: 100%; display: inline-block;">
+						<div class="payment_options"><input type="radio" id="annual_option" name="fee_option"><label for="annual_option">I wish to pay the annual fee.</label></div>
+						<div class="payment_options"><input type="radio" id="monthly_option" name="fee_option"><label for="monthly_option">I wish to pay the monthly fee.</label></div>
+					</div>
+					<div class="payment_screen_left">
+						<table>
+							<th colspan="4">Card Information</th>
+							<tr>
+								<td colspan="4">Name on Card<input type="text" size="50"></td>
+							</tr>
+							<tr>
+								<td colspan="4">Card Number<input type="text" size="50"></td>
+							</tr>
+							<tr>
+								<td colspan="4">
+									<table style="margin: 0px;">
+										<tr>
+											<td>CCV<input type="text" maxlength="3" style="width: 90px;"></td>
+											<td>Exp<input type="text" maxlength="5" style="width: 90px;"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="4"><img src="<?php echo get_template_directory_uri(); ?>/parts/images/cc_images.png"></td>
+							</tr>							
+						</table>
+					</div>
+					<div class="payment_screen_right">
+						<table>
+							<th colspan="4">Billing Information</th>
+							<tr>
+								<td>First Name<input type="text"></td>
+								<td>Last Name<input type="text"></td>
+							</tr>
+							<tr>
+								<td>Street Address<input type="text" size="50"></td>
+								<td>Address 2<input type="text" size="50"></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<table style="margin: 0px;">
+										<tr>
+											<td>City<input type="text"></td>
+											<td>State<input type="text" maxlength="2" style="width: 90px;"></td>
+											<td>Zip<input type="text" maxlength="5" style="width: 90px;"></td>
+										</tr>
+										<tr>
+											<td>Phone<input type="text"></td>
+											<td colspan="2">Email<input type="text"></td>
+										</tr>										
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2"><input type="checkbox" id="same_info"><label for="same_info">Same as residential address.</label></td>
+							</tr>
+						</table>
+					</div>
+					<div style="width: 100%; display: inline-block; text-align: left;"><button class="button" id="enroll_patient">submit</button></div>
+				</div>	
 				</div>				
 				<footer>
 					<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'FoundationPress'), 'after' => '</p></nav>' )); ?>

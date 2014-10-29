@@ -221,7 +221,6 @@ $(window).scroll(function(){ // bind window scroll event
 				$("#form_two").delay(1000).slideDown(function() {
 					var hiddenContent = $("#type").val();
 					if(hiddenContent == 'street_address')	{
-						console.log(hiddenContent);
 						$('#map_canvas').animate({
 							height: "550px"
 						},200);					
@@ -246,7 +245,7 @@ $(window).scroll(function(){ // bind window scroll event
 						$('.header_image').animate({
 							height: "550px"
 						}, 200);							
-						$('#form_two').append("<div>We could not validate your address. Please go back and verify the address you entered.</div><button id='validate_back'>Go Back</button>");
+						$('#form_two').append("<div>We could not validate your address. Please go back and verify the address you entered.</div><button id='validate_back' style='margin-top: 30px;'>Go Back</button>");
 						$("#validate_back").click(function()	{
 							$('#map_canvas').animate({
 								height: "0px"
@@ -262,6 +261,12 @@ $(window).scroll(function(){ // bind window scroll event
 							});							
 						});
 					}
+				});
+				$("#go_to_payment").click(function()	{
+					$("#form_two").slideUp();
+					$("#form_three").delay(1000).slideDown(function() {
+						
+					});
 				});
 			},
 			error:	function(error)	{

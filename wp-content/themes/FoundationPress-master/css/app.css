@@ -3308,9 +3308,10 @@ input.time
 	padding-bottom: 40px;
 }
 #form_three	{
-	height: 0px;
-	display: inline-block;
+	display: none;
 	overflow: hidden;
+	min-height: 500px;
+	padding-bottom: 40px;	
 }
 .enroll h1, .enroll h2, .enroll h3	{
 	color: #00af41;
@@ -3497,6 +3498,41 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 }
 .next:hover	{
 	cursor: pointer;
+}
+#go_to_payment	{
+	display: none;
+}
+.payment_options	{
+	display: inline-block;
+	float: left;
+	margin-right: 50px;
+}
+.payment_screen_left	{
+	width: 50%;
+	float: left;
+	display: inline-block;
+}
+.payment_screen_right	{
+	display: inline-block;
+	float: right;
+	width: 50%;
+}
+.payment_screen_left table, .payment_screen_right table	{
+	border: none;
+	margin-top: 30px;
+}
+.payment_screen_left table th, .payment_screen_right table th	{
+	font-size: 26px;
+	font-weight: 500;
+	font-family: 'adelleregular';
+	color: #414141;
+	text-align: left;
+	padding-bottom: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.payment_screen_left table td, .payment_screen_right table td	{
+	height: auto;
 }
 /**** EXPERIENCE PAGE ****/
 .page-id-147 .fullwidth-wrapper

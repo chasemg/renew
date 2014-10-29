@@ -224,6 +224,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 						success: function(success)	{
 							$("#calculated").html(success);
 							scrollToAnchor('calculated');
+							$("#go_to_payment").show();
 						},
 						error: function(error)	{
 							console.log(error);
@@ -309,6 +310,7 @@ validate();
 	$html .= '<div style="text-align: left;"><button class="button" id="calculate_price">calculate</button></div>';
 	$html .= '</div>';
 	$html .= '<div class="calculated_price" id="calculated"></div>';
+	$html .= '<div class="next" id="go_to_payment"></div>';
 } else {
 	$html .= 0;
 }
