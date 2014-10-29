@@ -3680,6 +3680,7 @@ h1.page-title
 {
 	width:100%;
 	height:100%;
+	background-size: cover !important;
 }
 
 .page-id-24 .page-background
