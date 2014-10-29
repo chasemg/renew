@@ -2,7 +2,7 @@
 
 if ($_SERVER['HTTP_HOST'] == 'renew.local')
 {
-define('DB_NAME', 'renew');
+define('DB_NAME', 'renew_wp');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');	
 }

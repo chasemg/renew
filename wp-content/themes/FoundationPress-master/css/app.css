@@ -3657,6 +3657,42 @@ h1.page-title
 	padding: 50px 40px 0px 125px
 }
 
+.top-bar-container, 
+.tab-bar
+{
+	padding:10px 0px;
+	top:20px;
+}
+
+
+.page-background
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:748px;
+	overflow:hidden;
+	text-align:center;
+}
+
+.image-background
+{
+	width:100%;
+	height:100%;
+}
+
+.page-id-24 .page-background
+{
+	height:720px;
+}
+
+.page-background img
+{
+	max-width:none;
+}
+
+
 @media (max-width:320px)
 {
 	.top-bar-container, 
@@ -3804,6 +3840,18 @@ h1.page-title
 
 @media (min-width: 601px) and (max-width: 800px)	
 {
+	.nav_logo
+	{
+		margin:10px;
+		text-align:center;
+	}
+	
+	.nav_logo img
+	{
+		margin:2px auto;
+		width:60%
+	}
+	
 	.menu-footer-left	{
 		margin-left: 0px;
 	}
@@ -3816,17 +3864,23 @@ h1.page-title
 	.tab-bar
 	{
 		padding:10px 0px;
+		max-height:50px;
 	}
 	
 	.top-bar-section ul li
 	{
-		padding:0px 12px;
+		padding:0px 7px;
+	}
+	
+	.top-bar-section ul li > a
+	{
+		font-size:14px;
 	}
 	
 	.row_container,
 	.top-bar-section
 	{
-		width:768px;
+		width:600px;
 	}
 	
 	.header_text
@@ -3837,14 +3891,24 @@ h1.page-title
 	
 	.entry-content
 	{
-		margin-top:130px;
+		margin-top:90px;
 	}
 	
-	.header_text .renew_small_black p
+	.hook
 	{
-		font-size:13px;
+		width:37px;
+		height:340px;
+		background:url(../assets/img/side_banner.png) left top no-repeat;
 	}
 	
+	.hook span
+	{
+		font-size:12px;
+		left:-265px;
+		bottom:175px;
+	}
+	
+		
 	.doctor_patient
 	{
 		margin:180px 0px 0px;
@@ -3861,7 +3925,49 @@ h1.page-title
 	
 	.about-benefits
 	{
-		padding:50px 40px 0 120px;
+		padding:3px 40px 0 100px;
+	}
+	
+	.about-benefits h1,
+	.additional-info h1
+	{
+		font-size:18px;
+		padding:0px;
+	}
+	
+	.additional-info
+	{
+		margin-top:0px;
+	}
+	
+	.accordion .accordion-navigation>a, .accordion dd>a
+	{
+		font-size:11px;
+		padding:10px;
+	}
+	
+	.accordion .accordion-navigation > a:after, 
+	.accordion dd > a,
+	.accordion .accordion-navigation.active>a:after, 
+	.accordion dd.active>a:after
+	{
+		line-height:9px;
+		font-size:32px;
+	}
+	
+	.accordion .accordion-navigation > .content.active, .accordion dd > .content.active,
+	.accordion p
+	{
+		font-size:11px;
+		margin:0px 0px 10px;
+		line-height:15px;
+	}
+	
+	.about-benefits p
+	{
+		margin:0px 0px 5px;
+		font-size:11px;
+		line-height:15px;
 	}
 	
 	.fullwidth-wrapper
@@ -3900,6 +4006,88 @@ h1.page-title
 	.easy-faq-body p
 	{
 		font-size:11px;
+	}
+	
+	.page-id-24 .page-background
+	{
+		height:348px;
+	}
+	
+	.page-id-24 .doctor_patient
+	{
+		margin-top:33px;
+		width:37%;
+	}
+	
+	.page-id-24 .header_text
+	{
+		width:62%;
+	}
+	
+	.header_text .renew_large_green,
+	.hero_banner_text h1, 
+	.entry-content h1
+	{
+		font-size:18px;
+		
+	}
+	
+	.header_text .renew_small_black p,
+	.hero_banner_text p,
+	.page-id-270 .empower p,
+	.page-id-270 p
+	{
+		margin:0px 0px 5px;
+		font-size:11px;
+		line-height:15px;
+	}
+	
+	.page-id-270 .page-background
+	{
+		height:384px;
+	}
+	
+	.page-id-270 .image-background
+	{
+		background-size:cover !important;
+	}
+	
+	.page-id-270 .hero_banner_text
+	{
+		margin:0px;
+		padding:10px 0px 0px;
+	}
+	
+	.page-id-270 .hero_banner_text p
+	{
+		line-height:200%;
+	}
+	
+	.page-id-270 .hero_banner_text h1
+	{
+		margin:0px 0px 10px;
+	}
+	
+	.page-id-270 .hero_banner_text button
+	{
+		margin:20px 0px;
+	}
+	
+	.green_slider_button, input[type="submit"]
+	{
+		font-size:12px !important;
+	}
+	
+	.post-270 .doctor-patient
+	{
+		margin-top:32px;
+		padding:5px 0px 0px 75px;
+	}
+	
+	
+	.page-id-270 .empower
+	{
+		min-height:0px;
 	}
 }
 
@@ -4146,37 +4334,3 @@ h1.page-title
 	
 }
 
-.top-bar-container, 
-.tab-bar
-{
-	padding:10px 0px;
-	top:20px;
-}
-
-
-.page-background
-{
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:100%;
-	height:748px;
-	overflow:hidden;
-	text-align:center;
-}
-
-.image-background
-{
-	width:100%;
-	height:100%;
-}
-
-.page-id-24 .page-background
-{
-	height:720px;
-}
-
-.page-background img
-{
-	max-width:none;
-}
