@@ -1,21 +1,21 @@
 <?php get_header(); ?>
 <?php error_reporting(E_ALL); ?>
 
-<?php if (has_post_thumbnail()) { 
+<?php if (has_post_thumbnail()) { ?>
 	
-	$bg = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full');	
+<div class="page-background">
+	<?php
+		
+		$bg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
 	
-?>
-
-<div class="fullwidth-wrapper" style="background:url(<?php echo $bg[0]; ?>) top center no-repeat">
-
+	?>
+	<div class="image-background" style="background:url(<?php echo $bg[0]; ?>) top center no-repeat">
+	</div>
+</div>
 	
-
-<?php } else  { ?>
-
-<div class="fullwidth-wrapper">
-
 <?php } ?>
+
+
 
 <div class="row_container">
 	<div class="row">
@@ -46,5 +46,5 @@
 	</div>
 </div>
 
-</div><!-- fullwidth wrapper -->
+
 <?php get_footer(); ?>
