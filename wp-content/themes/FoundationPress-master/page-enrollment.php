@@ -125,7 +125,11 @@ Template Name: Enrollment
 						</form>
 					</div>
 					
+<<<<<<< HEAD
 					<div style="width: 100%; text-align: right; display: inline-block;"><button id="validate_address">Next</button></div>
+=======
+					<div style="width: 100%; text-align: right; display: inline-block;"><div class="next" id="validate_address" style="margin-top: 35px;"></div></div>
+>>>>>>> 52fd76ab2d1cd29dbe7e97d624a6d32322cf12c3
 				</div>
 				<div class="enroll" id="form_two"></div>
 				<div class="enroll" id="form_three"></div>	

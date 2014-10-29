@@ -2237,7 +2237,7 @@ footer h1	{
 }
 .empower	{
 	padding: 18px;
-	background: url(../assets/img/side_banner.png) left center no-repeat;
+	/*background: url(../assets/img/side_banner.png) left center no-repeat;*/
 	min-height: 579px;
 	padding: 50px 40px 0px 179px;
 	margin-top: 103px;
@@ -2246,7 +2246,7 @@ footer h1	{
 	margin-top: 20px;
 }
 .empower:before	{
-	content: 'Empowering Better Health';
+	/*content: 'Empowering Better Health';
 	position: absolute;
 	
 	left: -135px;
@@ -2256,20 +2256,20 @@ footer h1	{
 	margin-top: 217px;
 	font-family: 'adellebold';
 	text-transform: uppercase;
-	/* Safari */
+	/* Safari 
 	-webkit-transform: rotate(-90deg);
 
-	/* Firefox */
+	/* Firefox 
 	-moz-transform: rotate(-90deg);
 
-	/* IE */
+	/* IE 
 	-ms-transform: rotate(-90deg);
 
-	/* Opera */
+	/* Opera 
 	-o-transform: rotate(-90deg);
 
-	/* Internet Explorer */
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);	
+	/* Internet Explorer 
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);*/	
 }
 .doctor-patient
 {
@@ -2286,7 +2286,7 @@ footer h1	{
 }
 .control	{
 	padding: 18px;
-	background: url(../assets/img/side_banner.png) left center no-repeat;
+	/*background: url(../assets/img/side_banner.png) left center no-repeat;*/
 	min-height: 579px;
 	padding: 50px 40px 0px 179px;
 	margin-top: 60px;
@@ -2295,7 +2295,7 @@ footer h1	{
 	margin-top: 20px;
 }
 .control:before	{
-	content: 'Take Control Of Your Health';
+	/*content: 'Take Control Of Your Health';
 	position: absolute;
 	
 	left: -150px;
@@ -2305,20 +2305,20 @@ footer h1	{
 	margin-top: 217px;
 	font-family: 'adellebold';
 	text-transform: uppercase;
-	/* Safari */
+	/* Safari 
 	-webkit-transform: rotate(-90deg);
 
-	/* Firefox */
+	/* Firefox 
 	-moz-transform: rotate(-90deg);
 
-	/* IE */
+	/* IE 
 	-ms-transform: rotate(-90deg);
 
-	/* Opera */
+	/* Opera 
 	-o-transform: rotate(-90deg);
 
-	/* Internet Explorer */
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);	
+	/* Internet Explorer 
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3)*/;	
 }
 
 .additional-info	{
@@ -3300,6 +3300,7 @@ input.time
 .enroll table tr, .enroll table tr td	{
 	padding: 3px;
 	height: 25px;
+<<<<<<< HEAD
 }
 #form_two	{
 	display: none;
@@ -3390,6 +3391,98 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 	background-color: #ff0000;
 	color: #fff;
 }
+=======
+}
+#form_two	{
+	display: none;
+	min-height: 500px;
+	overflow: hidden;
+	padding-bottom: 40px;
+}
+#form_three	{
+	height: 0px;
+	display: inline-block;
+	overflow: hidden;
+}
+.enroll h1, .enroll h2, .enroll h3	{
+	color: #00af41;
+	text-align: left;
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+.mobile_alerts	{
+	width: 100%; 
+	text-align: left;
+	display: inline-block;
+}
+.mobile_alerts:hover	{
+	cursor: pointer;
+}
+.mobile_alerts input[type="checkbox"]	{
+	 position: absolute; 
+	 overflow: hidden; 
+	 clip: rect(0 0 0 0); 
+	 height:1px; 
+	 width:1px; 
+	 margin:-1px; 
+	 padding:0;
+	 border:0;
+}
+
+ .mobile_alerts input[type=checkbox] + .mobile_alerts label {
+ padding-left:20px;
+ height:15px; 
+ display:inline-block;
+ line-height:15px;
+ background-repeat:no-repeat;
+ background-position: 0 0;
+ font-size:15px;
+ vertical-align:middle;
+ cursor:pointer;
+ }
+
+.mobile_alerts input[type=checkbox]:checked + .mobile_alerts label{
+ background-position: 0 -15px;
+ background-repeat: no-repeat;
+ }
+
+ .mobile_alerts label	{ 
+	background-image:url(images/lite-green-check.png); 
+}
+input[type=checkbox].css-checkbox {
+	position: absolute; 
+	overflow: hidden; 
+	clip: rect(0 0 0 0); 
+	height:1px; 
+	width:1px; 
+	margin:-1px; 
+	padding:0;
+	border:0;
+}
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:20px;
+	height:15px; 
+	display:inline-block;
+	line-height:15px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -15px;
+}
+						
+.css-label{ 
+	background-image:url(images/lite-green-check.png);
+}
+.bad	{
+	background-color: #ff0000;
+	color: #fff;
+}
+>>>>>>> 52fd76ab2d1cd29dbe7e97d624a6d32322cf12c3
 .good	{
 	background-color: Green;
 	color: #fff;
@@ -3530,6 +3623,38 @@ h1.page-title
 {
 	color:#333;
 	font-size:18px;
+}
+
+.post-224 .hero_banner_text
+{
+	margin:224px 0px 0px;
+}
+
+.post-224 .control
+{
+	position:relative;
+	margin-top:91px;
+	padding:50px 40px 0px 125px;
+}
+
+.post-207 .empower
+{
+	position:relative;
+	margin-top:157px;
+	padding: 50px 40px 0px 125px
+}
+
+.post-207 .hero_banner_text
+{
+	margin:224px 0px 0px;
+}
+
+
+.post-270 .doctor-patient
+{
+	position:relative;
+	margin-top:95px;
+	padding: 50px 40px 0px 125px
 }
 
 @media (max-width:320px)
