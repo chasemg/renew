@@ -1322,6 +1322,7 @@ meta.foundation-mq-topbar {font-family:"/only screen and (min-width:40.063em)/";
 .top-bar-section .dropdown li .button ,.top-bar-section .dropdown li button {top:auto;}
 .top-bar-section .dropdown label {padding:8px 15px 2px;margin-bottom:0;text-transform:uppercase;color:#777777;font-weight:bold;font-size:0.625rem;}
 .js-generated {display:block;}
+
 @media only screen and (min-width:40.063em){
 	.top-bar {background: transparent;overflow:visible;}
 	.top-bar:before ,.top-bar:after {content:" ";display:table;}
@@ -1433,6 +1434,7 @@ meta.foundation-mq-topbar {font-family:"/only screen and (min-width:40.063em)/";
 	margin-left: -80px;
 }
 .tab-bar-section {padding:0 0.625rem;position:absolute;text-align:center;height:2.8125rem;top:0;}
+
 @media only screen and (min-width:40.063em){
 	.tab-bar-section {text-align:left;}
 }
@@ -1891,7 +1893,6 @@ input[type="submit"]:hover	{
 .hero_banner_text h1	{
 	
 	line-height: 40px;
-	font-weight: 500;
 	font-family: 'adellethin' !important;
 	color: #ffffff;
 	text-decoration: none;
@@ -2219,8 +2220,8 @@ footer h1	{
 	padding: 18px;
 	/*background: url(../assets/img/side_banner.png) left center no-repeat;*/
 	min-height: 579px;
-	padding: 50px 40px 0px 179px;
-	margin-top: 103px;
+	padding: 50px 100px 0px 110px;
+	margin-top: 69px;
 	position:relative;
 }
 .empower p	{
@@ -3612,10 +3613,59 @@ h1.page-title
 	width:50%;
 }
 
+.page-id-207 .hero_banner_text
+{
+	margin:264px 0px 0px 0px;
+}
+
+.page-id-207 .hero_banner_text h1
+{
+	font-weight: bold;
+}
+
+.page-background
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:748px;
+	overflow:hidden;
+	text-align:center;
+}
+
+.image-background
+{
+	width:100%;
+	height:100%;
+	transition: al .5s;
+	-moz-transition: all .5s;
+	-webkit-transition: all .5s;
+}
+
+.page-id-24 .page-background
+{
+	height:720px;
+}
+
+.page-background img
+{
+	max-width:none;
+}
+
+.page-id-207 .image-background
+{
+	height:714px;
+	background-size: cover !important;
+}
 
 @media (min-width: 601px) and (max-width: 800px)	
 {
 	
+	.page-background
+	{
+		height:348px;
+	}
 	
 	.menu-footer-left	{
 		margin-left: 0px;
@@ -3714,10 +3764,16 @@ h1.page-title
 	}
 	
 	
+	.page-id-270 .entry-content
+	{
+		margin-top:55px;
+	}
+	
+	
 	.page-id-270 .hero_banner_text
 	{
-		margin:130px auto 0px;
-		width:65%;
+		margin:90px 0px 19px 0px;
+		width:82%;
 	}
 	
 	.page-id-270 .hero_banner_text p
@@ -3738,7 +3794,7 @@ h1.page-title
 	
 	.page-id-270 .empower
 	{
-		padding: 1px 40px 0px 179px;
+		
 	}
 	
 	.doctor-patient 
@@ -3751,15 +3807,18 @@ h1.page-title
 		background-size:800px 400px !important;
 	}
 	
+		
+	
+	
 	.page-id-224 .hero_banner_text
 	{
 		margin:0px;
-		width:50%;
+		width:83%;
 	}
 	
 	.page-id-224 .entry-content
 	{
-		margin-top:100px;
+		margin-top:85px;
 	}
 	
 	
@@ -3782,7 +3841,80 @@ h1.page-title
 	
 	.page-id-224 .control
 	{
-		padding:0px 40px 0px 125px;		
+		padding:0px 40px 0px 85px;		
+	}
+	
+	.page-id-224 .control .hook
+	{
+		top:-47px;
+	}
+	
+	.page-id-207 .image-background
+	{
+		height:384px;	
+		background-size:100% 100% !important;
+	}
+	
+	.empower
+	{
+		margin-top:0px;
+		padding:35px 100px 0px 110px;
+		min-height:450px;
+	}
+	
+	.empower h1
+	{
+		font-size:20px;
+	}
+	
+	.empower p
+	{
+		font-size:12px;
+	}
+	
+	.hook,
+	.empower .hook
+	{
+		top:2px;
+		font-size:12px;
+		width:50px;
+	}
+	
+	.hook span
+	{
+		font-size:14px;
+		letter-spacing:2px;
+		left:-258px;
+	}
+	
+	.row
+	{
+		width:624px;
+	}
+	
+	.page-id-207 .entry-content
+	{
+		margin-top:0px;
+	}
+	
+	.page-id-207 .hero_banner_text
+	{
+		margin:130px 0px 0px 0px;
+	}
+	
+	.page-id-207 .hero_banner_text h1
+	{
+		font-size:20px;
+	}
+	
+	.page-id-207 .hero_banner_text p
+	{
+		font-size:9px;
+	}
+	
+	.green_slider_button, input[type="submit"]
+	{
+		font-size:12px !important;
 	}
 	
 	.control
@@ -3822,7 +3954,20 @@ h1.page-title
 	{
 		font-size:11px;
 	}
+
+	.entry-content h1
+	{
+		font-size:20px;
+	}
+	
+	.entry-content p
+	{
+		font-size:12px;
+	}
+
 }
+
+
 
 /******************** Triangles Responsive ************************************/ 
 @media (min-width: 900px) and (max-width: 1028px)	{
@@ -3852,6 +3997,16 @@ h1.page-title
 		right: 0px !important;
 	}	
 }
+
+@media (min-width:901px) and (max-width: 1024px)
+{
+	.compare
+	{
+		width:90%;
+		margin:0 auto;
+	}
+}
+
 @media (min-width: 800px) and (max-width: 900px)	{
 	.left_img img	{
 		width: auto !important;
@@ -4069,31 +4224,8 @@ h1.page-title
 
 
 
-.page-background
-{
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:100%;
-	height:748px;
-	overflow:hidden;
-	text-align:center;
-}
 
-.image-background
-{
-	width:100%;
-	height:100%;
-}
 
-.page-id-24 .page-background
-{
-	height:720px;
-}
 
-.page-background img
-{
-	max-width:none;
-}
 
 

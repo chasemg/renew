@@ -9,7 +9,7 @@
 		$bg = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
 	
 	?>
-	<div class="image-background" style="background:url(<?php echo $bg[0]; ?>) top center no-repeat">
+	<div class="image-background" style="background:url(<?php echo $bg[0]; ?>) center no-repeat">
 	</div>
 </div>
 	
