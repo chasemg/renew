@@ -158,8 +158,7 @@ $(window).scroll(function(){ // bind window scroll event
 		var mobil_phone = $('#mobil_phone').val();
 		var ssn = $('#ssn').val();
 		var dob = $('#dob').val();
-<<<<<<< HEAD
-=======
+
 		/************** Validate first page **********************/
 		
 		if(street == '')	{
@@ -213,18 +212,12 @@ $(window).scroll(function(){ // bind window scroll event
 			return false;
 		}			
 		/*********************************************************/
->>>>>>> 52fd76ab2d1cd29dbe7e97d624a6d32322cf12c3
 		$.ajax ({
 			type: 'POST',
 			data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone,
 			url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
 			success: function(success)	{
 				$('#form_two').html(success);
-<<<<<<< HEAD
-				//scrollToAnchor('map_canvas')
-
-=======
->>>>>>> 52fd76ab2d1cd29dbe7e97d624a6d32322cf12c3
 				$("#form_one").slideUp();
 				$("#form_two").delay(1000).slideDown(function() {
 					var hiddenContent = $("#type").val();
@@ -240,23 +233,12 @@ $(window).scroll(function(){ // bind window scroll event
 							marginTop: "0px"
 						}, 200);				
 						$("#map_canvas").show();
-<<<<<<< HEAD
-						
-=======
->>>>>>> 52fd76ab2d1cd29dbe7e97d624a6d32322cf12c3
 						$('.header_map').animate({
 							height: "550px",
 							maxHeight: "550px"
 						},200);	
-<<<<<<< HEAD
-						//$(".doctor label").click(function()	{
-						//	$('.doctor input[type="radio"]').siblings().attr(':');
-						//});						
+
 					} else {
-						//alert('ERROR');
-=======
-					} else {
->>>>>>> 52fd76ab2d1cd29dbe7e97d624a6d32322cf12c3
 						$('#map_canvas').animate({
 							height: "0px"
 						},200);							
@@ -282,6 +264,30 @@ $(window).scroll(function(){ // bind window scroll event
 							});							
 						});
 					}
+				$("#go_to_payment").click(function()	{
+					$("#form_two").slideUp();
+					$("#form_three").delay(1000).slideDown();
+				});
+				$("#enroll_patient").click(function()	{
+					$("#form_one input").each(function()	{
+						var input_name = $(this).attr('id');
+						console.log(input_name);
+
+					});
+					var ssn = $("#ssn").val();
+					$.ajax({
+						type: 'POST',
+						data: 'ssn='+ssn,
+						url: 'wp-content/themes/FoundationPress-master/parts/enroll_process.php',
+						success: function(success)	{
+							$("#enroll_result").html(success);
+						},
+						error: function(error)	{
+							console.log(error);
+						}
+					});					
+					console.log("Enrolled!");
+				});					
 				});
 			},
 			error:	function(error)	{
@@ -339,10 +345,6 @@ function checkPasswordStrength( $pass1,
     if ( 4 === strength && '' !== pass2.trim() ) {
         $submitButton.removeAttr( 'disabled' );
     }
-<<<<<<< HEAD
- 
-=======
->>>>>>> 52fd76ab2d1cd29dbe7e97d624a6d32322cf12c3
     return strength;
 }
  
