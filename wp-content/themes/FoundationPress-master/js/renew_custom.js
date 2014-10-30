@@ -293,12 +293,44 @@ $(window).scroll(function(){ // bind window scroll event
 								$("#form_three").delay(1000).slideDown();
 							});
 							$("#enroll_patient").click(function()	{
+								var one = 0;
+								var dataString = '';
 								$("#form_one input").each(function()	{
 									var input_name = $(this).attr('id');
 									var input_value = $(this).val();
-									console.log(input_name+": "+input_value);
-
+									if(one == 0)	{
+										dataString += input_name + "=" + input_value;
+									} else {
+										dataString += "&" + input_name + "=" + input_value;
+									}
+									one++;
 								});
+								
+								$(".doctor input[type='radio']").each(function()	{
+									if($(this).is(':checked'))	{
+										var input_name = $(this).attr('id');
+										var input_value = $(this).val();
+										dataString += "&" + input_name + "=" + input_value;
+									}
+								});								
+								$(".calculate_costs input[type='hidden']").each(function()	{
+									var input_name = $(this).attr('id');
+									var input_value = $(this).val();
+									dataString += "&" + input_name + "=" + input_value;
+								});
+								$("#form_three input[type='text']").each(function()	{
+									var input_name = $(this).attr('id');
+									var input_value = $(this).val();
+									dataString += "&" + input_name + "=" + input_value;
+								});
+								$("#form_three input[type='radio']").each(function()	{
+									if($(this).is(':checked'))	{
+										var input_name = $(this).attr('id');
+										var input_value = $(this).val();
+										dataString += "&" + input_name + "=" + input_value;
+									}
+								});								
+								console.log(dataString);
 								var ssn = $("#ssn").val();
 								$.ajax({
 									type: 'POST',
@@ -311,7 +343,7 @@ $(window).scroll(function(){ // bind window scroll event
 										console.log(error);
 									}
 								});					
-								console.log("Enrolled!");
+								//console.log("Enrolled!");
 							});		
 							
 							});

@@ -135,7 +135,6 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 							var doctorID = $(this).attr('id');
 							var doctorName = $("#doctor_name_"+doctorID).val();
 							$("#doctor_selected").html("Doctor "+ doctorName);
-
 							$(".chosen").show();
 							$(".calculate_costs").show();
 							scrollToAnchor('calculate_costs');

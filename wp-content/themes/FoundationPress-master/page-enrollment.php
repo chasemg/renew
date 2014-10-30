@@ -133,8 +133,8 @@ Template Name: Enrollment
 				<div class="enroll" id="form_three">
 					<h1 style="padding: 40px 0 0px 0; font-size: 35px; font-weight: 500;">Submit Your Payment</h1>
 					<div style="width: 100%; display: inline-block;">
-						<div class="payment_options"><input type="radio" id="annual_option" name="fee_option"><label for="annual_option">I wish to pay the annual fee.</label></div>
-						<div class="payment_options"><input type="radio" id="monthly_option" name="fee_option"><label for="monthly_option">I wish to pay the monthly fee.</label></div>
+						<div class="payment_options"><input type="radio" id="annual_option" name="fee_option" value="0"><label for="annual_option">I wish to pay the annual fee.</label></div>
+						<div class="payment_options"><input type="radio" id="monthly_option" name="fee_option" value="1"><label for="monthly_option">I wish to pay the monthly fee.</label></div>
 					</div>
 					<div class="payment_screen_left">
 						<table>
