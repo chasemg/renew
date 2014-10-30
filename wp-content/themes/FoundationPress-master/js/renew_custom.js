@@ -146,6 +146,8 @@ $(window).scroll(function(){ // bind window scroll event
 		$('#mobil_phone').removeClass('error_hightlight');
 		$('#ssn').removeClass('error_hightlight');
 		$('#dob').removeClass('error_hightlight');
+		$("#email_address").removeClass('error_hightlight');
+		$("#email_verified").removeClass('error_hightlight');		
 		var street_one = $('#street').val();
 		var street_two = $('#street_two').val();
 		var street = street_one + ", " + street_two;
@@ -211,89 +213,128 @@ $(window).scroll(function(){ // bind window scroll event
 			scrollToAnchor('dob');
 			return false;
 		}			
-		/*********************************************************/
-		$.ajax ({
+		/******************** Email address validation for account *************************************/
+		var email = $("#email_address").val();
+		var emailVerified = $("#email_verified").val();
+		var match = false;
+		if(email == emailVerified)	{
+			console.log('Emails match!');
+			match = true;
+		} else {
+			$("#email_address").addClass('error_hightlight');
+			$("#email_verified").addClass('error_hightlight');
+			scrollToAnchor('email_address');
+			console.log('emails do not match');
+		}
+		if(match == true)	{
+		$.ajax({
 			type: 'POST',
-			data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone,
-			url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
+			data: 'email='+email,
+			url: 'wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
 			success: function(success)	{
-				$('#form_two').html(success);
-				$("#form_one").slideUp();
-				$("#form_two").delay(1000).slideDown(function() {
-					var hiddenContent = $("#type").val();
-					if(hiddenContent == 'street_address')	{
-						console.log(hiddenContent);
-						$('#map_canvas').animate({
-							height: "550px"
-						},200);					
-						$('.header_image').animate({
-							height: "0px"
-						}, 200);
-						$('.row_container').animate({
-							marginTop: "0px"
-						}, 200);				
-						$("#map_canvas").show();
-						$('.header_map').animate({
-							height: "550px",
-							maxHeight: "550px"
-						},200);	
-
-					} else {
-						$('#map_canvas').animate({
-							height: "0px"
-						},200);							
-						$('.header_map').animate({
-							height: "0px"
-						},200);
-						$('.header_image').animate({
-							height: "550px"
-						}, 200);							
-						$('#form_two').append("<div>We could not validate your address. Please go back and verify the address you entered.</div><button id='validate_back'>Go Back</button>");
-						$("#validate_back").click(function()	{
-							$('#map_canvas').animate({
-								height: "0px"
-							},200);							
-							$('.header_map').animate({
-								height: "0px"
-							},200);
-							$('.header_image').animate({
-								height: "550px"
-							}, 200);	
-							$("#form_two").delay(200).slideUp(function() {
-								$("#form_one").delay(200).slideDown();
-							});							
-						});
-					}
-				$("#go_to_payment").click(function()	{
-					$("#form_two").slideUp();
-					$("#form_three").delay(1000).slideDown();
-				});
-				$("#enroll_patient").click(function()	{
-					$("#form_one input").each(function()	{
-						var input_name = $(this).attr('id');
-						console.log(input_name);
-
-					});
-					var ssn = $("#ssn").val();
-					$.ajax({
+				console.log(success);
+				if(success == 1)	{
+					console.log("valid email address");
+					
+					$.ajax ({
 						type: 'POST',
-						data: 'ssn='+ssn,
-						url: 'wp-content/themes/FoundationPress-master/parts/enroll_process.php',
+						data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone,
+						url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
 						success: function(success)	{
-							$("#enroll_result").html(success);
+							$('#form_two').html(success);
+							$("#form_one").slideUp();
+							$("#form_two").delay(1000).slideDown(function() {
+								var hiddenContent = $("#type").val();
+								if(hiddenContent == 'street_address')	{
+									console.log(hiddenContent);
+									$('#map_canvas').animate({
+										height: "550px"
+									},200);					
+									$('.header_image').animate({
+										height: "0px"
+									}, 200);
+									$('.row_container').animate({
+										marginTop: "0px"
+									}, 200);				
+									$("#map_canvas").show();
+									$('.header_map').animate({
+										height: "550px",
+										maxHeight: "550px"
+									},200);	
+
+								} else {
+									$('#map_canvas').animate({
+										height: "0px"
+									},200);							
+									$('.header_map').animate({
+										height: "0px"
+									},200);
+									$('.header_image').animate({
+										height: "550px"
+									}, 200);							
+									$('#form_two').append("<div>We could not validate your address. Please go back and verify the address you entered.</div><button id='validate_back'>Go Back</button>");
+									$("#validate_back").click(function()	{
+										$('#map_canvas').animate({
+											height: "0px"
+										},200);							
+										$('.header_map').animate({
+											height: "0px"
+										},200);
+										$('.header_image').animate({
+											height: "550px"
+										}, 200);	
+										$("#form_two").delay(200).slideUp(function() {
+											$("#form_one").delay(200).slideDown();
+										});							
+									});
+								}
+							$("#go_to_payment").click(function()	{
+								$("#form_two").slideUp();
+								$("#form_three").delay(1000).slideDown();
+							});
+							$("#enroll_patient").click(function()	{
+								$("#form_one input").each(function()	{
+									var input_name = $(this).attr('id');
+									var input_value = $(this).val();
+									console.log(input_name+": "+input_value);
+
+								});
+								var ssn = $("#ssn").val();
+								$.ajax({
+									type: 'POST',
+									data: 'ssn='+ssn,
+									url: 'wp-content/themes/FoundationPress-master/parts/enroll_process.php',
+									success: function(success)	{
+										$("#enroll_result").html(success);
+									},
+									error: function(error)	{
+										console.log(error);
+									}
+								});					
+								console.log("Enrolled!");
+							});		
+							
+							});
+							
 						},
-						error: function(error)	{
+						error:	function(error)	{
 							console.log(error);
 						}
-					});					
-					console.log("Enrolled!");
-				});					
-				});
+					});
+				} else {
+					scrollToAnchor('email_address');
+					$("#email_error").html('Email address already registered.');
+					$("#email_error").show();
+					$("#email_error").delay(5000).fadeOut();
+					console.log("Email already taken.");
+					return false;
+				}
 			},
-			error:	function(error)	{
+			error: function(error)	{
 				console.log(error);
 			}
-		});
+		});		
+		}
 	});
 	
 /******************************************************/
@@ -357,7 +398,7 @@ $(document).ready(function() {
                 $('input[name=password]'),         // First password field
                 $('input[name=password_retyped]'), // Second password field
                 $('#password-strength'),           // Strength meter
-                $('input[type=submit]'),           // Submit button
+                $('#validate_address'),           // Submit button
                 ['black', 'listed', 'word']        // Blacklisted words
             );
         }

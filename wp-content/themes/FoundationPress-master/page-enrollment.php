@@ -90,18 +90,20 @@ Template Name: Enrollment
 					
 					<div class="create_profile">
 						<h1>Profile Information</h1>
+						<div id="email_error" style="display: none; width: 100%; text-align: left; color: #ff0000; padding: 7px 5px;"></div>
 						<form>
+						
 						<table>
 							<tr>
 								<td>
 									Email Address(this will be your username)<br>
-									<input type="email" name="email_address" />
+									<input type="email" name="email_address" id="email_address" />
 								</td>
 							</tr>
 							<tr>
 								<td>
 									Verify Email Address<br>
-									<input type="email" name="email_verified" />
+									<input type="email" name="email_verified" id="email_verified" />
 								</td>
 							</tr>
 							<tr>
@@ -125,7 +127,7 @@ Template Name: Enrollment
 						</form>
 					</div>
 					
-					<div style="width: 100%; text-align: right; display: inline-block;"><div class="next" id="validate_address" style="margin-top: 35px;"></div></div>
+					<div style="width: 100%; text-align: right; display: inline-block;"><button class="next" id="validate_address" style="margin-top: 35px;"></button></div>
 				</div>
 				<div class="enroll" id="form_two"></div>
 				<div class="enroll" id="form_three">

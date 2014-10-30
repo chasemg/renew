@@ -3499,6 +3499,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 }
 .next:hover	{
 	cursor: pointer;
+	background: url('images/next.png');
 }
 #go_to_payment	{
 	display: none;
