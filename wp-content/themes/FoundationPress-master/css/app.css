@@ -4406,6 +4406,19 @@ h1.page-title
 	{
 		margin:5px auto;
 	}
+	
+	.page-id-270 .hook,
+	.page-id-224 .hook,
+	.page-id-207 .hook
+	{
+		top:-22px;
+	}
+	
+	.top-bar-container, .tab-bar
+	{
+		position:absolute;
+		width:100%;
+	}
 }
 
 @media (min-width:769px) and (max-width:1023px)
@@ -4568,7 +4581,7 @@ h1.page-title
 		display: none;
 	}
 	.top-bar-container, .tab-bar	{
-		position: relative;
+		/*position: relative;*/
 		top: 0;
 	}
 	div.mobile-logo {
