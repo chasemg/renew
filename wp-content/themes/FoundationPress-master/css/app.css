@@ -3300,7 +3300,6 @@ input.time
 .enroll table tr, .enroll table tr td	{
 	padding: 3px;
 	height: 25px;
-<<<<<<< HEAD
 }
 #form_two	{
 	display: none;
@@ -3309,9 +3308,10 @@ input.time
 	padding-bottom: 40px;
 }
 #form_three	{
-	height: 0px;
-	display: inline-block;
+	min-height: 500px;
+	display: none;
 	overflow: hidden;
+	padding-bottom: 40px;
 }
 .enroll h1, .enroll h2, .enroll h3	{
 	color: #00af41;
@@ -3391,98 +3391,7 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 	background-color: #ff0000;
 	color: #fff;
 }
-=======
-}
-#form_two	{
-	display: none;
-	min-height: 500px;
-	overflow: hidden;
-	padding-bottom: 40px;
-}
-#form_three	{
-	height: 0px;
-	display: inline-block;
-	overflow: hidden;
-}
-.enroll h1, .enroll h2, .enroll h3	{
-	color: #00af41;
-	text-align: left;
-	font-size: 24px;
-	margin-bottom: 20px;
-}
-.mobile_alerts	{
-	width: 100%; 
-	text-align: left;
-	display: inline-block;
-}
-.mobile_alerts:hover	{
-	cursor: pointer;
-}
-.mobile_alerts input[type="checkbox"]	{
-	 position: absolute; 
-	 overflow: hidden; 
-	 clip: rect(0 0 0 0); 
-	 height:1px; 
-	 width:1px; 
-	 margin:-1px; 
-	 padding:0;
-	 border:0;
-}
 
- .mobile_alerts input[type=checkbox] + .mobile_alerts label {
- padding-left:20px;
- height:15px; 
- display:inline-block;
- line-height:15px;
- background-repeat:no-repeat;
- background-position: 0 0;
- font-size:15px;
- vertical-align:middle;
- cursor:pointer;
- }
-
-.mobile_alerts input[type=checkbox]:checked + .mobile_alerts label{
- background-position: 0 -15px;
- background-repeat: no-repeat;
- }
-
- .mobile_alerts label	{ 
-	background-image:url(images/lite-green-check.png); 
-}
-input[type=checkbox].css-checkbox {
-	position: absolute; 
-	overflow: hidden; 
-	clip: rect(0 0 0 0); 
-	height:1px; 
-	width:1px; 
-	margin:-1px; 
-	padding:0;
-	border:0;
-}
-input[type=checkbox].css-checkbox + label.css-label {
-	padding-left:20px;
-	height:15px; 
-	display:inline-block;
-	line-height:15px;
-	background-repeat:no-repeat;
-	background-position: 0 0;
-	font-size:15px;
-	vertical-align:middle;
-	cursor:pointer;
-}
-
-input[type=checkbox].css-checkbox:checked + label.css-label {
-	background-position: 0 -15px;
-}
-						
-.css-label{ 
-	background-image:url(images/lite-green-check.png);
-}
-.bad	{
-	background-color: #ff0000;
-	color: #fff;
-}
->>>>>>> 52fd76ab2d1cd29dbe7e97d624a6d32322cf12c3
 .good	{
 	background-color: Green;
 	color: #fff;
@@ -3590,6 +3499,42 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 }
 .next:hover	{
 	cursor: pointer;
+	background: url('images/next.png');
+}
+#go_to_payment	{
+	display: none;
+}
+.payment_options	{
+	display: inline-block;
+	float: left;
+	margin-right: 50px;
+}
+.payment_screen_left	{
+	width: 50%;
+	float: left;
+	display: inline-block;
+}
+.payment_screen_right	{
+	display: inline-block;
+	float: right;
+	width: 50%;
+}
+.payment_screen_left table, .payment_screen_right table	{
+	border: none;
+	margin-top: 30px;
+}
+.payment_screen_left table th, .payment_screen_right table th	{
+	font-size: 26px;
+	font-weight: 500;
+	font-family: 'adelleregular';
+	color: #414141;
+	text-align: left;
+	padding-bottom: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.payment_screen_left table td, .payment_screen_right table td	{
+	height: auto;
 }
 /**** EXPERIENCE PAGE ****/
 .page-id-147 .fullwidth-wrapper
