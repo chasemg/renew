@@ -90,20 +90,18 @@ Template Name: Enrollment
 					
 					<div class="create_profile">
 						<h1>Profile Information</h1>
-						<div id="email_error" style="display: none; width: 100%; text-align: left; color: #ff0000; padding: 7px 5px;"></div>
 						<form>
-						
 						<table>
 							<tr>
 								<td>
 									Email Address(this will be your username)<br>
-									<input type="email" name="email_address" id="email_address" />
+									<input type="email" name="email_address" />
 								</td>
 							</tr>
 							<tr>
 								<td>
 									Verify Email Address<br>
-									<input type="email" name="email_verified" id="email_verified" />
+									<input type="email" name="email_verified" />
 								</td>
 							</tr>
 							<tr>
@@ -127,14 +125,14 @@ Template Name: Enrollment
 						</form>
 					</div>
 					
-					<div style="width: 100%; text-align: right; display: inline-block;"><button class="next" id="validate_address" style="margin-top: 35px;"></button></div>
+					<div style="width: 100%; text-align: right; display: inline-block;"><div class="next" id="validate_address" style="margin-top: 35px;"></div></div>
 				</div>
 				<div class="enroll" id="form_two"></div>
 				<div class="enroll" id="form_three">
 					<h1 style="padding: 40px 0 0px 0; font-size: 35px; font-weight: 500;">Submit Your Payment</h1>
 					<div style="width: 100%; display: inline-block;">
-						<div class="payment_options"><input type="radio" id="annual_option" name="fee_option" value="0"><label for="annual_option">I wish to pay the annual fee.</label></div>
-						<div class="payment_options"><input type="radio" id="monthly_option" name="fee_option" value="1"><label for="monthly_option">I wish to pay the monthly fee.</label></div>
+						<div class="payment_options"><input type="radio" id="annual_option" name="fee_option"><label for="annual_option">I wish to pay the annual fee.</label></div>
+						<div class="payment_options"><input type="radio" id="monthly_option" name="fee_option"><label for="monthly_option">I wish to pay the monthly fee.</label></div>
 					</div>
 					<div class="payment_screen_left">
 						<table>

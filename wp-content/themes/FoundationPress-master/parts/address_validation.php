@@ -135,6 +135,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 							var doctorID = $(this).attr('id');
 							var doctorName = $("#doctor_name_"+doctorID).val();
 							$("#doctor_selected").html("Doctor "+ doctorName);
+
 							$(".chosen").show();
 							$(".calculate_costs").show();
 							scrollToAnchor('calculate_costs');
@@ -179,6 +180,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 					}					
 					var new_email = $("#new_email").val();
 
+				//	( !validateEmail(new_email) ) ? console.log('no') : console.log('yes'); 
 					if(!validateEmail(new_email) || new_email == '')	{
 						$('#new_email').addClass('error_hightlight');
 						return false;
@@ -198,49 +200,15 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 						$('.access_table').addClass('error_hightlight');
 						return false;
 					}
-					var email = $("#email_address").val();
-					if(new_email == email)	{
-						$("#email_error_two").html("Email already in use. Please use another email address.");
-						$("#email_error_two").show().delay(5000).fadeOut();
-						$('#new_email').addClass('error_hightlight');					
-						return false;
-					}
-					var newArray = new Array();
-					$(".more_patients input[name='new_emails']").each(function(index, value)	{
-						newArray.push($(this).val());
-					});
-					console.log(newArray);
-					if($.inArray(new_email,newArray) > -1)	{
-						$("#email_error_two").html("Email already in use. Please use another email address.");
-						$("#email_error_two").show().delay(5000).fadeOut();
-						$('#new_email').addClass('error_hightlight');						
-						return false;
-					} 
-					$.ajax({
-						type: 'POST',
-						data: 'email='+new_email,
-						url: 'wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
-						success: function(success)	{
-							if(success == 1)	{
-								$(".calculate_costs table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr><tr><td colspan='2'  style='padding-bottom: 15px;'><font style='color: #ccc;'>Email Address</font><br>"+new_email+"<input type='hidden' id='new_email["+ v +"]' name='new_emails' value='"+new_email+"'></td><td colspan='2' style='padding-bottom: 15px;'><font style='color: #ccc;'>Account Access:</font><br>"+access_level+"<input id='access["+ v +"]' type='hidden' value='"+access+"'></td></tr>");
-								$(".access_table input[name='access']").prop('checked',false);
-								$('#new_dob').val('');
-								$('#new_fname').val('');
-								$('#new_lname').val('');
-								$('#new_email').val('');
-								$("#new_patient_sex").val('M');
-								v++;
-							} else {
-								$("#email_error_two").html("Email already in use. Please use another email address.");
-								$("#email_error_two").show().delay(5000).fadeOut();
-								$('#new_email').addClass('error_hightlight');
-								return false;
-							}
-						},
-						error: function(error)	{
-							console.log(error);
-						}
-					});
+					
+					$(".calculate_costs table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr><tr><td colspan='2'  style='padding-bottom: 15px;'><font style='color: #ccc;'>Email Address</font><br>"+new_email+"<input type='hidden' id='new_email["+ v +"]' value='"+new_email+"'></td><td colspan='2' style='padding-bottom: 15px;'><font style='color: #ccc;'>Account Access:</font><br>"+access_level+"<input id='access["+ v +"]' type='hidden' value='"+access+"'></td></tr>");
+					$(".access_table input[name='access']").prop('checked',false);
+					$('#new_dob').val('');
+					$('#new_fname').val('');
+					$('#new_lname').val('');
+					$('#new_email').val('');
+					$("#new_patient_sex").val('M');
+					v++;
 				});
 				$("#calculate_price").click(function()	{
 					var dataSet = '';
@@ -324,7 +292,6 @@ validate();
 	$html .= '<h1 id="calculate_costs">Calculate your costs.</h1>';
 	$html .= '<div>';
 	$html .= '<div style="padding: 30px 0;">Click the add button if you wish to add additional people to the account.</div>';
-	$html .= '<div id="email_error_two" style="width: 100%; padding: 5px 0; color: #ff0000; display: none;"></div>';
 	$html .= '<table class="more_patients">';
 	$html .= '<tr>';
 	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">M/F<select id="new_patient_sex"><option value="M">Male</option><option value="F">Female</option></select></td>';
@@ -333,7 +300,7 @@ validate();
 	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">Last Name<input type="text" id="new_lname"></td>';
 	$html .= '</tr>';	
 	$html .= '<tr>';
-	$html .= '<td colspan="2">Email Address (must be unique)<input type="email" id="new_email"></td>';
+	$html .= '<td colspan="2">Email Address(required)<input type="email" id="new_email"></td>';
 	$html .= '<td colspan="2">';
 	$html .= 'Account Access:';
 	$html .= '<table class="access_table">';
