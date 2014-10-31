@@ -3639,7 +3639,16 @@ h1.page-title
 }
 
 
-@media (max-width:320px)
+.page-id-30 .hero_banner_text
+{
+	margin:367px auto !important;
+}
+@media (max-width:240px)
+{
+	
+}
+
+@media (min-width:241px) and (max-width:320px)
 {
 	.top-bar-container, 
 	.tab-bar
@@ -3947,8 +3956,9 @@ h1.page-title
 		margin:0 auto;
 	}
 	
-	
-@media (min-width: 321px) and (max-width: 600px)	
+}
+
+@media (min-width: 321px) and (max-width: 480px)	
 {
 	
 	.row_container
@@ -4023,10 +4033,63 @@ h1.page-title
 		padding:0px;
 	}
 	
+	
+	.page-id-24 .doctor_patient
+	{
+		display:none;
+	}
+	
+	.page-id-24 .page-background,
+	.page-background
+	{
+		height:492px;
+	}
+	
+	.hero_banner_text p
+	{
+		display:none;
+	}
+	
+	.hero_banner_text p.buttons
+	{
+		display:block;
+	}
+	
+	.page-id-270 .hero_banner_text
+	{
+		margin:150px auto 50px;
+		width:40%;
+	}
+	
+	.page-id-270 .hero_banner_text h1
+	{
+		font-size:30px;
+		white-space:normal;
+		line-height:normal;
+		width:50%;
+		margin:0 auto;
+		text-align:center;
+	}
+	
+	.page-id-270 .hook
+	{
+		display:none;
+	}
+	
+	.page-id-270 .doctor-patient
+	{
+		padding:10px;
+	}
+	
 }
 
-@media (min-width: 601px) and (max-width: 800px)	
+@media (min-width: 481px) and (max-width: 768px)	
 {
+	.top-bar-section
+	{
+		width:100%;
+	}
+	
 	.nav_logo
 	{
 		margin:10px;
@@ -4345,6 +4408,71 @@ h1.page-title
 	}
 }
 
+@media (min-width:769px) and (max-width:1023px)
+{
+	.top-bar-section
+	{
+		width:768px;
+	}
+	
+	.top-bar-section ul li
+	{
+		padding:0px 15px;
+	}
+	
+	.nav_logo
+	{
+		margin:0px 0px 0px 15px;
+	}
+	
+	.row_container
+	{
+		width:768px;
+	}
+	
+	.header_text
+	{
+		width:40%;
+		margin:50px 0px 0px 0px;
+	}
+	
+	.header_text .renew_small_black p
+	{
+		font-size:14px;
+	}
+	
+	.page-id-24 .entry-content p
+	{
+		font-size:14px;
+		margin:0px 0px 10px;
+	}
+	
+	.about-benefits
+	{
+		padding: 50px 40px 0px 125px;
+	}
+	
+	.small-12, .column, .columns
+	{
+		width:96%;
+	}
+	
+	.page-id-270 .hook
+	{
+		top:-42px;
+	}
+	
+	.page-id-224 .hook
+	{
+		top:-67px;
+	}
+	
+	.page-id-207 .hook
+	{
+		top:-9px;
+	}
+}
+
 /******************** Triangles Responsive ************************************/ 
 @media (min-width: 900px) and (max-width: 1028px)	{
 	.left_img img	{
@@ -4373,6 +4501,7 @@ h1.page-title
 		right: 0px !important;
 	}	
 }
+
 @media (min-width: 800px) and (max-width: 900px)	{
 	.left_img img	{
 		width: auto !important;
@@ -4400,6 +4529,7 @@ h1.page-title
 		right: 0px !important;
 	}	
 }
+
 @media (min-width: 280px) and (max-width: 900px)	
 {
 	.tri_right, .tri_left, .left_img, .right_img	{
