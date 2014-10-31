@@ -3948,7 +3948,8 @@ h1.page-title
 	}
 	
 	
-	}
+@media (min-width: 321px) and (max-width: 600px)	
+{
 	
 	.row_container
 	{
