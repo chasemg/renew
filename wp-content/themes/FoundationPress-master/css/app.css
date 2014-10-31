@@ -3643,6 +3643,7 @@ h1.page-title
 {
 	margin:367px auto !important;
 }
+
 @media (max-width:240px)
 {
 	
@@ -4298,7 +4299,9 @@ h1.page-title
 	
 	.page-id-270 .page-background,
 	.page-id-224 .page-background,
-	.page-id-207 .page-background
+	.page-id-207 .page-background,
+	.page-id-30 .page-background,
+	.page-id-22 .page-background
 	{
 		height:384px;
 	}
@@ -4418,6 +4421,17 @@ h1.page-title
 	{
 		position:absolute;
 		width:100%;
+	}
+	
+	
+	.page-id-30 .hero_banner_text
+	{
+		margin:185px auto !important;
+	}
+	
+	.page-id-22 .entry-content h1
+	{
+		margin:185px auto;
 	}
 }
 
