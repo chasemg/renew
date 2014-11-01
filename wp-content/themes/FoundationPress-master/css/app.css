@@ -3963,10 +3963,38 @@ h1.page-title
 		margin:0 auto;
 	}
 	
+	.page-id-30 .hero_banner_text
+	{
+		margin:108px auto !important;
+	}
+	
+	div.mobile-logo
+	{
+		margin:5px;
+	}
+	
+	.contact_left,
+	.contact_right
+	{
+		float:none;
+		width:100%;
+	}
+	
 }
 
 @media (min-width: 321px) and (max-width: 480px)	
 {
+	.top-bar-container, 
+	.tab-bar
+	{
+		padding:0px;
+		position:relative;
+	}
+	
+	div.mobile-logo
+	{
+		margin:10px;
+	}
 	
 	.row_container
 	{
@@ -3992,7 +4020,19 @@ h1.page-title
 	
 	.about-benefits
 	{
-		padding:40px 0px 0px 110px;
+		padding:10px 0px 0px;
+		min-height:0px;
+	}
+	
+	h1
+	{
+		text-align:center;
+	}
+	
+	p
+	{
+		font-size:12px;
+		margin-bottom:10px;
 	}
 	
 	.header_text .renew_large_green
@@ -4078,7 +4118,8 @@ h1.page-title
 		text-align:center;
 	}
 	
-	.page-id-270 .hook
+	.page-id-270 .hook,
+	.hook
 	{
 		display:none;
 	}
@@ -4088,6 +4129,58 @@ h1.page-title
 		padding:10px;
 	}
 	
+	.page-id-30 .hero_banner_text
+	{
+		margin:215px auto !important;
+	}
+	
+	.header_text .renew_small_black p
+	{
+		font-size:12px;
+	}
+	
+	.accordion .accordion-navigation > a, 
+	.accordion dd > a
+	{
+		padding:10px;
+		font-size:12px;
+	}
+	
+	.accordion .accordion-navigation.active>a:after, .accordion dd.active>a:after
+	{
+		line-height:15px;
+	}
+	
+	.additional-info
+	{
+		margin:0px;
+	}
+	
+	.accordion .accordion-navigation > .content.active, .accordion dd > .content.active
+	{
+		font-size:12px;
+	}
+	
+	.green_slider_button, input[type="submit"]
+	{
+		font-size:11px !important;
+	}
+	
+	.post-224 .control,
+	.post-207 .empower
+	{
+		padding:10px 0px;
+	}
+	
+	.page-id-147 .hero_banner_text
+	{
+		margin:155px auto;
+	}
+	
+	.page-id-22 .entry-content h1.page-title
+	{
+		margin:227px auto;
+	}
 }
 
 @media (min-width:481px) and (max-width: 568px)
