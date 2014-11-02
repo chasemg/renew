@@ -3651,6 +3651,190 @@ h1.page-title
 
 @media (max-width:240px)
 {
+	.row_container
+	{
+		width:90%;
+	}	
+	
+	.page-background,
+	.page-id-24 .page-background
+	{
+		height:535px;
+	}
+	
+	.top-bar-container, .tab-bar
+	{
+		position:relative;
+	}
+	
+	div.mobile-logo
+	{
+		margin:10px 5px;
+	}
+	
+	.entry-content
+	{
+		margin:0px;
+	}
+	
+	.doctor_patient,
+	.hook
+	{
+		display:none;
+	}
+	
+	.header_text
+	{
+		width:100%;
+		margin:20px 0px 0px 0px;
+	}
+	
+	.column, 
+	.columns
+	{
+		padding:0px;
+	}
+	
+	.about-benefits
+	{
+		padding:10px 0px 0px;
+	}
+	
+	.header_text .renew_large_green,
+	.about-benefits h1
+	{
+		font-size:16px;
+		text-align:center;
+		margin:10px auto;
+	}
+	
+	
+	.header_text .renew_small_black p,
+	p,
+	.accordion .accordion-navigation > .content.active, .accordion dd > .content.active,
+	.accordion p,
+	.contact_right table tr:first-child td
+	{
+		font-size:12px;
+		margin:0px 0px 10px;
+		line-height:15px;
+	}
+	
+	.accordion .accordion-navigation>.content, .accordion dd>.content
+	{
+		padding:0px;
+	}
+	
+	.accordion .accordion-navigation > a, 
+	.accordion dd > a
+	{
+		font-size:12px;
+		padding:5px;
+	}
+	
+	.accordion .accordion-navigation.active > a:after, 
+	.accordion dd.active > a:after
+	{
+		line-height:9px;
+	}
+	
+	.hero_banner_text
+	{
+		width:100%;
+		margin:45px auto 0px;
+	}
+	
+	.hero_banner_text h1
+	{
+		text-align:center;
+		white-space:normal;
+		line-height:normal;
+	}
+	
+	.hero_banner_text p
+	{
+		display:none;
+	}
+	
+	.hero_banner_text p.buttons
+	{
+		display:block;
+		text-align:center;
+	}
+	
+	.hero_banner_text button
+	{
+		margin:10px auto;
+	}
+	
+	.green_slider_button, input[type="submit"]
+	{
+		font-size:12px !important;
+	}
+	
+	.page-id-270 .page-background,
+	.page-id-224 .page-background,
+	.page-id-207 .page-background,
+	.page-id-147 .page-background,
+	.page-id-22 .page-background,
+	.page-id-30 .page-background
+	{
+		height:300px;
+	}
+	
+	.post-270 .doctor-patient,
+	.post-224 .control,
+	.post-207 .empower
+	{
+		padding:0px;
+	}
+	
+	.post-224 .hero_banner_text,
+	.post-207 .hero_banner_text
+	{
+		margin:65px 0px 0px;
+	}
+	
+	.post-207 .empower
+	{
+		margin:75px 0px 0px;
+	}
+	
+	.page-id-147 .entry-content h2
+	{
+		margin:93px 0px 0px !important;
+	}
+	
+	.page-id-22 .entry-content h1
+	{
+		margin:100px auto;
+	}
+	
+	.quick-links
+	{
+		font-size:12px !important;
+	}
+	
+	.faq-questions ol
+	{
+		font-size:12px;
+		margin:10px 0px 10px 15px;
+		column-count: 1 !important;
+		-moz-column-count: 1 !important;
+		-webkit-column-count: 1 !important;
+	}
+	
+	.page-id-30 .hero_banner_text
+	{
+		margin:120px auto !important;
+	}
+	
+	
+	.contact_left,
+	.contact_right
+	{
+		width:100%;
+	}
 	
 }
 
