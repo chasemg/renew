@@ -83,7 +83,7 @@ var scroll_to_bottom = function(element){
             // Give up and scroll anyway
             clearInterval(intervalId);
             element.animate({ scrollTop: new_height }, 'slow');
-        }else{
+        } else {
             new_height = content.height();
             tries++;
         }
@@ -211,89 +211,237 @@ $(window).scroll(function(){ // bind window scroll event
 			scrollToAnchor('dob');
 			return false;
 		}			
-		/*********************************************************/
-		$.ajax ({
-			type: 'POST',
-			data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone,
-			url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
-			success: function(success)	{
-				$('#form_two').html(success);
-				$("#form_one").slideUp();
-				$("#form_two").delay(1000).slideDown(function() {
-					var hiddenContent = $("#type").val();
-					if(hiddenContent == 'street_address')	{
-						console.log(hiddenContent);
-						$('#map_canvas').animate({
-							height: "550px"
-						},200);					
-						$('.header_image').animate({
-							height: "0px"
-						}, 200);
-						$('.row_container').animate({
-							marginTop: "0px"
-						}, 200);				
-						$("#map_canvas").show();
-						$('.header_map').animate({
-							height: "550px",
-							maxHeight: "550px"
-						},200);	
 
-					} else {
-						$('#map_canvas').animate({
-							height: "0px"
-						},200);							
-						$('.header_map').animate({
-							height: "0px"
-						},200);
-						$('.header_image').animate({
-							height: "550px"
-						}, 200);							
-						$('#form_two').append("<div>We could not validate your address. Please go back and verify the address you entered.</div><button id='validate_back'>Go Back</button>");
-						$("#validate_back").click(function()	{
-							$('#map_canvas').animate({
-								height: "0px"
-							},200);							
-							$('.header_map').animate({
-								height: "0px"
-							},200);
-							$('.header_image').animate({
-								height: "550px"
-							}, 200);	
-							$("#form_two").delay(200).slideUp(function() {
-								$("#form_one").delay(200).slideDown();
-							});							
+		/******************** Email address validation for account *************************************/
+		var email = $("#email_address").val();
+		var emailVerified = $("#email_verified").val();
+		var match = false;
+		if(email == emailVerified)	{
+			//console.log('Emails match!');
+			match = true;
+		} else {
+			$("#email_address").addClass('error_hightlight');
+			$("#email_verified").addClass('error_hightlight');
+			scrollToAnchor('email_address');
+			//console.log('emails do not match');
+		}
+		if(match == true)	{
+			$.ajax({
+				type: 'POST',
+				data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone,
+				url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
+				success: function(success)	{
+					//console.log(success);
+					if(success == 1)	{
+						//console.log("valid email address");
+						
+						$.ajax ({
+							type: 'POST',
+							data: 'ssn='+ssn,
+							url: 'wp-content/themes/FoundationPress-master/parts/enroll_process.php',
+							success: function(success)	{
+								$('#form_two').html(success);
+								$("#form_one").slideUp();
+								$("#form_two").delay(1000).slideDown(function() {
+									var hiddenContent = $("#type").val();
+									if(hiddenContent == 'street_address')	{
+										//console.log(hiddenContent);
+										$('#map_canvas').animate({
+											height: "550px"
+										},200);					
+										$('.header_image').animate({
+											height: "0px"
+										}, 200);
+										$('.row_container').animate({
+											marginTop: "0px"
+										}, 200);				
+										$("#map_canvas").show();
+										$('.header_map').animate({
+											height: "550px",
+											maxHeight: "550px"
+										},200);	
+
+									} else {
+										$('#map_canvas').animate({
+											height: "0px"
+										},200);							
+										$('.header_map').animate({
+											height: "0px"
+										},200);
+										$('.header_image').animate({
+											height: "550px"
+										}, 200);							
+										$('#form_two').append("<div>We could not validate your address. Please go back and verify the address you entered.</div><button id='validate_back'>Go Back</button>");
+										$("#validate_back").click(function()	{
+											$('#map_canvas').animate({
+												height: "0px"
+											},200);							
+											$('.header_map').animate({
+												height: "0px"
+											},200);
+											$('.header_image').animate({
+												height: "550px"
+											}, 200);	
+											$("#form_two").delay(200).slideUp(function() {
+												$("#form_one").delay(200).slideDown();
+											});							
+										});
+									}
+								$("#go_to_payment").click(function()	{
+									var b = 0;
+									$(".doctor input[type='radio']").each(function()	{
+										if($(this).is(':checked'))	{
+											b++;
+										}
+									});	
+									if(b > 0)	{
+										$("#form_two").slideUp();
+										$("#form_three").delay(1000).slideDown();
+									} else {
+										return false;
+									}
+								});
+								$("#same_info").change(function()	{
+									if(this.checked)	{
+										var fname = $("#fname").val();
+										var lname = $("#lname").val();
+										var street = $("#street").val();
+										var street_two = $("#street_two").val();
+										var city = $("#city").val();
+										var state = $("#state").val();
+										var zip = $("#zip").val();
+										var email = $("#email_address").val();
+										var phone = $("#primary_phone").val();
+										$("#billing_fname").val(fname);
+										$("#billing_lname").val(lname);
+										$("#billing_street").val(street);
+										$("#billing_street_two").val(street_two);
+										$("#billing_city").val(city);
+										$("#billing_state").val(state);
+										$("#billing_zip").val(zip);
+										$("#billing_phone").val(phone);
+										$("#billing_email").val(email);
+									} else {
+										$("#billing_fname").val('');
+										$("#billing_lname").val('');
+										$("#billing_street").val('');
+										$("#billing_street_two").val('');
+										$("#billing_city").val('');
+										$("#billing_state").val('');
+										$("#billing_zip").val('');
+										$("#billing_phone").val('');
+										$("#billing_email").val('');
+									}
+								});
+								$("#enroll_patient").click(function()	{
+									$('.payment_options label').css('color','#4d4d4d');
+									var v = 0;
+									var x = 0;
+									$('.payment_options input[type="radio"]').each(function()	{
+										if($(this).is(":checked"))	{
+											x++;
+										}
+									});
+								//	console.log(x);
+									if(x == 0)	{
+										$('.payment_options label').css('color','#ff0000');
+										return false;
+									}
+									$("#form_three input[type='text']").each(function()	{
+										var inputId = $(this).attr('id');
+										$('#'+inputId).removeClass('error_hightlight');
+									});
+									$("#form_three input[type='text']").each(function()	{
+										if($(this).val() == '')	{
+
+											var inputId = $(this).attr('id');
+											if(inputId != 'billing_street_two')	{
+												$('#'+inputId).addClass('error_hightlight');
+												v++;
+											}
+										}
+									});
+									if(v > 0)	{
+										return false();
+									} else {
+										$("#form_three input[type='text']").each(function()	{
+											var inputId = $(this).attr('id');
+											$('#'+inputId).removeClass('error_hightlight');
+										});
+										var one = 0;
+										var dataString = '';
+										$("#form_one input").each(function()	{
+											var input_name = $(this).attr('id');
+											var input_value = $(this).val();
+											if(one == 0)	{
+												dataString += input_name + "=" + input_value;
+											} else {
+												dataString += "&" + input_name + "=" + input_value;
+											}
+											one++;
+										});
+										
+										$(".doctor input[type='radio']").each(function()	{
+											if($(this).is(':checked'))	{
+												var input_name = $(this).attr('id');
+												var input_value = $(this).val();
+												dataString += "&" + input_name + "=" + input_value;
+											}
+										});								
+										$(".calculate_costs input[type='hidden']").each(function()	{
+											var input_name = $(this).attr('id');
+											var input_value = $(this).val();
+											dataString += "&" + input_name + "=" + input_value;
+										});
+										$("#form_three input[type='text']").each(function()	{
+											var input_name = $(this).attr('id');
+											var input_value = $(this).val();
+											dataString += "&" + input_name + "=" + input_value;
+										});
+										$("#form_three input[type='radio']").each(function()	{
+											if($(this).is(':checked'))	{
+												var input_name = $(this).attr('id');
+												var input_value = $(this).val();
+												dataString += "&" + input_name + "=" + input_value;
+											}
+										});								
+										console.log(dataString);
+										var ssn = $("#ssn").val();
+										$.ajax({
+											type: 'POST',
+											data: 'ssn='+ssn,
+											url: 'wp-content/themes/FoundationPress-master/parts/enroll_process.php',
+											success: function(success)	{
+												$("#enroll_result").html(success);
+											},
+											error: function(error)	{
+												console.log(error);
+											}
+										});					
+									//console.log("Enrolled!");
+									}
+								});		
+								
+								});
+							},
+							error: function(error)	{
+								console.log(error);
+							}
 						});
+					} else {
+						scrollToAnchor('email_address');
+						$("#email_error").html('Email address already registered.');
+						$("#email_error").show();
+						$("#email_error").delay(5000).fadeOut();
+						//console.log("Email already taken.");
+						return false;
 					}
-				$("#go_to_payment").click(function()	{
-					$("#form_two").slideUp();
-					$("#form_three").delay(1000).slideDown();
-				});
-				$("#enroll_patient").click(function()	{
-					$("#form_one input").each(function()	{
-						var input_name = $(this).attr('id');
-						console.log(input_name);
-
-					});
-					var ssn = $("#ssn").val();
-					$.ajax({
-						type: 'POST',
-						data: 'ssn='+ssn,
-						url: 'wp-content/themes/FoundationPress-master/parts/enroll_process.php',
-						success: function(success)	{
-							$("#enroll_result").html(success);
-						},
-						error: function(error)	{
-							console.log(error);
-						}
-					});					
-					console.log("Enrolled!");
-				});					
-				});
-			},
-			error:	function(error)	{
-				console.log(error);
-			}
-		});
+				},
+				error:	function(error)	{
+					console.log(error);
+				}
+			});
+		}	
 	});
 	
 /******************************************************/
