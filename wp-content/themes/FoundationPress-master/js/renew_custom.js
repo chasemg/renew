@@ -268,7 +268,6 @@ $(window).scroll(function(){ // bind window scroll event
 											height: "550px",
 											maxHeight: "550px"
 										},200);	
-
 									} else {
 										$('#map_canvas').animate({
 											height: "0px"

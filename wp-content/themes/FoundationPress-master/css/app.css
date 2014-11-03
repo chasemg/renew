@@ -3478,6 +3478,9 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 .error_hightlight	{
 	border: 1px solid #ff0000 !important;
 }
+.access_table	{
+	background: transparent;
+}
 .access_table td	{
 	vertical-align: middle;
 }
