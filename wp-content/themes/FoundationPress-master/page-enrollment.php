@@ -95,13 +95,13 @@ Template Name: Enrollment
 							<tr>
 								<td>
 									Email Address(this will be your username)<br>
-									<input type="email" name="email_address" />
+									<input type="email" name="email_address" id="email_address"/>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									Verify Email Address<br>
-									<input type="email" name="email_verified" />
+									<input type="email" name="email_verified" id="email_verified" />
 								</td>
 							</tr>
 							<tr>
@@ -138,17 +138,17 @@ Template Name: Enrollment
 						<table>
 							<th colspan="4">Card Information</th>
 							<tr>
-								<td colspan="4">Name on Card<input type="text" size="50"></td>
+								<td colspan="4">Name on Card<input type="text" size="50" id="card_name"></td>
 							</tr>
 							<tr>
-								<td colspan="4">Card Number<input type="text" size="50"></td>
+								<td colspan="4">Card Number<input type="text" size="50" id="card_number"></td>
 							</tr>
 							<tr>
 								<td colspan="4">
 									<table style="margin: 0px;">
 										<tr>
-											<td>CCV<input type="text" maxlength="3" style="width: 90px;"></td>
-											<td>Exp<input type="text" maxlength="5" style="width: 90px;"></td>
+											<td>CCV<input type="text" maxlength="3" style="width: 90px;" id="ccv"></td>
+											<td>Exp<input type="text" maxlength="5" style="width: 90px;" id="exp"></td>
 										</tr>
 									</table>
 								</td>
@@ -162,24 +162,24 @@ Template Name: Enrollment
 						<table>
 							<th colspan="4">Billing Information</th>
 							<tr>
-								<td>First Name<input type="text"></td>
-								<td>Last Name<input type="text"></td>
+								<td>First Name<input type="text" id="billing_fname"></td>
+								<td>Last Name<input type="text" id="billing_lname"></td>
 							</tr>
 							<tr>
-								<td>Street Address<input type="text" size="50"></td>
-								<td>Address 2<input type="text" size="50"></td>
+								<td>Street Address<input type="text" size="50" id="billing_street"></td>
+								<td>Address 2<input type="text" size="50" id="billing_street_two"></td>
 							</tr>
 							<tr>
 								<td colspan="2">
 									<table style="margin: 0px;">
 										<tr>
-											<td>City<input type="text"></td>
-											<td>State<input type="text" maxlength="2" style="width: 90px;"></td>
-											<td>Zip<input type="text" maxlength="5" style="width: 90px;"></td>
+											<td>City<input type="text" id="billing_city"></td>
+											<td>State<input type="text" maxlength="2" style="width: 90px;" id="billing_state"></td>
+											<td>Zip<input type="text" maxlength="5" style="width: 90px;" id="billing_zip"></td>
 										</tr>
 										<tr>
-											<td>Phone<input type="text"></td>
-											<td colspan="2">Email<input type="text"></td>
+											<td>Phone<input type="text" id="billing_phone"></td>
+											<td colspan="2">Email<input type="text" id="billing_email"></td>
 										</tr>										
 									</table>
 								</td>

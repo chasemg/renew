@@ -146,6 +146,8 @@ $(window).scroll(function(){ // bind window scroll event
 		$('#mobil_phone').removeClass('error_hightlight');
 		$('#ssn').removeClass('error_hightlight');
 		$('#dob').removeClass('error_hightlight');
+		$('#email_address').removeClass('error_hightlight');
+		$('#emailVerified').removeClass('error_hightlight');
 		var street_one = $('#street').val();
 		var street_two = $('#street_two').val();
 		var street = street_one + ", " + street_two;
@@ -214,31 +216,37 @@ $(window).scroll(function(){ // bind window scroll event
 
 		/******************** Email address validation for account *************************************/
 		var email = $("#email_address").val();
+
 		var emailVerified = $("#email_verified").val();
+		if(email == '')	{
+			$("#email_address").addClass('error_hightlight');
+		}	
+		if(emailVerified == '')	{
+			$("#email_verified").addClass('error_hightlight');
+		}				
 		var match = false;
 		if(email == emailVerified)	{
-			//console.log('Emails match!');
+			console.log('Emails match!');
 			match = true;
 		} else {
 			$("#email_address").addClass('error_hightlight');
 			$("#email_verified").addClass('error_hightlight');
 			scrollToAnchor('email_address');
-			//console.log('emails do not match');
+			console.log('emails do not match');
 		}
 		if(match == true)	{
 			$.ajax({
 				type: 'POST',
-				data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone,
-				url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
+				data: 'email='+email,
+				url: 'wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
 				success: function(success)	{
-					//console.log(success);
+					console.log(success);
 					if(success == 1)	{
-						//console.log("valid email address");
-						
-						$.ajax ({
+						console.log("valid email address");
+						$.ajax({
 							type: 'POST',
-							data: 'ssn='+ssn,
-							url: 'wp-content/themes/FoundationPress-master/parts/enroll_process.php',
+							data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone,
+							url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
 							success: function(success)	{
 								$('#form_two').html(success);
 								$("#form_one").slideUp();
