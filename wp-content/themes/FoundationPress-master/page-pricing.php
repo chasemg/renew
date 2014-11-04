@@ -18,6 +18,9 @@ Template Name: Pricing
 		background: url('<?php echo get_template_directory_uri(); ?>/css/images/cream_pixels.png');	
 		margin-top: 550px;
 	}
+	.calculate_costs h1	{
+		color: #00953a;
+	}
 	@media only screen and (min-width: 40.063em)	{
 		.top-bar-section .has-dropdown.hover>.dropdown, .top-bar-section .has-dropdown.not-click:hover>.dropdown	{
 			padding-top: 11px !important;
@@ -80,6 +83,7 @@ Template Name: Pricing
 							<div style="text-align: left;"><button class="button" id="calculate_price">calculate</button></div>
 						</div>
 						<div class="calculated_price" id="calculated"></div>
+						<div id="enroll_now"><button id="enroll_now_button">enroll now!</button></div>
 					</div>	
 				</div>		
 				<footer>
@@ -168,10 +172,11 @@ Template Name: Pricing
 					$.ajax({
 						type: 'POST',
 						data: dataSet,
-						url: 'wp-content/themes/FoundationPress-master/parts/calculate_cost.php',
+						url: '<?php echo get_template_directory_uri(); ?>/parts/calculate_cost.php',
 						success: function(success)	{
 							$("#calculated").html(success);
 							$("#go_to_payment").show();
+							$("#enroll_now").show();
 						},
 						error: function(error)	{
 							console.log(error);
