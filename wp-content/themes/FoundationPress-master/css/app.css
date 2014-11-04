@@ -4439,8 +4439,7 @@ h1.page-title
 		width:480px;
 	}
 	
-	.page-background,
-	.page-id-24 .page-background
+	.page-background
 	{
 		height:348px;
 	}
@@ -4561,6 +4560,66 @@ h1.page-title
 	.page-id-147 h2
 	{
 		margin-top:100px !important;
+	}
+	
+	.page-id-24 .page-background
+	{
+		height:470px;
+	}
+	
+	.page-id-24 .hook
+	{
+		display:block;
+		width:40px;
+		height:230px;
+		background: url(../assets/img/side_banner.png) left top no-repeat;
+		top:31px;
+	}
+	
+	.hook span
+	{
+		font-size:12px;
+		left:-265px;
+		bottom:110px;
+	}
+	
+	.about-benefits
+	{
+		padding:50px 50px 0px 100px;
+	}
+	
+	.about-benefits p
+	{
+		margin-bottom:10px;
+		line-height:22px;
+	}
+	
+	.accordion .accordion-navigation>a, .accordion dd>a
+	{
+		font-size:12px;
+		padding:10px;
+	}
+	
+	.accordion .accordion-navigation.active>a:after, .accordion dd.active>a:after
+	{
+		line-height:9px;
+	}
+	
+	.accordion .accordion-navigation > .content.active, .accordion dd > .content.active
+	{
+		font-size:12px;
+		margin-bottom:10px;
+	}
+	
+	.accordion p
+	{
+		font-size:12px;
+		margin-bottom:10px;
+	}
+	
+	.accordion .accordion-navigation>a:after, .accordion dd>a:after
+	{
+		line-height:13px;
 	}
 }
 
