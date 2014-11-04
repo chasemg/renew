@@ -5054,6 +5054,29 @@ h1.page-title
 	{
 		top:-8px;
 	}
+	
+	.post-24 .header_text
+	{
+		width:45%;
+		margin: 30px 50px 0px 0px;
+	}
+	
+	.doctor_patient
+	{
+		width:48%;
+		margin:226px 0px 0px;
+	}
+	
+	.doctor_patient img
+	{
+		width:100%;
+	}
+	
+	
+	.page-id-24 .page-background
+	{
+		height:700px;
+	}
 }
 
 @media (min-width:801px) and (max-width:1023px)
@@ -5119,6 +5142,8 @@ h1.page-title
 	{
 		top:-9px;
 	}
+	
+	
 }
 
 /******************** Triangles Responsive ************************************/ 
