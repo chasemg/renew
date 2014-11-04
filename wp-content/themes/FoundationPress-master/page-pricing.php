@@ -182,6 +182,9 @@ Template Name: Pricing
 							console.log(error);
 						}
 					});
-				});		
+				});	
+				$("#enroll_now_button").click(function()	{
+					window.location = 'Enroll';
+				});
 </script>
 <?php get_footer(); ?>
