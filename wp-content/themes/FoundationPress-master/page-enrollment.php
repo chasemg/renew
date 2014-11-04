@@ -148,7 +148,7 @@ Template Name: Enrollment
 									<table style="margin: 0px;">
 										<tr>
 											<td>CCV<input type="text" maxlength="3" style="width: 90px;" id="ccv"></td>
-											<td>Exp<input type="text" maxlength="5" style="width: 90px;" id="exp"></td>
+											<td>Exp<input type="text" maxlength="7" style="width: 90px;" id="exp" placeholder="mm/yyyy"></td>
 										</tr>
 									</table>
 								</td>
