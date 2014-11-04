@@ -238,7 +238,7 @@ $(window).scroll(function(){ // bind window scroll event
 			$.ajax({
 				type: 'POST',
 				data: 'email='+email,
-				url: 'wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
+				url: './wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
 				success: function(success)	{
 					console.log(success);
 					if(success == 1)	{
