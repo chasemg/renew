@@ -3539,6 +3539,17 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 .payment_screen_left table td, .payment_screen_right table td	{
 	height: auto;
 }
+#enroll_now	{
+	display: none;
+	width: 100%;
+	text-align: center;
+	padding: 40px 0px 0px 0px;
+}
+#enroll_now	button	{
+	font-size: 18px; 
+	text-transform: uppercase;
+	padding: 10px 20px;
+}
 /**** EXPERIENCE PAGE ****/
 .page-id-147 .fullwidth-wrapper
 {
