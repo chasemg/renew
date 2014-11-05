@@ -59,23 +59,15 @@ Template Name: Pricing
 							<div style="padding: 30px 0; line-height: 26px;">If you wish to have additional people on the account, fill out the information below then click the add button. <br>When you are finished, click the calculate button.</div>
 							<table class="more_patients" style="background: transparent;">
 								<tr>
+									<td colspan="4"><font style="font-weight: bold; font-size: 18px;">You</font></td>
+								</tr>
+								<tr>
 									<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">M/F<select id="new_patient_sex"><option value="M">Male</option><option value="F">Female</option></select></td>
 									<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">D.O.B<input type="date" id="new_dob"></td>
 									<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">First Name<input type="text" id="new_fname"></td>
 									<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">Last Name<input type="text" id="new_lname"></td>
 								</tr>
-								<tr>
-									<td colspan="2">Email Address(required)<input type="email" id="new_email"></td>
-									<td colspan="2">
-										Account Access:
-										<table class="access_table" style="background: transparent;">
-											<tr>
-												<td><input type="radio" id="primary_access" name="access" value="0"><label for="primary_access">Primary Access</label></td>
-												<td><input type="radio" id="secondary_access" name="access" value="1"><label for="secondary_access">Secondary Access</label></td>
-											</tr>
-										</table>
-									</td>
-								</tr>
+
 								<tr>
 									<td colspan="4"><div class="add_cost" id="add_cost">+ add</div></td>
 								</tr>
@@ -129,25 +121,9 @@ Template Name: Pricing
 						$('#new_lname').addClass('error_hightlight');
 						return false;
 					}					
-					var new_email = $("#new_email").val();
 
-					var access = '';
-					$(".calculate_costs input[type='radio']").each(function()	{
-						if($(this).is(':checked'))	{
-							access = $(this).val();
-						}
-					});
-					if(access == "0")	{
-						var access_level = "Primary Access";
-					} else if(access == "1") {
-						var access_level = "Secondary Access";
-					} else {
-						console.log("No access level selected");
-						$('.access_table').addClass('error_hightlight');
-						return false;
-					}
 					
-					$(".calculate_costs table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr><tr><td colspan='2'  style='padding-bottom: 15px;'><font style='color: #ccc;'>Email Address</font><br>"+new_email+"<input type='hidden' id='new_email["+ v +"]' value='"+new_email+"'></td><td colspan='2' style='padding-bottom: 15px;'><font style='color: #ccc;'>Account Access:</font><br>"+access_level+"<input id='access["+ v +"]' type='hidden' value='"+access+"'></td></tr>");
+					$(".calculate_costs table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr>");
 					$(".access_table input[name='access']").prop('checked',false);
 					$('#new_dob').val('');
 					$('#new_fname').val('');

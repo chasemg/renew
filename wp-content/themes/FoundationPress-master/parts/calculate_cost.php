@@ -82,15 +82,21 @@ foreach($pricing as $price)	{
 	if($price->id == 7)	{
 		$renew_fee = $price->monthly;
 	}
+	if($price->id == 5)	{
+		$you_fee = $price->monthly;
+	}
+	if($price->id == 6)	{
+		$family_fee = $price->monthly;
+	}
 }
 $total = $you + $children_cost + $adults_under_twentyseven + $adults_cost + $seniors_cost;
 
 
 
-if($total == 1200)	{
-	$fee = 50;
+if($total <= 1200)	{
+	$fee = $you_fee;
 } else {
-	$fee == 20;
+	$fee = $family_fee;
 }
 $monthly = round(($total/12) + $fee, 2);
 
@@ -106,8 +112,11 @@ $html .= "Adults: $" . $adults_cost;
 $html .= "<br>";
 $html .= "Seniors: $" . $seniors_cost;
 $html .= "<br>";
-$html .= $total;
+$html .= 'total: '.$total;
+$html .= 'fee: '.$fee;
+
 */
+
 $html .= '<h1 style="border-bottom: none;">Your Price</h1>';
 $html .= '<div>Based off of the information you provided, the annual fee for better healthcare is:</div>';
 $html .= '<h1 style="font-size: 88px; font-family: adellesemibold; border-bottom: none;"><font style="font-size: 67px;">$</font>'.$total.'</h1>';
@@ -115,7 +124,7 @@ $html .= '<div style="color: #00953a; font-size: 17px; font-family: adellebold;"
 $html .= '<div style="font-size: 23px; font-family: adellelight; margin: 20px 0;">$'.$total.' annual fee<input type="hidden" id="annually" value="'.$total.'"></div>';
 $html .= '<div style="color: #00953a; font-size: 17px; font-family: adellebold;">or</div>';
 $html .= '<div style="font-size: 23px; font-family: adellelight; margin: 20px 0 0 0;">$'.$monthly.' monthly fee*<input type="hidden" id="monthly" value="'.$monthly.'"></div>';
-$html .= '<div style="font-size: 12px; font-family: adellelight; margin: 10px 0;">*This includes an additional $'.$fee.' a month fee for the monthly model. There is also a $'.$renew_fee.' annual fee applied your first month\'s payment.</div>';
+$html .= '<div style="font-size: 12px; font-family: adellelight; margin: 10px 0;">*This includes an additional $' . $fee . ' a month fee for the monthly model. There is also a $'.$renew_fee.' annual fee applied your first month\'s payment.</div>';
 
 echo $html;
 

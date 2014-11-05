@@ -1399,7 +1399,7 @@ meta.foundation-mq-topbar {font-family:"/only screen and (min-width:40.063em)/";
 	.top-bar-section .has-dropdown.hover>.dropdown ,.top-bar-section .has-dropdown.not-click:hover>.dropdown {
 		display:inline-block;
 		position:static !important; 
-		padding-top: 35px;
+		padding-top: 15px;
 		height:auto;
 		width:auto;
 		overflow:visible;

@@ -58,15 +58,15 @@ Template Name: Enrollment
 							<td colspan="3">Last Name<input type="text" id="lname" value=""></td>
 						</tr>
 						<tr>
-							<td colspan="6">Address<input type="text" id="street" value="609 E Thatcher Way"></td>
+							<td colspan="6">Address<input type="text" id="street" value=""></td>
 						</tr>
 						<tr>
 							<td colspan="6"><br><input type="text" id="street_two" value=""></td>
 						</tr>
 						<tr>
-							<td colspan="2">City<input type="text" id="city" value="Midvale"></td>
-							<td colspan="2">State<input type="text" id="state" value="UT"></td>
-							<td colspan="2">Zip<input type="text" id="zip" value="84047"></td>
+							<td colspan="2">City<input type="text" id="city" value=""></td>
+							<td colspan="2">State<input type="text" id="state" value=""></td>
+							<td colspan="2">Zip<input type="text" id="zip" value=""></td>
 						</tr>						
 					</table>
 					<table class="right">
@@ -91,6 +91,7 @@ Template Name: Enrollment
 					<div class="create_profile">
 						<h1>Profile Information</h1>
 						<form>
+						<div style="height: 30px; text-align: left; padding: 3px 0;"><div id="email_error" style="color: #ff0000; text-align: left;"></div></div>
 						<table>
 							<tr>
 								<td>
