@@ -56,10 +56,54 @@ Template Name: Pricing
 				<div class="enroll_container" style="padding-bottom: 60px;">
 					<div class="calculate_costs" style="display: inline-block; padding-top: 0px;">
 						<div>
-							<div style="padding: 30px 0; line-height: 26px;">If you wish to have additional people on the account, fill out the information below then click the add button. <br>When you are finished, click the calculate button.</div>
+							<h1 style="border-bottom: none; padding: 20px 0;">Pricing Chart</h1>
+							<div class="pricing_table">
+
+								<table>
+								<tr>
+									<td></td><td><div class='left-border-grey'>Price</div></td>
+								</tr>
+								<?php $pricing = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "patient_pricing");
+									foreach($pricing as $p)	{
+										if($p->id == 5)	{
+											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
+										}
+									}
+
+									foreach($pricing as $p)	{											
+										if($p->id == 2)	{
+											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
+										}
+									}
+									foreach($pricing as $p)	{											
+										if($p->id == 3)	{
+											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
+										}
+									}
+									foreach($pricing as $p)	{											
+										if($p->id == 1)	{
+											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
+										}
+									}
+									foreach($pricing as $p)	{											
+										if($p->id == 6)	{
+											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
+										}
+									}
+									foreach($pricing as $p)	{	
+										if($p->id == 4)	{
+											echo "<tr><td style='border-bottom: none;'>".$p->name."</td><td style='border-bottom: none;'><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
+										}		
+									}
+								
+								?>
+								</table>
+							</div>						
+							<div style="padding: 30px 0; line-height: 26px; text-align: center;"><font style="font-size: 18px; font-weight: bold;">To add additional individuals:</font><br>Fill out the information below and click "add".<br>When you are done, click "calculate" to get your personalized quote.</div>
+							<h1 style="text-align: left; margin: 20px 0;">Your Plan</h1>
 							<table class="more_patients" style="background: transparent;">
 								<tr>
-									<td colspan="4"><font style="font-weight: bold; font-size: 18px;">You</font></td>
+									<td><font style='color: #ccc;'>M/F</font><br>--</td><td><font style='color: #ccc;'>D.O.B.</font><br>--</td><td><font style='color: #ccc;'>First Name</font><br><font style="font-weight: bold; font-size: 18px;">You</font></td><td><font style='color: #ccc;'>Last Name</font><br>--</td>
 								</tr>
 								<tr>
 									<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">M/F<select id="new_patient_sex"><option value="M">Male</option><option value="F">Female</option></select></td>

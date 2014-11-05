@@ -3551,6 +3551,51 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 	text-transform: uppercase;
 	padding: 10px 20px;
 }
+.pricing_table	{
+	width: 100%;
+	border: 1px solid #ccc;
+	margin-bottom: 30px;
+}
+.pricing_table table	{
+	width: 80%;
+	margin: 0 auto;
+	border: none;
+	border-spacing: 10px 10px;
+	border-collapse: collapse;
+	background: transparent;
+}
+.pricing_table table tr:nth-child(even)	{
+	background: transparent;
+}
+.pricing_table table tr td:first-child {
+font-size: 18px;
+}
+.pricing_table tr:first-child td:last-child {
+	color: #00af41;
+}
+.pricing_table tr:first-child td {
+	font-family: 'montserratregular';
+	text-transform: uppercase;
+	text-align: center;
+}
+.pricing_table tr:first-child td:last-child .left-border-grey	{
+	padding: 20px 0;
+	max-height: 50px;
+	min-height: 0;
+}
+.pricing_table tr  td:last-child .left-border-grey	{
+	padding: 20px 0;
+	max-height: 50px;
+	min-height: 0;
+	font-weight: bold;
+	font-size: 18px;
+}
+.pricing_table table tr td {
+	background: transparent;
+	border-bottom: 1px solid #ccc;
+	padding: 5px 0;
+	font-family: 'adellelight';
+}
 /**** EXPERIENCE PAGE ****/
 .page-id-147 .fullwidth-wrapper
 {
