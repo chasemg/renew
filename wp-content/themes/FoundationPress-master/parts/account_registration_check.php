@@ -20,4 +20,5 @@ if($_POST['username'])	{
 	}
 }
 echo $html;
+
 ?>
