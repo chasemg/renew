@@ -11,5 +11,13 @@ if($_POST['email'])	{
 		$html .= 1;
 	}
 }
+if($_POST['username'])	{
+	$username = $_POST['username'];
+	if (username_exists($username))	{
+		$html .= 0;
+	} else {
+		$html .= 1;
+	}
+}
 echo $html;
 ?>

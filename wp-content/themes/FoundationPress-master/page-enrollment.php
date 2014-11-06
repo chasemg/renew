@@ -25,7 +25,6 @@ Template Name: Enrollment
 </style>
 <?php get_header(); ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<?php error_reporting(E_ALL); ?>
 
 <?php if ( has_post_thumbnail() ) { ?>
 <div class="header_image">
@@ -54,30 +53,30 @@ Template Name: Enrollment
 					<h1>Basic Information</h1>
 					<table class="left">
 						<tr>
-							<td colspan="3">First Name<input type="text" id="fname" value=""></td>
-							<td colspan="3">Last Name<input type="text" id="lname" value=""></td>
+							<td colspan="3">First Name<input type="text" id="fname" value="Kevin"></td>
+							<td colspan="3">Last Name<input type="text" id="lname" value="Griffiths"></td>
 						</tr>
 						<tr>
-							<td colspan="6">Address<input type="text" id="street" value=""></td>
+							<td colspan="6">Address<input type="text" id="street" value="609 E Thatcher Way"></td>
 						</tr>
 						<tr>
 							<td colspan="6"><br><input type="text" id="street_two" value=""></td>
 						</tr>
 						<tr>
-							<td colspan="2">City<input type="text" id="city" value=""></td>
-							<td colspan="2">State<input type="text" id="state" value=""></td>
-							<td colspan="2">Zip<input type="text" id="zip" value=""></td>
+							<td colspan="2">City<input type="text" id="city" value="Midvale"></td>
+							<td colspan="2">State<input type="text" id="state" value="UT"></td>
+							<td colspan="2">Zip<input type="text" id="zip" value="84047"></td>
 						</tr>						
 					</table>
 					<table class="right">
 						<tr>
-							<td>Primary Phone<input type="tel" id="primary_phone" maxlength="10"></td>
+							<td>Primary Phone<input type="tel" id="primary_phone" maxlength="10" value="1111111111"></td>
 						</tr>
 						<tr>
-							<td>Mobile Phone<input type="tel" id="mobil_phone" maxlength="10"></td>
+							<td>Mobile Phone<input type="tel" id="mobil_phone" maxlength="10" value="1111111111"></td>
 						</tr>						
 						<tr>
-							<td>Social Security<input type="text" id="ssn" maxlength="9"></td>
+							<td>Social Security<input type="text" id="ssn" maxlength="9" value="1111111111"></td>
 						</tr>
 						<tr>
 							<td>D.O.B<input type="date" id="dob"></td>
@@ -95,14 +94,20 @@ Template Name: Enrollment
 						<table>
 							<tr>
 								<td>
-									Email Address(this will be your username)<br>
-									<input type="email" name="email_address" id="email_address"/>
+									Username<br>
+									<input type="email" name="username" id="username" value="test" />
+								</td>
+							</tr>						
+							<tr>
+								<td>
+									Email Address<br>
+									<input type="email" name="email_address" id="email_address" value="test@test.com" />
 								</td>
 							</tr>
 							<tr>
 								<td>
 									Verify Email Address<br>
-									<input type="email" name="email_verified" id="email_verified" />
+									<input type="email" name="email_verified" id="email_verified" value="test@test.com" />
 								</td>
 							</tr>
 							<tr>

@@ -147,7 +147,8 @@ $(window).scroll(function(){ // bind window scroll event
 		$('#ssn').removeClass('error_hightlight');
 		$('#dob').removeClass('error_hightlight');
 		$('#email_address').removeClass('error_hightlight');
-		$('#emailVerified').removeClass('error_hightlight');
+		$('#email_verified').removeClass('error_hightlight');
+		$('#username').removeClass('error_hightlight');
 		var street_one = $('#street').val();
 		var street_two = $('#street_two').val();
 		var street = street_one + ", " + street_two;
@@ -160,6 +161,7 @@ $(window).scroll(function(){ // bind window scroll event
 		var mobil_phone = $('#mobil_phone').val();
 		var ssn = $('#ssn').val();
 		var dob = $('#dob').val();
+		var username = $('#username').val();
 
 		/************** Validate first page **********************/
 		
@@ -216,7 +218,10 @@ $(window).scroll(function(){ // bind window scroll event
 
 		/******************** Email address validation for account *************************************/
 		var email = $("#email_address").val();
-
+		if(username == '')	{
+			$("#username").addClass('error_hightlight');
+			return false;
+		}
 		var emailVerified = $("#email_verified").val();
 		if(email == '')	{
 			$("#email_address").addClass('error_hightlight');
@@ -237,15 +242,15 @@ $(window).scroll(function(){ // bind window scroll event
 		if(match == true)	{
 			$.ajax({
 				type: 'POST',
-				data: 'email='+email,
+				data: 'username='+username+'&email='+email,
 				url: 'wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
 				success: function(success)	{
 					console.log(success);
-					if(success == 1)	{
+					if(success == 11)	{
 						console.log("valid email address");
 						$.ajax({
 							type: 'POST',
-							data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone,
+							data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone+'&email='+email+'&username='+username,
 							url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
 							success: function(success)	{
 								$('#form_two').html(success);
@@ -435,14 +440,34 @@ $(window).scroll(function(){ // bind window scroll event
 								console.log(error);
 							}
 						});
-					} else {
+					} else if(success == 10) {
+						scrollToAnchor('username');
+						$("#username").addClass('error_hightlight');
+						$("#email_error").html('Username already taken. Please choose another.');
+						$("#email_error").show();
+						$("#email_error").delay(5000).fadeOut();
+						return false;
+					} else if(success == 01) {
 						scrollToAnchor('email_address');
+						$("#username").removeClass('error_hightlight');
+						$("#username").addClass('error_hightlight');
+						$("#email_address").addClass('error_hightlight');
+						$("#email_verified").addClass('error_hightlight');						
 						$("#email_error").html('Email address already registered.');
+						$("#email_error").show();
+						$("#email_error").delay(5000).fadeOut();
+						return false;
+					} else {
+						scrollToAnchor('username');
+						$("#username").addClass('error_hightlight');
+						$("#email_address").addClass('error_hightlight');
+						$("#email_verified").addClass('error_hightlight');
+						$("#email_error").html('The username and email address you have chosen are already registered.');
 						$("#email_error").show();
 						$("#email_error").delay(5000).fadeOut();
 						//console.log("Email already taken.");
 						return false;
-					}
+					}					
 				},
 				error:	function(error)	{
 					console.log(error);

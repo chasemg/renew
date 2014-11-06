@@ -5,6 +5,8 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $dob = $_POST['dob'];
 $ssn = $_POST['ssn'];
+$email = $_POST['email'];
+$username = $_POST['username'];
 $html = '';
 $html .= '<div id="address_validated">';
 if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
@@ -157,6 +159,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 					$('#new_fname').removeClass('error_hightlight');
 					$('#new_lname').removeClass('error_hightlight');
 					$('#new_email').removeClass('error_hightlight');
+					$('#new_username').removeClass('error_hightlight');
 					var sex = $("#new_patient_sex").val();
 					if(sex == 'M')	{
 						var patientSex = "Male";
@@ -177,8 +180,21 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 					if(new_lname == '')	{
 						$('#new_lname').addClass('error_hightlight');
 						return false;
-					}					
+					}	
+					var new_username = $("#new_username").val();
 					var new_email = $("#new_email").val();
+					if(new_username == '' || new_username == '<?php echo $username; ?>')	{
+						$('#new_username').addClass('error_hightlight');
+						return false;
+					} else {
+						$.ajax({
+							type: 'POST',
+							data: 'username='+new_username+'&email='+new_email,
+							url: 'wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
+							success: function(success)	{
+								console.log(success);
+								if(success == 11)	{
+
 
 				//	( !validateEmail(new_email) ) ? console.log('no') : console.log('yes'); 
 					if(!validateEmail(new_email) || new_email == '')	{
@@ -201,14 +217,28 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 						return false;
 					}
 					
-					$(".calculate_costs table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr><tr><td colspan='2'  style='padding-bottom: 15px;'><font style='color: #ccc;'>Email Address</font><br>"+new_email+"<input type='hidden' id='new_email["+ v +"]' value='"+new_email+"'></td><td colspan='2' style='padding-bottom: 15px;'><font style='color: #ccc;'>Account Access:</font><br>"+access_level+"<input id='access["+ v +"]' type='hidden' value='"+access+"'></td></tr>");
+					$(".calculate_costs table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr><tr><td style='padding-bottom: 15px;'><font style='color: #ccc;'>Username</font><br>"+new_username+"<input type='hidden' id='new_username["+ v +"]' value='"+new_username+"'></td><td colspan='2' style='padding-bottom: 15px;'><font style='color: #ccc;'>Email Address</font><br>"+new_email+"<input id='access["+ v +"]' type='hidden' value='"+new_email+"'></td><td style='padding-bottom: 15px;'><font style='color: #ccc;'>Account Access:</font><br>"+access_level+"<input id='access["+ v +"]' type='hidden' value='"+access+"'></td></tr>");
 					$(".access_table input[name='access']").prop('checked',false);
 					$('#new_dob').val('');
 					$('#new_fname').val('');
 					$('#new_lname').val('');
 					$('#new_email').val('');
 					$("#new_patient_sex").val('M');
+					$("#new_username").val('');
 					v++;
+					$(".calculate_costs table tr:first").css('border-top','1px solid #e5e5e5');
+								} else {
+									$('#new_username').addClass('error_hightlight');
+									return false;
+								}
+								
+							},
+							error: function(error)	{
+								console.log(error);
+								return false;
+							}
+						});
+					}					
 				});
 				$("#calculate_price").click(function()	{
 					var dataSet = '';
@@ -291,8 +321,22 @@ validate();
 
 	$html .= '<h1 id="calculate_costs">Calculate your costs.</h1>';
 	$html .= '<div>';
-	$html .= '<div style="padding: 30px 0;">Click the add button if you wish to add additional people to the account.</div>';
+	$html .= '<div style="padding: 30px 0;"><font style="font-size: 18px; font-weight: bold;">To add additional individuals:</font><br>Fill out the information below and click "add".<br>When you are done, click "calculate" to get your total.</div>';
 	$html .= '<table class="more_patients">';
+	$html .= '<tr>';
+	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;"><font style="color: #ccc;">M/F</font><br>--</td>';
+	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;"><font style="color: #ccc;">D.O.B</font><br>'.$dob.'</div></td>';
+	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;"><font style="color: #ccc;">First Name</font><br>'.$fname.'</td>';
+	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;"><font style="color: #ccc;">Last Name</font><br>'.$lname.'</td>';
+	$html .= '</tr>';	
+	$html .= '<tr>';
+	$html .= '<td><font style="color: #ccc;">Username</font><br>'.$username.'</td>';
+	$html .= '<td colspan="2"><font style="color: #ccc;">Email Address</font><br>'.$email.'</td>';
+	$html .= '<td>';
+	$html .= '<font style="color: #ccc;">Account Access:</font><br>';
+	$html .= 'Primary Access';
+	$html .= '</td>';
+	$html .= '</tr>';	
 	$html .= '<tr>';
 	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">M/F<select id="new_patient_sex"><option value="M">Male</option><option value="F">Female</option></select></td>';
 	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">D.O.B<input type="date" id="new_dob"></td>';
@@ -300,13 +344,14 @@ validate();
 	$html .= '<td style="border-top: 1px solid #e5e5e5; padding-top: 20px; margin-top: 20px;">Last Name<input type="text" id="new_lname"></td>';
 	$html .= '</tr>';	
 	$html .= '<tr>';
-	$html .= '<td colspan="2">Email Address(required)<input type="email" id="new_email"></td>';
-	$html .= '<td colspan="2">';
+	$html .= '<td>Username (required)<input type="text" id="new_username"></td>';
+	$html .= '<td colspan="2">Email Address (optional)<input type="email" id="new_email"></td>';
+	$html .= '<td>';
 	$html .= 'Account Access:';
 	$html .= '<table class="access_table">';
 	$html .= '<tr>';
-	$html .= '<td><input type="radio" id="primary_access" name="access" value="0"><label for="primary_access">Primary Access</label></td>';
-	$html .= '<td><input type="radio" id="secondary_access" name="access" value="1"><label for="secondary_access">Secondary Access</label></td>';	
+	$html .= '<td><input type="radio" id="primary_access" name="access" value="0"><label for="primary_access">Primary</label></td>';
+	$html .= '<td><input type="radio" id="secondary_access" name="access" value="1"><label for="secondary_access">Secondary</label></td>';	
 	$html .= '</tr>';
 	$html .= '</table>';	
 	$html .= '</td>';
