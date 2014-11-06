@@ -115,6 +115,20 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 		google.maps.event.addListener(marker, 'click', function() {
 			$("#form_three").slideUp();
 			$(".calculate_costs").hide();
+			$('#map_canvas').animate({
+				height: "550px"
+			},200);					
+			$('.header_image').animate({
+				height: "0px"
+			}, 200);
+			$('.row_container').animate({
+				marginTop: "0px"
+			}, 200);				
+			$("#map_canvas").show();
+			$('.header_map').animate({
+				height: "550px",
+				maxHeight: "550px"
+			},200);				
 			$("#form_two").delay(1000).slideDown();
 			map.setZoom(15);
 			map.setCenter(marker.getPosition());
