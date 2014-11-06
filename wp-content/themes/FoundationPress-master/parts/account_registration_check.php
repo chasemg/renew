@@ -2,6 +2,8 @@
 
 include '../dashboard/db_include.php';
 
+print_r($_POST); die();
+
 $html = '';
 if($_POST['email'])	{
 	$email = $_POST['email'];
@@ -20,4 +22,5 @@ if($_POST['username'])	{
 	}
 }
 echo $html;
+
 ?>
