@@ -308,7 +308,22 @@ $(window).scroll(function(){ // bind window scroll event
 									});	
 									if(b > 0)	{
 										$("#form_two").slideUp();
+										$('#map_canvas').animate({
+											height: "0px"
+										},200);					
+										$('.header_image').animate({
+											height: "550px"
+										}, 200);
+										$('.row_container').animate({
+											marginTop: "0px"
+										}, 200);				
+										$("#map_canvas").show();
+										$('.header_map').animate({
+											height: "0px",
+											maxHeight: "0px"
+										},200);											
 										$("#form_three").delay(1000).slideDown();
+										
 									} else {
 										return false;
 									}
