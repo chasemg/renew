@@ -3610,6 +3610,7 @@ font-size: 18px;
 {
 
 	margin-top:97px;
+	margin-bottom:100px;
 }
 
 .footer_nav .column
@@ -3729,6 +3730,14 @@ h1.page-title
 {
 	top:30px;
 }
+
+.page-id-347 .empower li
+{
+	margin-bottom:20px;
+	line-height:25px;
+}
+
+
 
 @media (max-width:240px)
 {
