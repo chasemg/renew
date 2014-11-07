@@ -3739,6 +3739,8 @@ h1.page-title
 
 
 
+
+
 @media (max-width:240px)
 {
 	.row_container
@@ -4254,6 +4256,23 @@ h1.page-title
 		width:100%;
 	}
 	
+	.page-id-347 .hero_banner_text
+	{
+		margin:89px auto 0px;
+	}
+	
+	.page-id-347 .empower
+	{
+		margin-top:73px;
+		padding: 50px 40px 0px 56px;
+	}
+	
+	.page-id-347 .empower li
+	{
+		font-size:9px;
+		line-height:14px;
+	}
+	
 }
 
 @media (min-width: 321px) and (max-width: 480px)	
@@ -4728,6 +4747,25 @@ h1.page-title
 	{
 		line-height:13px;
 	}
+	
+	
+	.page-id-347 .hook
+	{
+		display:block;
+		width:45px;
+		height:228px;
+		background:url(../assets/img/side_banner.png) left top no-repeat;
+	}
+	
+	.page-id-347 .hero_banner_text
+	{
+		margin:78px auto 122px;
+	}
+	
+	.page-id-347 .empower
+	{
+		padding:50px 0px 0px 70px;
+	}
 }
 
 
@@ -4954,7 +4992,8 @@ h1.page-title
 	.page-id-224 .page-background,
 	.page-id-207 .page-background,
 	.page-id-30 .page-background,
-	.page-id-22 .page-background
+	.page-id-22 .page-background,
+	.page-id-347 .page-background
 	{
 		height:384px;
 	}
@@ -5086,6 +5125,16 @@ h1.page-title
 	{
 		margin:185px auto;
 	}
+	
+	.page-id-347 .hero_banner_text
+	{
+		margin:157px auto 144px;
+	}
+	
+	.page-id-347 .empower
+	{
+		padding:50px 0px 0px 66px;
+	}
 }
 
 @media (min-width:769px) and (max-width: 800px)
@@ -5151,6 +5200,11 @@ h1.page-title
 	.page-id-24 .page-background
 	{
 		height:700px;
+	}
+	
+	.page-id-347 .empower
+	{
+		padding:50px 40px 0px 120px;
 	}
 }
 
