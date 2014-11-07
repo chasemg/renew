@@ -3709,6 +3709,27 @@ h1.page-title
 	margin:380px auto;
 }
 
+
+.page-id-347 .hero_banner_text
+{
+	margin:345px auto 320px;
+}
+
+.page-id-347 .hero_banner_text h1
+{
+	font-weight:bold;
+}
+
+.page-id-347 .empower
+{
+	position:relative;
+}
+
+.page-id-347 .hook
+{
+	top:30px;
+}
+
 @media (max-width:240px)
 {
 	.row_container
