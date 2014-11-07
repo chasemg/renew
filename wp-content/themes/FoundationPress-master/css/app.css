@@ -1416,7 +1416,6 @@ meta.foundation-mq-topbar {font-family:"/only screen and (min-width:40.063em)/";
 		background:#fff;
 	}
 	.top-bar-section .dropdown li:not(.has-form):hover>a:not(.button) {
-		color:#00af41;
 		background: #e4f2e7;
 	}
 	.top-bar-section .dropdown li label {white-space:nowrap;background:#333333;}
