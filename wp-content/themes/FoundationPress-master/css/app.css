@@ -3877,7 +3877,8 @@ h1.page-title
 	.page-id-207 .page-background,
 	.page-id-147 .page-background,
 	.page-id-22 .page-background,
-	.page-id-30 .page-background
+	.page-id-30 .page-background,
+	.page-id-347 .page-background
 	{
 		height:300px;
 	}
@@ -3934,6 +3935,24 @@ h1.page-title
 	.contact_right
 	{
 		width:100%;
+	}
+	
+	
+	.page-id-347 .hero_banner_text
+	{
+		margin:78px auto 0px;
+	}
+	
+	
+	.page-id-347 .empower
+	{
+		padding:40px 10px 0px;
+	}
+	
+	.page-id-347 .empower li
+	{
+		font-size:12px;
+		line-height:15px;
 	}
 	
 }
@@ -4500,7 +4519,8 @@ h1.page-title
 	
 	.page-id-270 .hook,
 	.page-id-224 .hook,
-	.page-id-207 .hook
+	.page-id-207 .hook,
+	.page-id-347 .hook
 	{
 		display:none;
 	}
@@ -4514,6 +4534,11 @@ h1.page-title
 	.post-207 .hero_banner_text
 	{
 		margin:140px 0px 210px 30px;
+	}
+	
+	.page-id-347 .hero_banner_text
+	{
+		margin:162px auto 212px;
 	}
 	
 	.post-224 .hero_banner_text h1,
@@ -4530,6 +4555,18 @@ h1.page-title
 	.post-270 .hero_banner_text button.green_slider_button
 	{
 		margin:30px 0px;
+	}
+	
+	
+	.page-id-347 .empower
+	{
+		padding:50px 40px 0px;
+	}
+	
+	.page-id-347 .empower li
+	{
+		font-size:12px;
+		line-height:1.6;
 	}
 	
 }
