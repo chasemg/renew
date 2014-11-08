@@ -139,11 +139,9 @@ Template Name: Pricing
 <script>
 	var v = 0;
 			$("#add_cost").click(function()	{
-					$('.access_table').removeClass('error_hightlight');
 					$('#new_dob').removeClass('error_hightlight');
 					$('#new_fname').removeClass('error_hightlight');
 					$('#new_lname').removeClass('error_hightlight');
-					$('#new_email').removeClass('error_hightlight');
 					var sex = $("#new_patient_sex").val();
 					if(sex == 'M')	{
 						var patientSex = "Male";
@@ -167,12 +165,10 @@ Template Name: Pricing
 					}					
 
 					
-					$(".calculate_costs table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr>");
-					$(".access_table input[name='access']").prop('checked',false);
+					$(".more_patients table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr>");
 					$('#new_dob').val('');
 					$('#new_fname').val('');
 					$('#new_lname').val('');
-					$('#new_email').val('');
 					$("#new_patient_sex").val('M');
 					v++;
 				});
