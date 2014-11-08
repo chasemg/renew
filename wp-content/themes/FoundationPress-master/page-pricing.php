@@ -138,28 +138,35 @@ Template Name: Pricing
 </div>
 <script>
 	var v = 0;
-			$("#add_cost").click(function()	{
+				$("#add_cost").click(function()	{
 					$('.access_table').removeClass('error_hightlight');
 					$('#new_dob').removeClass('error_hightlight');
 					$('#new_fname').removeClass('error_hightlight');
 					$('#new_lname').removeClass('error_hightlight');
 					$('#new_email').removeClass('error_hightlight');
+					
 					var sex = $("#new_patient_sex").val();
+					
 					if(sex == 'M')	{
 						var patientSex = "Male";
 					} else {
 						var patientSex = "Female";
 					}
+					
 					var dob = $("#new_dob").val();
+					
 					if(dob == '')	{
 						$('#new_dob').addClass('error_hightlight');
 						return false;
 					}
+					
 					var new_fname = $("#new_fname").val();
+					
 					if(new_fname == '')	{
 						$('#new_fname').addClass('error_hightlight');
 						return false;
 					}
+					
 					var new_lname = $("#new_lname").val();
 					if(new_lname == '')	{
 						$('#new_lname').addClass('error_hightlight');
@@ -167,7 +174,8 @@ Template Name: Pricing
 					}					
 
 					
-					$(".calculate_costs table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr>");
+					$(".calculate_costs table.more_patients > tbody > tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr>");
+					
 					$(".access_table input[name='access']").prop('checked',false);
 					$('#new_dob').val('');
 					$('#new_fname').val('');
@@ -176,6 +184,7 @@ Template Name: Pricing
 					$("#new_patient_sex").val('M');
 					v++;
 				});
+				
 				$("#calculate_price").click(function()	{
 					var dataSet = '';
 					var count = 0;				
