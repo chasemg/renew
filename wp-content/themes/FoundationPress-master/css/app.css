@@ -1641,9 +1641,15 @@ blockquote.alignright ,img.alignright {margin:0.4375rem 0 0.4375rem 1.5rem;}
 .top-bar-section li.active:not(.has-form) a:hover:not(.button) {
 }
 
-.top-bar-section li.active:not(.has-form) a:not(.button) 
+.top-bar-section li.active:not(.has-form) a:not(.button),
+.top-bar-section li.active:not(.has-form) ul.sub-menu li.active a 
 {
 	color:#00af41;	
+}
+
+.top-bar-section li.active:not(.has-form) ul.sub-menu li a
+{
+	color:#000;
 }
 @media only screen and (min-width:40.063em){
 	footer.row {
