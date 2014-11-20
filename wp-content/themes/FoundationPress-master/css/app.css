@@ -3760,6 +3760,75 @@ h1.page-title
 	
 }
 
+.doctor-enrollment-page .header_image
+{
+	height:350px;
+}
+
+.doctor-enrollment
+{
+	text-align:left;
+}
+
+.doctor-enrollment h1
+{
+	clear:both;
+	border-bottom:solid 1px #c8c7c7;
+	margin:10px 0px;
+}
+
+.doctor-enrollment table
+{
+	border:none;
+}
+
+.doctor-enrollment p
+{
+	text-align:left;
+	margin:0px 0px 20px;
+}
+
+.doctor-enrollment .staff-information a
+{
+	color:#00af41;
+}
+
+.license-agreement-window
+{
+	height:400px;
+	overflow:hidden;
+	overflow-y:scroll;
+	margin-bottom:20px;
+}
+
+.license-agreement p
+{
+	text-align:left;
+	margin-bottom:10px;
+}
+
+.staff-information,
+.license-agreement
+{
+	display:none;
+}
+
+.buttons
+{
+	margin:30px 0px;
+}
+
+.doctor-enrollment .buttons .button
+{
+	display:none;
+}
+
+.doctor-enrollment .next
+{
+	margin:0px;
+	float:none;
+}
+
 @media (max-width:240px)
 {
 	.row_container

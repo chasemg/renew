@@ -542,6 +542,313 @@ function checkPasswordStrength( $pass1,
     }
     return strength;
 }
+
+
+$('.add-staff').click(function()
+{
+	var firstname = $('#staff_firstname').val();
+	var lastname = $('#staff_lastname').val();
+	var email = $('#staff_email').val();
+	var type = $('#staff_type').val();
+	var phone = $('input[name=staff_phone]').val();
+	var access = $('input[name=access]:checked').val();
+	var school = $('input[name=staff_undergrad_school]').val();
+	var degree = $('input[name=staff_undergrad_degree]').val();
+	var date = $('input[name=staff_undergrad_date]').val();
+	var profession = $('input[name=staff_profession_degree]').val();
+	var license = $('input[name=staff_license]').val();
+	var certification = $('input[name=staff_board_certification]').val();
+	
+	ok = true;
+	var dr_scroll_to = 0;
+	
+	if (firstname == '')
+	{
+		$('#staff_firstname').addClass('error_hightlight');
+		dr_scroll_to = 'staff_firstname';
+		ok = false;
+	}
+	else if (lastname == '')
+	{
+		$('#staff_lastname').addClass('error_hightlight');
+		dr_scroll_to = 'staff_lastname';
+		ok = false;
+	}
+	else if (email == '')
+	{
+		$('#staff_email').addClass('error_hightlight');
+		dr_scroll_to = 'staff_email';
+		ok = false;
+	}
+	
+	if (ok)
+	{
+		$('.staff-information input[type=text]').removeClass('error_highlight').val('');
+		
+		var html = '<tr id="staff_row'+staff_counter+'">';
+		
+		html += '<td>'+firstname + ' ' + lastname +'</td>';
+		html += '<td>' + type + '</td>';
+		
+		html += '<td>';
+		
+		html += '<input type="hidden" name="staff['+staff_counter+'][firstname]" value="'+firstname+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][lastname]" value="'+lastname+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][phone]" value="'+phone+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][email]" value="'+email+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][type]" value="'+type+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][access]" value="'+access+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][undergrad_school]" value="'+school+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][undergrad_degree]" value="'+degree+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][undergrad_date]" value="'+date+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][professional_degree]" value="'+profession+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][state_license]" value="'+license+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][board_certification]" value="'+certification+'">'
+		
+		html += '<a class="remove-button" onclick="$(\'#staff_row'+staff_counter+'\').remove()">Remove</a></td>'
+		
+		html += '</tr>';
+		
+		$('.staff-information-table tbody').append(html);
+		
+		staff_counter++;
+	}
+	else
+	{
+		scrollToAnchor(dr_scroll_to);
+	}
+});
+
+var dr_enrollment_step = 1;
+var staff_counter = 0;
+
+$('.doctor-enrollment .next').click(function()
+{
+	var next_ok = 1;
+	var dr_scroll_to = 0;
+	
+	switch (dr_enrollment_step)
+	{
+		case 1:
+		
+			var practice_name = $('input[name=practice_name]').val();
+			var practice_phone = $('input[name=practice_phone]').val();
+			var practice_email = $('input[name=practice_email]').val();
+			var practice_city = $('input[name=practice_city]').val();
+			var practice_state = $('input[name=practice_state]').val();
+			var practice_zip = $('input[name=practice_zip]').val();
+			
+			var doctor_firstname = $('input[name=firstname]').val();
+			var doctor_lastname = $('input[name=lastname]').val();
+			var doctor_email = $('input[name=email]').val();
+			var doctor_cellphone = $('input[name=cellphone]').val();
+			
+			var doctor_undergrad_school = $('input[name=undergrad_school]').val();
+			var doctor_undergrad_degree = $('input[name=undergrad_degree]').val();
+			var doctor_undergrad_date = $('input[name=undergrad_date]').val();
+			
+			var doctor_med_school = $('input[name=medical_school]').val();
+			var doctor_med_degree = $('input[name=medical_degree]').val();
+			var doctor_med_date = $('input[name=medical_date]').val();
+			
+			var doctor_board_certification = $('input[name=board_certification]').val();
+			var doctor_board_entity = $('input[name=board_entity]').val();
+			var doctor_board_expiration = $('input[name=board_expiration]').val();
+			
+			var doctor_license_number = $('input[name=license_number]').val();
+			var doctor_state_issue = $('input[name=state_issued]').val();
+			var doctor_dea_number = $('input[name=dea_number]').val();
+			
+			if (practice_name == '')
+			{
+				$('input[name=practice_name]').addClass('error_hightlight');
+				dr_scroll_to = 'practice_name';
+				next_ok = 0;
+			} 
+			else if (practice_phone == '')
+			{
+				$('input[name=practice_phone]').addClass('error_hightlight');
+				dr_scroll_to = 'practice_phone';
+				next_ok = 0;
+			}
+			else if (practice_email == '')
+			{
+				$('input[name=practice_email]').addClass('error_hightlight');
+				dr_scroll_to = 'practice_email';
+				next_ok = 0;
+			}
+			else if (practice_city == '')
+			{
+				$('input[name=practice_city]').addClass('error_hightlight');
+				dr_scroll_to = 'practice_city';
+				next_ok = 0;
+			}
+			else if (practice_state == '')
+			{
+				$('input[name=practice_state]').addClass('error_hightlight');
+				dr_scroll_to = 'practice_state';
+				next_ok = 0;
+			}
+			else if (practice_zip == '')
+			{
+				$('input[name=practice_zip]').addClass('error_hightlight');
+				dr_scroll_to = 'practice_zip';
+				next_ok = 0;
+			} 
+			else if (doctor_firstname == '')
+			{
+				$('input[name=firstname]').addClass('error_hightlight');
+				dr_scroll_to = 'firstname';
+				next_ok = 0;
+			}
+			else if (doctor_lastname == '')
+			{
+				$('input[name=lastname]').addClass('error_hightlight');
+				dr_scroll_to = 'lastname';
+				next_ok = 0;
+			}
+			else if (doctor_cellphone == '')
+			{
+				$('input[name=cellphone]').addClass('error_hightlight');
+				dr_scroll_to = 'cellphone';
+				next_ok = 0;
+			}
+			else if (doctor_email == '')
+			{
+				$('input[name=email]').addClass('error_hightlight');
+				dr_scroll_to = 'email';
+				next_ok = 0;
+			}			
+			else if (doctor_undergrad_school == '')
+			{
+				$('input[name=undergrad_school]').addClass('error_hightlight');
+				dr_scroll_to = 'undergrad_school';
+				next_ok = 0;
+			}
+			else if (doctor_undergrad_degree == '')
+			{
+				$('input[name=undergrad_degree]').addClass('error_hightlight');
+				dr_scroll_to = 'undergrad_degree';
+				next_ok = 0;
+			}
+			else if (doctor_undergrad_date == '')
+			{
+				$('input[name=undergrad_date]').addClass('error_hightlight');
+				dr_scroll_to = 'undergrad_date';
+				next_ok = 0;
+			}
+			else if (doctor_med_school == '')
+			{
+				$('input[name=medical_school]').addClass('error_hightlight');
+				dr_scroll_to = 'medical_school';
+				next_ok = 0;
+			}
+			else if (doctor_med_degree == '')
+			{
+				$('input[name=medical_degree]').addClass('error_hightlight');
+				dr_scroll_to = 'medical_degree';
+				next_ok = 0;
+			}
+			else if (doctor_med_date == '')
+			{
+				$('input[name=medical_date]').addClass('error_hightlight');
+				dr_scroll_to = 'medical_date';
+				next_ok = 0;
+			}
+			else if (doctor_board_certification == '')
+			{
+				$('input[name=board_certification]').addClass('error_hightlight');
+				dr_scroll_to = 'board_certification';
+				next_ok = 0;
+			}
+			else if (doctor_board_entity == '')
+			{
+				$('input[name=board_entity]').addClass('error_hightlight');
+				dr_scroll_to = 'board_entity';
+				next_ok = 0;
+			}
+			else if (doctor_board_expiration == '')
+			{
+				$('input[name=board_expiration]').addClass('error_hightlight');
+				dr_scroll_to = 'board_expiration';
+				next_ok = 0;
+			}
+			else if (doctor_license_number == '')
+			{
+				$('input[name=license_number]').addClass('error_hightlight');
+				dr_scroll_to = 'license_number';
+				next_ok = 0;
+			}
+			else if (doctor_state_issue == '')
+			{
+				$('input[name=state_issued]').addClass('error_hightlight');
+				dr_scroll_to = 'state_issued';
+				next_ok = 0;
+			}
+			else if (doctor_dea_number == '')
+			{
+				$('input[name=dea_number]').addClass('error_hightlight');
+				dr_scroll_to = 'dea_number';
+				next_ok = 0;
+			}
+		
+		break;
+		
+		case 2:			
+		
+		break;
+		
+		case 3:
+		
+		break;
+	}
+	
+	if (dr_scroll_to)
+	{
+		scrollToAnchor(dr_scroll_to);
+	}
+	
+	if (next_ok > 0)
+	{
+		if (dr_enrollment_step < 3)
+		{
+			dr_enrollment_step++;
+		}
+		else
+		{
+			dr_enrollment_step = 1;
+		}
+	
+		$('.practice-information').slideUp();
+		$('.staff-information').slideUp();
+		$('.license-agreement').slideUp();
+	
+		$('.buttons .button').hide();
+		$('.buttons .next').hide();
+	
+	
+		switch (dr_enrollment_step)
+		{
+			case 1:
+				$('.practice-information').slideDown();
+				$('.buttons .next').show();
+				scrollToAnchor('form_one');
+			break;
+		
+			case 2:
+				$('.staff-information').slideDown();
+				$('.buttons .next').show();
+				scrollToAnchor('staff_firstname');
+			break;
+		
+			case 3:
+				$('.license-agreement').slideDown();
+				$('.buttons .button').show();
+				scrollToAnchor('form_one');
+			break;
+		}
+	}
+});
  
 $(document).ready(function() {
     // Binding to trigger checkPasswordStrength
@@ -557,5 +864,32 @@ $(document).ready(function() {
             );
         }
     );
+
+	$('.agree input[type=checkbox]').click( function()
+	{
+		$('.agree input[type=checkbox]').removeAttr('checked');
+		$(this).attr('checked',true);
+		return true;
+	});
+
+
+	$('.doctor-enrollment .button').click(function()
+	{
+		var params = $('.doctor-enrollment form').serialize();
+		
+		$.ajax(
+		{
+			url: 'wp-content/themes/FoundationPress-master/parts/doctor_enroll_process.php',
+			data: params,
+			type: 'post',
+			dataType: 'json',
+			success: function(json)
+			{
+			}
+		});
+	});
+
 });	
+
+
 })(jQuery);
