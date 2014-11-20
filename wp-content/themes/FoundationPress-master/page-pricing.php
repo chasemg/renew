@@ -69,17 +69,6 @@ Template Name: Pricing
 											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
 										}
 									}
-
-									foreach($pricing as $p)	{											
-										if($p->id == 2)	{
-											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
-										}
-									}
-									foreach($pricing as $p)	{											
-										if($p->id == 3)	{
-											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
-										}
-									}
 									foreach($pricing as $p)	{											
 										if($p->id == 1)	{
 											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
@@ -90,6 +79,17 @@ Template Name: Pricing
 											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
 										}
 									}
+									foreach($pricing as $p)	{											
+										if($p->id == 2)	{
+											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
+										}
+									}
+									foreach($pricing as $p)	{											
+										if($p->id == 3)	{
+											echo "<tr><td>".$p->name."</td><td><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
+										}
+									}
+
 									foreach($pricing as $p)	{	
 										if($p->id == 4)	{
 											echo "<tr><td style='border-bottom: none;'>".$p->name."</td><td style='border-bottom: none;'><div class='left-border-grey'>$".$p->annually." / yr</div></td></tr>";
