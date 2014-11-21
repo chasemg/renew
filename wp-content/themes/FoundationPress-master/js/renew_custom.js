@@ -794,7 +794,51 @@ $('.doctor-enrollment .next').click(function()
 		
 		break;
 		
-		case 2:			
+		case 2:	
+		
+			var user_email = $('#user_email').val();
+			var verify_email = $('#verify_email').val();	
+			var password = $('#password').val();
+			var verify_password = $('#verify_password').val();
+			
+			if (user_email == '')
+			{
+				$('input[name=user_email]').addClass('error_hightlight');
+				dr_scroll_to = 'user_number';
+				next_ok = 0;
+			}
+			else if (verify_email == '')
+			{
+				$('input[name=verify_email]').addClass('error_hightlight');
+				dr_scroll_to = 'verify_number';
+				next_ok = 0;
+			}
+			else if (password == '')
+			{
+				$('input[name=password]').addClass('error_hightlight');
+				dr_scroll_to = 'password';
+				next_ok = 0;	
+			}
+			else if (verify_password == '')
+			{
+				$('input[name=verify_password]').addClass('error_hightlight');
+				dr_scroll_to = 'verify_password';
+				next_ok = 0;
+			}
+			else if (user_email != verify_email)
+			{
+				$('input[name=user_email]').addClass('error_hightlight');
+				$('input[name=verify_email]').addClass('error_hightlight');
+				dr_scroll_to = 'user_email';
+				next_ok = 0;
+			}
+			else if (password != verify_password)
+			{
+				$('input[name=password]').addClass('error_hightlight');
+				$('input[name=verify_password]').addClass('error_hightlight');
+				dr_scroll_to = 'password';
+				next_ok = 0;
+			}
 		
 		break;
 		
