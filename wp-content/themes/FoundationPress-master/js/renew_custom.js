@@ -551,7 +551,7 @@ $('.add-staff').click(function()
 	var email = $('#staff_email').val();
 	var type = $('#staff_type').val();
 	var phone = $('input[name=staff_phone]').val();
-	var access = $('input[name=access]:checked').val();
+	var access = $('input[name=staff_access]:checked').val();
 	var school = $('input[name=staff_undergrad_school]').val();
 	var degree = $('input[name=staff_undergrad_degree]').val();
 	var date = $('input[name=staff_undergrad_date]').val();
@@ -929,6 +929,25 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function(json)
 			{
+				if (json.user_id > 0)
+				{
+					$('.doctor-enrollment').html('Success!');
+				}
+				else
+				{
+					alert('Account already exists!');
+					
+					$('.practice-information').slideUp();
+					$('.staff-information').slideUp();
+					$('.license-agreement').slideUp();
+	
+					$('.buttons .button').hide();
+					$('.buttons .next').hide();
+					
+					$('.practice-information').slideDown();
+					$('.buttons .next').show();
+					scrollToAnchor('form_one');
+				}
 			}
 		});
 	});
