@@ -16,7 +16,7 @@ body {
 	font-weight:normal;
 	font-style:normal;
 	line-height:normal;
-	position:relative;
+	/*position:relative;*/
 	cursor:default;
 }
 a:hover {cursor:pointer;}
@@ -5649,3 +5649,22 @@ h1.page-title
 	
 }
 
+@media screen and (max-width:767px) {
+	.show-md-down {
+		display:inherit !important;
+		visibility:visible !important;
+	}
+	.tab-bar {
+		top:0px;
+		height:45px;
+		width:100%;
+	}
+	div.mobile-logo {position:absolute;top:0;}
+}
+
+@media screen and (max-width:767px) {
+	.hide-md-down {
+		display:none !important;
+		visibility:hidden !important;
+	}
+}
