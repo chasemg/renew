@@ -215,5 +215,35 @@ function get_doctors_list()
 	
 	return $list;
 }
+
+function form_dropdown($name, $array, $value)
+{
+	$html = '<select name="'.$name.'">';	
+	
+	foreach($array as $a)
+	{
+		$selected = "";
+		
+		if ($value == $a->id)
+		{
+			$selected = "selected";
+		}
+		
+		$html .= '<option value="'.$a->id.'" '.$selected.'>'.$a->text.'</option>';
+	}
+	
+	$html .= '</select>';
+	
+	return $html;
+}
+
+
+function get_states()
+{
+	global $wpdb;
+	
+	return $wpdb->get_results("SELECT name as text, abbreviation as id FROM ".$wpdb->prefix."state WHERE country = 'USA' ORDER BY name");
+}
+
 /*******************************************************************************/
 ?>

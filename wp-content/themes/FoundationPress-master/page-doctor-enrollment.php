@@ -74,7 +74,7 @@ Template Name: Doctor Enrollment
                         
                         	<tr>
                         		<td>City<input type="text" id="practice_city" name="practice_city"></td>
-                            	<td>State<input type="text" id="practice_state" name="practice_state"></td>
+                            	<td>State <?php echo form_dropdown('practice_state', get_states(), ''); ?></td>
                             	<td>Zip<input type="text" id="practice_zip" name="practice_zip"></td>
                         	</tr>   
                         
@@ -130,13 +130,13 @@ Template Name: Doctor Enrollment
                         	<tr>
                         		<td>Undergrad School<input type="text" id="undergrad_school" name="undergrad_school"></td>
                             	<td>Degree Earned<input type="text"  id="undergrad_degree" name="undergrad_degree"></td>
-                            	<td>Graduation Date<input type="text" id="undergrad_date" name="undergrad_date"></td>
+                            	<td>Graduation Date<input class="date" type="text" id="undergrad_date" name="undergrad_date"></td>
                         	</tr>
                         
                         	<tr>
                         		<td>Medical School<input type="text" id="medical_school" name="medical_school"></td>
                             	<td>Degree Earned<input type="text" id="medical_degree" name="medical_degree"></td>
-                            	<td>Graduation Date<input type="text" id="medical_date" name="medical_date"></td>
+                            	<td>Graduation Date<input class="date"  type="text" id="medical_date" name="medical_date"></td>
                         	</tr>
                         
                         	<tr>
@@ -158,7 +158,7 @@ Template Name: Doctor Enrollment
                         
                         	<tr>
                         		<td>License Number<input type="text" id="license_number" name="license_number"></td>
-                            	<td>State Issued<input type="text" id="state_issued" name="state_issued"></td>
+                            	<td>State Issued <?php echo form_dropdown('license_state', get_states(), '') ?></td>
                             	<td>DEA Number<input type="text" id="dea_number" name="dea_number"></td>
                         	</tr>
                         
@@ -249,7 +249,7 @@ Template Name: Doctor Enrollment
                             	</td>
                             	<td>
                             		Graduation Date
-                                	<input type="text" name="staff_undergrad_date">
+                                	<input class="date" type="text" name="staff_undergrad_date">
                             	</td>
                         	</tr>
                         
@@ -957,5 +957,12 @@ ___________________________ [title, e.g., President].</p>
 </div>
 
 </div><!--- doctor enrollment page -->
+
+<link type="text/css" rel="stylesheet" href="<?php bloginfo('template_url') ?>/js/jquery-ui-1.11.1.custom/jquery-ui.css">
+<script type="text/jscript" src="<?php bloginfo('template_url') ?>/js/jquery-ui-1.11.1.custom/jquery-ui.js"></script>
+
+<script>
+jQuery('.date').datepicker();
+</script>
 
 <?php get_footer(); ?>
