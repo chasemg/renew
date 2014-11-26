@@ -1,4 +1,4 @@
-<div  id='sticky-nav' class="top-bar-container contain-to-grid show-for-medium-up">
+<div  id='sticky-nav' class="top-bar-container contain-to-grid hide-md-down">
     <nav class="top-bar" data-topbar="">
         <div class="top-bar-section">
             <div class="nav-left-menu"><?php foundationPress_top_bar_l(); ?></div>

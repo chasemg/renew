@@ -47,7 +47,7 @@
 	
 	<?php do_action('foundationPress_layout_start'); ?>
 	
-	<nav class="tab-bar show-for-small-only">
+	<nav class="tab-bar show-md-down">
 		<div class='mobile-logo'><img src='<?php echo get_stylesheet_directory_uri() ; ?>/assets/img/mobile_logo.png'></div>
 		<section class="right-small">
 			<a class="right-off-canvas-toggle menu-icon" ><span></span></a>
