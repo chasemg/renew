@@ -4521,6 +4521,7 @@ h1.page-title
 		width:50%;
 		margin:0 auto;
 		text-align:center;
+		display:table;
 	}
 	
 	.hook
@@ -5703,4 +5704,18 @@ and (max-device-width : 480px) {
 	.green_slider {
 		height:240px;
 	}
+}
+
+@media only screen 
+and (min-device-width : 360px)
+and (max-device-width : 479px) {
+	.accordion .accordion-navigation > a:after, 
+	.accordion dd > a,
+	.accordion .accordion-navigation.active>a:after, 
+	.accordion dd.active>a:after
+	{
+		line-height:14px;
+		font-size:32px;
+	}
+	
 }
