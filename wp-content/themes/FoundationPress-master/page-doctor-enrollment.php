@@ -55,6 +55,8 @@ Template Name: Doctor Enrollment
                 	<form>
                 
                 	<div class="practice-information">
+                    
+                    	<div class="step1">
                 
 						<h1>Step 1: Practice Information</h1>
                     
@@ -104,7 +106,9 @@ Template Name: Doctor Enrollment
                                                           
                     	</table>
                     
-                   
+                   		</div>
+                        
+                        <div class="step2">
 					
                     	<h1>Step 2: Doctor Information</h1>
                     
@@ -173,10 +177,14 @@ Template Name: Doctor Enrollment
                         	</tr>
                     
                     	</table>
+                        
+                        </div>
                     
                    	</div><!--- practice information -->
 
 					<div class="staff-information" id="staff-information">
+                    
+                    	<div class="step3">
                     
 						<h1>Step 3: Staff Information</h1>
                     
@@ -270,6 +278,11 @@ Template Name: Doctor Enrollment
                     	</table>
                     
                     	<a class="add-staff">+ add</a>
+                        
+                        </div>
+                        
+                        <div class="step4">
+                        
 					
                     	<h1>Step 4: Profile Information</h1>
                     
@@ -312,10 +325,14 @@ Template Name: Doctor Enrollment
 								</td>
 							</tr>
                     	</table>
+                        
+                        </div>
                     
                     </div><!-- staff information -->
                     
                     <div class="license-agreement">
+                    
+                    	<div class="step5">
                     
                    	 	<h1>Step 5: Terms of Service</h1>
 					
@@ -914,21 +931,44 @@ _______________________________ [printed name ].</p>
                         <p>
 ___________________________ [title, e.g., President].</p>
                         <p>
-                    	</div>
+                    	
+                        </div>
                         
                      	 <div class="agree">
+                         
+                         	<div><!-- extra -->
+                     		
+                            	<div><!-- extra -->
+                                
+                                	<div><!-- extra -->
+                     		
+                            		I have read and agree to the terms and conditions.<br />
                      
-                     		I have read and agree to the terms and conditions.<br />
-                     
-                     		<input type="radio" name="agree" value="1" checked="checked"> I agree
+                     				<input type="radio" name="agree" value="1" checked="checked"> I agree
                         
-                        	<input type="radio" name="agree" value="0"> I do not agree
+                        			<input type="radio" name="agree" value="0"> I do not agree
+
+									</div><!-- extra -->
                      
-                     	</div>
+                     			</div><!-- extra -->
+                                
+                             </div><!-- extra -->
+                        
+                        </div>
+                        
+                        </div><!--- step 5 -->
                      
-                     </div><!-- license agreement -->
-                     
-                    
+                     	</div><!-- license agreement -->
+                        
+                        <div class="account-summary">
+                        
+                        	<div class="step6">
+                            
+                            	<h1>Step 6: Account Summary</h1>
+                            
+                            </div>
+                        
+                        </div>
                      
                      <div class="buttons" style="text-align:right;">
                      	<a class="next"></a>
@@ -942,7 +982,7 @@ ___________________________ [title, e.g., President].</p>
 				
                 
                 	 <div class="steps">
-                     	<div class="step1">
+                     	<div class="step1 current">
                         	Step 1:<br />Practice Information<br />                        	
                             <span class="right"></span>
                             <span class="number">1</span>
@@ -1004,6 +1044,66 @@ ___________________________ [title, e.g., President].</p>
 
 <script>
 jQuery('.date').datepicker();
+
+function showSteps(step)
+{
+	console.log(step);
+	
+	$('.steps > div').removeClass('current');
+	$('.steps > div').removeClass('prev');
+	
+	if (step == 'step1')
+	{
+		$('.steps > div.step1').addClass('current');
+	}
+	else if (step == 'step2')
+	{
+		$('.steps > div.step1').addClass('prev');
+		$('.steps > div.step2').addClass('current');	
+	}
+	else if (step == 'step3')
+	{
+		$('.steps > div.step1').addClass('prev');
+		$('.steps > div.step2').addClass('prev');	
+		$('.steps > div.step3').addClass('current');	
+	}
+	else if (step == 'step4')
+	{
+		$('.steps > div.step1').addClass('prev');
+		$('.steps > div.step2').addClass('prev');	
+		$('.steps > div.step3').addClass('prev');	
+		$('.steps > div.step4').addClass('current');	
+	}
+	else if (step == 'step5')
+	{
+		$('.steps > div.step1').addClass('prev');
+		$('.steps > div.step2').addClass('prev');	
+		$('.steps > div.step3').addClass('prev');	
+		$('.steps > div.step4').addClass('prev');	
+		$('.steps > div.step5').addClass('current');	
+	}
+	else if (step == 'step6')
+	{
+		$('.steps > div.step1').addClass('prev');
+		$('.steps > div.step2').addClass('prev');	
+		$('.steps > div.step3').addClass('prev');	
+		$('.steps > div.step4').addClass('prev');	
+		$('.steps > div.step5').addClass('prev');	
+		$('.steps > div.step6').addClass('current');
+	}
+	
+}
+
+$(document).ready(function()
+{
+		
+	$('.doctor-enrollment input').bind('focus click change', function()
+	{
+		var step = $(this).parent().parent().parent().parent().parent().attr('class');
+	
+		showSteps(step);
+	});
+});
 </script>
 
 <?php get_footer(); ?>

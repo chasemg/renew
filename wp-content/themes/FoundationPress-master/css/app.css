@@ -3647,15 +3647,15 @@ font-size: 18px;
 .steps > div > span
 {
 	float:right;
-	width:49%;
+	width:46%;
 	height:10px;
-	background:#009639;
+	background:#afaeaf;
 }
 
 .steps > div span.left,
 .steps > div span.right
 {
-	margin:5px -5px 5px 0px;
+	margin:8px -5px 5px 0px;
 }
 
 .steps .step6 span.number
@@ -3666,16 +3666,35 @@ font-size: 18px;
 
 .steps > div > span.right
 {
-	width:43%;
-	margin:5px 0px 5px -5px;
+	margin:8px 0px 5px -5px;
 }
+
 
 .steps > div > span.number
 {
 	color:#fff;
-	width:20px;
-	height:20px;
-	border-radius:10px;
+	width:25px;
+	height:25px;
+	border-radius:15px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	line-height:22px;
+	margin:0px -5px 0px 0px;
+}
+
+.steps > div.current > span.number,
+.steps > div.prev > span.number
+{
+	background:#009639;
+}
+
+.steps > div.prev > span.right,
+.steps > div.prev > span.left,
+.steps > div.current > span.left
+{
+	height:15px;
+	background:#009639;
+	margin-top:5px;
 }
 
 .practice-information textarea

@@ -854,7 +854,7 @@ $('.doctor-enrollment .next').click(function()
 	
 	if (next_ok > 0)
 	{
-		if (dr_enrollment_step < 3)
+		if (dr_enrollment_step < 4)
 		{
 			dr_enrollment_step++;
 		}
@@ -866,6 +866,7 @@ $('.doctor-enrollment .next').click(function()
 		$('.practice-information').slideUp();
 		$('.staff-information').slideUp();
 		$('.license-agreement').slideUp();
+		$('.account-summary').slideUp();
 	
 		$('.buttons .button').hide();
 		$('.buttons .next').hide();
@@ -883,12 +884,21 @@ $('.doctor-enrollment .next').click(function()
 				$('.staff-information').slideDown();
 				$('.buttons .next').show();
 				scrollToAnchor('staff_firstname');
+				showSteps('step3');
 			break;
 		
 			case 3:
 				$('.license-agreement').slideDown();
-				$('.buttons .button').show();
+				$('.buttons .next').show();
 				scrollToAnchor('form_one');
+				showSteps('step5');
+			break;
+			
+			case 4:
+				$('.account-summary').slideDown();
+				$('.account-summary .step6').addClass('current');
+				$('.buttons .button').show();
+				showSteps('step6');
 			break;
 		}
 	}
