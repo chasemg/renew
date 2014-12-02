@@ -56,7 +56,7 @@ Template Name: Doctor Enrollment
                 
                 	<div class="practice-information">
                 
-						<h1>Practice Information</h1>
+						<h1>Step 1: Practice Information</h1>
                     
                     	<table class="left">
                     	
@@ -106,7 +106,7 @@ Template Name: Doctor Enrollment
                     
                    
 					
-                    	<h1>Doctor Information</h1>
+                    	<h1>Step 2: Doctor Information</h1>
                     
                    	 	<table>
                     		<tr>
@@ -178,7 +178,7 @@ Template Name: Doctor Enrollment
 
 					<div class="staff-information" id="staff-information">
                     
-						<h1>Staff Information</h1>
+						<h1>Step 3: Staff Information</h1>
                     
                     	<p>Click the add button if you wish to add staff members to the account</p>
                         
@@ -271,7 +271,7 @@ Template Name: Doctor Enrollment
                     
                     	<a class="add-staff">+ add</a>
 					
-                    	<h1>Profile Information</h1>
+                    	<h1>Step 4: Profile Information</h1>
                     
                     	<table>
                     		<tr>
@@ -317,7 +317,7 @@ Template Name: Doctor Enrollment
                     
                     <div class="license-agreement">
                     
-                   	 	<h1>End User License Agreement</h1>
+                   	 	<h1>Step 5: Terms of Service</h1>
 					
 						<div class="license-agreement-window">
                     	
@@ -935,10 +935,51 @@ ___________________________ [title, e.g., President].</p>
                         <a class="button">Submit</a>
                      </div>
                      
+                    
                      </form>
                      
 				</div>
 				
+                
+                	 <div class="steps">
+                     	<div class="step1">
+                        	Step 1:<br />Practice Information<br />                        	
+                            <span class="right"></span>
+                            <span class="number">1</span>
+                        </div>
+                        <div class="step2">
+                        	Step 2:<br />Doctor Information<br />
+                            <span class="left"></span>
+                            <span class="right"></span>
+                        	<span class="number">2</span>
+                            
+                        </div>
+                        <div class="step3">
+                        	Step 3:<br />Staff Information<br />
+                        	<span class="left"></span>
+                            <span class="right"></span>
+                        	<span class="number">3</span>                            
+                        </div>
+                        <div class="step4">
+                        	Step 4:<br />Create Your Profile<br />
+                        	<span class="left"></span>
+                            <span class="right"></span>
+                        	<span class="number">4</span>                            
+                        </div>
+                        <div class="step5">
+                        	Step 5:<br />Terms of Service<br />
+                        	<span class="left"></span>
+                            <span class="right"></span>
+                        	<span class="number">5</span>                           
+                        </div>
+                        <div class="step6">
+                        	Step 6:<br />Account Summary<br />
+                        	<span class="left"></span>
+                           	<span class="number">6</span>
+                        </div>
+                     </div>
+                     
+                     <br clear="all">
 					
 				<footer>
 					<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'FoundationPress'), 'after' => '</p></nav>' )); ?>

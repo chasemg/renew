@@ -3614,6 +3614,63 @@ font-size: 18px;
 	
 }
 
+.steps 
+{
+	height:50px;
+	margin:0px 0px 40px;
+}
+
+
+.steps > div
+{
+	float:left;
+	width:16%;
+	text-align:center;
+	overflow:hidden;
+	font-weight:bold;
+	font-size:12px;
+}
+
+.steps > div > span
+{
+	float:right;
+	width:49%;
+	height:10px;
+	background:#009639;
+}
+
+.steps > div span.left,
+.steps > div span.right
+{
+	margin:5px -5px 5px 0px;
+}
+
+.steps .step6 span.number
+{
+	float:left;
+}
+
+
+.steps > div > span.right
+{
+	width:43%;
+	margin:5px 0px 5px -5px;
+}
+
+.steps > div > span.number
+{
+	color:#fff;
+	width:20px;
+	height:20px;
+	border-radius:10px;
+}
+
+.practice-information textarea
+{
+	height:200px;
+}
+
+
 /***************** RESPONSIVE ***********************************/
 
 
