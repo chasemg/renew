@@ -1267,6 +1267,13 @@ meta.foundation-mq-topbar {font-family:"/only screen and (min-width:40.063em)/";
 	font-weight:normal;
 	text-transform:none;
 }
+
+@media only screen 
+and (min-device-width : 801px) 
+and (max-device-width : 1023px) {
+	.top-bar-section ul li>a {font-size:15px;}
+}
+
 .top-bar-section ul li > a.button {font-size:0.8125rem;padding-right:15px;padding-left:15px;background-color:#008cba;border-color:#007295;color:#ffffff;}
 .top-bar-section ul li > a.button:hover ,.top-bar-section ul li > a.button:focus {background-color:#007295;}
 .top-bar-section ul li > a.button:hover ,.top-bar-section ul li > a.button:focus {color:#ffffff;}
@@ -2142,6 +2149,12 @@ footer h1	{
 	float: right;
 	margin-right: 45px;
 	width: 40%;	
+}
+@media only screen 
+and (min-width: 768px) 
+and (max-width: 980px) {
+	.nav-left-menu_footer,
+	.nav-right-menu_footer	{margin-right: 34px;}
 }
 .footer_nav_left	{
 	border-top: 1px solid #fff;
@@ -4578,6 +4591,7 @@ h1.page-title
 		width:50%;
 		margin:0 auto;
 		text-align:center;
+		display:table;
 	}
 	
 	.hook
@@ -5706,22 +5720,72 @@ h1.page-title
 	
 }
 
-@media screen and (max-width:767px) {
+@media only screen
+and (max-width:767px) {
 	.show-md-down {
 		display:inherit !important;
 		visibility:visible !important;
+	}
+	.hide-md-down {
+		display:none !important;
+		visibility:hidden !important;
 	}
 	.tab-bar {
 		top:0px;
 		height:45px;
 		width:100%;
 	}
-	div.mobile-logo {position:absolute;top:0;}
+	div.mobile-logo {
+		position:absolute;
+		top:0;
+	}
+
 }
 
-@media screen and (max-width:767px) {
-	.hide-md-down {
-		display:none !important;
-		visibility:hidden !important;
+@media only screen
+and (max-width:765px) {
+	.green_slider {
+		margin-top:60px;
+		height:400px;
 	}
+	#rev-green-section > div.slotholder > div.tp-bgimg {
+		background-image:none !important;
+		background:#009639 !important;
+	}	
+}
+
+@media only screen 
+and (max-width:568px) {
+	.green_slider {
+		margin-top:85px;
+	}
+}
+
+@media only screen 
+and (max-device-width : 360px) {
+	.green_slider {
+		height:150px;
+	}
+}
+
+@media only screen 
+and (min-device-width : 361px)
+and (max-device-width : 480px) {
+	.green_slider {
+		height:240px;
+	}
+}
+
+@media only screen 
+and (min-device-width : 360px)
+and (max-device-width : 479px) {
+	.accordion .accordion-navigation > a:after, 
+	.accordion dd > a,
+	.accordion .accordion-navigation.active>a:after, 
+	.accordion dd.active>a:after
+	{
+		line-height:14px;
+		font-size:32px;
+	}
+	
 }
