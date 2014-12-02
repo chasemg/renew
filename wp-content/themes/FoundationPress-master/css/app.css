@@ -1267,6 +1267,13 @@ meta.foundation-mq-topbar {font-family:"/only screen and (min-width:40.063em)/";
 	font-weight:normal;
 	text-transform:none;
 }
+
+@media only screen 
+and (min-device-width : 801px) 
+and (max-device-width : 1023px) {
+	.top-bar-section ul li>a {font-size:15px;}
+}
+
 .top-bar-section ul li > a.button {font-size:0.8125rem;padding-right:15px;padding-left:15px;background-color:#008cba;border-color:#007295;color:#ffffff;}
 .top-bar-section ul li > a.button:hover ,.top-bar-section ul li > a.button:focus {background-color:#007295;}
 .top-bar-section ul li > a.button:hover ,.top-bar-section ul li > a.button:focus {color:#ffffff;}
@@ -2142,6 +2149,12 @@ footer h1	{
 	float: right;
 	margin-right: 45px;
 	width: 40%;	
+}
+@media only screen 
+and (min-width: 768px) 
+and (max-width: 980px) {
+	.nav-left-menu_footer,
+	.nav-right-menu_footer	{margin-right: 34px;}
 }
 .footer_nav_left	{
 	border-top: 1px solid #fff;
