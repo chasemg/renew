@@ -1245,6 +1245,7 @@ meta.foundation-mq-topbar {font-family:"/only screen and (min-width:40.063em)/";
 	position:relative;
 	width:900px;
 	margin:0 auto;
+	display: inline-block;
 	transition:left 300ms ease-out; 
 	/*text-align: center;*/
 }
@@ -1357,7 +1358,7 @@ and (max-device-width : 1023px) {
 	.top-bar .name h1 a {width:auto;}
 	.top-bar input ,.top-bar .button ,.top-bar button {font-size:0.875rem;position:relative;top:7px;}
 	.top-bar.expanded {background:#333333;}
-	.contain-to-grid .top-bar {max-width:62.5rem;margin:0 auto;margin-bottom:0;}
+	.contain-to-grid .top-bar {max-width:100%;margin:0 auto;margin-bottom:0; text-align: center;}
 	.top-bar-section {transition:none 0 0;left:0 !important;}
 	.top-bar-section ul {width:auto;height:auto !important;display:inline;}
 	
@@ -1673,7 +1674,7 @@ blockquote.alignright ,img.alignright {margin:0.4375rem 0 0.4375rem 1.5rem;}
 .nav_logo	{
 	display: inline-block;
 	float: none;
-	margin: 0 0 0 40px;
+	margin: 0 0 0 0px;
 }
 .nav_logo img	{
 	/*margin: 0 70px 25px 70px;*/
@@ -1681,11 +1682,11 @@ blockquote.alignright ,img.alignright {margin:0.4375rem 0 0.4375rem 1.5rem;}
 }
 .nav-left-menu	{
 	display: inline-block;
-	float: left;
+	float: none;
 }
 .nav-right-menu	{
 	display: inline-block;
-	float: right;
+	float: none;
 }
 .green_slider_button, input[type="submit"]	{
 	background: #00af41;
