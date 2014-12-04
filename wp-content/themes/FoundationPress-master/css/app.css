@@ -1410,7 +1410,7 @@ and (max-device-width : 1023px) {
 	{
 		display:inline-block;
 		position:static !important; 
-		padding-top: 15px;
+		padding-top: 14px;
 		height:auto;
 		width:auto;
 		overflow:visible;
