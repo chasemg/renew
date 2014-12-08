@@ -63,21 +63,21 @@ Template Name: Doctor Enrollment
                     	<table class="left">
                     	
                         	<tr>
-                        		<td colspan="3">Name<input type="text" id="practice_name" name="practice_name"></td>
+                        		<td colspan="3">Name<input type="text" value="Practice Name" id="practice_name" name="practice_name"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td colspan="3">Address<input type="text"  name="practice_address"></td>
+                        		<td colspan="3">Address<input type="text" value="Address"  name="practice_address"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td colspan="3">Address 2<input type="text" name="practice_address2"></td>
+                        		<td colspan="3">Address 2<input type="text" value="Address 2" name="practice_address2"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td>City<input type="text" id="practice_city" name="practice_city"></td>
-                            	<td>State <?php echo form_dropdown('practice_state', get_states(), ''); ?></td>
-                            	<td>Zip<input type="text" id="practice_zip" name="practice_zip"></td>
+                        		<td>City<input type="text" value="City" id="practice_city" name="practice_city"></td>
+                            	<td>State <?php echo form_dropdown('practice_state', get_states(), 'UT'); ?></td>
+                            	<td>Zip<input value="zip" type="text" id="practice_zip" name="practice_zip"></td>
                         	</tr>   
                         
                         	<tr>
@@ -89,19 +89,19 @@ Template Name: Doctor Enrollment
                     	<table class="right">
                     
                     		<tr>
-                        		<td>Primary Phone<input type="text" id="practice_phone" name="practice_phone"></td>
+                        		<td>Primary Phone<input type="text" id="practice_phone" value="primary phone" name="practice_phone"></td>
                         	</tr>
                     
                         	<tr>
-                        		<td>Primary Email<input type="text" id="practice_email" name="practice_email"></td>
+                        		<td>Primary Email<input type="text" id="practice_email" value="primary email" name="practice_email"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td>Routing Number<input type="text" name="practice_routing_number"></td>
+                        		<td>Routing Number<input type="text" value="Routing Number" name="practice_routing_number"></td>
                         	</tr>  
                         
                         	<tr>
-                        		<td>Bank Account<input type="text" name="practice_bank_account"></td>
+                        		<td>Bank Account<input type="text" value="Bank Account" name="practice_bank_account"></td>
                         	</tr>   
                                                           
                     	</table>
@@ -114,9 +114,9 @@ Template Name: Doctor Enrollment
                     
                    	 	<table>
                     		<tr>
-                        		<td>First Name<input type="text" id="firstname" name="firstname"></td>
-                            	<td>Last Name<input type="text" id="lastname" name="lastname"></td>
-                            	<td>Mobile Number<input type="text" id="cellphone" name="cellphone"></td>
+                        		<td>First Name<input type="text" value="First Name" id="firstname" name="firstname"></td>
+                            	<td>Last Name<input type="text" value="Last Name" id="lastname" name="lastname"></td>
+                            	<td>Mobile Number<input type="text" value="Mobile" id="cellphone" name="cellphone"></td>
                         	</tr>
                         
                         	<tr>
@@ -127,20 +127,20 @@ Template Name: Doctor Enrollment
                     		</tr>
                         
                         	<tr>
-                        		<td colspan="3">Email<input type="text" id="email" name="email"></td>
+                        		<td colspan="3">Email<input type="text" value="Email" id="email" name="email"></td>
                            
                         	</tr>
                         
                         	<tr>
-                        		<td>Undergrad School<input type="text" id="undergrad_school" name="undergrad_school"></td>
-                            	<td>Degree Earned<input type="text"  id="undergrad_degree" name="undergrad_degree"></td>
-                            	<td>Graduation Date<input class="date" type="text" id="undergrad_date" name="undergrad_date"></td>
+                        		<td>Undergrad School<input type="text" value="School" id="undergrad_school" name="undergrad_school"></td>
+                            	<td>Degree Earned<input type="text" value="School"  id="undergrad_degree" name="undergrad_degree"></td>
+                            	<td>Graduation Date<input class="date" value="School" type="text" id="undergrad_date" name="undergrad_date"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td>Medical School<input type="text" id="medical_school" name="medical_school"></td>
-                            	<td>Degree Earned<input type="text" id="medical_degree" name="medical_degree"></td>
-                            	<td>Graduation Date<input class="date"  type="text" id="medical_date" name="medical_date"></td>
+                        		<td>Medical School<input type="text" value="School" id="medical_school" name="medical_school"></td>
+                            	<td>Degree Earned<input type="text" value="School" id="medical_degree" name="medical_degree"></td>
+                            	<td>Graduation Date<input class="date" value="School"  type="text" id="medical_date" name="medical_date"></td>
                         	</tr>
                         
                         	<tr>
@@ -155,19 +155,19 @@ Template Name: Doctor Enrollment
                         	</tr>
                         
                         	<tr>
-                        		<td>Bord Certification<input type="text" id="board_certification" name="board_certification"></td>
-                            	<td>Entity<input type="text" id="board_entity" name="board_entity"></td>
-                            	<td>Year of Expiration<input type="text" id="board_expiration" name="board_expiration"></td>
+                        		<td>Bord Certification<input value="School" type="text" id="board_certification" name="board_certification"></td>
+                            	<td>Entity<input type="text" value="School" id="board_entity" name="board_entity"></td>
+                            	<td>Year of Expiration<input value="School" type="text" id="board_expiration" name="board_expiration"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td>License Number<input type="text" id="license_number" name="license_number"></td>
-                            	<td>State Issued <?php echo form_dropdown('license_state', get_states(), '') ?></td>
-                            	<td>DEA Number<input type="text" id="dea_number" name="dea_number"></td>
+                        		<td>License Number<input type="text" value="School" id="license_number" name="license_number"></td>
+                            	<td>State Issued <?php echo form_dropdown('license_state', get_states(), 'UT') ?></td>
+                            	<td>DEA Number<input type="text" value="School" id="dea_number" name="dea_number"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td colspan="3">Upload Photo (optional)<input type="file" name="photo" placeholder="image file"></td>
+                        		<td colspan="3">Upload Photo (optional)<br /><button id="upload">Browse...</button><input type="hidden" name="photo"><span class="photo-selected">No file seleted</span></td>
                             
                         	</tr>
                         
@@ -182,15 +182,15 @@ Template Name: Doctor Enrollment
                     
                    	</div><!--- practice information -->
 
-					<div class="staff-information" id="staff-information">
+					<div class="staff-information">
                     
                     	<div class="step3">
                     
-						<h1>Step 3: Staff Information</h1>
+						<h1 id="staff-information">Step 3: Staff Information</h1>
                     
                     	<p>Click the add button if you wish to add staff members to the account</p>
                         
-                        <table class="staff-information-table">
+                        <table class="staff-information-table" id="staff-information-table">
                         	<thead>
                             	<tr>
                                 	<th>Name</th>
@@ -207,29 +207,30 @@ Template Name: Doctor Enrollment
                             <tr>
                         		<td>
                             		First Name
-                                	<input type="text" id="staff_firstname" name="staff_firstname">
+                                	<input type="text" value="School" id="staff_firstname" name="staff_firstname">
                             	</td>
                             	<td>
                             		Last Name
-                                	<input type="text" id="staff_lastname" name="staff_lastname">
+                                	<input type="text" value="School" id="staff_lastname" name="staff_lastname">
                             	</td>
                         	</tr>
                         
                         	<tr>
                         		<td>
                             		Primary Email
-                                	<input type="text" id="staff_email" name="staff_email">
+                                	<input type="text" value="School" id="staff_email" name="staff_email">
                             	</td>
                             	<td>
                             		Primary Phone Number
-                                	<input type="text" name="staff_phone">
+                                	<input type="text" value="School" name="staff_phone">
                             	</td>
                         	</tr>
                         
                         	<tr>
                         		<td colspan="2">
-                            		Upload Photo (optional)
-                                	<input type="file" name="staff_photo">
+                            		Upload Photo (optional)<br />
+                                    <button id="staff_photo">Browse...</button><span class="staff-photo-selected">No file selected</span>
+                                	<input type="hidden" name="staff_photo">
                                 	<label>Account access: <input type="radio" name="staff_access" value="primary" checked="checked"> Primary access <input type="radio" value="secondary" name="staff_access"> Secondary access<label>
                             	</td>
                            
@@ -286,7 +287,7 @@ Template Name: Doctor Enrollment
 					
                     	<h1>Step 4: Profile Information</h1>
                     
-                    	<table>
+                    	<table class="profile-information-table">
                     		<tr>
                         		<td>
                             		Email Address (this will be your username)
@@ -965,6 +966,24 @@ ___________________________ [title, e.g., President].</p>
                         	<div class="step6">
                             
                             	<h1>Step 6: Account Summary</h1>
+                                
+                                                               
+                                <h2>Practice Information</h2>
+                                
+                                <div class="practice-information"></div>
+                                
+                                <h2>Doctor Information</h2>
+                                
+                                
+                                <div class="doctor-information"></div>
+                                
+                                <h2>Staff Information</h2>
+                                
+                                <div class="staff-information"></div>
+                                
+                                <h2>Profile Information</h2>
+                                
+                                <div class="profile-information"></div>
                             
                             </div>
                         
@@ -1041,9 +1060,64 @@ ___________________________ [title, e.g., President].</p>
 
 <link type="text/css" rel="stylesheet" href="<?php bloginfo('template_url') ?>/js/jquery-ui-1.11.1.custom/jquery-ui.css">
 <script type="text/jscript" src="<?php bloginfo('template_url') ?>/js/jquery-ui-1.11.1.custom/jquery-ui.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url') ?>/js/ajaxupload.js"></script>
+<script type="text/javascript"><!--
+new AjaxUpload('#upload', {
+	action: 'wp-content/themes/FoundationPress-master/upload.php',
+	name: 'file',
+	autoSubmit: true,
+	responseType: 'json',
+	onSubmit: function(file, extension) {
+		
+	},
+	onComplete: function(file, json) 
+	{
+		if (json['success'])
+		{
+			$('input[name=photo]').val(file);
+			$('.photo-selected').html(file);
+		}
+		
+		if (json['error'])
+		{
+			alert(json['error']);
+		}
+	}
+});
+//--></script>
+
+<script type="text/javascript"><!--
+new AjaxUpload('#staff_photo', {
+	action: 'wp-content/themes/FoundationPress-master/upload.php',
+	name: 'file',
+	autoSubmit: true,
+	responseType: 'json',
+	onSubmit: function(file, extension) {
+		
+	},
+	onComplete: function(file, json) 
+	{
+		if (json['success'])
+		{
+			$('input[name=staff_photo]').val(file);
+			$('.staff-photo-selected').html(file);
+		}
+		
+		if (json['error'])
+		{
+			alert(json['error']);
+		}
+	}
+});
+//--></script>
 
 <script>
+
+var staff_counter = 0;
+
 jQuery('.date').datepicker();
+
+
 
 function showSteps(step)
 {
@@ -1084,18 +1158,38 @@ function showSteps(step)
 	}
 	else if (step == 'step6')
 	{
+		build_doctor_account_summary();
+		
 		$('.steps > div.step1').addClass('prev');
 		$('.steps > div.step2').addClass('prev');	
 		$('.steps > div.step3').addClass('prev');	
 		$('.steps > div.step4').addClass('prev');	
 		$('.steps > div.step5').addClass('prev');	
 		$('.steps > div.step6').addClass('current');
+		
 	}
 	
 }
 
+function build_doctor_account_summary()
+{
+	$('.account-summary .practice-information').html($('.practice-information .step1').html());
+	$('.account-summary .doctor-information').html($('.practice-information .step2').html());
+	$('.account-summary .profile-information').html('<table>' + $('.profile-information-table').html() + '</table>');
+	
+	if (staff_counter > 0)
+	{
+		$('.account-summary .staff-information').html('<table class="staff-information-table">'+($('#staff-information .staff-information-table').html())+'</table>');
+	}
+	
+	$('.account-summary .practice-information h1').hide();
+	$('.account-summary .doctor-information h1').hide();
+	$('.account-summary .step6 h1').hide();
+}
+
 $(document).ready(function()
 {
+	//build_doctor_account_summary();
 		
 	$('.doctor-enrollment input').bind('focus click change', function()
 	{

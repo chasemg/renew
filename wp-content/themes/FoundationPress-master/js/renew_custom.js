@@ -38,11 +38,14 @@
 		parallax: true,
 		touch: false
 	});	
-	function scrollToAnchor(aid){
+	
+	function scrollToAnchor(aid)
+	{
 		var aTag = $("#"+ aid +"");
 		var wWidth = $(window).width();
 		var wHeight = $(window).height();
-		topMargin = wHeight/2 - aTag.height()/2;
+		var topMargin = wHeight/2 - aTag.height()/2;
+		console.log(aid);
 		$('html,body').animate({scrollTop: aTag.offset().top - topMargin},'slow');
 	}
 	$(".faq_scroll").click(function()	{
@@ -555,9 +558,10 @@ $('.add-staff').click(function()
 	var school = $('input[name=staff_undergrad_school]').val();
 	var degree = $('input[name=staff_undergrad_degree]').val();
 	var date = $('input[name=staff_undergrad_date]').val();
-	var profession = $('input[name=staff_profession_degree]').val();
+	var profession = $('input[name=staff_professional_degree]').val();
 	var license = $('input[name=staff_license]').val();
 	var certification = $('input[name=staff_board_certification]').val();
+	var photo = $('input[name=staff_photo]').val();
 	
 	ok = true;
 	var dr_scroll_to = 0;
@@ -584,6 +588,8 @@ $('.add-staff').click(function()
 	if (ok)
 	{
 		$('.staff-information input[type=text]').removeClass('error_highlight').val('');
+		$('input[name=staff_photo]').val('');
+		$('.staff-photo-selected').html('No file selected');
 		
 		var html = '<tr id="staff_row'+staff_counter+'">';
 		
@@ -604,12 +610,15 @@ $('.add-staff').click(function()
 		html += '<input type="hidden" name="staff['+staff_counter+'][professional_degree]" value="'+profession+'">'
 		html += '<input type="hidden" name="staff['+staff_counter+'][state_license]" value="'+license+'">'
 		html += '<input type="hidden" name="staff['+staff_counter+'][board_certification]" value="'+certification+'">'
+		html += '<input type="hidden" name="staff['+staff_counter+'][photo]" value="'+photo+'">'
 		
 		html += '<a class="remove-button" onclick="$(\'#staff_row'+staff_counter+'\').remove()">Remove</a></td>'
 		
 		html += '</tr>';
 		
 		$('.staff-information-table tbody').append(html);
+		
+		scrollToAnchor('staff-information-table');
 		
 		staff_counter++;
 	}
@@ -620,7 +629,7 @@ $('.add-staff').click(function()
 });
 
 var dr_enrollment_step = 1;
-var staff_counter = 0;
+
 
 $('.doctor-enrollment .next').click(function()
 {
@@ -839,6 +848,8 @@ $('.doctor-enrollment .next').click(function()
 				dr_scroll_to = 'password';
 				next_ok = 0;
 			}
+			
+			
 		
 		break;
 		
@@ -871,6 +882,7 @@ $('.doctor-enrollment .next').click(function()
 		$('.buttons .button').hide();
 		$('.buttons .next').hide();
 	
+		console.log(dr_enrollment_step);
 	
 		switch (dr_enrollment_step)
 		{
@@ -881,28 +893,36 @@ $('.doctor-enrollment .next').click(function()
 			break;
 		
 			case 2:
-				$('.staff-information').slideDown();
-				$('.buttons .next').show();
-				scrollToAnchor('staff_firstname');
+				$('.staff-information').slideDown();				
+				$('.buttons .next').show();				
+				
 				showSteps('step3');
+				
+				$('html,body').animate({scrollTop: 300},'slow');
+			
 			break;
 		
 			case 3:
 				$('.license-agreement').slideDown();
 				$('.buttons .next').show();
-				scrollToAnchor('form_one');
 				showSteps('step5');
+				$('html,body').animate({scrollTop: 300},'slow');
 			break;
 			
 			case 4:
+				build_doctor_account_summary();
+				$('.account-summary .practice-information').show();
 				$('.account-summary').slideDown();
-				$('.account-summary .step6').addClass('current');
+				//$('.account-summary .step6').addClass('current');
 				$('.buttons .button').show();
 				showSteps('step6');
+				$('html,body').animate({scrollTop: 300},'slow');
 			break;
 		}
 	}
 });
+
+
  
 $(document).ready(function() {
     // Binding to trigger checkPasswordStrength
@@ -950,7 +970,7 @@ $(document).ready(function() {
 					$('.practice-information').slideUp();
 					$('.staff-information').slideUp();
 					$('.license-agreement').slideUp();
-	
+					$('.account-summary').slideUp();
 					$('.buttons .button').hide();
 					$('.buttons .next').hide();
 					

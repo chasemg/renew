@@ -3697,11 +3697,16 @@ font-size: 18px;
 	margin-top:5px;
 }
 
-.practice-information textarea
+.practice-information textarea,
+.doctor-information textarea
 {
 	height:200px;
 }
 
+.step6 h2
+{
+	clear:both;
+}
 
 /***************** RESPONSIVE ***********************************/
 
@@ -3904,7 +3909,8 @@ and (max-width : 480px) {
 }
 
 .staff-information,
-.license-agreement
+.license-agreement,
+.account-summary
 {
 	display:none;
 }
@@ -5815,3 +5821,4 @@ and (max-device-width : 479px) {
 	}
 	
 }
+
