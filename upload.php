@@ -1,8 +1,7 @@
 <?php
 
-	echo "hello";
 
-	/*$json = array();
+	$json = array();
 
 	if (!empty($_FILES['file']['name'])) 
 	{
@@ -25,7 +24,7 @@
 
 	if (!$json && is_uploaded_file($_FILES['file']['tmp_name']) && file_exists($_FILES['file']['tmp_name'])) 
 	{
-		$dir = '../../../wp-content/uploads/photo/';
+		$dir = 'wp-content/uploads/photo/';
 		
 		$file = $dir . $filename;		
 		
@@ -36,6 +35,6 @@
 	
 	//print_r($json);
 
-	echo json_encode($json);*/
+	echo json_encode($json);
 		
 ?>
