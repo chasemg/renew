@@ -167,7 +167,8 @@ Template Name: Doctor Enrollment
                         	</tr>
                         
                         	<tr>
-                        		<td colspan="3">Upload Photo (optional)<br /><button id="upload">Browse...</button><input type="hidden" name="photo"><span class="photo-selected">No file seleted</span></td>
+                        		<td>Upload Photo (optional)<br /><input type="text" name="photo" placeholder="Image File"></td>
+                                <td colspan="2"><br /><button id="upload">Browse</button></td>
                             
                         	</tr>
                         
@@ -227,10 +228,17 @@ Template Name: Doctor Enrollment
                         	</tr>
                         
                         	<tr>
-                        		<td colspan="2">
+                        		<td>
                             		Upload Photo (optional)<br />
-                                    <button id="staff_photo">Browse...</button><span class="staff-photo-selected">No file selected</span>
-                                	<input type="hidden" name="staff_photo">
+                                	<input type="text" name="staff_photo" placeholder="Image File">
+                                </td>
+                                <td>
+                                	<br />
+                                    <button id="staff_photo">Browse</button>
+                               	</td>
+                            </tr>
+                            <tr>
+                            	<td colspan="2">
                                 	<label>Account access: <input type="radio" name="staff_access" value="primary" checked="checked"> Primary access <input type="radio" value="secondary" name="staff_access"> Secondary access<label>
                             	</td>
                            
