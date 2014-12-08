@@ -1076,18 +1076,18 @@ new AjaxUpload('#upload', {
 	autoSubmit: true,
 	responseType: 'json',
 	onSubmit: function(file, extension) {
-		
+		$('input[name=photo]').val('uploading...');
 	},
 	onComplete: function(file, json) 
 	{
 		if (json['success'])
 		{
 			$('input[name=photo]').val(file);
-			$('.photo-selected').html(file);
 		}
 		
 		if (json['error'])
 		{
+			$('input[name=photo]').val('');
 			alert(json['error']);
 		}
 	}
@@ -1101,18 +1101,18 @@ new AjaxUpload('#staff_photo', {
 	autoSubmit: true,
 	responseType: 'json',
 	onSubmit: function(file, extension) {
-		
+		$('input[name=staff_photo]').val('uploading...');
 	},
 	onComplete: function(file, json) 
 	{
 		if (json['success'])
 		{
 			$('input[name=staff_photo]').val(file);
-			$('.staff-photo-selected').html(file);
 		}
 		
 		if (json['error'])
 		{
+			$('input[name=staff_photo]').val('');
 			alert(json['error']);
 		}
 	}
