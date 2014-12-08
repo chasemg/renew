@@ -1,6 +1,8 @@
 <?php
 
-	$json = array();
+	echo "hello";
+
+	/*$json = array();
 
 	if (!empty($_FILES['file']['name'])) 
 	{
@@ -34,6 +36,6 @@
 	
 	//print_r($json);
 
-	echo json_encode($json);
+	echo json_encode($json);*/
 		
 ?>
