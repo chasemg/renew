@@ -1071,7 +1071,7 @@ ___________________________ [title, e.g., President].</p>
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/js/ajaxupload.js"></script>
 <script type="text/javascript"><!--
 new AjaxUpload('#upload', {
-	action: 'wp-content/themes/FoundationPress-master/upload.php',
+	action: 'wp-content/themes/FoundationPress-master/parts/upload.php',
 	name: 'file',
 	autoSubmit: true,
 	responseType: 'json',
@@ -1096,7 +1096,7 @@ new AjaxUpload('#upload', {
 
 <script type="text/javascript"><!--
 new AjaxUpload('#staff_photo', {
-	action: 'wp-content/themes/FoundationPress-master/upload.php',
+	action: 'wp-content/themes/FoundationPress-master/parts/upload.php',
 	name: 'file',
 	autoSubmit: true,
 	responseType: 'json',
