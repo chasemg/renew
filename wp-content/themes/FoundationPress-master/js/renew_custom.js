@@ -587,7 +587,7 @@ $('.add-staff').click(function()
 	
 	if (ok)
 	{
-		$('.staff-information input[type=text]').removeClass('error_highlight').val('');
+		$('.staff-information .step3 input[type=text]').removeClass('error_highlight').val('');
 		$('input[name=staff_photo]').val('');
 		$('.staff-photo-selected').html('No file selected');
 		
@@ -945,8 +945,9 @@ $('.doctor-enrollment .next').click(function()
 			
 					case 4:
 						build_doctor_account_summary();
-						$('.account-summary .practice-information').show();
+						$('.account-summary .practice-information').slideDown();
 						$('.account-summary').slideDown();
+						$('.account-summary .staff-information').slideDown();
 						//$('.account-summary .step6').addClass('current');
 						$('.buttons .button').show();
 						showSteps('step6');

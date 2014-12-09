@@ -127,7 +127,7 @@ Template Name: Doctor Enrollment
                     		</tr>
                         
                         	<tr>
-                        		<td colspan="3">Email<input type="text" value="Email" id="email" name="email"></td>
+                        		<td colspan="3">Email<input type="text" value="doctor2@renew.com" id="email" name="email"></td>
                            
                         	</tr>
                         
@@ -1212,18 +1212,235 @@ function showSteps(step)
 
 function build_doctor_account_summary()
 {
-	$('.account-summary .practice-information').html($('.practice-information .step1').html());
-	$('.account-summary .doctor-information').html($('.practice-information .step2').html());
-	$('.account-summary .profile-information').html('<table>' + $('.profile-information-table').html() + '</table>');
+	var practice_information = '';
+	var doctor_information = '';
+	var profile_information = '';
+	var staff_information = '';
+	
+	var practice_name = $('input[name=practice_name]').val();
+	var practice_phone = $('input[name=practice_phone]').val();
+	var practice_email = $('input[name=practice_email]').val();
+	var practice_city = $('input[name=practice_city]').val();
+	var practice_state = $('input[name=practice_state]').val();
+	var practice_zip = $('input[name=practice_zip]').val();
+	
+	practice_information = '<table>';
+	
+	practice_information += '<tr>';
+	
+	practice_information += '<td colspan="3">Name</td><td>Primary Phone</td>';
+	
+	practice_information += '</tr>';
+	
+	practice_information += '<tr>'
+	
+	practice_information += '<td colspan="3">' + practice_name + '</td>';
+	
+	practice_information += '<td>' + practice_phone + '</td>';
+	
+	practice_information += '</tr>';
+	
+	practice_information += '<tr>';
+	
+	practice_information += '<td colspan="3">Address</td><td>Primary Email</td>';
+	
+	practice_information += '</tr>';
+	
+	practice_information += '<tr>';
+	
+	practice_information += '<td colspan="3">' + $('input[name=practice_address]').val() + '</td><td>' + practice_email + '</td>';
+	
+	practice_information += '</tr>';
+	
+	practice_information += '<tr>';
+	
+	practice_information += '<td colspan="3">Address 2</td><td>Routing Number</td>';
+	
+	practice_information += '</tr>';
+	
+	practice_information += '<tr>';
+	
+	practice_information += '<td colspan="3">' + $('input[name=practice_address2]').val() + '</td><td>' + $('input[name=practice_routing_number]').val() + '</td>';
+	
+	practice_information += '</tr>';
+	
+	practice_information += '<tr>';
+	
+	practice_information += '<td>City</td><td>State</td><td>Zip</td><td>Bank Account</td>';
+	
+	practice_information += '</tr>';
+	
+	practice_information += '<tr>';
+	
+	practice_information += '<td>' + practice_city + '</td><td>' + $('select[name=practice_state] option:selected').text() + '</td><td>' + $('input[name=practice_zip]').val() + '</td><td>' + $('input[name=practice_bank_account]').val() + '</td>';
+	
+	practice_information += '</tr>';
+	
+	practice_information += '<tr>';
+	
+	practice_information += '<td colspan="4">Number of doctors</td>';
+	
+	practice_information += '</tr>';
+	
+	practice_information += '<tr>';
+	
+	practice_information += '<td colspan="4">' + $('select[name=practice_doctors] option:selected').text() + '</td>';
+	
+	practice_information += '</tr>';
+	
+	practice_information += '</table>';
+	
+	doctor_information = '<table>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>First Name</td><td>Last Name</td><td>Mobile Number</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>' + $('input[name=firstname]').val() + '</td><td>' + $('input[name=lastname]').val() + '</td><td>' + $('input[name=cellphone]').val() + '</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td colspan="3">Email</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td colspan="3">' + $('input[name=email]').val() + '</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>Undergrad School</td><td>Degree Earned</td><td>Graduation Date</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>' + $('input[name=undergrad_school]').val() + '</td><td>' + $('input[name=undegrad_degree]').val() + '</td><td>' + $('input[name=undergrad_date]').val() + '</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>Medical School</td><td>Degree Earned</td><td>Graduation Date</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>' + $('input[name=medical_school]').val() + '</td><td>' + $('input[name=medical_degree]').val() + '</td><td>' + $('input[name=medical_date]').val() + '</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>Residency Type</td><td>Sub Specialty</td><td>&nbsp;</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>' + $('select[name=residency_type] option:selected').text() + '</td><td>' + $('select[name=sub_specialty] option:selected').text() + '</td><td>&nbsp;</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>Board Certification</td><td>Entity</td><td>Year of expiration</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>' + $('input[name=board_certification]').val() + '</td><td>' + $('input[name=board_entity]').val() + '</td><td>' + $('input[name=board_expiration]').val() + '</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>License Number</td><td>State Issued</td><td>DEA Number</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td>' + $('input[name=license_number]').val() + '</td><td>' + $('select[name=license_state] option:selected').text() + '</td><td>' + $('input[name=dea_number]').val() + '</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td colspan="3">Biography</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td colspan="3">' + $('textarea[name=biography]').val()+ '</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '</table>';
+	
+	
+	
+	profile_information = '<table>';
+	
+	profile_information += '<tr>';
+	
+	profile_information += '<td>Email Address / Username</td><td>Password</td>';
+	
+	profile_information += '</tr>';
+	
+	profile_information += '<tr>';
+	
+	profile_information += '<td>' + $('input[name=user_email]').val() + '</td><td>---</td>';
+	
+	profile_information += '</tr>';
+	
+	profile_information += '</table>';
+	
+	staff_information = '<table>';
+	
+	staff_information += '<tr>';
+	
+	staff_information += '<td>Name</td><td>Type</td>';
+	
+	staff_information += '</tr>';
 	
 	if (staff_counter > 0)
 	{
-		$('.account-summary .staff-information').html('<table class="staff-information-table">'+($('#staff-information .staff-information-table').html())+'</table>');
+		$('.staff-information-table tbody tr').each(function()
+		{
+			var inp = $('input', this);
+			staff_information += '<tr>';
+			staff_information += '<td>' + $(this).find(inp[0]).val() + '</td>';
+			staff_information += '<td>' + $(this).find(inp[1]).val() + '</td>';
+			staff_information += '</tr>'
+		});
+	}
+	else
+	{
+		staff_information += '<tr>';
+		staff_information += '<td colspan="2" align="center"> - no staff - </td>';
+		staff_information += '</tr>';
 	}
 	
-	$('.account-summary .practice-information h1').hide();
-	$('.account-summary .doctor-information h1').hide();
-	$('.account-summary .step6 h1').hide();
+	staff_information += '</table>';
+	
+	$('.account-summary .practice-information').html(practice_information);
+	$('.account-summary .doctor-information').html(doctor_information);
+	$('.account-summary .profile-information').html(profile_information);
+	
+	$('.account-summary .staff-information').html(staff_information);
 }
 
 $(document).ready(function()
