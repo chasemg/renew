@@ -1122,9 +1122,40 @@ new AjaxUpload('#staff_photo', {
 <script>
 
 var staff_counter = 0;
+var email_ok = 1;
 
 jQuery('.date').datepicker();
 
+
+function verify_doctor_email_address(email)
+{
+	var ok = function()
+	{
+		$.ajax(
+		{
+			url: 'wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
+			type: 'post',
+			dataType: 'html',
+			data: 'email=' + email + '&username=' + email,
+			success:function(data)
+			{
+				if (data != 11)
+				{
+					$('#user_email').after('<span class="warning">Email is not valid</span>');
+					return 0;
+				}
+				else
+				{
+					$('.warning').remove();
+					return 1;
+				}
+			}
+		});
+	}
+	
+	return ok;
+	
+}
 
 
 function showSteps(step)

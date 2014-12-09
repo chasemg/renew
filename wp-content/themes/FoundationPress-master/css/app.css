@@ -3709,6 +3709,12 @@ font-size: 18px;
 	clear:both;
 }
 
+.warning
+{
+	color:#F00;
+	font-style:italic;
+}
+
 /***************** RESPONSIVE ***********************************/
 
 

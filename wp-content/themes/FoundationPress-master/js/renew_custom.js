@@ -800,6 +800,14 @@ $('.doctor-enrollment .next').click(function()
 				dr_scroll_to = 'dea_number';
 				next_ok = 0;
 			}
+			
+			if (next_ok)
+			{
+				$('#user_email').val(doctor_email);
+				$('#verify_email').val(doctor_email);
+			}
+			
+			email = doctor_email;
 		
 		break;
 		
@@ -849,6 +857,7 @@ $('.doctor-enrollment .next').click(function()
 				next_ok = 0;
 			}
 			
+			email = user_email;			
 			
 		
 		break;
@@ -863,66 +872,92 @@ $('.doctor-enrollment .next').click(function()
 		scrollToAnchor(dr_scroll_to);
 	}
 	
-	if (next_ok > 0)
+	$.ajax(
 	{
-		if (dr_enrollment_step < 4)
+		url: 'wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
+		type: 'post',
+		dataType: 'html',
+		data: 'email=' + email + '&username=' + email,
+		success:function(data)
 		{
-			dr_enrollment_step++;
-		}
-		else
-		{
-			dr_enrollment_step = 1;
-		}
-	
-		$('.practice-information').slideUp();
-		$('.staff-information').slideUp();
-		$('.license-agreement').slideUp();
-		$('.account-summary').slideUp();
-	
-		$('.buttons .button').hide();
-		$('.buttons .next').hide();
-	
-		console.log(dr_enrollment_step);
-	
-		switch (dr_enrollment_step)
-		{
-			case 1:
-				$('.practice-information').slideDown();
-				$('.buttons .next').show();
-				scrollToAnchor('form_one');
-			break;
-		
-			case 2:
-				$('.staff-information').slideDown();				
-				$('.buttons .next').show();				
-				
-				showSteps('step3');
-				
-				$('html,body').animate({scrollTop: 300},'slow');
+			$('.warning').remove();
 			
-			break;
-		
-			case 3:
-				$('.license-agreement').slideDown();
-				$('.buttons .next').show();
-				showSteps('step5');
-				$('html,body').animate({scrollTop: 300},'slow');
-			break;
+			if (data != 11)
+			{
+				
+				$('#user_email').after('<span class="warning">Email is not valid</span>');
+				
+				if (dr_enrollment_step == 2)
+				{
+					next_ok = 0;
+					$('input[name=user_email]').addClass('error_hightlight');
+					$('input[name=verify_email]').addClass('error_hightlight');
+					scrollToAnchor('user_email');
+				}
+			}
 			
-			case 4:
-				build_doctor_account_summary();
-				$('.account-summary .practice-information').show();
-				$('.account-summary').slideDown();
-				//$('.account-summary .step6').addClass('current');
-				$('.buttons .button').show();
-				showSteps('step6');
-				$('html,body').animate({scrollTop: 300},'slow');
-			break;
+		
+			if (next_ok > 0)
+			{
+				if (dr_enrollment_step < 4)
+				{
+					dr_enrollment_step++;
+				}
+				else
+				{
+					dr_enrollment_step = 1;
+				}
+	
+				$('.practice-information').slideUp();
+				$('.staff-information').slideUp();
+				$('.license-agreement').slideUp();
+				$('.account-summary').slideUp();
+	
+				$('.buttons .button').hide();
+				$('.buttons .next').hide();
+	
+				console.log(dr_enrollment_step);
+	
+				switch (dr_enrollment_step)
+				{
+					case 1:
+						$('.practice-information').slideDown();
+						$('.buttons .next').show();
+						scrollToAnchor('form_one');
+					break;
+		
+					case 2:
+						$('.staff-information').slideDown();				
+						$('.buttons .next').show();				
+				
+						showSteps('step3');
+				
+						$('html,body').animate({scrollTop: 300},'slow');
+			
+					break;
+		
+					case 3:
+						$('.license-agreement').slideDown();
+						$('.buttons .next').show();
+						showSteps('step5');
+						$('html,body').animate({scrollTop: 300},'slow');
+					break;
+			
+					case 4:
+						build_doctor_account_summary();
+						$('.account-summary .practice-information').show();
+						$('.account-summary').slideDown();
+						//$('.account-summary .step6').addClass('current');
+						$('.buttons .button').show();
+						showSteps('step6');
+						$('html,body').animate({scrollTop: 300},'slow');
+					break;
+				}
+			}
 		}
-	}
+	});
+
 });
-
-
  
 $(document).ready(function() {
     // Binding to trigger checkPasswordStrength
