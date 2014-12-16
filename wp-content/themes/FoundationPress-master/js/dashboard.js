@@ -144,7 +144,6 @@ function message()	{
 }
 function new_message()	{
 	$('.new_message').click(function()	{
-		
 		createMessage();
 	});
 }
@@ -382,7 +381,6 @@ function dashboard_icons()	{
 		}); 
 	});	
 }
-
 
 /********************* INIT ***************************************/
 
