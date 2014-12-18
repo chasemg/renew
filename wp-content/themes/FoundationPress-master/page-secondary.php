@@ -100,7 +100,7 @@ Template Name: Secondary Pages
 			width: 100% !important;
 			padding-left: 17px !important;
 			margin: 0px 0px 0px 0px !important;
-			max-width: 700px;
+			max-width: 515px;
 			position: absolute !important;
 			margin-top: -546px !important;
 		}

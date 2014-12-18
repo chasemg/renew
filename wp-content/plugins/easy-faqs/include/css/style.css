@@ -5,7 +5,7 @@
 }
 
 .easy-faq-title {
-    margin-bottom: 12px;
+    margin-bottom: 0px;
     padding-bottom: 3px;
     text-decoration: none;
 	cursor: pointer;
@@ -18,6 +18,8 @@
 a.easy-faq-read-more-link
 {
 	display:none;
+	color: #000;
+	font-family: adelleheavy_italic;
 }
 .easy-faq .attachment-easy_faqs_thumb {
     border-radius: 5px;
@@ -66,7 +68,7 @@ a.easy-faq-read-more-link
 }
 .faq-questions,
 .faq-questions a	{
-	
+	margin-bottom: 150px;
 	color:#00af41;
 	font-weight:bold;
 	font-style:italic;

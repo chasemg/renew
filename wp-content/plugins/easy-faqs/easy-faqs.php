@@ -403,7 +403,7 @@ class easyFAQs
 		
 		$i = 0;
 		
-		echo '<div class="easy-faqs-wrapper">';
+		echo '<div class="easy-faqs-wrapper" data="single">';
 		
 		//load faqs into an array
 		$loop = new WP_Query(array( 'post_type' => 'faq','p' => $id, 'easy-faq-category' => $category));
@@ -499,7 +499,7 @@ class easyFAQs
 
 					$postid = get_the_ID();
 					
-					echo '<li class="faq_scroll" id="'.$postid.'"><a href="#easy-faq-' . $postid . '">' . get_the_title($postid) . '</a></li>';
+					echo '<li class="faq_scroll" id="'.$postid.'"><a href="#easy-faq-' . $postid . '">'.$i.'. ' . get_the_title($postid) . '</a></li>';
 
 					$i ++;
 					
@@ -513,7 +513,7 @@ class easyFAQs
 			//load faqs into an array
 			$loop = new WP_Query(array( 'post_type' => 'faq','posts_per_page' => $count, 'orderby' => $orderby, 'order' => $order, 'easy-faq-category' => $category));
 		
-			$i = 0;
+			$i = 1;
 			$r = $loop->post_count;
 			
 			if(!$colcount){
@@ -535,7 +535,7 @@ class easyFAQs
 
 				$postid = get_the_ID();
 				
-				echo '<li class="faq_scroll" id="'.$postid.'"><a href="#easy-faq-' . $postid . '">' . get_the_title($postid) . '</a></li>';
+				echo '<li class="faq_scroll" id="'.$postid.'"><a href="#easy-faq-' . $postid . '">'.$i.'. ' . str_replace('Q:', '', get_the_title($postid)) . '</a></li>';
 
 				$i ++;
 				
