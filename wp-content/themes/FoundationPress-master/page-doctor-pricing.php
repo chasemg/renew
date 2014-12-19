@@ -5,7 +5,7 @@ Template Name: Doctor Pricing
 ?>
 <style>
 	.entry-content {
-		margin-top: 472px !important;
+		margin-top: 440px !important;
 	}
 	.hook	{
 		background: url(<?php echo get_template_directory_uri(); ?>/assets/img/secondary_ribbon.png) right center no-repeat !important;
