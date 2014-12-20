@@ -2391,14 +2391,15 @@ and (max-width: 980px) {
 
 /**************** Dashboard ***************************************/
 
-.dashboard_container	{
+.dashboard_container {
 	margin:0 auto;
-	max-width:1110px;
+	width:1110px;
 }
 .dashboard_container:after,
 .dashboard:after,
 .small_widget_container:after,
-.widget_row:after {
+.widget_row:after,
+.dashboard_goals:after {
   content: "";
   display: table;
   clear: both;
@@ -2425,7 +2426,7 @@ and (max-width: 980px) {
 	bottom:0;
 	display:block;
 	padding-top:90px;
-	width:6.7%;
+	width:6.8%;
 	height:100%;
 	background: #4E4E4E;
 	color: #fff;
@@ -2443,13 +2444,16 @@ and (max-width: 980px) {
 	background: url(../assets/img/dashboard/cream_pixels.png) repeat;
 	display:block;
 	margin:0 auto;
-	width:86.6%;
+	width:86.4%;
 	min-height:1080px;
-	padding:50px 14.5% 189px 160px;
+	padding:50px 14.5% 189px 14.5%;
 	box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 }
+
+.dashboard-mobile-menu {display:none;}
+
 .dashboard-logo	{
 	position:absolute;
 	text-align: center;
@@ -2720,9 +2724,9 @@ and (max-width: 980px) {
 	color: #808080;
 	display: inline-block;
 	float: left;
-	margin: 0 0 0 50px;
+	margin: 0 0 0 9.3%;
 	text-align: left;
-	width: 380px;
+	width: 67%;
 }
 .goal_text_second_line	{
 	font-size: 23px;
@@ -2748,7 +2752,7 @@ and (max-width: 980px) {
 	height: auto;
 }
 .goal_container	{
-	width: 560px;
+	width: 100%;
 	margin: 0 auto;
 	padding: 10px 0;
 	display: inline-block;
@@ -3305,6 +3309,63 @@ input.time
 	float:none;
 	width:100px;
 	display:inline-block;
+}
+
+@media only screen 
+and (min-device-width : 980px)
+and (max-device-width : 1109px) {
+	.dashboard_container {width:980px;}
+	.center-dashboard {
+		padding:50px 10% 189px;
+		width:84.6%;
+	}
+	.left_widget, .right_widget {width:7.7%;}		
+}
+
+@media only screen 
+and (min-device-width : 360px)
+and (max-device-width : 979px) {
+	.dashboard_container {width:100%;}
+	.center-dashboard {width:100%;}
+	.left_widget, .right_widget {width:80px;}
+}
+
+@media only screen 
+and (max-device-width : 639px) {
+	.dashboard_container {width:100%;}
+	.center-dashboard {
+		width:100%;
+		padding:65px 15px 189px;
+	}
+	.dashboard-mobile-menu {
+		position:fixed;
+		top:0px;
+		display:block;
+		width:100%;
+		height:52px;
+		background-color:rgba(77, 78, 78, 1);
+		z-index:101;
+	}
+	.left_widget, .right_widget {display:none;}
+	.dashboard_small_widget,
+	.dashboard_small_widget.last {
+		display:block;
+		float:inherit;
+		width:90%;
+		margin:0px auto 15px auto;
+	}
+}
+
+@media only screen 
+and (min-device-width : 640px)
+and (max-device-width : 767px) {
+	.dashboard_small_widget,
+	.dashboard_small_widget.last {
+		display:block;
+		float:inherit;
+		width:90%;
+		margin:0px auto 15px auto;
+	}
 }
 
 /******************* Enroll Form *****************************/
