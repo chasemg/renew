@@ -38,7 +38,7 @@ if($_POST['patient_id'])	{
 			$html .= '</div>';
 			$html .= '</div>';
 			$html .= '</div>';
-			$html .= '<hr width="640px">';
+			$html .= '<hr>';
 /******************** Recent Vitals ***************************/
 			$html .= '<div class="widget_row">';			
 			$html .= '<div class="dashboard_large_widget">';
