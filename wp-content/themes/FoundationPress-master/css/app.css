@@ -3330,7 +3330,7 @@ and (max-device-width : 979px) {
 }
 
 @media only screen 
-and (max-device-width : 639px) {
+and (max-device-width : 650px) {
 	.dashboard_container {width:100%;}
 	.center-dashboard {
 		width:100%;
@@ -3346,43 +3346,42 @@ and (max-device-width : 639px) {
 		z-index:101;
 	}
 	.left_widget, .right_widget {display:none;}
-	.dashboard_small_widget,
-	.dashboard_small_widget.last {
-		display:block;
-		float:inherit;
-		width:90%;
-		margin:0px auto 15px auto;
+	.dashboard_large_widget {
+		padding:0px 10px 10px;
+		box-sizing:border-box;
 	}
+	.dashboard_small_widget_lip p {font-size:13px;}
+	.dash_widget_content table tr:first-child td {font-size:11px;}
+	.social_summary {margin-bottom:10px;}
+	.social_header_icon	.title {font-size:13px;}
+	.dashboard-logo {
+		padding-top: 34px;
+		padding-bottom: 27px;
+	}
+	.dashboard-logo img {width:100px;}
+	.center-dashboard {padding-bottom:92px;}
+}
+
+@media only screen 
+and (max-device-width : 413px) {
 	.dashboard_goals {padding: 10px 5px 10px 20px;}
 	.goal_container {padding:0px;}
-	.goal_text {
-		font-size:14px;
-		margin: 0 0 0 4%;
-		width:71%;
-	}
+	.goal_text {font-size:14px;}
 	.goal_text_second_line {font-size:13px;}
 	.goals_button img {width:70%;}
 	.user_image {
 		width:58px;
 		height:58px;
 	}
-	.dashboard_large_widget {
-		padding:0px 10px 10px;
-		box-sizing:border-box;
-	}
 	.dashboard_vitals_row {
 		margin-top:8px;
-		width:auto;
+		max-width:260px;
+		margin:8px auto 0 auto;
 	}
 	.dashboard_vitals {
 		width:110px;
 		height:120px;
 	}
-}
-
-@media only screen 
-and (min-device-width : 640px)
-and (max-device-width : 767px) {
 	.dashboard_small_widget,
 	.dashboard_small_widget.last {
 		display:block;
@@ -3390,6 +3389,89 @@ and (max-device-width : 767px) {
 		width:90%;
 		margin:0px auto 15px auto;
 	}
+}
+
+@media only screen 
+and (min-device-width : 414px)
+and (max-device-width : 479px) {
+	.dashboard_goals {padding: 10px 5px 10px 20px;}
+	.goal_container {padding:0px;}
+	.goal_text {
+		font-size:18px;
+		margin: 0 0 0 4%;
+		width:71%;
+	}
+	.goal_text_second_line {font-size:16px;}
+	.goals_button img {width:70%;}
+	.user_image {
+		width:82px;
+		height:82px;
+	}
+	.dashboard_vitals_row {
+		margin-top:8px;
+		max-width:280px;
+		margin:8px auto 0 auto;
+	}
+	.dashboard_vitals {
+		width:120px;
+		height:120px;
+	}
+	.dashboard_small_widget,
+	.dashboard_small_widget.last {
+		display:block;
+		float:inherit;
+		width:90%;
+		margin:0px auto 15px auto;
+	}
+}
+
+@media only screen 
+and (min-device-width : 480px)
+and (max-device-width : 519px) {
+	.dashboard_goals {padding: 10px 5px 10px 20px;}
+	.goal_text {
+		font-size:18px !important;
+		margin: 0 0 0 4%;
+		width:71%;
+	}
+	.goal_text_second_line {font-size:16px;}
+	.goals_button img {width:90%;}
+	.user_image {
+		width:82px;
+		height:82px;
+	}
+	.dashboard_vitals_row {
+		margin-top:8px;
+		max-width:420px;
+		margin:8px auto 0 auto;
+	}
+	.dashboard_small_widget,
+	.dashboard_small_widget.last {
+		display:block;
+		float:inherit;
+		width:90%;
+		margin:0px auto 15px auto;
+	}
+}
+@media only screen 
+and (min-device-width : 520px)
+and (max-device-width : 639px) {
+	.center-dashboard {padding-bottom:189px;}
+	.goal_text {margin: 0 0 0 7.5%;}
+	.dashboard_vitals_row {margin-top:8px;}
+	.dashboard-logo {
+		padding-top: 75px;
+		padding-bottom: 65px;
+	}
+	.dashboard-logo img {
+		width: auto;
+	}
+}
+
+@media only screen 
+and (min-device-width : 640px)
+and (max-device-width : 767px) {
+	.goal_text {margin: 0 0 0 7.5%;}
 }
 
 /******************* Enroll Form *****************************/
@@ -4892,11 +4974,11 @@ and (max-width : 480px) {
 
 @media (min-width:481px) and (max-width: 568px)
 {
-	*, p
+	/**, p
 	{
 		font-size:12px;
 		line-height:normal;
-	}
+	}*/
 	
 	.column, .columns,
 	.small-12
