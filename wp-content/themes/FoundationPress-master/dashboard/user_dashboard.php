@@ -38,8 +38,9 @@ if($_POST['patient_id'])	{
 			$html .= '</div>';
 			$html .= '</div>';
 			$html .= '</div>';
-			$html .= '<hr width="640px">';
-/******************** Recent Vitals ***************************/			
+			$html .= '<hr>';
+/******************** Recent Vitals ***************************/
+			$html .= '<div class="widget_row">';			
 			$html .= '<div class="dashboard_large_widget">';
 			$html .= '<h5>recent vitals</h5>';
 			$html .= '<div class="dashboard_vitals_row">';
@@ -56,14 +57,17 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_large_widget_lip" id="vitals">';
 			$html .= '<p>See full recent vitals list</p>';
 			$html .= '</div>';
+			$html .= '</div>'; // END OF .widget_row
+			
 /********************* Small Widgets *************************************/
 			$html .= '<div class="small_widget_container">';
 			
 /********************** Immunizations ***************************************/
-			$html .= '<div class="widgets_left">';
+			//$html .= '<div class="widgets_left">';
 			
+			$html .= '<div class="widget_row">';
 			
-			$html .= '<div class="dashboard_small_widget left">';
+			$html .= '<div class="dashboard_small_widget">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Immunizations</div>';
 			$html .= '<div class="dash_widget_content">';
@@ -84,37 +88,10 @@ if($_POST['patient_id'])	{
 			$html .= '</div>';
 			$html .= '</div>';
 			
-/********************** Labs ***************************************/
-			$html .= '<div class="dashboard_small_widget left">';
-			$html .= '<div class="dashboard_small_widget_content">';
-			$html .= '<div class="title">Lab Results</div>';
-			$html .= '<div>';
-			
-			$html .= '</div>';
-			$html .= '</div>';
-			$html .= '<div class="dashboard_small_widget_lip" id="labs">';
-			$html .= '<p>See full lab results</p>';
-			$html .= '</div>';
-			$html .= '</div>';
-
-/********************** Medications ***************************************/
-			$html .= '<div class="dashboard_small_widget left">';
-			$html .= '<div class="dashboard_small_widget_content">';
-			$html .= '<div class="title">Medications</div>';
-			$html .= '<div>';
-			
-			$html .= '</div>';
-			$html .= '</div>';
-			$html .= '<div class="dashboard_small_widget_lip" id="meds">';
-			$html .= '<p>See medication list</p>';
-			$html .= '</div>';
-			$html .= '</div>';
-			
-			$html .= '</div>';
 /********************** Allergies ***************************************/
-			$html .= '<div class="widgets_right">';
+			//$html .= '<div class="widgets_right">';
 
-			$html .= '<div class="dashboard_small_widget right">';
+			$html .= '<div class="dashboard_small_widget last">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Allergies</div>';
 			$html .= '<div class="dash_widget_content">';
@@ -142,10 +119,25 @@ if($_POST['patient_id'])	{
 			$html .= '<p>See full allergies list</p>';
 			$html .= '</div>';
 			$html .= '</div>';	
+			$html .= '</div>';	// END OF .widget_row
 
+/********************** Labs ***************************************/
+			$html .= '<div class="widget_row">';
 
+			$html .= '<div class="dashboard_small_widget">';
+			$html .= '<div class="dashboard_small_widget_content">';
+			$html .= '<div class="title">Lab Results</div>';
+			$html .= '<div>';
+			
+			$html .= '</div>';
+			$html .= '</div>';
+			$html .= '<div class="dashboard_small_widget_lip" id="labs">';
+			$html .= '<p>See full lab results</p>';
+			$html .= '</div>';
+			$html .= '</div>';
+			
 /********************** Medical History ***************************************/
-			$html .= '<div class="dashboard_small_widget right">';
+			$html .= '<div class="dashboard_small_widget last">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Medical History</div>';
 			$html .= '<div class="dash_widget_content">';
@@ -167,58 +159,77 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget_lip" id="medical_history">';
 			$html .= '<p>See full recent medical history</p>';
 			$html .= '</div>';
-			$html .= '</div>';				
+			$html .= '</div>';
+			$html .= '</div>';	// END OF .widget_row				
 		
+/********************** Medications ***************************************/
+			$html .= '<div class="widget_row">';
+			
+			$html .= '<div class="dashboard_small_widget">';
+			
+			$html .= '<div class="dashboard_small_widget_content">';
+			$html .= '<div class="title">Medications</div>';
+			$html .= '<div>';
+			
+			$html .= '</div>';
+			$html .= '</div>';
+			
+			$html .= '<div class="dashboard_small_widget_lip" id="meds">';
+			$html .= '<p>See medication list</p>';
+			$html .= '</div>';
+			
+			$html .= '</div>';
+			
+			//$html .= '</div>';
 
 /********************** Social Life ***************************************/
-			$html .= '<div class="dashboard_small_widget right">';
+			$html .= '<div class="dashboard_small_widget last">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">My Social Life</div>';
 			$html .= '<div class="dash_widget_content">';
 			$social_life = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "social_life WHERE user_id='$patient_id'");
-
-foreach($social_life as $s)	{
-	$smoker = $s->smoker;
-	$marital_state = $s->marital_state;
-	$month = date("m",$s->dob);
-	$day = date("d",$s->dob);
-	$questions = unserialize($s->questions);
-	$html .= '<div class="social_summary">';
-		$html .= '<div>';
-			$html .= '<div class="social_header_icon">';
-				$ms = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "marital_status WHERE id='$marital_state'");
-				foreach($ms as $m)	{
-					$html .= '<div class="title">'.$m->marital_status.'</div>';
-					$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/'.$m->icon.'.png"></div>';
-				}
-			$html .= '</div>';
-			$html .= '<div class="social_header_icon">';
-				$st = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "smoker_type WHERE id='$smoker'");
-				foreach($st as $sp)	{
-					$html .= '<div class="title">'.$sp->smoker_type.'</div>';
-					$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/'.$sp->icon.'.png"></div>';
-				}
-			$html .= '</div>';
-			$html .= '<div class="social_header_icon">';
-				$html .= '<div class="title">Birthday</div>';
-				$html .= '<div><div class="birthday">'.$month.'<font style="color: #00af41;">|</font>'.$day.'</div></div>';
-			$html .= '</div>';
-		$html .= '</div>';
-	$html .= '</div>';
-	$description = $s->description;
-	$stripped_description = (strlen($description) > 120) ? substr($description,0,120).'...' : $description;
-	$html .= '<div class="social_summary" style="padding: 0 20px; width: auto;">'.$stripped_description.'</div>';
-
-}
+			
+			foreach($social_life as $s)	{
+				$smoker = $s->smoker;
+				$marital_state = $s->marital_state;
+				$month = date("m",$s->dob);
+				$day = date("d",$s->dob);
+				$questions = unserialize($s->questions);
+				$html .= '<div class="social_summary">';
+					$html .= '<div>';
+						$html .= '<div class="social_header_icon">';
+							$ms = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "marital_status WHERE id='$marital_state'");
+							foreach($ms as $m)	{
+								$html .= '<div class="title">'.$m->marital_status.'</div>';
+								$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/'.$m->icon.'.png"></div>';
+							}
+						$html .= '</div>';
+						$html .= '<div class="social_header_icon">';
+							$st = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "smoker_type WHERE id='$smoker'");
+							foreach($st as $sp)	{
+								$html .= '<div class="title">'.$sp->smoker_type.'</div>';
+								$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/'.$sp->icon.'.png"></div>';
+							}
+						$html .= '</div>';
+						$html .= '<div class="social_header_icon">';
+							$html .= '<div class="title">Birthday</div>';
+							$html .= '<div><div class="birthday">'.$month.'<font style="color: #00af41;">|</font>'.$day.'</div></div>';
+						$html .= '</div>';
+					$html .= '</div>';
+				$html .= '</div>';
+				$description = $s->description;
+				$stripped_description = (strlen($description) > 120) ? substr($description,0,120).'...' : $description;
+				$html .= '<div class="social_summary" style="padding: 0 20px; width: auto;">'.$stripped_description.'</div>';
+			}
+			
 			$html .= '</div>';
 			$html .= '</div>';
 			$html .= '<div class="dashboard_small_widget_lip" id="social">';
 			$html .= '<p>My Social Life</p>';
 			$html .= '</div>';
 			$html .= '</div>';	
-			
-			
-			$html .= '</div>';
+			$html .= '</div>';	
+			$html .= '</div>';	// END OF .widget_row	
 		}		
 		echo $html;
 } else {

@@ -64,6 +64,9 @@ if(!is_user_logged_in())	{
 	<?php
 	get_footer();	
 } else { 
+	echo "<meta charset='utf-8'></meta>";
+	echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'></meta>";
+	echo "<title>Renew My Healthcare | Dashboard</title>";
 	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/css/app.css" />';
 	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/css/fonts/stylesheet.css" />';	
 	

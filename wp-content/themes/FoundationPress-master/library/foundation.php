@@ -87,8 +87,8 @@ function get_user_role() {
 }
 
 function dashboard($user_id) {
-
-
+	
+	echo "<head>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/modernizr/modernizr.min.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/jquery/dist/jquery.min.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.fastLiveFilter.js'></script>";
@@ -99,6 +99,7 @@ function dashboard($user_id) {
 	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery-ui-1.11.1.custom/jquery-ui.css" />';
 	echo '<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />';
 	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery.timepicker/jquery.timepicker.css" />';	
+	echo "</head>";
 	
 	if(get_user_role() == 'doctor' || get_user_role() == 'administrator' || get_user_role() == 'lab_doctor')	{
 		echo "<input type='hidden' value='".$user_id."' id='user_id'><input type='hidden' value='' id='patient_id'>";
@@ -108,6 +109,8 @@ function dashboard($user_id) {
 	
 	echo "<div class='dashboard_container'>";
 	echo "<div class='dashboard'>";
+		echo "<div class='dashboard-mobile-menu'>";
+		echo "</div>";
 	
 	// Left Widget
 	
@@ -135,7 +138,7 @@ function dashboard($user_id) {
 		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
 		echo '<div class="dashboard_bottom_icons">';
 		echo '<div class="dashboard_icons" id="settings"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/settings_icon.png"></div>';
-		echo '<div class="dashboard_icons"><a href="'. wp_logout_url('index.php') .'"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/logout_icon.png"></a></div>';
+		echo '<div class="dashboard_icons" id="logout"><a href="'. wp_logout_url('index.php') .'"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/logout_icon.png"></a></div>';
 		echo '</div>';
 	} 
 

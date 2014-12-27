@@ -22,6 +22,20 @@ Template Name: Doctor Enrollment
 			padding-top: 11px !important;
 		}
 	}
+	.header_image_title {
+		display: inline-block;
+		top: 0;
+		margin-top: 185px !important;
+		position: absolute;
+		width: 100%;
+		left: 0;
+		color: #fff  !important;
+		text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+		font-family: 'adellethin';
+	}	
+	.entry-content	{
+		margin-bottom: 0px !important;
+	}	
 </style>
 <?php get_header(); ?>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -31,9 +45,7 @@ Template Name: Doctor Enrollment
 	<div id="featured"><?php the_post_thumbnail(); ?></div>
 </div>
 <div class="header_image_title"><h1><?php echo get_the_title(); ?></h1></div>
-<div class="header_map" onload="initialize()">
-	<div id="map_canvas"></div>
-</div>
+
 <?php } ?>
 
 <div class="row_container" id="row_container">
