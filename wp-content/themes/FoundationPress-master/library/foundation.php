@@ -91,6 +91,8 @@ function dashboard($user_id) {
 	echo "<head>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/modernizr/modernizr.min.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/jquery/dist/jquery.min.js'></script>";
+	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/foundation/js/foundation.js'></script>";
+	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/foundation/js/foundation/foundation.offcanvas.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.fastLiveFilter.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/dashboard.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery-ui-1.11.1.custom/jquery-ui.js'></script>";
@@ -99,6 +101,7 @@ function dashboard($user_id) {
 	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery-ui-1.11.1.custom/jquery-ui.css" />';
 	echo '<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />';
 	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery.timepicker/jquery.timepicker.css" />';	
+	echo '<meta class="foundation-mq-topbar">';
 	echo "</head>";
 	
 	if(get_user_role() == 'doctor' || get_user_role() == 'administrator' || get_user_role() == 'lab_doctor')	{
@@ -107,10 +110,48 @@ function dashboard($user_id) {
 		echo "<input type='hidden' value='".$user_id."' id='user_id'><input type='hidden' value='".$user_id."' id='patient_id'>";
 	}
 	
+	echo "<div class='off-canvas-wrap' data-offcanvas=''>";
+	echo "<div class='inner-wrap'>";
+	echo "<nav class='tab-bar dashboard-mobile-menu'>";
+		echo "<section class='right-small'>";
+			echo "<a class='right-off-canvas-toggle menu-icon'><span></span></a>";
+		echo "</section>";
+	echo "</nav>";
+	
+	echo "<aside class='right-off-canvas-menu'>";
+		echo "<ul id='menu-mobile' class='off-canvas-list'>";
+		
+			if(get_user_role() == 'doctor')	{
+				echo '<li><div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div></li>';
+				echo '<li><div class="dashboard_icons_disabled" id="meds">Medications</div></li>';
+				echo '<li><div class="dashboard_icons" id="communications">Communications</div></li>';
+				echo '<li><div class="dashboard_icons" id="referrals">Referrals</div></li>';
+				echo '<li><div class="dashboard_icons" id="schedule">Scheduling</div></li>';
+				echo '<li><div class="doctor_dash" id="user_dashboard">Dashboard</div></li>';
+				echo '<li><div class="dashboard_icons" id="labs">Lab Results</div></li>';
+				echo '<li><label></label></li>';
+				echo '<li><div class="dashboard_icons" id="settings">Settings</div></li>';
+				echo '<li><a href="'. wp_logout_url('index.php') .'">Logout</a></li>';				
+			}
+		
+			if(get_user_role() == 'subscriber')	{
+				echo '<li><div class="dashboard_icons" id="user_dashboard">User Dashboard</div></li>';
+				echo '<li><div class="dashboard_icons" id="communications">Communications</div></li>';
+				echo '<li><div class="dashboard_icons" id="medical_history">Medical History</div></li>';
+				echo '<li><div class="dashboard_icons" id="labs">Lab Results</div></li>';
+				echo '<li><div class="dashboard_icons" id="meds">Medications</div></li>';
+				echo '<li><div class="dashboard_icons" id="schedule">Scheduling</div></li>';
+				echo '<li><label></label></li>';
+				echo '<li><div class="dashboard_icons" id="settings">Settings</div></li>';
+				echo '<li><div class="dashboard_icons" id="logout">Logout</div></li>';
+			}
+			
+			
+		echo "</ul>";
+	echo "</aside>";
+	
 	echo "<div class='dashboard_container'>";
 	echo "<div class='dashboard'>";
-		echo "<div class='dashboard-mobile-menu'>";
-		echo "</div>";
 	
 	// Left Widget
 	
@@ -195,6 +236,11 @@ function dashboard($user_id) {
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";
+	echo "<a class='exit-off-canvas'></a>";
+	echo "</div>"; // END of .inner-wrap
+	echo "</div>"; // END of .off-canvas-wrap
+	
+  echo "<script> jQuery(document).foundation(); </script>";
 }
 
 

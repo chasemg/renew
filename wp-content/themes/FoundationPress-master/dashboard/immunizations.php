@@ -87,6 +87,8 @@ $user_role = get_user_role();
         <div class="immun_schedule"><a href="http://www.cdc.gov/vaccines/schedules/" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/dashboard/images/complete_sched_imm.png"></a></div>
         
 	</div><!--- container -->
+</div>
+    
     
 <div class="goback"><img src="<?php echo get_template_directory_uri(); ?>/dashboard/images/goback.png"></div>
 

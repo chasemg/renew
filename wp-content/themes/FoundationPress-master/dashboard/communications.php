@@ -9,13 +9,13 @@ $limit = 10;
 $html = '';
 
 $html .= '<div class="dashboard_large_widget" style="max-width: 600px;">';
-$html .= '<div class="container" style="width: auto; padding: 20px 50px;">';
+$html .= '<div class="container">';
 $html .= '<div class="icon"><img src="'.get_template_directory_uri().'/dashboard/images/message.png"></div>';
 $html .= '<div class="title">Messages</div>';
 $html .= "<hr>";
 $html .= '<div class="text" style="padding: 10px 0;"><font style="font-weight: bold; text-transform: lowercase; font-variant: small-caps; font-size: 14px;">Here are your communications</font> between your doctor and you. All communications are secure. You will be notified by email if you have a new message.</div>';
 
-$html .= '<div class="message_reply_bar"><button class="new_message" style="width: 126px;">New Message</button></div>';
+$html .= '<div class="message_reply_bar"><button class="new_message">New Message</button></div>';
 $html .= "<ul class='messages'>";
 $html .= '<input type="hidden" id="message_id" value="0">';
 $messages = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication AS c INNER JOIN ".$wpdb->prefix. "users AS u ON u.ID=c.user_id WHERE c.user_id='$id' order by c.id desc LIMIT ".$limit."");
@@ -54,7 +54,7 @@ if($messages)	{
 
 $html .= "</ul>";
 
-$html .= '<div class="message_reply_bar"><button class="new_message" style="width: 126px;">New Message</button></div>';
+$html .= '<div class="message_reply_bar"><button class="new_message">New Message</button></div>';
 $html .= "</div>";
 $html .= "</div>";
 $html .= '<div class="goback"><img src="'.get_template_directory_uri().'/dashboard/images/goback.png"></div>';
