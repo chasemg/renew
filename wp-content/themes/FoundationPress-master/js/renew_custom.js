@@ -668,8 +668,9 @@ $('.doctor-enrollment .next').click(function()
 			var practice_name = $('input[name=practice_name]').val();
 			var practice_phone = $('input[name=practice_phone]').val();
 			var practice_email = $('input[name=practice_email]').val();
+			var practice_address = $('input[name=practice_address]').val();
 			var practice_city = $('input[name=practice_city]').val();
-			var practice_state = $('input[name=practice_state]').val();
+			var practice_state = $('select[name=practice_state]').val();
 			var practice_zip = $('input[name=practice_zip]').val();
 			
 			var doctor_firstname = $('input[name=firstname]').val();
@@ -693,6 +694,13 @@ $('.doctor-enrollment .next').click(function()
 			var doctor_state_issue = $('input[name=state_issued]').val();
 			var doctor_dea_number = $('input[name=dea_number]').val();
 			
+			var street = $('input[name=practice_address]').val() + ' ' + $('input[name=practice_address2]').val();
+			var city = practice_city;
+			var state = practice_state;
+			var zip = practice_zip;
+			
+			var address = street+" ,"+city+", "+state+" "+zip;
+			
 			if (practice_name == '')
 			{
 				$('input[name=practice_name]').addClass('error_hightlight');
@@ -709,6 +717,12 @@ $('.doctor-enrollment .next').click(function()
 			{
 				$('input[name=practice_email]').addClass('error_hightlight');
 				dr_scroll_to = 'practice_email';
+				next_ok = 0;
+			}
+			else if (practice_address == '')
+			{
+				$('input[name=practice_address]').addClass('error_hightlight');
+				dr_scroll_to = 'practice_address';
 				next_ok = 0;
 			}
 			else if (practice_city == '')
@@ -833,6 +847,32 @@ $('.doctor-enrollment .next').click(function()
 			}
 			
 			email = doctor_email;
+			
+			var geocoder;
+			
+			geocoder = new google.maps.Geocoder();
+			
+			geocoder.geocode({'address': address }, function(results, status) 
+			{
+				switch(status) 
+				{
+					case google.maps.GeocoderStatus.OK:
+						
+					break;
+					
+					case google.maps.GeocoderStatus.ZERO_RESULTS:
+						next_ok = 0;
+						$('input[name=practice_address]').addClass('error_hightlight');
+						$('input[name=practice_address2]').addClass('error_hightlight');
+						$('input[name=practice_city]').addClass('error_hightlight');
+						$('input[name=practice_zip]').addClass('error_hightlight');
+						dr_scroll_to = 'practice_address';
+					break;
+					
+					default:
+						console.log("An error occured while validating this address")
+				}
+			});
 		
 		break;
 		
@@ -907,18 +947,28 @@ $('.doctor-enrollment .next').click(function()
 		{
 			var emailIsOk = doctor_verify_email(email);
 			
-			$('.warning').remove();
+			$('.warning').remove();			
 			
 			if (data != 11)
 			{
+				if (dr_enrollment_step == 1)
+				{
+					next_ok = 0;
+					
+					$('#email').after('<span class="warning">Email is not valid</span>');
+					$('#email').addClass('error_hightlight');
+					scrollToAnchor('email');
+				}
 				
-				$('#user_email').after('<span class="warning">Email is not valid</span>');
 				
 				if (dr_enrollment_step == 2)
 				{
 					next_ok = 0;
+					$('#user_email').after('<span class="warning">Email is not valid</span>');
+					
 					$('input[name=user_email]').addClass('error_hightlight');
 					$('input[name=verify_email]').addClass('error_hightlight');
+					
 					scrollToAnchor('user_email');
 				}
 			}
