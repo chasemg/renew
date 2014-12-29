@@ -563,69 +563,94 @@ $('.add-staff').click(function()
 	var certification = $('input[name=staff_board_certification]').val();
 	var photo = $('input[name=staff_photo]').val();
 	
-	ok = true;
-	var dr_scroll_to = 0;
+	$.ajax(
+	{
+		url: 'wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
+		type: 'post',
+		dataType: 'html',
+		data: 'email=' + email + '&username=' + email,
+		success:function(data)
+		{
+			ok = true;
+			var dr_scroll_to = 0;
+			
+			var emailIsOk = doctor_verify_email(email);
 	
-	if (firstname == '')
-	{
-		$('#staff_firstname').addClass('error_hightlight');
-		dr_scroll_to = 'staff_firstname';
-		ok = false;
-	}
-	else if (lastname == '')
-	{
-		$('#staff_lastname').addClass('error_hightlight');
-		dr_scroll_to = 'staff_lastname';
-		ok = false;
-	}
-	else if (email == '')
-	{
-		$('#staff_email').addClass('error_hightlight');
-		dr_scroll_to = 'staff_email';
-		ok = false;
-	}
+			if (firstname == '')
+			{
+				$('#staff_firstname').addClass('error_hightlight');
+				dr_scroll_to = 'staff_firstname';
+				ok = false;
+			}
+			else if (lastname == '')
+			{
+				$('#staff_lastname').addClass('error_hightlight');
+				dr_scroll_to = 'staff_lastname';
+				ok = false;
+			}
+			else if (email == '')
+			{
+				$('#staff_email').addClass('error_hightlight');
+				dr_scroll_to = 'staff_email';
+				ok = false;
+			}
+			else if (data != 11)
+			{
+				$('#staff_email').addClass('error_hightlight');
+				dr_scroll_to = 'staff_email';
+				ok = false;
+			}
+			
+			if (!emailIsOk)
+			{
+				$('#staff_email').addClass('error_hightlight');
+				dr_scroll_to = 'staff_email';
+				ok = false;
+			}
 	
-	if (ok)
-	{
-		$('.staff-information .step3 input[type=text]').removeClass('error_highlight').val('');
-		$('input[name=staff_photo]').val('');
-		$('.staff-photo-selected').html('No file selected');
+			if (ok)
+			{
+				$('.staff-information .step3 input[type=text]').removeClass('error_hightlight').val('');
+				$('input[name=staff_photo]').val('');
+				$('.staff-photo-selected').html('No file selected');
 		
-		var html = '<tr id="staff_row'+staff_counter+'">';
+				var html = '<tr id="staff_row'+staff_counter+'">';
 		
-		html += '<td>'+firstname + ' ' + lastname +'</td>';
-		html += '<td>' + type + '</td>';
+				html += '<td>'+firstname + ' ' + lastname +'</td>';
+				html += '<td>' + type + '</td>';
 		
-		html += '<td>';
+				html += '<td>';
 		
-		html += '<input type="hidden" name="staff['+staff_counter+'][firstname]" value="'+firstname+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][lastname]" value="'+lastname+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][phone]" value="'+phone+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][email]" value="'+email+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][type]" value="'+type+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][access]" value="'+access+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][undergrad_school]" value="'+school+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][undergrad_degree]" value="'+degree+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][undergrad_date]" value="'+date+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][professional_degree]" value="'+profession+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][state_license]" value="'+license+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][board_certification]" value="'+certification+'">'
-		html += '<input type="hidden" name="staff['+staff_counter+'][photo]" value="'+photo+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][firstname]" value="'+firstname+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][lastname]" value="'+lastname+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][phone]" value="'+phone+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][email]" value="'+email+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][type]" value="'+type+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][access]" value="'+access+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][undergrad_school]" value="'+school+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][undergrad_degree]" value="'+degree+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][undergrad_date]" value="'+date+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][professional_degree]" value="'+profession+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][state_license]" value="'+license+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][board_certification]" value="'+certification+'">'
+				html += '<input type="hidden" name="staff['+staff_counter+'][photo]" value="'+photo+'">'
 		
-		html += '<a class="remove-button" onclick="$(\'#staff_row'+staff_counter+'\').remove()">Remove</a></td>'
+				html += '<a class="remove-button" onclick="$(\'#staff_row'+staff_counter+'\').remove()">Remove</a></td>'
 		
-		html += '</tr>';
+				html += '</tr>';
 		
-		$('.staff-information-table tbody').append(html);
+				$('.staff-information-table tbody').append(html);
 		
-		scrollToAnchor('staff-information-table');
+				scrollToAnchor('staff-information-table');
 		
-		staff_counter++;
-	}
-	else
-	{
-		scrollToAnchor(dr_scroll_to);
-	}
+				staff_counter++;
+			}
+			else
+			{
+				scrollToAnchor(dr_scroll_to);
+			}
+		}
+	});
 });
 
 var dr_enrollment_step = 1;
@@ -880,6 +905,8 @@ $('.doctor-enrollment .next').click(function()
 		data: 'email=' + email + '&username=' + email,
 		success:function(data)
 		{
+			var emailIsOk = doctor_verify_email(email);
+			
 			$('.warning').remove();
 			
 			if (data != 11)
@@ -896,6 +923,13 @@ $('.doctor-enrollment .next').click(function()
 				}
 			}
 			
+			if (!emailIsOk)
+			{
+				next_ok = 0;
+				$('input[name=user_email]').addClass('error_hightlight');
+				$('input[name=verify_email]').addClass('error_hightlight');
+				scrollToAnchor('user_email');
+			}
 		
 			if (next_ok > 0)
 			{

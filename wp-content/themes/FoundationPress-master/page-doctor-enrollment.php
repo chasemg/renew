@@ -1455,6 +1455,18 @@ function build_doctor_account_summary()
 	$('.account-summary .staff-information').html(staff_information);
 }
 
+
+function doctor_verify_email(email)
+{
+	var emailIsOK = true;
+	
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	
+	
+	
+	return (emailIsOK && re.test(email));
+}
+
 $(document).ready(function()
 {
 	//build_doctor_account_summary();
