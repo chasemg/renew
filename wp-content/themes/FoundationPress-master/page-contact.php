@@ -3,6 +3,7 @@
 Template Name: Contact
 */
 ?>
+<?php get_header(); ?>
 <style>
 	.container	{
 		background: url(<?php echo get_template_directory_uri(); ?>/css/images/cream_pixels.png) repeat !important;
@@ -151,7 +152,7 @@ Template Name: Contact
 		}
 	}	
 </style>
-<?php get_header(); ?>
+
 <?php error_reporting(E_ALL); ?>
 
 <?php if (has_post_thumbnail()) { ?>

@@ -75,21 +75,21 @@ Template Name: Doctor Enrollment
                     	<table class="left">
                     	
                         	<tr>
-                        		<td colspan="3">Name<input type="text" value="Practice Name" id="practice_name" name="practice_name"></td>
+                        		<td colspan="3">Name<input type="text" value="" id="practice_name" name="practice_name"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td colspan="3">Address<input type="text" value="Address"  name="practice_address"></td>
+                        		<td colspan="3">Address<input type="text" value="" id="practice_address"  name="practice_address"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td colspan="3">Address 2<input type="text" value="Address 2" name="practice_address2"></td>
+                        		<td colspan="3">Address 2<input type="text" value="" name="practice_address2"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td>City<input type="text" value="City" id="practice_city" name="practice_city"></td>
+                        		<td>City<input type="text" value="" id="practice_city" name="practice_city"></td>
                             	<td>State <?php echo form_dropdown('practice_state', get_states(), 'UT'); ?></td>
-                            	<td>Zip<input value="zip" type="text" id="practice_zip" name="practice_zip"></td>
+                            	<td>Zip<input value="" type="text" id="practice_zip" name="practice_zip"></td>
                         	</tr>   
                         
                         	<tr>
@@ -101,19 +101,19 @@ Template Name: Doctor Enrollment
                     	<table class="right">
                     
                     		<tr>
-                        		<td>Primary Phone<input type="text" id="practice_phone" value="primary phone" name="practice_phone"></td>
+                        		<td>Primary Phone<input type="text" id="practice_phone" value="" name="practice_phone"></td>
                         	</tr>
                     
                         	<tr>
-                        		<td>Primary Email<input type="text" id="practice_email" value="primary email" name="practice_email"></td>
+                        		<td>Primary Email<input type="text" id="practice_email" value="" name="practice_email"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td>Routing Number<input type="text" value="Routing Number" name="practice_routing_number"></td>
+                        		<td>Routing Number<input type="text" value="" name="practice_routing_number"></td>
                         	</tr>  
                         
                         	<tr>
-                        		<td>Bank Account<input type="text" value="Bank Account" name="practice_bank_account"></td>
+                        		<td>Bank Account<input type="text" value="" name="practice_bank_account"></td>
                         	</tr>   
                                                           
                     	</table>
@@ -126,9 +126,9 @@ Template Name: Doctor Enrollment
                     
                    	 	<table>
                     		<tr>
-                        		<td>First Name<input type="text" value="First Name" id="firstname" name="firstname"></td>
-                            	<td>Last Name<input type="text" value="Last Name" id="lastname" name="lastname"></td>
-                            	<td>Mobile Number<input type="text" value="Mobile" id="cellphone" name="cellphone"></td>
+                        		<td>First Name<input type="text" value="" id="firstname" name="firstname"></td>
+                            	<td>Last Name<input type="text" value="" id="lastname" name="lastname"></td>
+                            	<td>Mobile Number<input type="text" value="" id="cellphone" name="cellphone"></td>
                         	</tr>
                         
                         	<tr>
@@ -139,20 +139,20 @@ Template Name: Doctor Enrollment
                     		</tr>
                         
                         	<tr>
-                        		<td colspan="3">Email<input type="text" value="doctor2@renew.com" id="email" name="email"></td>
+                        		<td colspan="3">Email<input type="text" value="" id="email" name="email"></td>
                            
                         	</tr>
                         
                         	<tr>
-                        		<td>Undergrad School<input type="text" value="School" id="undergrad_school" name="undergrad_school"></td>
-                            	<td>Degree Earned<input type="text" value="School"  id="undergrad_degree" name="undergrad_degree"></td>
-                            	<td>Graduation Date<input class="date" value="School" type="text" id="undergrad_date" name="undergrad_date"></td>
+                        		<td>Undergrad School<input type="text" value="" id="undergrad_school" name="undergrad_school"></td>
+                            	<td>Degree Earned<input type="text" value=""  id="undergrad_degree" name="undergrad_degree"></td>
+                            	<td>Graduation Date<input class="date" value="" type="text" id="undergrad_date" name="undergrad_date"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td>Medical School<input type="text" value="School" id="medical_school" name="medical_school"></td>
-                            	<td>Degree Earned<input type="text" value="School" id="medical_degree" name="medical_degree"></td>
-                            	<td>Graduation Date<input class="date" value="School"  type="text" id="medical_date" name="medical_date"></td>
+                        		<td>Medical School<input type="text" value="" id="medical_school" name="medical_school"></td>
+                            	<td>Degree Earned<input type="text" value="" id="medical_degree" name="medical_degree"></td>
+                            	<td>Graduation Date<input class="date" value=""  type="text" id="medical_date" name="medical_date"></td>
                         	</tr>
                         
                         	<tr>
@@ -167,15 +167,15 @@ Template Name: Doctor Enrollment
                         	</tr>
                         
                         	<tr>
-                        		<td>Bord Certification<input value="School" type="text" id="board_certification" name="board_certification"></td>
-                            	<td>Entity<input type="text" value="School" id="board_entity" name="board_entity"></td>
-                            	<td>Year of Expiration<input value="School" type="text" id="board_expiration" name="board_expiration"></td>
+                        		<td>Bord Certification<input value="" type="text" id="board_certification" name="board_certification"></td>
+                            	<td>Entity<input type="text" value="" id="board_entity" name="board_entity"></td>
+                            	<td>Year of Expiration<input value="" type="text" id="board_expiration" name="board_expiration"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td>License Number<input type="text" value="School" id="license_number" name="license_number"></td>
+                        		<td>License Number<input type="text" value="" id="license_number" name="license_number"></td>
                             	<td>State Issued <?php echo form_dropdown('license_state', get_states(), 'UT') ?></td>
-                            	<td>DEA Number<input type="text" value="School" id="dea_number" name="dea_number"></td>
+                            	<td>DEA Number<input type="text" value="" id="dea_number" name="dea_number"></td>
                         	</tr>
                         
                         	<tr>
@@ -220,22 +220,22 @@ Template Name: Doctor Enrollment
                             <tr>
                         		<td>
                             		First Name
-                                	<input type="text" value="School" id="staff_firstname" name="staff_firstname">
+                                	<input type="text" value="" id="staff_firstname" name="staff_firstname">
                             	</td>
                             	<td>
                             		Last Name
-                                	<input type="text" value="School" id="staff_lastname" name="staff_lastname">
+                                	<input type="text" value="" id="staff_lastname" name="staff_lastname">
                             	</td>
                         	</tr>
                         
                         	<tr>
                         		<td>
                             		Primary Email
-                                	<input type="text" value="School" id="staff_email" name="staff_email">
+                                	<input type="text" value="" id="staff_email" name="staff_email">
                             	</td>
                             	<td>
                             		Primary Phone Number
-                                	<input type="text" value="School" name="staff_phone">
+                                	<input type="text" value="" name="staff_phone">
                             	</td>
                         	</tr>
                         
@@ -251,7 +251,7 @@ Template Name: Doctor Enrollment
                             </tr>
                             <tr>
                             	<td colspan="2">
-                                	<label>Account access: <input type="radio" name="staff_access" value="primary" checked="checked"> Primary access <input type="radio" value="secondary" name="staff_access"> Secondary access<label>
+                                	<label>Account access: <input type="radio" name="staff_access" value="" checked="checked"> Primary access <input type="radio" value="secondary" name="staff_access"> Secondary access<label>
                             	</td>
                            
                         	</tr>
@@ -1082,6 +1082,9 @@ ___________________________ [title, e.g., President].</p>
 <script type="text/jscript" src="<?php bloginfo('template_url') ?>/js/jquery-ui-1.11.1.custom/jquery-ui.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/js/ajaxupload.js"></script>
 <script type="text/javascript"><!--
+
+
+
 new AjaxUpload('#upload', {
 	action: 'upload.php',
 	name: 'file',
