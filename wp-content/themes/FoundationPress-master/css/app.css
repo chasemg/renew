@@ -2401,7 +2401,8 @@ and (max-width: 980px) {
 .small_widget_container:after,
 .widget_row:after,
 .dashboard_goals:after,
-.vitals_container:after {
+.vitals_container:after,
+.settings_container:after {
   content: "";
   display: table;
   clear: both;
@@ -3142,6 +3143,7 @@ and (max-width: 980px) {
 	padding: 10px 0;
 	display: inline-block;
 	width: 100%;
+	box-sizing:border-box;
 }
 .message_overview h5	{
 	font-family: 'montserratbold';
@@ -3255,7 +3257,8 @@ and (max-width: 980px) {
 	line-height: 75px;
 }
 .settings_container	{
-	display: inline-block;
+	display: block;
+	width:100%;
 }
 .settings_container .profile_image	{
 	width: 50%;
@@ -3265,7 +3268,7 @@ and (max-width: 980px) {
 }
 .settings_container .profile_info	{
 	width: 50%;
-	float: right;
+	float: left;
 	display: inline-block;
 }
 .settings_container .profile_info div	{
@@ -3286,21 +3289,22 @@ and (max-width: 980px) {
 	width: 100%;
 	padding: 0 !important;
 }
-.settings_container button	{
+.profile_image > button#change_image {
 	padding: 5px 20px;
 	margin: 0;
 	background: #00af41;
 	text-transform: lowercase;
 	font-variant: small-caps;
-	width: 120px;	
 	margin-top: 20px;
+	width: 146px;
+	font-size: 16px;
+	border:1px solid #00af41;
 }
-.settings_container button:hover, .settings_container button:active, .settings_container button:focus	{
-	border: none;
-	border-color: #00af41;
-	border-style: none;
+.profile_image > button#change_image:hover {
+	background: #fff;
+	color: #00af41;
+	border:1px solid #00af41;
 }
-
 h3
 {
 	text-align:left;
@@ -3429,6 +3433,13 @@ and (max-device-width : 413px) {
 		font-size:26px;
 		line-height:45px;
 	}
+	.schedule_list table.schedule-table {width:100%;}
+	.schedule_list form {margin:15px 0px 0px 0px !important;}
+	.schedule_list form table {width:100%;}
+	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
+	.settings_container div.profile_image {width:100%;}
+	.settings_container div.profile_info {width:100%; margin-top:15px;}
+	.settings_container div.password_change {font-size:13px;}
 }
 
 @media only screen 
@@ -3475,6 +3486,14 @@ and (max-device-width : 479px) {
 	}
 	.social_header_icon img {width:50%;}
 	.social_header_icon .birthday {font-size:30px;line-height:65px;}
+	.schedule_list table.schedule-table {width:100%;}
+	.schedule_list form {margin: 15px 30px 0px;}
+	.schedule_list form table {width:100%;}
+	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
+	.settings_container div.profile_image {width:100%;}
+	.settings_container div.profile_image img {width:70%;}
+	.settings_container div.profile_info {width:100%; margin-top:15px;}
+	.settings_container div.password_change {font-size:13px;}
 }
 
 @media only screen 
@@ -3517,6 +3536,10 @@ and (max-device-width : 519px) {
 	}
 	.social_header_icon img {width:50%;}
 	.social_header_icon .birthday {font-size:30px;line-height:65px;}
+	.schedule_list table.schedule-table {width:100%;}
+	.schedule_list form {margin: 15px 50px 0px;}
+	.schedule_list form table {width:100%;}
+	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 }
 @media only screen 
 and (min-device-width : 520px)
@@ -3551,6 +3574,10 @@ and (max-device-width : 639px) {
 		height:140px;
     	box-sizing: border-box;
 	}
+	.schedule_list table.schedule-table {width:100%;}
+	.schedule_list form {margin: 15px 80px 0px;}
+	.schedule_list form table {width:100%;}
+	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 }
 
 @media only screen 
@@ -3564,6 +3591,10 @@ and (max-device-width : 767px) {
 		height:140px;
     	box-sizing: border-box;
 	}
+	.schedule_list table.schedule-table {width:100%;}
+	.schedule_list form {margin: 15px 120px 0px;}
+	.schedule_list form table {width:100%;}
+	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 }
 
 @media only screen
@@ -3602,6 +3633,10 @@ and (max-device-width : 979px) {
 		height:140px;
     	box-sizing: border-box;
 	}
+	.schedule_list table.schedule-table {width:100%;}
+	.schedule_list form {margin: 15px 60px 0px;}
+	.schedule_list form table {width:100%;}
+	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 }
 
 @media only screen
@@ -3613,6 +3648,10 @@ and (max-device-width : 979px) {
 		height:140px;
     	box-sizing: border-box;
 	}
+	.schedule_list table.schedule-table {width:100%;}
+	.schedule_list form {margin: 15px 60px 0px;}
+	.schedule_list form table {width:100%;}
+	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 }
 
 @media only screen
@@ -3625,6 +3664,10 @@ and (max-device-width : 1109px) {
 		height:140px;
     	box-sizing: border-box;
 	}
+	.schedule_list table.schedule-table {width:100%;}
+	.schedule_list form {margin: 15px 60px 0px;}
+	.schedule_list form table {width:100%;}
+	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 }
 
 button.new_message {
@@ -3638,6 +3681,11 @@ button.new_message:hover {
 	background:#fff;
 	border: 1px solid #00AF41;
 }
+
+.schedule_list table.schedule-table {width:100%;}
+.schedule_list form {margin: 15px 60px 0px;}
+.schedule_list form table {width:100%;}
+.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 
 /******************* Enroll Form *****************************/
 
