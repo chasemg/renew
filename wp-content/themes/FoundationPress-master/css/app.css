@@ -2553,10 +2553,11 @@ and (max-width: 980px) {
 	width: 100%;
 	margin: 20px auto 0 auto;
 	background: #fff;
-	display: inline-block;
+	display: block;
 	border-top: 5px solid #c7c6c6;
 	border-collapse: collapse;
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+	box-sizing:border-box;
 }
 .dashboard_large_widget h5	{
 	font-family: 'montserratbold';
@@ -2658,13 +2659,16 @@ and (max-width: 980px) {
 	line-height: 25px;
 }
 .dashboard_vitals	{
-	display: inline-block;
-	width: 120px;
+	display: block;
+	width: 140px;
 	float: left;
 	padding: 10px;
 	font-size: 34px;
 	font-family: "Century Gothic";
 	font-weight: bold;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
 }
 
 .dashboard_vitals div.bp,
@@ -2685,9 +2689,9 @@ and (max-width: 980px) {
 	background: #f5f8f5;
 }
 .dashboard_vitals_row	{
-	margin: 0 auto;
-	width:560px;
+	margin: 8px 38px 0px;
 	padding-bottom: 10px;
+	box-sizing:border-box;
 }
 
 .dashboard_vitals_row:after {
@@ -3282,7 +3286,8 @@ and (max-width: 980px) {
 	border: none;
 	box-shadow: none;
 }
-.settings_container .password_change	{
+.settings_container .password_change {
+	font-size:13px;
 	margin-top: 20px;
 	height: 200px;
 	text-align: left;
@@ -3395,13 +3400,17 @@ and (max-device-width : 413px) {
 	}
 	.dashboard_vitals_row {
 		margin-top:8px;
-		max-width:260px;
 		margin:8px auto 0 auto;
 	}
 	.dashboard_vitals {
-		width:110px;
-		height:120px;
+		width:50%;
+		height:140px;
+		box-sizing:border-box;
 	}
+	.dashboard_vitals .bp,
+	.dashboard_vitals .pulse,
+	.dashboard_vitals .temp,
+	.dashboard_vitals .resp {font-size:0.9em;}
 	.dashboard_small_widget,
 	.dashboard_small_widget.last {
 		display:block;
@@ -3458,14 +3467,10 @@ and (max-device-width : 479px) {
 		width:82px;
 		height:82px;
 	}
-	.dashboard_vitals_row {
-		margin-top:8px;
-		max-width:280px;
-		margin:8px auto 0 auto;
-	}
+	.dashboard_vitals_row {margin:8px 40px 0px;}
 	.dashboard_vitals {
-		width:120px;
-		height:120px;
+		width:50%;
+		height:140px;
 	}
 	.dashboard_small_widget,
 	.dashboard_small_widget.last {
@@ -3511,10 +3516,10 @@ and (max-device-width : 519px) {
 		width:82px;
 		height:82px;
 	}
-	.dashboard_vitals_row {
-		margin-top:8px;
-		max-width:420px;
-		margin:8px auto 0 auto;
+	.dashboard_vitals_row {margin:8px auto 0 auto;}
+	.dashboard_vitals {
+		width:33.3%;
+		height:140px;
 	}
 	.dashboard_small_widget,
 	.dashboard_small_widget.last {
@@ -3550,10 +3555,10 @@ and (max-device-width : 639px) {
 	.goal_text {margin: 0 0 0 5%;font-size:22px;}
 	.goal_text_second_line {font-size:19px;}
 	.goals_button {width:100px;}
-	.dashboard_vitals_row {
-		margin-top:8px;
-		max-width:420px;
-		margin:8px auto 0 auto;
+	.dashboard_vitals_row {margin:8px 40px 0px;}
+	.dashboard_vitals {
+		width:33.3%;
+		height:140px;
 	}
 	.dashboard_small_widget_content {
 		height: 200px;
@@ -3583,7 +3588,11 @@ and (max-device-width : 639px) {
 @media only screen 
 and (min-device-width : 640px)
 and (max-device-width : 767px) {
-	.dashboard_vitals_row {margin-top:8px;}
+	.dashboard_vitals_row {margin:8px 40px 0px;}
+	.dashboard_vitals {
+		width:25%;
+		height:140px;
+	}
 	.goal_text {margin: 0 0 0 7.5%;}
 	.dashboard_large_widget .container {padding:10px;}
 	.vitals {
@@ -3608,13 +3617,10 @@ and (max-device-width : 979px) {
 	.goal_text {margin: 0 0 0 5%;font-size:22px;}
 	.goal_text_second_line {font-size:19px;}
 	.goals_button {width:100px;}
-	.dashboard_vitals_row {
-		margin:8px auto 0px;
-		width:400px;
-	}
+	.dashboard_vitals_row {margin:8px 40px 0px;}
 	.dashboard_vitals {
-		width:86px;
-		padding:7px;
+		width:25%;
+		height:120px;
 		font-size:26px;
 	}
 	.dashboard_vitals .pulse:after,
@@ -3643,11 +3649,6 @@ and (max-device-width : 979px) {
 and (min-device-width : 890px)
 and (max-device-width : 979px) {
 	.dashboard_goals {padding: 12px 80px;}
-	.vitals {
-    	width: 25%;
-		height:140px;
-    	box-sizing: border-box;
-	}
 	.schedule_list table.schedule-table {width:100%;}
 	.schedule_list form {margin: 15px 60px 0px;}
 	.schedule_list form table {width:100%;}
@@ -3658,11 +3659,10 @@ and (max-device-width : 979px) {
 and (min-device-width : 980px)
 and (max-device-width : 1109px) {
 	.goal_text {margin-left:8%;}
-	.dashboard_vitals_row {margin-top:8px;}
-	.vitals {
-    	width: 25%;
+	.dashboard_vitals_row {margin:8px 40px 0px;}
+	.dashboard_vitals {
+		width:25%;
 		height:140px;
-    	box-sizing: border-box;
 	}
 	.schedule_list table.schedule-table {width:100%;}
 	.schedule_list form {margin: 15px 60px 0px;}

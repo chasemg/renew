@@ -124,26 +124,26 @@ function dashboard($user_id) {
 			if(get_user_role() == 'doctor')	{
 				echo '<li><div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div></li>';
 				echo '<li><div class="dashboard_icons_disabled" id="meds">Medications</div></li>';
-				echo '<li><div class="dashboard_icons" id="communications">Communications</div></li>';
-				echo '<li><div class="dashboard_icons" id="referrals">Referrals</div></li>';
-				echo '<li><div class="dashboard_icons" id="schedule">Scheduling</div></li>';
-				echo '<li><div class="doctor_dash" id="user_dashboard">Dashboard</div></li>';
-				echo '<li><div class="dashboard_icons" id="labs">Lab Results</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="communications">Communications</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="referrals">Referrals</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="schedule">Scheduling</div></li>';
+				echo '<li><div class="doctor_dash mobile-link" id="user_dashboard">Dashboard</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="labs">Lab Results</div></li>';
 				echo '<li><label></label></li>';
-				echo '<li><div class="dashboard_icons" id="settings">Settings</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="settings">Settings</div></li>';
 				echo '<li><a href="'. wp_logout_url('index.php') .'">Logout</a></li>';				
 			}
 		
 			if(get_user_role() == 'subscriber')	{
-				echo '<li><div class="dashboard_icons" id="user_dashboard">User Dashboard</div></li>';
-				echo '<li><div class="dashboard_icons" id="communications">Communications</div></li>';
-				echo '<li><div class="dashboard_icons" id="medical_history">Medical History</div></li>';
-				echo '<li><div class="dashboard_icons" id="labs">Lab Results</div></li>';
-				echo '<li><div class="dashboard_icons" id="meds">Medications</div></li>';
-				echo '<li><div class="dashboard_icons" id="schedule">Scheduling</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="user_dashboard">User Dashboard</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="communications">Communications</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="medical_history">Medical History</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="labs">Lab Results</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="meds">Medications</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="schedule">Scheduling</div></li>';
 				echo '<li><label></label></li>';
-				echo '<li><div class="dashboard_icons" id="settings">Settings</div></li>';
-				echo '<li><div class="dashboard_icons" id="logout">Logout</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="settings">Settings</div></li>';
+				echo '<li><a href="'. wp_logout_url('index.php') .'">Logout</a></li>';
 			}
 			
 			
@@ -241,8 +241,8 @@ function dashboard($user_id) {
 	echo "</div>"; // END of .off-canvas-wrap
 	
   echo "<script> jQuery(document).foundation(); </script>";
+  echo '<script> jQuery(".mobile-link").on("click", function() { jQuery(".exit-off-canvas").trigger("click"); }); </script>';
 }
-
 
 function get_patient_list()
 {
