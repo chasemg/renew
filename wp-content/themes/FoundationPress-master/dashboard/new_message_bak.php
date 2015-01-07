@@ -7,8 +7,8 @@ include "db_include.php";
 $id = $_POST['id'];
 $message_id = $_POST['message_id'];
 $html = '';
-$html .= '<div class="dashboard_large_widget" style="max-width: 600px;">';
-$html .= '<div class="container" style="width: auto; padding: 20px 50px;">';
+$html .= '<div class="dashboard_large_widget">';
+$html .= '<div class="container new-message-box">';
 $html .= "<div class='message_error'></div>";
 
 if($_POST['message_id'] != 0)	{
@@ -19,14 +19,10 @@ if($_POST['message_id'] != 0)	{
 		$html .= '<hr>';
 		$html .= '<div class="message_header">';
 		$from = $m->from;
-		if($_POST['patient_id'] != $id)	{
-			$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors WHERE user_id='$from'");
-		} else {
-			$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id='$from'");
-		}		
+		$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
 		foreach($from_query as $f)	{
 			$message_from = $f->display_name;
-			$html .= '<div style="font-family: adellelight; font-size: 16px; color: #6d6e70;">Reply to: '.$f->fname.' '.$f->lname.'<input type="hidden" id="message_to" value="'.$f->ID.'"></div>';
+			$html .= '<div style="font-family: adellelight; font-size: 16px; color: #6d6e70;">Reply to: '.$f->display_name.'<input type="hidden" id="message_to" value="'.$f->ID.'"></div>';
 		}
 		$current_date = date("m/d/Y H:i:s");
 		$html .= '<div style="font-family: adellelight; font-size: 16px; color: #6d6e70;">Reply date: '.date("M d, Y h:i:s A").'<input type="hidden" id="send_date" value="'.strtotime($current_date).'"></div>';
@@ -48,25 +44,15 @@ if($_POST['message_id'] != 0)	{
 	$html .= '<div class="text"></div>';
 	$html .= '<div class="message_header">';
 	$from = $m->from;
-	if($_POST['patient_id'] != $id)	{
-		$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors WHERE user_id='$from'");
-	} else {
-		$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id='$from'");
-	}
+	$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "practices AS p INNER JOIN ".$wpdb->prefix. "doctors WHERE ID='$from'");
 	foreach($from_query as $f)	{
-		$html .= '<div>Reply to: '.$f->fname.' '.$f->lname.'</div>';
+		$html .= '<div>Reply to: '.$f->display_name.'</div>';
 	}
-	if($_POST['patient_id'] != $id)	{
-		$to_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients");
-	} else {
-		$to_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors");
-	}
-	$html .= "<div style='margin-bottom: 10px;'>To: <select id='message_to'>";
-	$html .= "<option value='0'>-- SELECT --</option>";
+	$html .= '<input type="hidden" id="message_to" value="0">';
+	$to_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
 	foreach($to_query as $t)	{
-		$html .= "<option value='".$t->user_id."'>".$t->fname." ".$t->lname."</option>";
+	
 	}
-	$html .= "</select></div>";
 	$current_date = date("m/d/Y H:i:s");
 	$html .= '<div style="font-family: adellelight; font-size: 16px; color: #6d6e70;">Send date: '.date("M d, Y").'<input type="hidden" id="send_date" value="'.strtotime($current_date).'"></div>';
 	$html .= '</div>';

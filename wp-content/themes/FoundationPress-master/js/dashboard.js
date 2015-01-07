@@ -169,6 +169,7 @@ function createMessage()	{
 					return false;
 				} else {	
 					sendMessage();
+					message();
 				}
 			});	
 			$(".cancel_message").click(function()	{
@@ -212,6 +213,7 @@ function sendMessage()	{
 		success: function(success)	{
 			$("#dashboard").empty().hide();
 			var user_id = $("#user_id").val();
+			var patient_id = $("#patient_id").val();
 			$.ajax({
 				type: 'post',
 				data: 'id='+ user_id+'&patient_id='+patient_id,

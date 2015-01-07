@@ -3205,6 +3205,9 @@ and (max-width: 980px) {
 	text-align: left;
 	margin-bottom: 20px;
 }
+.message_reply	{
+	float: right;
+}
 .message_reply_bar	{
 	width: 100%;
 	max-width: 600px;
@@ -3219,11 +3222,14 @@ and (max-width: 980px) {
 	text-transform: lowercase;
 	font-variant: small-caps;
 	width: 100px;
+	
 }
-
-.message_reply_bar .message_go_back, .message_reply_bar .message	{
+.message_reply_bar .message_go_back	{
+	width: 106px;
+	margin-top: 0px;
+}
+.message_reply_bar .message	{
 	float: left;
-	margin-top: 10px;
 }
 .message_text textarea	{
 	height: 30%;
@@ -3701,6 +3707,8 @@ button.new_message {
 button.new_message:hover,
 button.cancel_message:hover,
 button.message_send:hover,
+.message_go_back:hover,
+.message_reply:hover,
 .schedule_list input[type="submit"]:hover {
 	color:#00AF41 !important;
 	background:#fff;

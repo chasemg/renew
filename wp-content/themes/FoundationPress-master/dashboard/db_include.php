@@ -17,6 +17,4 @@ if(!isset($wpdb))
 	$pdb = new wpdb(DB_USER,DB_PASSWORD,$practice.'_renew',DB_HOST);
 }
 
-
-
 ?>
