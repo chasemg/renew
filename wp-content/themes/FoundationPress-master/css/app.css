@@ -3020,12 +3020,23 @@ and (max-width: 980px) {
 	width: 100%;
 	padding: 0px 0 20px 0;
 }
-.last_exam	{
-	width: 100%;
-	text-align: left;
-	font-size: 18px;
-	padding: 10px 0;
+.last_exam {
+	text-align:center;
+	font-size:12px;
+	padding:0px 20px 10px;	
 }
+
+.last_exam span {
+	color: #00af41;
+	font-size:14px;
+}
+
+.stripped-notes {
+	text-align:left;
+	font-size:12px;
+	padding:0px 20px;
+}
+
 .med_history_container table	{
 	min-width: 48%;
 	max-width: 48%;
@@ -3209,16 +3220,13 @@ and (max-width: 980px) {
 	font-variant: small-caps;
 	width: 100px;
 }
-.message_reply_bar .message_reply, .message_reply_bar .message_send	{
-	float: right;
-	margin-top: 10px;
-}
+
 .message_reply_bar .message_go_back, .message_reply_bar .message	{
 	float: left;
 	margin-top: 10px;
 }
 .message_text textarea	{
-	height: 50%;
+	height: 30%;
 }
 .message_text textarea[disabled]	{
 	background: #fff;
@@ -3304,6 +3312,7 @@ and (max-width: 980px) {
 	width: 146px;
 	font-size: 16px;
 	border:1px solid #00af41;
+	border-radius:3px;
 }
 .profile_image > button#change_image:hover {
 	background: #fff;
@@ -3449,6 +3458,7 @@ and (max-device-width : 413px) {
 	.settings_container div.profile_image {width:100%;}
 	.settings_container div.profile_info {width:100%; margin-top:15px;}
 	.settings_container div.password_change {font-size:13px;}
+	.container.new-message-box {padding:15px;}
 }
 
 @media only screen 
@@ -3499,6 +3509,7 @@ and (max-device-width : 479px) {
 	.settings_container div.profile_image img {width:70%;}
 	.settings_container div.profile_info {width:100%; margin-top:15px;}
 	.settings_container div.password_change {font-size:13px;}
+	.container.new-message-box {padding:15px;}
 }
 
 @media only screen 
@@ -3545,6 +3556,7 @@ and (max-device-width : 519px) {
 	.schedule_list form {margin: 15px 50px 0px;}
 	.schedule_list form table {width:100%;}
 	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
+	.container.new-message-box {padding:15px 30px;}
 }
 @media only screen 
 and (min-device-width : 520px)
@@ -3583,6 +3595,7 @@ and (max-device-width : 639px) {
 	.schedule_list form {margin: 15px 80px 0px;}
 	.schedule_list form table {width:100%;}
 	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
+	.container.new-message-box {padding:15px 40px;}
 }
 
 @media only screen 
@@ -3604,6 +3617,7 @@ and (max-device-width : 767px) {
 	.schedule_list form {margin: 15px 120px 0px;}
 	.schedule_list form table {width:100%;}
 	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
+	.container.new-message-box {padding:15px 60px;}
 }
 
 @media only screen
@@ -3670,22 +3684,43 @@ and (max-device-width : 1109px) {
 	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 }
 
+.schedule_list input[type="submit"],
 button.new_message {
 	font-size:14px;
 	width:127px;
 	border: 1px solid #00AF41;
+	border-radius:3px;
 }
 
-button.new_message:hover {
-	color:#00AF41;
+.schedule_list input[type="submit"] {
+	font-size:12px !important;
+	text-transform:uppercase;
+	transition:	background-color 300ms ease-out;
+}
+
+button.new_message:hover,
+button.cancel_message:hover,
+button.message_send:hover,
+.schedule_list input[type="submit"]:hover {
+	color:#00AF41 !important;
 	background:#fff;
 	border: 1px solid #00AF41;
+}
+
+button.cancel_message,
+button.message_send {
+	font-size:16px;
+	border: 1px solid #00AF41;
+	border-radius:3px;
 }
 
 .schedule_list table.schedule-table {width:100%;}
 .schedule_list form {margin: 15px 60px 0px;}
 .schedule_list form table {width:100%;}
-.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
+
+button.cancel_message {float:left;}
+button.message_send {float:right;}
+}
 
 /******************* Enroll Form *****************************/
 

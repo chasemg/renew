@@ -148,10 +148,10 @@ if($_POST['patient_id'])	{
 
 			$medical = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "medical_history WHERE user_id='$patient_id' LIMIT 1");
 			foreach($medical as $m)	{
-				$html .= '<div class="last_exam" style="font-size: 11px; width: 240px; margin: 0 auto;">Date of last physical exam: <font style="color: #00af41; font-size: 14px;">'.date("m/d/Y", $exam_date).'</font></div>';
+				$html .= '<div class="last_exam">Date of last physical exam: <span>'.date("m/d/Y", $exam_date).'</span></div>';
 				$notes = $m->notes;
 				$stripped_notes = (strlen($notes) > 225) ? substr($notes,0,225).'...' : $notes;
-				$html .= '<div class="text" style="padding-bottom: 5px; width: 240px; text-align: left; margin: 0 auto; font-family:adellelight; font-size: 12px;">'.$stripped_notes.'</div>';
+				$html .= '<div class="text stripped-notes">'.$stripped_notes.'</div>';
 				
 			}
 			$html .= '</div>';
