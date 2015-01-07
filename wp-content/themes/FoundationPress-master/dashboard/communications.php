@@ -36,7 +36,7 @@ if($_POST['patient_id'] != $id)	{
 		$stripped_subject = (strlen($subject) > 50) ? substr($subject,0,50).'...' : $subject;
 		$html .= "<div class='subject'>".$stripped_subject."</div><br>";
 		$from = $message->from;
-		$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
+		$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
 		foreach($from_query as $f)	{
 			$html .= "<div class='from'>".$f->display_name."</div>";
 		}
