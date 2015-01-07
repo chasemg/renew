@@ -7,9 +7,9 @@ URL: http://chasemg.com
 include "db_include.php";
 if (isset($_POST['action']))
 {
-	$wpdb->query("INSERT INTO ".$wpdb->prefix."labs SET patient_id = '".$_POST['patient_id']."', doctor_id = '".$_POST['doctor_id']."', labdoctor_id = '".$_POST['labdoctor_id']."', doctor_notes = '".$_POST['remarks']."', date_sent = NOW()");
+	$pdb->query("INSERT INTO ".$wpdb->prefix."labs SET patient_id = '".$_POST['patient_id']."', doctor_id = '".$_POST['doctor_id']."', labdoctor_id = '".$_POST['labdoctor_id']."', doctor_notes = '".$_POST['remarks']."', date_sent = NOW()");
 	
-	$labpatients = $wpdb->get_results("SELECT l.*, u.display_name as patient_name, u2.display_name as labdoctor_name, date_format(date_sent, '%M %d, %Y') as date_request, date_format(date_result, '%M %d %Y') as date_result FROM ".$wpdb->prefix."labs l JOIN ".$wpdb->prefix."users u ON u.ID = l.patient_id JOIN ".$wpdb->prefix."users u2 ON u2.ID = l.labdoctor_id WHERE doctor_id = " . $_POST['doctor_id']);
+	$labpatients = $pdb->get_results("SELECT l.*, u.display_name as patient_name, u2.display_name as labdoctor_name, date_format(date_sent, '%M %d, %Y') as date_request, date_format(date_result, '%M %d %Y') as date_result FROM ".$wpdb->prefix."labs l JOIN ".$wpdb->prefix."users u ON u.ID = l.patient_id JOIN ".$wpdb->prefix."users u2 ON u2.ID = l.labdoctor_id WHERE doctor_id = " . $_POST['doctor_id']);
 	
 	echo json_encode($labpatients);
 	
@@ -19,7 +19,7 @@ if (isset($_POST['action']))
 $id = $_POST['id'];
 $patient_id = $_POST['patient_id'];
 
-$labpatients = $wpdb->get_results("SELECT l.*, u.display_name as patient_name, u2.display_name as labdoctor_name, date_format(date_sent, '%M %d, %Y') as date_request, date_format(date_result, '%M %d %Y') as date_result FROM ".$wpdb->prefix."labs l JOIN ".$wpdb->prefix."users u ON u.ID = l.patient_id JOIN ".$wpdb->prefix."users u2 ON u2.ID = l.labdoctor_id WHERE doctor_id = " . $id);
+$labpatients = $pdb->get_results("SELECT l.*, u.display_name as patient_name, u2.display_name as labdoctor_name, date_format(date_sent, '%M %d, %Y') as date_request, date_format(date_result, '%M %d %Y') as date_result FROM ".$wpdb->prefix."labs l JOIN ".$wpdb->prefix."users u ON u.ID = l.patient_id JOIN ".$wpdb->prefix."users u2 ON u2.ID = l.labdoctor_id WHERE doctor_id = " . $id);
 
 $patients = get_patient_list();
 
@@ -28,7 +28,7 @@ $labdoctors = get_labdoctor_list();
 if ($patient_id)
 {
 	//echo $patient_id;
-	$documents = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."labs l JOIN ".$wpdb->prefix."lab_files f ON f.lab_id = l.lab_id WHERE patient_id = " . $patient_id);
+	$documents = $pdb->get_results("SELECT * FROM ".$wpdb->prefix."labs l JOIN ".$wpdb->prefix."lab_files f ON f.lab_id = l.lab_id WHERE patient_id = " . $patient_id);
 }
 
 ?>

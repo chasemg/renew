@@ -18,8 +18,11 @@ $html .= '<div class="text" style="padding: 10px 0;"><font style="font-weight: b
 $html .= '<div class="message_reply_bar"><button class="new_message">New Message</button></div>';
 $html .= "<ul class='messages'>";
 $html .= '<input type="hidden" id="message_id" value="0">';
-$messages = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication AS c INNER JOIN ".$wpdb->prefix. "users AS u ON u.ID=c.user_id WHERE c.user_id='$id' order by c.id desc LIMIT ".$limit."");
-if($messages)	{
+if($_POST['patient_id'] != $id)	{
+	$messages = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication AS c INNER JOIN ".$wpdb->prefix. "doctors AS d  ON d.user_id=c.user_id WHERE c.user_id='$id' order by c.id desc LIMIT ". $limit * 2 . "");
+} else {
+	$messages = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication AS c INNER JOIN ".$wpdb->prefix. "patients AS p  ON p.user_id=c.user_id WHERE c.user_id='$id' order by c.id desc LIMIT ".$limit."");
+}if($messages)	{
 	foreach($messages as $message)	{
 		$html .= "<li class='message' id='".$message->id."'>";
 		if($message->read == 0)	{
@@ -33,7 +36,7 @@ if($messages)	{
 		$stripped_subject = (strlen($subject) > 50) ? substr($subject,0,50).'...' : $subject;
 		$html .= "<div class='subject'>".$stripped_subject."</div><br>";
 		$from = $message->from;
-		$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
+		$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
 		foreach($from_query as $f)	{
 			$html .= "<div class='from'>".$f->display_name."</div>";
 		}

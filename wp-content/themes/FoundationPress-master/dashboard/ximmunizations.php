@@ -14,7 +14,7 @@ $html .= '<div class="title">Immunizations</div>';
 $html .= '<hr>';
 
 
-$immunizations = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id' LIMIT 1");
+$immunizations = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id' LIMIT 1");
 foreach($immunizations as $i)	{
 	$html .= '<div class="text"><font style="font-weight: bold; text-transform: lowercase; font-variant: small-caps; font-size: 14px;">Here is a detailed look</font> at your immunizations. You can download a complete schedule below.</div>';
 	$html .= '<div class="immun_container">';

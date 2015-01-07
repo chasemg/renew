@@ -109,6 +109,7 @@ function user_dashboard()	{
 function message()	{
 	$('.message').click(function()	{
 		var messageId = $(this).attr('id');
+		var patient_id = $("#patient_id").val();
 		$.ajax({
 			type: 'POST',
 			data: 'message_id='+messageId,
@@ -120,12 +121,15 @@ function message()	{
 					var user_id = $("#user_id").val();
 					$.ajax({
 						type: 'post',
-						data: 'id='+ user_id,
+						data: 'id='+ user_id+'&patient_id='+patient_id,
 						url: 'wp-content/themes/FoundationPress-master/dashboard/communications.php',
 						success: function(success)	{
 							$("#dashboard").html(success).fadeIn();
 							message();
 							new_message();
+							$(".goback img").click(function()	{
+								user_dashboard();
+							});									
 						},
 						error: function(error)	{
 							console.log(error);
@@ -150,16 +154,17 @@ function new_message()	{
 function createMessage()	{
 	var messageId = $("#message_id").val();
 	var user_id = $("#user_id").val();
+	var patient_id = $("#patient_id").val();
 	$.ajax({
 		type: 'POST',
-		data: 'message_id='+messageId+'&id'+user_id,
+		data: 'message_id='+messageId+'&id='+user_id+'&patient_id='+patient_id,
 		url: 'wp-content/themes/FoundationPress-master/dashboard/new_message.php',
 		success: function(success)	{
 			$("#dashboard").html(success).fadeIn();
 			message();
 			$(".message_send").click(function()	{
 				var message_to = $("#message_to").val();
-				if($("#message_to").val() == '' || $("#message_to").val() == 0 || $("#message_text").val() == '' || $("#subject").val() == '')	{
+				if($("#message_to").val() == '' || $("#message_to").val() == '0' || $("#message_to").val() == 0 || $("#message_text").val() == '' || $("#subject").val() == '')	{
 					$(".message_error").show().html(' Please fill out all of the fields before sending your message.').delay(5000).fadeOut();
 					return false;
 				} else {	
@@ -169,14 +174,18 @@ function createMessage()	{
 			$(".cancel_message").click(function()	{
 				$("#dashboard").empty().hide();
 				var user_id = $("#user_id").val();
+				var patient_id = $("#patient_id").val();				
 				$.ajax({
 					type: 'post',
-					data: 'id='+ user_id,
+					data: 'id='+ user_id+'&patient_id='+patient_id,
 					url: 'wp-content/themes/FoundationPress-master/dashboard/communications.php',
 					success: function(success)	{
 						$("#dashboard").html(success).fadeIn();
 						message();
-						new_message()
+						new_message();
+						$(".goback img").click(function()	{
+							user_dashboard();
+						});								
 					},
 					error: function(error)	{
 						console.log(error);
@@ -195,21 +204,22 @@ function sendMessage()	{
 	var message = $("#message_text").val();
 	var send_date = $("#send_date").val();
 	var user_id = $("#user_id").val();
-
+	var patient_id = $("#patient_id").val();
 	$.ajax({
 		type: 'POST',
-		data: 'message_to='+message_to+'&subject='+subject+'&message='+message+'&send_date='+send_date+'&user_id='+user_id,
+		data: 'message_to='+message_to+'&subject='+subject+'&message='+message+'&send_date='+send_date+'&user_id='+user_id+'&patient_id='+patient_id,
 		url: 'wp-content/themes/FoundationPress-master/dashboard/send_email.php',
 		success: function(success)	{
 			$("#dashboard").empty().hide();
 			var user_id = $("#user_id").val();
 			$.ajax({
 				type: 'post',
-				data: 'id='+ user_id,
+				data: 'id='+ user_id+'&patient_id='+patient_id,
 				url: 'wp-content/themes/FoundationPress-master/dashboard/communications.php',
 				success: function(success)	{
 					$("#dashboard").html(success).fadeIn();
-
+					new_message();
+					message();
 				},
 				error: function(error)	{
 					console.log(error);

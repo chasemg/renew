@@ -2,7 +2,7 @@
 
 $user = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=" . $id);
 
-$patients = $wpdb->get_results("SELECT l.*, u.display_name as patient_name, d.display_name as doctor_name, date_format(date_sent, '%M %d, %Y') as date_request FROM ".$wpdb->prefix. "labs l JOIN ".$wpdb->prefix."users u ON u.ID = l.patient_id JOIN ".$wpdb->prefix."users d ON d.ID = l.doctor_id WHERE labdoctor_id = " . $id);
+$patients = $pdb->get_results("SELECT l.*, u.display_name as patient_name, d.display_name as doctor_name, date_format(date_sent, '%M %d, %Y') as date_request FROM ".$wpdb->prefix. "labs l JOIN ".$wpdb->prefix."users u ON u.ID = l.patient_id JOIN ".$wpdb->prefix."users d ON d.ID = l.doctor_id WHERE labdoctor_id = " . $id);
 
 ?>
 

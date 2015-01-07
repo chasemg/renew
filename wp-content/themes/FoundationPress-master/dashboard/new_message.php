@@ -12,14 +12,14 @@ $html .= '<div class="container new-message-box">';
 $html .= "<div class='message_error'></div>";
 
 if($_POST['message_id'] != 0)	{
-	$message = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication WHERE id='$message_id'");
+	$message = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication WHERE id='$message_id'");
 	foreach($message as $m)	{
 		$html .= '<input type="hidden" name="message_id" value="'.$message_id.'">';
 		$html .= '<div class="title" style="font-family: montserratregular;"><font style="color: #00af41;">Subject:</font> <input style="margin-top: 5px;" id="subject" type="text" value="REPLY: '.$m->subject.'"></div>';
 		$html .= '<hr>';
 		$html .= '<div class="message_header">';
 		$from = $m->from;
-		$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
+		$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
 		foreach($from_query as $f)	{
 			$message_from = $f->display_name;
 			$html .= '<div style="font-family: adellelight; font-size: 16px; color: #6d6e70;">Reply to: '.$f->display_name.'<input type="hidden" id="message_to" value="'.$f->ID.'"></div>';
@@ -44,12 +44,12 @@ if($_POST['message_id'] != 0)	{
 	$html .= '<div class="text"></div>';
 	$html .= '<div class="message_header">';
 	$from = $m->from;
-	$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "practices AS p INNER JOIN ".$wpdb->prefix. "doctors WHERE ID='$from'");
+	$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "practices AS p INNER JOIN ".$wpdb->prefix. "doctors WHERE ID='$from'");
 	foreach($from_query as $f)	{
 		$html .= '<div>Reply to: '.$f->display_name.'</div>';
 	}
 	$html .= '<input type="hidden" id="message_to" value="0">';
-	$to_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
+	$to_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
 	foreach($to_query as $t)	{
 	
 	}
