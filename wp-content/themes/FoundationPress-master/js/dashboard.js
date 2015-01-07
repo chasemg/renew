@@ -202,13 +202,13 @@ function createMessage()	{
 function sendMessage()	{
 	var message_to = $("#message_to").val();
 	var subject = $("#subject").val();
-	var message = $("#message_text").val();
+	var message_send = $("#message_text").val();
 	var send_date = $("#send_date").val();
 	var user_id = $("#user_id").val();
 	var patient_id = $("#patient_id").val();
 	$.ajax({
 		type: 'POST',
-		data: 'message_to='+message_to+'&subject='+subject+'&message='+message+'&send_date='+send_date+'&user_id='+user_id+'&patient_id='+patient_id,
+		data: 'message_to='+message_to+'&subject='+subject+'&message='+message_send+'&send_date='+send_date+'&user_id='+user_id+'&patient_id='+patient_id,
 		url: 'wp-content/themes/FoundationPress-master/dashboard/send_email.php',
 		success: function(success)	{
 			$("#dashboard").empty().hide();
@@ -394,8 +394,25 @@ function dashboard_icons()	{
 	});	
 }
 
+function push_notification(){
+	var user_id = $("#user_id").val();
+	$.ajax({
+		type: "POST",
+		data: "user_id="+user_id,
+		url: "wp-content/themes/FoundationPress-master/dashboard/push_notifications.php",
+		success: function(success)	{
+			if($.isNumeric(success))	{
+			$("#push").html(success).delay(2000);
+			push_notification();
+			}
+		},
+		error: function(error)	{
+			console.log(error);
+		}
+	});
+}
 /********************* INIT ***************************************/
-
+	push_notification();
 	user_dashboard();
 	dashboard_icons();
 });

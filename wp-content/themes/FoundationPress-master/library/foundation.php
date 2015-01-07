@@ -97,7 +97,6 @@ function dashboard($user_id) {
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/dashboard.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery-ui-1.11.1.custom/jquery-ui.js'></script>";
 	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.timepicker/jquery.timepicker.js'></script>";
-	
 	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery-ui-1.11.1.custom/jquery-ui.css" />';
 	echo '<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />';
 	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery.timepicker/jquery.timepicker.css" />';	
@@ -124,7 +123,7 @@ function dashboard($user_id) {
 			if(get_user_role() == 'doctor')	{
 				echo '<li><div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div></li>';
 				echo '<li><div class="dashboard_icons_disabled" id="meds">Medications</div></li>';
-				echo '<li><div class="dashboard_icons mobile-link" id="communications">Communications</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="communications">Communications<div id="push"></div></div></li>';
 				echo '<li><div class="dashboard_icons mobile-link" id="referrals">Referrals</div></li>';
 				echo '<li><div class="dashboard_icons mobile-link" id="schedule">Scheduling</div></li>';
 				echo '<li><div class="doctor_dash mobile-link" id="user_dashboard">Dashboard</div></li>';
@@ -136,7 +135,7 @@ function dashboard($user_id) {
 		
 			if(get_user_role() == 'subscriber')	{
 				echo '<li><div class="dashboard_icons mobile-link" id="user_dashboard">User Dashboard</div></li>';
-				echo '<li><div class="dashboard_icons mobile-link" id="communications">Communications</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="communications">Communications<div id="push"></div></div></li>';
 				echo '<li><div class="dashboard_icons mobile-link" id="medical_history">Medical History</div></li>';
 				echo '<li><div class="dashboard_icons mobile-link" id="labs">Lab Results</div></li>';
 				echo '<li><div class="dashboard_icons mobile-link" id="meds">Medications</div></li>';
@@ -172,7 +171,7 @@ function dashboard($user_id) {
 	} 
 	elseif(get_user_role() == 'subscriber')	{
 		echo '<div class="dashboard_icons" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
-		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
+		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"><div id="push"></div></div>';
 		echo '<div class="dashboard_icons" id="medical_history"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/hist_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="labs"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="meds"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_icon.png"></div>';
@@ -204,7 +203,7 @@ function dashboard($user_id) {
 	if(get_user_role() == 'doctor')	{
 		echo '<div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div>';
 		echo '<div class="dashboard_icons_disabled" id="meds"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_icon.png"></div>';
-		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
+		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"><div id="push"></div></div>';
 		echo '<div class="dashboard_icons" id="referrals">Referrals</div>';
 		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
 		echo '<div class="doctor_dash" id="user_dashboard">Dashboard</div>';
@@ -223,7 +222,7 @@ function dashboard($user_id) {
 	elseif(get_user_role() == 'administrator')	{
 		echo '<div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div>';
 		echo '<div class="dashboard_icons_disabled" id="meds"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_icon.png"></div>';
-		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
+		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"><div id="push"></div></div>';
 		echo '<div class="dashboard_icons" id="referrals">Referrals</div>';
 		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
 		echo '<div class="doctor_dash" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
