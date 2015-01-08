@@ -234,13 +234,30 @@ if($_POST['patient_id'])	{
 		echo $html;
 } else {
 	
-	if (get_user_role() == 'lab_doctor')
-	{
-		include('lab_dashboard.php');
+		if (get_user_role() == 'lab_doctor')
+		{
+			include('lab_dashboard.php');
+		}
+		elseif (get_user_role() == 'doctor')
+		{
+	
+				$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$id");
+			
+				foreach($lookup as $lu)	{
+					$html .= '<div class="dashboard_goals">';
+						$html .= '<div class="goal_container">';
+							$html .= '<div class="user_image doctor default">';
+								$html .= '<img src="http://localhost/renew/wp-content/themes/FoundationPress-master/assets/img/dashboard/doctor_default.png">';
+							$html .= '</div>';
+							$html .= '<div class="doctor_greet">';
+								$html .= 'Welcome, <span>Dr. ' . $lu->display_name . '</span>.';
+							$html .= '</div>';
+						$html .= '</div>';
+					$html .= '</div>'; // End .dashboard_goals
+					echo $html;
+		}
+		
 	}
-	else
-	{
-		echo "Doctor's dashboard";
-	}
+
 }
 ?>

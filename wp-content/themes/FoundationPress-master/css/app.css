@@ -3346,6 +3346,23 @@ input.time
 	display:inline-block;
 }
 
+/********************** Doctor Dashboard ****************************************/
+
+.user_image.doctor {margin-left:30px;}
+
+.user_image.doctor.default {border:0;}
+
+.doctor_greet {
+	display:block;
+	float:left;
+	font-size:26px;
+	font-family:'adellelight';
+	color:#808080;
+	padding:50px 0px 0px 30px;
+}
+
+.doctor_greet span {color:#00AF41;}
+
 @media only screen 
 and (min-device-width : 980px)
 and (max-device-width : 1109px) {
