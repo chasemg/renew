@@ -13,7 +13,7 @@ $html .= '<div class="icon"><img src="'.get_template_directory_uri().'/dashboard
 $html .= '<div class="title">My Social Life</div>';
 $html .= '<hr>';
 
-$social_life = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "social_life WHERE user_id='$patient_id'");
+$social_life = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "social_life WHERE user_id='$patient_id'");
 foreach($social_life as $s)	{
 	$smoker = $s->smoker;
 	$marital_state = $s->marital_state;
@@ -23,14 +23,14 @@ foreach($social_life as $s)	{
 	$html .= '<div class="social_summary">';
 		$html .= '<div>';
 			$html .= '<div class="social_header_icon">';
-				$ms = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "marital_status WHERE id='$marital_state'");
+				$ms = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "marital_status WHERE id='$marital_state'");
 				foreach($ms as $m)	{
 					$html .= '<div class="title">'.$m->marital_status.'</div>';
 					$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/'.$m->icon.'.png"></div>';
 				}
 			$html .= '</div>';
 			$html .= '<div class="social_header_icon">';
-				$st = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "smoker_type WHERE id='$smoker'");
+				$st = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "smoker_type WHERE id='$smoker'");
 				foreach($st as $sp)	{
 					$html .= '<div class="title">'.$sp->smoker_type.'</div>';
 					$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/'.$sp->icon.'.png"></div>';

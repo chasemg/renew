@@ -12,7 +12,7 @@ $html .= '<div class="container" style="width: auto; padding: 20px 50px;">';
 $html .= "<div class='message_error'></div>";
 
 if($_POST['message_id'] != 0)	{
-	$message = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication WHERE id='$message_id'");
+	$message = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication WHERE id='$message_id'");
 	foreach($message as $m)	{
 		$html .= '<input type="hidden" name="message_id" value="'.$message_id.'">';
 		$html .= '<div class="title" style="font-family: montserratregular;"><font style="color: #00af41;">Subject:</font> <input style="margin-top: 5px;" id="subject" type="text" value="REPLY: '.$m->subject.'"></div>';
@@ -20,9 +20,9 @@ if($_POST['message_id'] != 0)	{
 		$html .= '<div class="message_header">';
 		$from = $m->from;
 		if($_POST['patient_id'] != $id)	{
-			$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors WHERE user_id='$from'");
+			$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors WHERE user_id='$from'");
 		} else {
-			$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id='$from'");
+			$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id='$from'");
 		}		
 		foreach($from_query as $f)	{
 			$message_from = $f->display_name;
@@ -49,17 +49,17 @@ if($_POST['message_id'] != 0)	{
 	$html .= '<div class="message_header">';
 	$from = $m->from;
 	if($_POST['patient_id'] != $id)	{
-		$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors WHERE user_id='$from'");
+		$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors WHERE user_id='$from'");
 	} else {
-		$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id='$from'");
+		$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id='$from'");
 	}
 	foreach($from_query as $f)	{
 		$html .= '<div>Reply to: '.$f->fname.' '.$f->lname.'</div>';
 	}
 	if($_POST['patient_id'] != $id)	{
-		$to_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients");
+		$to_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients");
 	} else {
-		$to_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors");
+		$to_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors");
 	}
 	$html .= "<div style='margin-bottom: 10px;'>To: <select id='message_to'>";
 	$html .= "<option value='0'>-- SELECT --</option>";

@@ -11,12 +11,12 @@ $html .= '<div class="dashboard_large_widget" style="max-width: 600px;">';
 $html .= '<div class="container" style="width: auto; padding: 20px 50px;">';
 $html .= '<input type="hidden" id="message_id" value="'.$message_id.'">';
 
-$message = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication WHERE id='$message_id'");
+$message = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication WHERE id='$message_id'");
 foreach($message as $m)	{
 	if($m->read == 0)	{
 		$today = date("m/d/Y H:i:s");
 		$now = strtotime($today);
-		$pdb->update($wpdb->prefix."communication", array('read'=>1,'date_read'=>$now), array('id'=>$message_id));
+		$wpdb->update($wpdb->prefix."communication", array('read'=>1,'date_read'=>$now), array('id'=>$message_id));
 	}
 	$html .= '<div class="title" style="font-family: montserratregular;"><font style="color: #00af41;">Subject</font><br>'.$m->subject.'</div>';
 	$html .= '<hr>';

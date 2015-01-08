@@ -2430,7 +2430,7 @@ and (max-width: 980px) {
 	display:block;
 	padding-top:90px;
 	width:6.8%;
-	height:100%;
+	height:100% !important;
 	background: #4E4E4E;
 	color: #fff;
 	height:100%;
@@ -2514,6 +2514,12 @@ and (max-width: 980px) {
 .dashboard_icons_disabled:hover	{
 	cursor: not-allowed;
 }
+.dashboard_icons_inactive	{
+	width: 100%;
+	text-align: center;
+	cursor:not-allowed;
+	margin-bottom:60px;
+}
 .dashboard_bottom_icons	{
 	bottom: 0px;
 	display: inline-block;
@@ -2523,6 +2529,8 @@ and (max-width: 980px) {
 .dashboard_icons_bottom:hover	{
 	cursor: pointer;
 }
+
+#soap_inactive {margin-top:60px;}
 
 #dashboard {}
 
@@ -3071,7 +3079,6 @@ and (max-width: 980px) {
 .search_patients	{
 	width: 100%;
 	text-align: center;
-	padding: 25px 0;
 }
 .search_patients:hover	{
 	cursor: pointer;
@@ -3085,6 +3092,7 @@ and (max-width: 980px) {
 .search_box	{
 	display: none;
 	padding: 10px;
+	margin-bottom:60px;
 }
 .search_results	{
 	width: 100%;

@@ -7,7 +7,7 @@ include "db_include.php";
 $id = $_POST['id'];
 $patient_id = $_POST['patient_id'];
 
-$immunizations = $pdb->get_results("SELECT *, date_format(date, '%m/%d/%Y') as date FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id'");
+$immunizations = $wpdb->get_results("SELECT *, date_format(date, '%m/%d/%Y') as date FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id'");
 
 $user_role = get_user_role();
 

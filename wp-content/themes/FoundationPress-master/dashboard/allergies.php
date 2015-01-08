@@ -13,7 +13,7 @@ $html .= '<div class="icon"><img src="'.get_template_directory_uri().'/dashboard
 $html .= '<div class="title">Allergies</div>';
 $html .= '<hr>';
 
-$immunizations = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "allergies WHERE user_id='$patient_id'");
+$immunizations = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "allergies WHERE user_id='$patient_id'");
 foreach($immunizations as $i)	{
 	$html .= '<div class="text"><font style="font-weight: bold; text-transform: lowercase; font-variant: small-caps; font-size: 14px;">Here is a detailed look</font> at your allergies. Below is a brief description of your symptoms.</div>';
 	$html .= '<div class="immun_container">';
