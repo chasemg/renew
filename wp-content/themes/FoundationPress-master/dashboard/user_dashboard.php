@@ -247,7 +247,7 @@ if($_POST['patient_id'])	{
 					$html .= '<div class="dashboard_goals">';
 						$html .= '<div class="goal_container">';
 							$html .= '<div class="user_image doctor default">';
-								$html .= '<img src="'.get_template_directory_uri();.'assets/img/dashboard/doctor_default.png">';
+								$html .= '<img src="'.get_template_directory_uri().'/assets/img/dashboard/doctor_default.png">';
 							$html .= '</div>';
 							$html .= '<div class="doctor_greet">';
 								$html .= 'Welcome, <span>Dr. ' . $lu->display_name . '</span>.';
