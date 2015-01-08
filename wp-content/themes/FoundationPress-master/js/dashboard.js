@@ -303,7 +303,22 @@ $("#clear_search").click(function()	{
 });
 
 /*************************** Functions *******************************************/
-
+function drFirst()	{
+	var user_id = $("#user_id").val();
+	var patient_id = $("#patient_id").val();
+	$(".overlay").fadeIn();
+	$.ajax({
+		type: "POST",
+		data: 'id='+ user_id+'&patient_id='+patient_id,
+		url: 'wp-content/themes/FoundationPress-master/dashboard/drfirst.php',
+		success: function(success)	{
+		
+		},
+		error: function(error)	{
+			console.log(error);
+		}
+	});
+}
 function dashboard_icons()	{
 	$(".dashboard_icons").click(function()	{
 		var function_name = $(this).attr('id');
