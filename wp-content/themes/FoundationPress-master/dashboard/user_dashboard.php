@@ -17,7 +17,7 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_goals">';
 			$html .= '<div class="goal_container">';
 			$html .= '<div class="user_image">';
-			$patient = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id=$patient_id");
+			$patient = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id=$patient_id");
 			foreach($patient as $p)	{
 				$goal = $p->top_goal;
 				if($p->image != '')	{
@@ -29,7 +29,7 @@ if($_POST['patient_id'])	{
 			$html .= '</div>';
 			$html .= "<div class='goal_text'>Welcome <font style='color:#00af41'>". $lu->display_name ."</font>";
 			$html .= '<div class="goal_text_second_line">Your top goal is to <font style="color: #00af41;">';
-			$goals = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "goals WHERE goal_id=$goal");
+			$goals = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "goals WHERE goal_id=$goal");
 			foreach($goals as $g)	{
 				$html .= $g->goal.".";
 			}
@@ -44,7 +44,7 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_large_widget">';
 			$html .= '<h5>recent vitals</h5>';
 			$html .= '<div class="dashboard_vitals_row">';
-			$vitals = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "vitals WHERE user_id='$patient_id' ORDER BY taken_date DESC LIMIT 1");
+			$vitals = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "vitals WHERE user_id='$patient_id' ORDER BY taken_date DESC LIMIT 1");
 			foreach($vitals as $v)	{
 				$bp = $v->bp;
 				$html .= '<div class="dashboard_vitals"><div class="title">Blood Pressure</div><div class="bp">'.$bp.'</div><div><img src="'.get_template_directory_uri().'/dashboard/images/bp_icon.png"></div></div>';
@@ -71,7 +71,7 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Immunizations</div>';
 			$html .= '<div class="dash_widget_content">';
-			$immun = $wpdb->get_results("SELECT *, date_format(date, '%m/%d/%Y') as date FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id'");
+			$immun = $pdb->get_results("SELECT *, date_format(date, '%m/%d/%Y') as date FROM ".$wpdb->prefix. "immunizations WHERE user_id='$patient_id'");
 			$html .= '<table style="margin: 0 auto; float: none;">';
 			$html .= '<tr><td></td><td>Doses</td><td>Date</td></tr>';
 			foreach($immun as $x => $i)	
@@ -95,7 +95,7 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Allergies</div>';
 			$html .= '<div class="dash_widget_content">';
-			$allergies = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "allergies WHERE user_id='$patient_id'");
+			$allergies = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "allergies WHERE user_id='$patient_id'");
 			foreach($allergies as $allergy)	{
 				$x=0;
 				$html .= '<table>';
@@ -141,12 +141,12 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Medical History</div>';
 			$html .= '<div class="dash_widget_content">';
-			$exam_dates = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "exams WHERE user_id='$patient_id' AND exam_type='1' ORDER BY exam_date DESC LIMIT 1");
+			$exam_dates = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "exams WHERE user_id='$patient_id' AND exam_type='1' ORDER BY exam_date DESC LIMIT 1");
 			foreach($exam_dates as $exam)	{
 				$exam_date = $exam->exam_date;
 			}
 
-			$medical = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "medical_history WHERE user_id='$patient_id' LIMIT 1");
+			$medical = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "medical_history WHERE user_id='$patient_id' LIMIT 1");
 			foreach($medical as $m)	{
 				$html .= '<div class="last_exam">Date of last physical exam: <span>'.date("m/d/Y", $exam_date).'</span></div>';
 				$notes = $m->notes;
@@ -187,7 +187,7 @@ if($_POST['patient_id'])	{
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">My Social Life</div>';
 			$html .= '<div class="dash_widget_content">';
-			$social_life = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "social_life WHERE user_id='$patient_id'");
+			$social_life = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "social_life WHERE user_id='$patient_id'");
 			
 			foreach($social_life as $s)	{
 				$smoker = $s->smoker;
@@ -198,14 +198,14 @@ if($_POST['patient_id'])	{
 				$html .= '<div class="social_summary">';
 					$html .= '<div>';
 						$html .= '<div class="social_header_icon">';
-							$ms = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "marital_status WHERE id='$marital_state'");
+							$ms = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "marital_status WHERE id='$marital_state'");
 							foreach($ms as $m)	{
 								$html .= '<div class="title">'.$m->marital_status.'</div>';
 								$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/'.$m->icon.'.png"></div>';
 							}
 						$html .= '</div>';
 						$html .= '<div class="social_header_icon">';
-							$st = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "smoker_type WHERE id='$smoker'");
+							$st = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "smoker_type WHERE id='$smoker'");
 							foreach($st as $sp)	{
 								$html .= '<div class="title">'.$sp->smoker_type.'</div>';
 								$html .= '<div><img src="'.get_template_directory_uri().'/dashboard/images/'.$sp->icon.'.png"></div>';
@@ -247,7 +247,7 @@ if($_POST['patient_id'])	{
 					$html .= '<div class="dashboard_goals">';
 						$html .= '<div class="goal_container">';
 							$html .= '<div class="user_image doctor default">';
-								$html .= '<img src="http://localhost/renew/wp-content/themes/FoundationPress-master/assets/img/dashboard/doctor_default.png">';
+								$html .= '<img src="'.get_template_directory_uri();.'assets/img/dashboard/doctor_default.png">';
 							$html .= '</div>';
 							$html .= '<div class="doctor_greet">';
 								$html .= 'Welcome, <span>Dr. ' . $lu->display_name . '</span>.';

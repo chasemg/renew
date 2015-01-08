@@ -6,9 +6,9 @@ $id = $_POST['id'];
 $lab_id = $_POST['lab_id'];
 $user = $wpdb->get_row("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=" . $id);
 
-$patient = $wpdb->get_row("SELECT u.display_name as patient_name, u2.display_name as doctor_name, date_format(date_sent, '%M %d, %Y') as date_request, doctor_notes FROM ".$wpdb->prefix."labs l JOIN ".$wpdb->prefix."users u ON u.ID = l.patient_id JOIN ".$wpdb->prefix."users u2 ON u2.ID = l.doctor_id WHERE lab_id = " . $lab_id);
+$patient = $pdb->get_row("SELECT u.display_name as patient_name, u2.display_name as doctor_name, date_format(date_sent, '%M %d, %Y') as date_request, doctor_notes FROM ".$wpdb->prefix."labs l JOIN ".$wpdb->prefix."users u ON u.ID = l.patient_id JOIN ".$wpdb->prefix."users u2 ON u2.ID = l.doctor_id WHERE lab_id = " . $lab_id);
 
-$documents = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."lab_files WHERE lab_id = " . $lab_id);
+$documents = $pdb->get_results("SELECT * FROM ".$wpdb->prefix."lab_files WHERE lab_id = " . $lab_id);
 
 ?>
 

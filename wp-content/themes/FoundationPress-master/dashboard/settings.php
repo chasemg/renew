@@ -17,7 +17,7 @@ if($_POST['patient_id'])	{
 	foreach($lookup as $lu)	{
 		$html .= '<div class="settings_container">';
 		$html .= '<div class="profile_image">';
-		$patient = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id=$patient_id");
+		$patient = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id=$patient_id");
 		foreach($patient as $p)	{
 			$goal = $p->top_goal;
 			if($p->image != '')	{
