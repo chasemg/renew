@@ -28,114 +28,21 @@ else
         <hr>
         
         <div class="text">
-        	text here
+        	
         </div>
         
          <div class="schedule_list">
          
-         	<?php if (get_user_role() == 'subscriber') { ?>
-         
-         	<table class="schedule-table">
-            
-            	<tr>
-                	<td>#</td>
-                   	<td>Date/Time</td>
-                    <td>Doctor</td>
-                    <td>Status</td>
-                </tr>
+         	<?php if (get_user_role() == 'subscriber') {          
+          
+          		include('schedule/patient.php');
+				
+			?>
+            <hr >
+            <?php
+				include('schedule/doctors.php');
                 
-                <?php if ($schedules) { ?>
-                
-                <?php foreach($schedules as $i => $sch) { ?>
-                
-                <tr>
-                	<td><?php echo ($i + 1); ?></td>
-                
-                	<td><?php echo $sch->date; ?></td>
-                   
-                    <td><?php echo $sch->doctor_name; ?></td>
-                    
-                    <td><?php echo $sch->status; ?></td>
-                
-                </tr>
-                
-                <?php } ?>
-                
-                <?php } ?>
-            	
-            </table>
-            
-            
-            <h3>Request for doctor schedule</h3>
-			<form>
-            <input type="hidden" name="patient_id" value="<?php echo $patient_id; ?>">
-            <table>
-            	<tr>
-                	<td>Date</td>
-                </tr>
-                <tr>
-                	<td><input class="date" type="text" name="date"></td>
-                </tr>
-                <tr>
-                	<td>Time</td>
-                </tr>
-                <tr>
-                    <td><input class="time" type="text" name="starttime"> - <input class="time" type="text" name="endtime"></td>
-                </tr>
-                <tr>
-                	<td>Doctor</td>
-                </tr>
-                <tr>
-                	<td><select name="doctor_id">
-                    	<?php foreach($doctors as $doctor) { ?>
-                        <option value="<?php echo $doctor->ID; ?>"><?php echo $doctor->display_name; ?></option>
-                        <?php } ?>
-                    </select></td>
-                </tr>
-                <tr>
-                	<td>Message for doctor</td>
-                </tr>
-                <tr>
-                	<td><textarea name="message"></textarea></td>
-                </tr>
-                <tr>
-                	<td><input type="submit" value="Send"></td>
-                </tr>
-            </table>
-            </form>   
-            
-            <?php } else if (get_user_role() == 'doctor') { ?>
-            <table class="schedule-table">
-            
-            	<tr>
-                	<td>#</td>
-                   	<td>Date/Time</td>
-                    <td>Patient Name</td>
-                    <td>Action</td>
-                </tr>
-                
-                 <?php if ($schedules) { ?>
-                
-                <?php foreach($schedules as $i => $sch) { ?>
-                
-                <tr>
-                	<td><?php echo ($i + 1); ?></td>
-                
-                	<td><?php echo $sch->date; ?></td>
-                   
-                    <td><?php echo $sch->patient_name; ?></td>
-                    
-                    <td>Confirm Reset Date Refer</td>
-                
-                </tr>
-                
-                <?php } ?>
-                
-                <?php } ?>
-                
-            </table>
-                
-            <?php } ?>      
+             } ?>      
          
          </div>
         

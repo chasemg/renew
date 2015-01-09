@@ -296,5 +296,16 @@ function get_states()
 	return $wpdb->get_results("SELECT name as text, abbreviation as id FROM ".$wpdb->prefix."state WHERE country = 'USA' ORDER BY name");
 }
 
+
+add_filter( 'avatar_defaults', 'doctor_avatar' );
+
+function doctor_avatar ($avatar_defaults) 
+{
+    $myavatar = get_bloginfo('template_directory') . '/assets/img/doctor-icons.png';
+	echo $myavatar;
+    $avatar_defaults[$myavatar] = "Doctor Avatar";
+    return $avatar_defaults;
+}
+
 /*******************************************************************************/
 ?>
