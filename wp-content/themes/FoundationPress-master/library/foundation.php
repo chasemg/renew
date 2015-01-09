@@ -301,7 +301,7 @@ add_filter( 'avatar_defaults', 'doctor_avatar' );
 
 function doctor_avatar ($avatar_defaults) 
 {
-    $myavatar = get_bloginfo('template_directory') . '/assets/img/doctor-icons.png';
+    $myavatar = get_bloginfo('url') . '/images/doctor-icons.png';
 	echo $myavatar;
     $avatar_defaults[$myavatar] = "Doctor Avatar";
     return $avatar_defaults;
