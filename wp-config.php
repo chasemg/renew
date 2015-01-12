@@ -12,7 +12,7 @@ define('DB_NAME', 'renew_wp');
 //define('DB_USER', 'renew_wp');
 //define('DB_PASSWORD', 'dyVL.^&LG^L!');
 define('DB_USER', 'root');
-define('DB_PASSWORD', 'fnM3G4Mtuz');
+define('DB_PASSWORD', 'dyVL.^&LG^L');
 }
 
 
