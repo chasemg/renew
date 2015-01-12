@@ -130,6 +130,16 @@ Template Name: Doctor Enrollment
                             	<td>Last Name<input type="text" value="" id="lastname" name="lastname"></td>
                             	<td>Mobile Number<input type="text" value="" id="cellphone" name="cellphone"></td>
                         	</tr>
+                            
+                            <tr>
+                        		<td colspan="3">Title
+                                <select name="practice_doctor_title">
+                                	<option value=""></option>
+                                    <?php foreach(get_doctor_titles() as $t) { ?>
+                                    <option value="<?php echo $t->title; ?>"><?php echo $t->title; ?></option>
+                                    <?php } ?>
+                                </select></td>
+                        	</tr>    
                         
                         	<tr>
                     			<td colspan="3">
@@ -1328,6 +1338,18 @@ function build_doctor_account_summary()
 	doctor_information += '<tr>';
 	
 	doctor_information += '<td colspan="3">' + $('input[name=email]').val() + '</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td colspan="3">Title</td>';
+	
+	doctor_information += '</tr>';
+	
+	doctor_information += '<tr>';
+	
+	doctor_information += '<td colspan="3">' + $('select[name=practice_doctor_title]').val() + '</td>';
 	
 	doctor_information += '</tr>';
 	
