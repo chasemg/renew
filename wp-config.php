@@ -9,10 +9,8 @@ define('DB_PASSWORD', '');
 else
 {
 define('DB_NAME', 'renew_wp');
-//define('DB_USER', 'renew_wp');
-//define('DB_PASSWORD', 'dyVL.^&LG^L!');
-define('DB_USER', 'root');
-define('DB_PASSWORD', 'dyVL.^&LG^L');
+define('DB_USER', 'renew_wp');
+define('DB_PASSWORD', 'dyVL.^&LG^L!');
 }
 
 
