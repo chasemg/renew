@@ -304,5 +304,24 @@ function get_states()
 	return $wpdb->get_results("SELECT name as text, abbreviation as id FROM ".$wpdb->prefix."state WHERE country = 'USA' ORDER BY name");
 }
 
+
+add_filter( 'avatar_defaults', 'doctor_avatar' );
+
+function doctor_avatar ($avatar_defaults) 
+{
+    $myavatar = get_bloginfo('url') . '/images/doctor-icons.png';
+	$avatar_defaults[$myavatar] = "Doctor Avatar";
+    return $avatar_defaults;
+}
+
+function get_doctor_titles()
+{
+	global $wpdb;
+	
+	$results = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."titles ORDER BY title_definition", OBJECT);
+	
+	return $results;
+}
+
 /*******************************************************************************/
 ?>

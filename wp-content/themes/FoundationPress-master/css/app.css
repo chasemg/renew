@@ -6491,3 +6491,11 @@ and (max-device-width : 479px) {
 	
 }
 
+@media only screen and (max-device-width:480px)
+{
+	.green_slider .forcefullwidth_wrapper_tp_banner
+	{
+		margin-top:0px !important;
+	}
+}
+
