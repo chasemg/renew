@@ -241,20 +241,99 @@ if($_POST['patient_id'])	{
 		elseif (get_user_role() == 'doctor')
 		{
 	
-				$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$id");
+			$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$id");
+		
+			foreach($lookup as $lu)	{
+				$html .= '<div class="dashboard_goals">';
+					$html .= '<div class="goal_container">';
+						$html .= '<div class="user_image doctor default">';
+							$html .= '<img src="'.get_template_directory_uri().'/assets/img/dashboard/doctor_default.png">';
+						$html .= '</div>';
+						$html .= '<div class="doctor_greet">';
+							$html .= 'Welcome, <span>Dr. ' . $lu->display_name . '</span>.';
+						$html .= '</div>';
+					$html .= '</div>';
+				$html .= '</div>'; // End .dashboard_goals
+				
+			$html .= '<hr>';
+
+			$html .= '<div class="widget_row">';			
+				$html .= '<div class="dashboard_large_widget">';
+					$html .= '<h5>soap notes</h5>';
+					$html .= '<div class="large_search">';
+						$html .= '<h3>Please select a patient to get started.</h3>';
+						$html .= '<img class="mag" src="'.get_template_directory_uri().'/assets/img/dashboard/search_lg.png">';
+						$html .= '<div class="link_btn lg_search_btn search_patients_lg">Patient Search</div>';
+						$html .= '<div class="search_box_lg">';
+							$html .= '<div class="close_search_lg">Close Search</div>';						
+							$html .= '<div class="search_results">';
+							$html .= '<input type="text" id="patient_input" placeholder="Enter patient name">';
+							$html .= '<button id="clear_search">Clear</button>';
+							$html .= '<div class="patient_results"></div>';		
+						$html .= '</div>';
+					$html .= '</div>';
+				$html .= '</div>';
+			$html .= '</div>';
+/******************** Small widgets ***************************/			
+			$html .= '<div class="small_widget_container">';
 			
-				foreach($lookup as $lu)	{
-					$html .= '<div class="dashboard_goals">';
-						$html .= '<div class="goal_container">';
-							$html .= '<div class="user_image doctor default">';
-								$html .= '<img src="'.get_template_directory_uri().'/assets/img/dashboard/doctor_default.png">';
+				$html .= '<div class="widget_row">';
+/******************** Scheduling ******************************/
+					$html .= '<div class="dashboard_small_widget">';
+						$html .= '<div class="dashboard_small_widget_content padding clearfix">';
+							$html .= '<div class="dashboard_small_widget_content_col">';
+								$html .= '<div class="schedule_date">';
+									$html .= '<div class="schedule_month"></div>';
+									$html .= '<div class="schedule_day"></div>';
+									$html .= '<div class="schedule_day_no"></div>';
+								$html .= '</div>';
 							$html .= '</div>';
-							$html .= '<div class="doctor_greet">';
-								$html .= 'Welcome, <span>Dr. ' . $lu->display_name . '</span>.';
+							$html .= '<div class="dashboard_small_widget_content_col last">';
+							$html .= '<div class="title">Appointments</div>';
+							$html .= '<div class="appointment_dates">';
+								$html .= '<ul><li>01/12/15 at 10:00am</li><li>01/12/15 at 10:10am</li><li>01/12/15 at 10:20am</li><li>01/12/15 at 10:30am</li><li>01/12/15 at 10:40am</li><li>01/12/15 at 10:50am</li><li>01/12/15 at 11:00am</li><li>01/12/15 at 11:10am</li><li>01/12/15 at 11:20am</li><li>01/12/15 at 11:30am</li><li>01/12/15 at 11:40am</li><li>01/12/15 at 11:50am</li></ul>';
+							$html .= '</div>';
 							$html .= '</div>';
 						$html .= '</div>';
-					$html .= '</div>'; // End .dashboard_goals
-					echo $html;
+						$html .= '<div class="dashboard_small_widget_lip" id="schedule">';
+						$html .= '<p>See full schedule</p>';
+						$html .= '</div>';
+					$html .= '</div>';
+/******************** Messaging *******************************/
+					$html .= '<div class="dashboard_small_widget last">';
+						$html .= '<div class="dashboard_small_widget_content">';
+						$html .= '<div class="title">Messages <span>(1)</span></div>';
+						$html .= '</div>';
+						$html .= '<div class="dashboard_small_widget_lip" id="communications">';
+						$html .= '<p>See full messages</p>';
+						$html .= '</div>';
+					$html .= '</div>';
+					
+				$html .= '</div>';	
+				
+				$html .= '<div class="widget_row">';
+/******************** Labs ************************************/
+					$html .= '<div class="dashboard_small_widget">';
+						$html .= '<div class="dashboard_small_widget_content">';
+						$html .= '</div>';
+						$html .= '<div class="dashboard_small_widget_lip" id="labs">';
+						$html .= '<p>See full incoming labs</p>';
+						$html .= '</div>';
+					$html .= '</div>';
+/******************** Referrals *******************************/
+					$html .= '<div class="dashboard_small_widget last">';
+						$html .= '<div class="dashboard_small_widget_content">';
+						$html .= '</div>';
+						$html .= '<div class="dashboard_small_widget_lip" id="referrals">';
+						$html .= '<p>See referrals</p>';
+						$html .= '</div>';
+					$html .= '</div>';
+					
+				$html .= '</div>';						
+				
+			$html .= '</div>';
+				
+			echo $html;
 		}
 		
 	}

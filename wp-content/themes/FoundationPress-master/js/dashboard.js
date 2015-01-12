@@ -99,7 +99,22 @@ function user_dashboard()	{
 						console.log(error);
 					}
 				}); 
-			});					
+			});
+			$(".search_patients_lg").click(function()	{
+				if($(".patient_results").html() == '')	{
+					patient_list();
+				}
+				//$(".search_box_lg").animate({
+					//height: "250px"
+				//},200);
+				$(".search_box_lg").delay(200).fadeIn('slow');
+				$(".close_search_lg").delay(200).fadeIn('slow');
+			});
+			$(".close_search_lg").click(function()	{
+				$(".search_box_lg").fadeOut();
+				$(".close_search_lg").fadeOut();
+			});
+			schedule_date();
 		},
 		error: function(error)	{
 			console.log(error);
@@ -233,11 +248,6 @@ function sendMessage()	{
 		}
 	});
 }
-
-
-$(document).ready(function() {
-
-/******************* Dashboard *******************************/
 function patient_list()	{
 	var doctor_id = $("#user_id").val();
 	$.ajax({
@@ -272,6 +282,24 @@ function patient_list()	{
 		}
 	});
 }
+function schedule_date() {
+	var monthNames = [ "January", "February", "March", "April", "May", "June",
+		"July", "August", "September", "October", "November", "December" ];
+	var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+	
+	var newDate = new Date();
+	newDate.setDate(newDate.getDate());
+	$('.schedule_month').html(monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+	$('.schedule_day').html(dayNames[newDate.getDay()]);
+	$('.schedule_day_no').html(newDate.getDate());
+}
+
+$(document).ready(function() {
+
+/******************* Dashboard *******************************/
+
+//Original location of patient_list()
+
 $(".search_patients").click(function()	{
 
 	if($(".patient_results").html() == '')	{
@@ -280,7 +308,7 @@ $(".search_patients").click(function()	{
 	$(".left_widget").animate({
 		width: "250px"
 	},200);
-	$(".search_box").delay(200).fadeIn('slow');
+	$(".search_box").delay(200).fadeIn('slow');	
 	$(".close_search").delay(200).fadeIn('slow');
 });
 $(".close_search").click(function()	{

@@ -121,6 +121,15 @@ function dashboard($user_id) {
 		echo "<ul id='menu-mobile' class='off-canvas-list'>";
 		
 			if(get_user_role() == 'doctor')	{
+				echo '<li><div class="dashboard_icons search_patients">Search Patients</div></li>';
+				echo '<div class="close_search"><-</div>';
+				echo '<div class="search_box">';
+				echo '<div class="search_results">';
+				echo '<input type="text" id="patient_input" placeholder="Enter patient name">';
+				echo '<button id="clear_search">Clear</button>';
+				echo '<div class="patient_results"></div>';
+				echo '</div>';		
+				echo '</div>'; // End .search_box
 				echo '<li><div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div></li>';
 				echo '<li><div class="dashboard_icons_disabled" id="meds">Medications</div></li>';
 				echo '<li><div class="dashboard_icons mobile-link" id="communications">Communications<div id="push"></div></div></li>';
@@ -157,7 +166,7 @@ function dashboard($user_id) {
 	echo "<div class='left_widget'>";
 	if(get_user_role() == 'doctor' || get_user_role() == 'administrator')	{
 		echo '<div class="search_patients"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/search_icon.png"></div>';
-		echo '<div class="close_search"><-</div>';
+		echo '<div class="close_search">Close Search</div>';
 		echo '<div class="search_box">';
 		echo '<div class="search_results">';
 		echo '<input type="text" id="patient_input" placeholder="Enter patient name">';
@@ -166,9 +175,9 @@ function dashboard($user_id) {
 		echo '</div>';		
 		echo '</div>'; // End .search_box
 		
-		echo '<div class="dashboard_icons_inactive" id="soap_inactive"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/soap_inactive_icon.png"></div>';
-		echo '<div class="dashboard_icons_inactive"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_inactive_icon.png"></div>';
-		echo '<div class="dashboard_icons_inactive"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_inactive_icon.png"></div>';
+		echo '<div class="dashboard_icons_disabled" id="soap_inactive"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/soap_icon.png"></div>';
+		echo '<div class="dashboard_icons_disabled"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';
+		echo '<div class="dashboard_icons_disabled"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="settings"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/settings_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="logout"><a href="'. wp_logout_url('index.php') .'"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/logout_icon.png"></a></div>';
@@ -210,9 +219,8 @@ function dashboard($user_id) {
 		//echo '<div class="doctor_dash" id="user_dashboard">Dashboard</div>';
 		//echo '<div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div>';
 		//echo '<div class="dashboard_icons" id="labs"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';
-		echo '<div class="dashboard_icons_inactive"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/backdash_inactive_icon.png"></div>';		
+		echo '<div class="doctor_dash" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/backdash_icon.png"></div>';		
 		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/messages_icon.png"><div id="push"></div></div>';
-		echo '<div class="dashboard_icons_disabled" id="meds"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="referrals"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/referrals_icon.png"></div>';				
 		echo '<div class="dashboard_bottom_icons">';
 		
