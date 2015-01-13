@@ -7,10 +7,12 @@ function user_dashboard()	{
 		data: 'id='+ user_id+'&patient_id='+patient_id,
 		url: 'wp-content/themes/FoundationPress-master/dashboard/user_dashboard.php',
 		success: function(success)	{
-			$("#dashboard").html(success).fadeIn();
+			$("#dashboard").html(success).fadeIn();			
+			$(".doctor_dash").addClass('dashboard_icons_disabled');
 		
 			$(".dashboard_small_widget_lip").click(function()	{
 				var function_name = $(this).attr('id');
+				$(".doctor_dash").removeClass('dashboard_icons_disabled');
 				$("#dashboard").empty().hide();
 				var user_id = $("#user_id").val();
 				var patient_id = $("#patient_id").val();
@@ -62,6 +64,7 @@ function user_dashboard()	{
 			});	
 			$(".dashboard_large_widget_lip").click(function()	{
 				var function_name = $(this).attr('id');
+				$(".doctor_dash").removeClass('dashboard_icons_disabled');
 				$("#dashboard").empty().hide();
 				var user_id = $("#user_id").val();
 				var patient_id = $("#patient_id").val();
@@ -292,6 +295,10 @@ function schedule_date() {
 	$('.schedule_month').html(monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
 	$('.schedule_day').html(dayNames[newDate.getDay()]);
 	$('.schedule_day_no').html(newDate.getDate());
+}
+function count_unread() {
+	var unreadctn = $('.message_overview_unread').length;
+	$('.unread_ctn').html(unreadctn);
 }
 
 $(document).ready(function() {
@@ -713,6 +720,7 @@ function dashboard_icons()	{
 		$("#dashboard").empty().hide();
 		var user_id = $("#user_id").val();
 		var patient_id = $("#patient_id").val();
+		$(".doctor_dash").removeClass('dashboard_icons_disabled');
 		$.ajax({
 			type: 'post',
 			data: 'id='+ user_id+'&patient_id='+patient_id,

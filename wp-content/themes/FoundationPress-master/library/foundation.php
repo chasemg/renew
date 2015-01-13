@@ -219,7 +219,7 @@ function dashboard($user_id) {
 		//echo '<div class="doctor_dash" id="user_dashboard">Dashboard</div>';
 		//echo '<div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div>';
 		//echo '<div class="dashboard_icons" id="labs"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';
-		echo '<div class="doctor_dash" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/backdash_icon.png"></div>';		
+		echo '<div id="user_dashboard" class="doctor_dash"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/backdash_icon.png"></div>';		
 		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/messages_icon.png"><div id="push"></div></div>';
 		echo '<div class="dashboard_icons" id="referrals"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/referrals_icon.png"></div>';				
 		echo '<div class="dashboard_bottom_icons">';

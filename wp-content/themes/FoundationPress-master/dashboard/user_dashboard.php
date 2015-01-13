@@ -274,6 +274,8 @@ if($_POST['patient_id'])	{
 					$html .= '</div>';
 				$html .= '</div>';
 			$html .= '</div>';
+			$html .= '<div class="spacer"></div>';
+			
 /******************** Small widgets ***************************/			
 			$html .= '<div class="small_widget_container">';
 			
@@ -302,7 +304,47 @@ if($_POST['patient_id'])	{
 /******************** Messaging *******************************/
 					$html .= '<div class="dashboard_small_widget last">';
 						$html .= '<div class="dashboard_small_widget_content">';
-						$html .= '<div class="title">Messages <span>(1)</span></div>';
+						$html .= '<div class="title">Messages <span>(<div class="unread_ctn"></div>)</span></div>';
+						$html .= '<div id="dashboard_messages">';
+						$html .= "<ul class='messages'>";
+						$html .= '<input type="hidden" id="message_id" value="0">';
+							$limit = 3;
+								$messages = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication AS c INNER JOIN ".$wpdb->prefix. "doctors AS d  ON d.user_id=c.user_id WHERE c.user_id='$id' order by c.id desc LIMIT ". $limit * 1 . "");
+												
+							if($messages)	{
+								foreach($messages as $message)	{
+									$html .= "<li class='message' id='".$message->id."'>";
+									if($message->read == 0)	{
+										$html .= '<div class="message_overview message_overview_unread">';
+									} else {
+										$html .= '<div class="message_overview">';
+									}
+									$html .= '<div class="container">';
+									$html .= "<div class='subject_container'>";
+									$subject = $message->subject;
+									$stripped_subject = (strlen($subject) > 50) ? substr($subject,0,50).'...' : $subject;
+									$html .= "<div class='subject'>".$stripped_subject."</div><br>";
+									$from = $message->from;
+									$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
+									foreach($from_query as $f)	{
+										$html .= "<div class='from'>".$f->display_name."</div>";
+									}
+									$html .= "</div>";
+									$html .= "<div class='message_date'>".date('M d, Y', $message->date_sent)."</div>";
+									$html .= "</div>";
+									$html .= "</div>";	
+									$html .= "</li>";
+								}
+							} else {
+								$html .= "<li>";
+								$html .= '<div class="message_overview">';
+								$html .= '<div class="container" style="padding: 20px 0;">';
+								$html .= 'No Messages.';
+								$html .= "</div>";
+								$html .= "</li>";
+							}
+						$html .= "</ul>";
+						$html .= '</div>';
 						$html .= '</div>';
 						$html .= '<div class="dashboard_small_widget_lip" id="communications">';
 						$html .= '<p>See full messages</p>';
@@ -314,7 +356,9 @@ if($_POST['patient_id'])	{
 				$html .= '<div class="widget_row">';
 /******************** Labs ************************************/
 					$html .= '<div class="dashboard_small_widget">';
-						$html .= '<div class="dashboard_small_widget_content">';
+						$html .= '<div class="dashboard_small_widget_content padding clearfix">';
+						$html .= '<img style="display:block;margin:20px auto 10px auto;" src="'.get_template_directory_uri().'/assets/img/dashboard/logo_DrFirst.jpg" />';
+						$html .= '<a class="link_btn lab-link">Launch</a>';
 						$html .= '</div>';
 						$html .= '<div class="dashboard_small_widget_lip" id="labs">';
 						$html .= '<p>See full incoming labs</p>';
@@ -322,7 +366,25 @@ if($_POST['patient_id'])	{
 					$html .= '</div>';
 /******************** Referrals *******************************/
 					$html .= '<div class="dashboard_small_widget last">';
-						$html .= '<div class="dashboard_small_widget_content">';
+						$html .= '<div class="dashboard_small_widget_content clearfix">';
+						$html .= '<div class="title">Referrals</div>';
+						
+						$html .= '<div class="referral_container">';
+						
+						$html .= '<div id="referral_add">';
+						$html .= '<img src="'.get_template_directory_uri().'/assets/img/dashboard/refer_add_icon.jpg" />';
+						$html .= '<div>Add Referral Doctor</div>';
+						$html .= '</div>';
+						
+						$html .= '<hr />';
+						
+						$html .= '<div id="referral_view">';
+						$html .= '<img src="'.get_template_directory_uri().'/assets/img/dashboard/refer_view_icon.jpg" />';
+						$html .= '<div>View all Referral Doctors</div>';
+						$html .= '</div>';
+						
+						$html .= '</div>';
+						
 						$html .= '</div>';
 						$html .= '<div class="dashboard_small_widget_lip" id="referrals">';
 						$html .= '<p>See referrals</p>';
