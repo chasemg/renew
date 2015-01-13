@@ -2473,7 +2473,6 @@ and (max-width: 980px) {
 .doctor_dash	{
 	width: 100%;
 	text-align: center;
-	padding: 25px 0;
 }
 
 
@@ -2510,8 +2509,9 @@ and (max-width: 980px) {
 .dashboard_icons_disabled	{
 	width: 100%;
 	text-align: center;
-	/*display: none;*/
-	cursor:not-allowed;
+	/*display: none;*/	
+	pointer-events: none;
+	cursor:not-allowed !important;
 	margin-bottom:60px;
 	opacity:.2;
 }
