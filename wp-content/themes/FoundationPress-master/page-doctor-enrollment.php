@@ -75,21 +75,21 @@ Template Name: Doctor Enrollment
                     	<table class="left">
                     	
                         	<tr>
-                        		<td colspan="3">Name<input type="text" value="" id="practice_name" name="practice_name"></td>
+                        		<td colspan="3">Name<input type="text" value="" id="practice_name" name="practice_name" tabindex="1"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td colspan="3">Address<input type="text" value="" id="practice_address"  name="practice_address"></td>
+                        		<td colspan="3">Address<input type="text" value="" id="practice_address"  name="practice_address" tabindex="3"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td colspan="3">Address 2<input type="text" value="" name="practice_address2"></td>
+                        		<td colspan="3">Address 2<input type="text" value="" name="practice_address2" tabindex="5"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td>City<input type="text" value="" id="practice_city" name="practice_city"></td>
-                            	<td>State <?php echo form_dropdown('practice_state', get_states(), 'UT'); ?></td>
-                            	<td>Zip<input value="" type="text" id="practice_zip" name="practice_zip"></td>
+                        		<td>City<input type="text" value="" id="practice_city" name="practice_city" tabindex="7"></td>
+                            	<td>State <?php echo form_dropdown('practice_state', get_states(), 'UT', "tabindex='8'"); ?></td>
+                            	<td>Zip<input value="" type="text" id="practice_zip" name="practice_zip" tabindex="9"></td>
                         	</tr>   
                         
                         	<tr>
@@ -101,19 +101,19 @@ Template Name: Doctor Enrollment
                     	<table class="right">
                     
                     		<tr>
-                        		<td>Primary Phone<input type="text" id="practice_phone" value="" name="practice_phone"></td>
+                        		<td>Primary Phone<input type="text" id="practice_phone" value="" name="practice_phone" tabindex="2"></td>
                         	</tr>
                     
                         	<tr>
-                        		<td>Primary Email<input type="text" id="practice_email" value="" name="practice_email"></td>
+                        		<td>Primary Email<input type="text" id="practice_email" value="" name="practice_email" tabindex="4"></td>
                         	</tr>
                         
                         	<tr>
-                        		<td>Routing Number<input type="text" value="" name="practice_routing_number"></td>
+                        		<td>Routing Number<input type="text" value="" name="practice_routing_number" tabindex="6"></td>
                         	</tr>  
                         
                         	<tr>
-                        		<td>Bank Account<input type="text" value="" name="practice_bank_account"></td>
+                        		<td>Bank Account<input type="text" value="" name="practice_bank_account" tabindex="10"></td>
                         	</tr>   
                                                           
                     	</table>

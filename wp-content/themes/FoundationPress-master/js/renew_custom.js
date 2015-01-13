@@ -867,6 +867,9 @@ $('.doctor-enrollment .next').click(function()
 						$('input[name=practice_city]').addClass('error_hightlight');
 						$('input[name=practice_zip]').addClass('error_hightlight');
 						dr_scroll_to = 'practice_address';
+						
+						console.log("Address not valid")
+						
 					break;
 					
 					default:
@@ -1082,6 +1085,7 @@ $(document).ready(function() {
 				if (json.user_id > 0)
 				{
 					$('.doctor-enrollment').html('Success!');
+					$('.steps').hide();
 				}
 				else
 				{

@@ -275,9 +275,9 @@ function get_doctors_list()
 	return $list;
 }
 
-function form_dropdown($name, $array, $value)
+function form_dropdown($name, $array, $value, $extra = "")
 {
-	$html = '<select name="'.$name.'">';	
+	$html = '<select name="'.$name.'" '.$extra.'>';	
 	
 	foreach($array as $a)
 	{
