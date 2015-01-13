@@ -2592,7 +2592,10 @@ and (max-width: 980px) {
 	margin-right: 1%;
 }
 
-.dashboard_small_widget.last {margin-right:0;}
+.dashboard_small_widget.last {
+	margin-right:0;
+	margin-left:1%;
+}
 
 .dashboard_small_widget_content_col {
 	display:block;
@@ -2651,7 +2654,7 @@ and (max-width: 980px) {
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 .dashboard_small_widget_lip	p	{
-	font-size: 10px;
+	font-size: 13px;
 	font-family: 'montserratbold';
 	color: #4d4e4e;
 	line-height: 25px;
@@ -3397,7 +3400,7 @@ input.time
 }
 
 .doctor_greet span {color:#00AF41;}
-
+/********************** Search Large Widget *************************************/
 .large_search {
 	text-align:center;
 	padding:35px 0px;
@@ -3421,6 +3424,7 @@ input.time
 .link_btn,
 .link_btn:active,
 .link_btn:visited {
+	display:block;
 	background-color:#009639;
 	padding: 7px 9px;
 	color:#fff;
@@ -3432,6 +3436,7 @@ input.time
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
 	transition: background-color 300ms ease-out 0s;
+	cursor:pointer;
 }
 
 .link_btn:hover {
@@ -3476,7 +3481,7 @@ input.time
 .search_box_lg .patient_results {border-top:1px solid #d8d8d8;}
 
 .search_box_lg li.patient:hover {background:#d8d8d8;}
-
+/********************** Appointment Widget **************************************/
 .schedule_date {
 	display:block;
 	border:1px solid #d8d8d8;
@@ -3532,6 +3537,40 @@ input.time
 	font-family:'Century Gothic', Helvetica, sans-serif;
 	margin:8px 0px;
 }
+/********************** Message Dashboard Widget ********************************/
+#dashboard_messages {padding:12px 8px;}
+#dashboard_messages .container {padding:3px 0px;}
+#dashboard_messages .subject {font-size:10.65px;}
+#dashboard_messages .from {font-size:10.65px;}
+#dashboard_messages br {height:0px;}
+#dashboard_messages .message {border-bottom-color:#d3d3d3;}
+#dashboard_messages .message_overview.message_overview_unread {border-left:2px solid #00af41;}
+
+/********************** Lab Dashboard Widget ************************************/
+.lab-link {
+	font-size:14px;
+	text-transform:uppercase;
+	display:block;
+	padding:5px 9px;
+	width:100px;
+	margin:0px auto;
+}
+
+/********************** Referral Dashboard Widget *******************************/
+.referral_container {padding:12px 8px;}
+.referral_container hr {margin:0px 0px 10px 0px !important;}
+#referral_add,
+#referral_view {
+	cursor:pointer;
+	font-size:14px;
+	color:#4d4e4e;
+}
+
+#referral_add {margin-bottom:15px;}
+#referral_add img,
+#referral_view img {margin-bottom:5px;}
+
+.spacer {display:block;height:15px;}
 
 @media only screen 
 and (min-device-width : 980px)
