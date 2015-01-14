@@ -7,7 +7,7 @@ URL: http://chasemg.com
 include "db_include.php";
 $id = $_POST['id'];
 $patient_id = $_POST['patient_id'];
-$doctors = get_doctors_list();
+$doctors = get_doctors_by_practice($practice);
 $user_role = get_user_role();
 
 if ($user_role == 'subscriber')
