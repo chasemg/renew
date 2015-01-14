@@ -45,9 +45,9 @@ function user_dashboard()	{
 					data: 'id='+ user_id+'&patient_id='+patient_id,
 					url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
 					success: function(success)	{
-						message();
-						new_message();
 						$("#dashboard").html(success).fadeIn();
+						message();
+						new_message();						
 						$(".goback img").click(function()	{
 							user_dashboard();
 						});					
