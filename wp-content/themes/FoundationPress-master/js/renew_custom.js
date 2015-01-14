@@ -1084,7 +1084,7 @@ $(document).ready(function() {
 			{
 				if (json.user_id > 0)
 				{
-					$('.doctor-enrollment').html('Success!');
+					$.fancybox(json.html)
 					$('.steps').hide();
 				}
 				else

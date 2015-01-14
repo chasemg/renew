@@ -49,6 +49,16 @@ if ($practice_id > 0)
 		$user_id = wp_create_user( $user_name, $password, $user_name );
 	
 		$json['user_id'] = $user_id;
+		
+		ob_start();
+		
+		include('doctor_enroll_success.php');
+		
+		$html = ob_get_contents();
+		
+		ob_end_clean();
+		
+		$json['html'] = $html;
 	
 		$pdb->query("INSERT INTO renew_".$practice_id.".".$wpdb->prefix."doctors 
 					  SET practice_id = '".$practice_id."', 

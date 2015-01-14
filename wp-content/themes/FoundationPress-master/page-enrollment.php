@@ -64,7 +64,7 @@ Template Name: Enrollment
 						</tr>
 						<tr>
 							<td colspan="2">City<input type="text" id="city" value=""></td>
-							<td colspan="2">State<input type="text" id="state" value=""></td>
+							<td colspan="2">State <?php echo form_dropdown('state', get_states(), 'UT', "id='state'"); ?></td>
 							<td colspan="2">Zip<input type="text" id="zip" value=""></td>
 						</tr>						
 					</table>
@@ -79,7 +79,7 @@ Template Name: Enrollment
 							<td>Social Security<input type="text" id="ssn" maxlength="9" value=""></td>
 						</tr>
 						<tr>
-							<td>D.O.B<input type="date" id="dob"></td>
+							<td>D.O.B<input type="date" class="date" id="dob"></td>
 						</tr>						
 					</table>
 					<div class="mobile_alerts">
@@ -180,7 +180,7 @@ Template Name: Enrollment
 									<table style="margin: 0px;">
 										<tr>
 											<td>City<input type="text" id="billing_city"></td>
-											<td>State<input type="text" maxlength="2" style="width: 90px;" id="billing_state"></td>
+											<td>State <?php echo form_dropdown('billing_state', get_states(), 'UT', "id='billing_state' style='width:90px;'"); ?></td>
 											<td>Zip<input type="text" maxlength="5" style="width: 90px;" id="billing_zip"></td>
 										</tr>
 										<tr>
@@ -214,5 +214,12 @@ Template Name: Enrollment
 		
 	</div>
 </div>
+
+<link type="text/css" rel="stylesheet" href="<?php bloginfo('template_url') ?>/js/jquery-ui-1.11.1.custom/jquery-ui.css">
+<script type="text/jscript" src="<?php bloginfo('template_url') ?>/js/jquery-ui-1.11.1.custom/jquery-ui.js"></script>
+
+<script>
+jQuery('.date').datepicker();
+</script>
 
 <?php get_footer(); ?>

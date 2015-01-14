@@ -88,9 +88,11 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 		var zip = $('#zip_verified').val();
 		
 		var address = street+" ,"+city+", "+state+" "+zip;
-		//alert(address);
-		geocoder.geocode({'address': address }, function(results, status) {
-			switch(status) {
+		
+		geocoder.geocode({'address': address }, function(results, status) 
+		{
+			switch(status) 
+			{
 				case google.maps.GeocoderStatus.OK:
 				document.getElementById('valid_address').value = 'YES';
 				document.getElementById('type').value = results[0].types[0];
@@ -102,9 +104,11 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 				document.getElementById('lat').value = latitude;
 				document.getElementById('long').value = longitude;
 				break;
+				
 				case google.maps.GeocoderStatus.ZERO_RESULTS:
 				document.getElementById('valid_address').value = 'NO';
 				break;
+				
 				default:
 				console.log("An error occured while validating this address")
 			}

@@ -1088,12 +1088,15 @@ ___________________________ [title, e.g., President].</p>
 
 </div><!--- doctor enrollment page -->
 
+
+
+
 <link type="text/css" rel="stylesheet" href="<?php bloginfo('template_url') ?>/js/jquery-ui-1.11.1.custom/jquery-ui.css">
+<link type="text/css" rel="stylesheet" href="<?php bloginfo('template_url') ?>/js/jquery.fancybox/fancybox/jquery.fancybox.css">
+<script type="text/jscript" src="<?php bloginfo('template_url') ?>/js/jquery.fancybox/fancybox/jquery.fancybox.js"></script>
 <script type="text/jscript" src="<?php bloginfo('template_url') ?>/js/jquery-ui-1.11.1.custom/jquery-ui.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_url') ?>/js/ajaxupload.js"></script>
 <script type="text/javascript"><!--
-
-
 
 new AjaxUpload('#upload', {
 	action: 'upload.php',
