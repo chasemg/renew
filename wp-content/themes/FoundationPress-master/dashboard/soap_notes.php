@@ -88,7 +88,7 @@ echo "<div id='paramsArray'>";
 }
 
 echo "<br>";
-echo "<div class='overlay'><iframe id='drfirst'></iframe></div>";
+echo "<div class='overlay'><iframe id='drfirst'>Loading...</iframe></div>";
 echo "<button id='drfirst_launch'>Dr First</button>";
 
 ?>
