@@ -3411,8 +3411,21 @@ input.time
 	width: 100%;
 	margin: 0 auto;
 	display: none;
+	background: #fff;
 }
-
+.unread_ctn	{
+	display: inline-block;
+}
+.dashboard_icons .unread_ctn	{
+	display: none;
+	position: absolute;
+	margin-top: -115px;
+	padding: 4px 10px;
+	border-radius: 100px;
+	background: #ff0000;
+	color: #fff;
+	margin-left: 40px;
+}
 .doctor_greet span {color:#00AF41;}
 /********************** Search Large Widget *************************************/
 .large_search {

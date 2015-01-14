@@ -13,7 +13,6 @@ if(!isset($wpdb))
 		$practice = $pid->practice_id;
 	}
 
-	
 	$pdb = new wpdb(DB_USER,DB_PASSWORD,'renew_' . $practice,DB_HOST);
 }
 

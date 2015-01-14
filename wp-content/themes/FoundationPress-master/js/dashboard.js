@@ -1,3 +1,22 @@
+function push_notification(){
+	var user_id = $("#user_id").val();
+	$.ajax({
+		type: "POST",
+		data: "user_id="+user_id,
+		url: "wp-content/themes/FoundationPress-master/dashboard/push_notifications.php",
+		success: function(success)	{
+			console.log(success);
+			if($.isNumeric(success) && success > 0)	{
+			$(".dashboard_icons .unread_ctn").show();
+			$(".unread_ctn").html(success).delay(10000);
+			//push_notification();
+			}
+		},
+		error: function(error)	{
+			console.log(error);
+		}
+	});
+}
 function user_dashboard()	{
 	$("#dashboard").empty().hide();
 	var user_id = $("#user_id").val();
@@ -9,7 +28,7 @@ function user_dashboard()	{
 		success: function(success)	{
 			$("#dashboard").html(success).fadeIn();			
 			$(".doctor_dash").addClass('dashboard_icons_disabled');
-		
+			push_notification();
 			$(".dashboard_small_widget_lip").click(function()	{
 				var function_name = $(this).attr('id');
 				$(".doctor_dash").removeClass('dashboard_icons_disabled');
@@ -700,18 +719,17 @@ function drFirst()	{
 			var drfirstURL = launchRcopia('https://web201.staging.drfirst.com/sso/portalServices?');
 		//	console.log(drfirstURL);
 			$("#drfirst").prop("src", drfirstURL);
-			$("#drfirst").fadeIn();
-			$('#drfirst').load(function () {
-				$('#drfirst').height($('#drfirst').contents().height());
-			});
-	//		var sourceHeight = $('#drfirst').contents().height();
 			$(".overlay").fadeIn();
-	/*		$("#drfirst").css({
+
+			var sourceHeight = $('#drfirst').contents().height();
+			$("#drfirst").fadeIn();
+			$("#drfirst").css({
 				"max-height": "100%",
-				"height": sourceHeight,
-			});*/
+				"height": doc_height
+			});
 }
 function dashboard_icons()	{
+	push_notification();
 	$(".dashboard_icons").click(function()	{
 		var function_name = $(this).attr('id');
 		$("#dashboard").empty().hide();
@@ -724,6 +742,7 @@ function dashboard_icons()	{
 			url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
 			success: function(success)	{
 				$("#dashboard").html(success).fadeIn();
+				push_notification();
 				$(".goback img").click(function()	{
 					user_dashboard();
 				});	
@@ -745,7 +764,8 @@ function dashboard_icons()	{
 						success: function(success)	{
 							$("#dashboard").html(success).fadeIn();
 							message();
-							new_message();							
+							new_message();		
+							push_notification();
 							$(".goback img").click(function()	{
 								user_dashboard();
 							});
@@ -806,25 +826,8 @@ function dashboard_icons()	{
 	});	
 }
 
-function push_notification(){
-	var user_id = $("#user_id").val();
-	$.ajax({
-		type: "POST",
-		data: "user_id="+user_id,
-		url: "wp-content/themes/FoundationPress-master/dashboard/push_notifications.php",
-		success: function(success)	{
-			if($.isNumeric(success))	{
-			$("#push").html(success).delay(2000);
-			push_notification();
-			}
-		},
-		error: function(error)	{
-			console.log(error);
-		}
-	});
-}
+
 /********************* INIT ***************************************/
-	push_notification();
 	user_dashboard();
 	dashboard_icons();
 });
