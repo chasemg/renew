@@ -342,17 +342,17 @@ function drFirst()	{
 	var user_id = $("#user_id").val();
 	var patient_id = $("#patient_id").val();
 	var win_width = $(window).width();
-	var win_height = $(document).height();
+	var doc_height = $(document).height();
+	var win_height = $(window).height();
 	var body_left = $(".dashboard_container").width();
 	var margin = (win_width - body_left);
 	var topMargin = $(".center-dashboard").offset();
 	$(".overlay").css({
 		"width": win_width,
-		"height": win_height,
+		"height": doc_height,
 		"left":  - margin/2,
 		"top": - topMargin.top
 	});
-	$(".overlay").fadeIn();
 	
 // DR FIRST CODE 
 	var HideShow = "Hide";
@@ -431,13 +431,13 @@ function drFirst()	{
 	
 	//Generate the string necessary to create the MAC
 	function generateURL(params) {
-		console.log(params);
+	//	console.log(params);
 		var parameter_url;
 		$.each(params, function(index,value)	{
 			if($("input[name='"+this+"']").val() != '')	{
 				var paramID = $("#"+this).attr("name");
 				var paramValue = $("#"+this).val();
-				console.log(paramID + "=" + paramValue);
+			//	console.log(paramID + "=" + paramValue);
 				if (!parameter_url) {
 					parameter_url = paramID + "=" + paramValue;
 				} else if (paramID.type == 'radio') { // If SSO parameter is a radio button
@@ -452,7 +452,7 @@ function drFirst()	{
 			}
 			
 		});
-		console.log(parameter_url);
+		//console.log(parameter_url);
 /*		for (i = 0; i < params.length; i++) {
 			// Enter loop for all SSO parameters in the array
 			if (document.getElementById(params[i]).value != '') {
@@ -698,21 +698,18 @@ function drFirst()	{
 			  return rhex(a) + rhex(b) + rhex(c) + rhex(d);
 			}
 			var drfirstURL = launchRcopia('https://web201.staging.drfirst.com/sso/portalServices?');
-			console.log(drfirstURL);
+		//	console.log(drfirstURL);
 			$("#drfirst").prop("src", drfirstURL);
-			//launchRcopia('https://web201.staging.drfirst.com/sso/portalServices?');
-// END Dr First Code			
-/*	$.ajax({
-		type: "POST",
-		data: 'id='+ user_id+'&patient_id='+patient_id,
-		url: 'wp-content/themes/FoundationPress-master/dashboard/drfirst.php',
-		success: function(success)	{
-			$("#drfirst").prop("src", "launchRcopia('https://web201.staging.drfirst.com/sso/portalServices?')");
-		},
-		error: function(error)	{
-			console.log(error);
-		}
-	});*/
+			$("#drfirst").fadeIn();
+			$('#drfirst').load(function () {
+				$('#drfirst').height($('#drfirst').contents().height());
+			});
+	//		var sourceHeight = $('#drfirst').contents().height();
+			$(".overlay").fadeIn();
+	/*		$("#drfirst").css({
+				"max-height": "100%",
+				"height": sourceHeight,
+			});*/
 }
 function dashboard_icons()	{
 	$(".dashboard_icons").click(function()	{
