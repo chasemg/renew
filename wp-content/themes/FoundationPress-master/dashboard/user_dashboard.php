@@ -304,7 +304,7 @@ if($_POST['patient_id'])	{
 /******************** Messaging *******************************/
 					$html .= '<div class="dashboard_small_widget last">';
 						$html .= '<div class="dashboard_small_widget_content">';
-						$html .= '<div class="title">Messages <span>(<div class="unread_ctn"></div>)</span></div>';
+						$html .= '<div class="title">Messages <span class="unread_span">(<div class="unread_ctn"></div>)</span></div>';
 						$html .= '<div id="dashboard_messages">';
 						$html .= "<ul class='messages'>";
 						$html .= '<input type="hidden" id="message_id" value="0">';

@@ -3425,6 +3425,9 @@ input.time
 	color: #fff;
 	margin-left: 40px;
 }
+.unread_span	{
+	display: none;
+}
 .doctor_greet span {color:#00AF41;}
 /********************** Search Large Widget *************************************/
 .large_search {

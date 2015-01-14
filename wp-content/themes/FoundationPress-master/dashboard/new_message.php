@@ -19,15 +19,17 @@ if($_POST['message_id'] != 0)	{
 		$html .= '<hr>';
 		$html .= '<div class="message_header">';
 		$from = $m->from;
-		if($_POST['patient_id'] != $id)	{
-			$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors WHERE user_id='$from'");
+		if($_POST['patient_id'] == $id)	{
+			$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "doctors WHERE user_id='".$from."'");
 		} else {
-			$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id='$from'");
+			$from_query = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id='".$from."'");
 		}		
 		foreach($from_query as $f)	{
-			$message_from = $f->display_name;
-			$html .= '<div style="font-family: adellelight; font-size: 16px; color: #6d6e70;">Reply to: '.$f->fname.' '.$f->lname.'<input type="hidden" id="message_to" value="'.$f->ID.'"></div>';
+			$from_fn = $f->fname;
+			$from_ln = $f->lname;
+			$from_id = $f->user_id;
 		}
+		$html .= '<div style="font-family: adellelight; font-size: 16px; color: #6d6e70;">Reply to: '.$from_fn.' '.$from_ln.'<input type="hidden" id="message_to" value="'.$from_id.'"></div>';
 		$current_date = date("m/d/Y H:i:s");
 		$html .= '<div style="font-family: adellelight; font-size: 16px; color: #6d6e70;">Reply date: '.date("M d, Y h:i:s A").'<input type="hidden" id="send_date" value="'.strtotime($current_date).'"></div>';
 		$html .= '</div>';
@@ -36,7 +38,7 @@ if($_POST['message_id'] != 0)	{
 		$html .= '&#13;&#13;--------------------------------------------------&#13;';
 		$html .= 'On '.date("M d, Y", $m->date_sent).' at '.date("h:i:s A", $m->date_sent).'&#13;';
 		$html .= 'Subject: '.$m->subject.'&#13;';
-		$html .= 'From: '.$message_from.'&#13;';
+		$html .= 'From: '.$from_fn.' '.$from_ln.'&#13;';
 		$html .= '&#13;';
 		$html .= $m->message;
 		
