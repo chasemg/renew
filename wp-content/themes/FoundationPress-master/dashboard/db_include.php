@@ -1,6 +1,6 @@
 <?php 
 
-global $wpdb, $table_prefix;
+global $wpdb, $table_prefix, $pdb;
 
 if(!isset($wpdb))
 {

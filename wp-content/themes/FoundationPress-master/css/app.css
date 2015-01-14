@@ -2156,7 +2156,8 @@ footer h1	{
 }
 @media only screen 
 and (min-width: 768px) 
-and (max-width: 980px) {
+and (max-width: 980px) 
+{
 	.nav-left-menu_footer,
 	.nav-right-menu_footer	{margin-right: 34px;}
 }
@@ -3663,7 +3664,11 @@ and (max-device-width : 767px) {
 	}
 	.dashboard-logo img {width:100px;}
 	.center-dashboard {padding-bottom:92px;}
+	
+	
 }
+
+
 
 @media only screen 
 and (max-device-width : 413px) {
@@ -6564,6 +6569,43 @@ and (max-device-width : 479px) {
 	.green_slider .forcefullwidth_wrapper_tp_banner
 	{
 		margin-top:0px !important;
+	}
+}
+
+@media only screen 
+and (max-device-width: 768px)
+and (min-device-width: 481px)
+{
+	.enroll .left
+	{
+		width:62%;
+	}
+	
+	.steps > div
+	{
+		font-size:11px;
+	}
+	
+	.steps > div > span.number
+	{
+		width:24px;
+		height:24px;
+	}
+	
+	.small-12,
+	.column,
+	.columns
+	{
+		width:100%;
+	}
+}
+
+@media only screen
+and (max-device-width: 480px)
+{
+	.steps
+	{
+		display:none;
 	}
 }
 

@@ -88,18 +88,20 @@ function get_user_role() {
 
 function dashboard($user_id) {
 	
-	echo "<head>";
-	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/modernizr/modernizr.min.js'></script>";
-	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/jquery/dist/jquery.min.js'></script>";
-	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/foundation/js/foundation.js'></script>";
-	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/foundation/js/foundation/foundation.offcanvas.js'></script>";
-	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.fastLiveFilter.js'></script>";
-	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/dashboard.js'></script>";
-	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery-ui-1.11.1.custom/jquery-ui.js'></script>";
-	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.timepicker/jquery.timepicker.js'></script>";
-	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery-ui-1.11.1.custom/jquery-ui.css" />';
-	echo '<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />';
-	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery.timepicker/jquery.timepicker.css" />';	
+	echo "<head>\n";
+	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/modernizr/modernizr.min.js'></script>\n";
+	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/jquery/dist/jquery.min.js'></script>\n";
+	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/foundation/js/foundation.js'></script>\n";
+	echo "<script type='text/javascript' src='".get_template_directory_uri() ."/js/foundation/js/foundation/foundation.offcanvas.js'></script>\n";
+	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.fastLiveFilter.js'></script>\n";
+	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/dashboard.js'></script>\n";
+	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery-ui-1.11.1.custom/jquery-ui.js'></script>\n";
+	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.timepicker/jquery.timepicker.js'></script>\n";
+	echo "<script type='text/javascript' src='".get_template_directory_uri()."/js/jquery.fancybox/fancybox/jquery.fancybox.js'></script>\n";
+	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery-ui-1.11.1.custom/jquery-ui.css" />' . "\n";
+	echo '<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />' . "\n";
+	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery.timepicker/jquery.timepicker.css" />' . "\n";	
+	echo '<link rel="stylesheet" href="'.get_stylesheet_directory_uri() .'/js/jquery.fancybox/fancybox/jquery.fancybox.css" />';	
 	echo '<meta class="foundation-mq-topbar">';
 	echo "</head>";
 	
@@ -319,6 +321,17 @@ function get_doctor_titles()
 	global $wpdb;
 	
 	$results = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."titles ORDER BY title_definition", OBJECT);
+	
+	return $results;
+}
+
+function get_doctors_by_practice($practice_id)
+{
+	global $wpdb;
+	
+	$pdb = new wpdb(DB_USER,DB_PASSWORD,'renew_' . $practice_id,DB_HOST);
+	
+	$results = $pdb->get_results("SELECT * FROM ".$wpdb->prefix."doctors ORDER BY lname", OBJECT);
 	
 	return $results;
 }
