@@ -20,8 +20,8 @@ Here is a list of doctors currently at the practice you have chosen. <a>Select a
 <?php $name = sprintf("Dr. %s", $dd->lname); ?>
 <?php $title = $dd->title; ?>
 	<div>
-    	<div class="image"><a><img src="<?php echo get_stylesheet_directory_uri() ; ?>/assets/img/doctor-gray-icon.png"></a></div>
-		<div class="name"><a><?php echo $name; ?></a></div>
+    	<div class="image"><a data-value="<?php echo $dd->user_id; ?>"><img src="<?php echo get_stylesheet_directory_uri() ; ?>/assets/img/doctor-gray-icon.png"></a></div>
+		<div class="name"><a data-value="<?php echo $dd->user_id; ?>"><?php echo $name; ?></a></div>
         <div class="title"><?php echo $title; ?></div>
     </div>
 
@@ -30,7 +30,22 @@ Here is a list of doctors currently at the practice you have chosen. <a>Select a
 </div>
 
 <script language="javascript1.1">
-$('.doctor-list a').fancybox();
+$('.doctor-list a').bind('click', function()
+{
+	var id = $(this).attr('data-value');
+		
+	$.ajax(
+	{
+		url: 'wp-content/themes/FoundationPress-master/parts/doctor_schedule.php',
+		data: 'doctor_id=' + id,
+		type: 'post',
+		dataType: 'json',
+		success: function(data)
+		{
+			$.fancybox(data.html);
+		}
+	});
+})
 </script>
 
 <?php } ?>

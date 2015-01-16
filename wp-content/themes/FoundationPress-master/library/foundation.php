@@ -336,5 +336,6 @@ function get_doctors_by_practice($practice_id)
 	return $results;
 }
 
+
 /*******************************************************************************/
 ?>
