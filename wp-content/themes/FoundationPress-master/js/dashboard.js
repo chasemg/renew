@@ -5,11 +5,16 @@ function push_notification(){
 		data: "user_id="+user_id,
 		url: "wp-content/themes/FoundationPress-master/dashboard/push_notifications.php",
 		success: function(success)	{
-			console.log(success);
-			if($.isNumeric(success) && success > 0)	{
-			$(".dashboard_icons .unread_ctn").show();
-			$(".unread_ctn").html(success).delay(10000);
-			//push_notification();
+			//console.log(success);
+			if($.isNumeric(success))	{
+				if(success > 0)	{
+					$(".dashboard_icons .unread_ctn, .unread_span").fadeIn();
+					$(".unread_ctn").html(success).delay(10000);
+					//push_notification();
+				} else {
+					$(".dashboard_icons .unread_ctn").hide();
+					$(".unread_span").hide();
+				}
 			}
 		},
 		error: function(error)	{
@@ -40,9 +45,9 @@ function user_dashboard()	{
 					data: 'id='+ user_id+'&patient_id='+patient_id,
 					url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
 					success: function(success)	{
-						message();
-						new_message();
 						$("#dashboard").html(success).fadeIn();
+						message();
+						new_message();						
 						$(".goback img").click(function()	{
 							user_dashboard();
 						});					
@@ -152,6 +157,7 @@ function message()	{
 			data: 'message_id='+messageId,
 			url: 'wp-content/themes/FoundationPress-master/dashboard/message.php',
 			success: function(success)	{
+				push_notification();
 				$("#dashboard").html(success).fadeIn();
 				$(".message_go_back").click(function()	{
 					$("#dashboard").empty().hide();
@@ -186,6 +192,7 @@ function message()	{
 function new_message()	{
 	$('.new_message').click(function()	{
 		createMessage();
+		
 	});
 }
 function createMessage()	{
@@ -248,6 +255,7 @@ function sendMessage()	{
 		data: 'message_to='+message_to+'&subject='+subject+'&message='+message_send+'&send_date='+send_date+'&user_id='+user_id+'&patient_id='+patient_id,
 		url: 'wp-content/themes/FoundationPress-master/dashboard/send_email.php',
 		success: function(success)	{
+			push_notification();
 			$("#dashboard").empty().hide();
 			var user_id = $("#user_id").val();
 			var patient_id = $("#patient_id").val();
@@ -729,8 +737,8 @@ function drFirst()	{
 			});
 }
 function dashboard_icons()	{
-	push_notification();
 	$(".dashboard_icons").click(function()	{
+		push_notification();
 		var function_name = $(this).attr('id');
 		$("#dashboard").empty().hide();
 		var user_id = $("#user_id").val();
