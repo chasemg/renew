@@ -1,5 +1,14 @@
 <?php
 
+function show_doctor_schedule($doctor_id, $month, $year)
+{
+	$html = "";
+	
+	$html .= draw_calendar($month, $year);
+	
+	return $html;
+}
+
 /* draws a calendar */
 function draw_calendar($month,$year)
 {
