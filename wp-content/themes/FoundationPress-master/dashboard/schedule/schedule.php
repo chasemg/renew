@@ -1,5 +1,9 @@
 
 <style>
+.doctor-schedule-wrapper
+{
+	width:600px;
+}
 .doctor-schedule-wrapper .image
 {
 	float:left;
@@ -18,37 +22,72 @@
 	text-transform:uppercase;
 	color:#000;
 	font-size:30px;
+	font-weight:bold;
+	font-family: 'Didact Gothic', sans-serif;
 }
 
 .doctor-schedule-wrapper .name span
 {
 	display:block;
+	font-family: 'adellethin';
+	color:#02ac41;
+	font-size:24px;
+}
+
+.doctor-schedule-wrapper h2
+{
+	color:#02ac41;
+	font-size:22px;
+	margin:0px 0px 10px;
+}
+
+.doctor-schedule-wrapper h2 span
+{
+	float:right;
+	color:#444;
+	font-family: 'Didact Gothic', sans-serif;
+	font-weight:normal;
+	font-size:18px;
 }
 
 .service-fee
 {
 	background:#efefef;
 	padding:10px;
-	margin:10px;
+	margin:10px 0px;
 	font-style:italic;
+	font-family: 'Didact Gothic', sans-serif;
+}
+
+.calendar-header,
+.doctor-availability h4
+{
+	background:#efefef;
+	padding:5px 10px;
+	margin:0px;
+	font-size:100%;
+	font-weight:normal;
 }
 
 .doctor-calendar
 {
 	float:left;
-	width:40%;
+	width:39%;
+	margin:0px 5px 0px 0px;
 }
 
 .doctor-availability
 {
 	float:left;
-	width:60%;
+	width:59%;
+	border:solid 1px #efefef;
 }
+
 
 .minutes 
 {
 	width:31%;
-	margin:0px 10px 0px 0px;
+	margin:0px 5px 0px 0px;
 	float:left;
 }
 
@@ -65,6 +104,18 @@
 	background:none;
 }
 
+.calendar td
+{
+	font-family: 'Didact Gothic', sans-serif;
+	padding:4px;
+}
+
+.calendar td:hover
+{
+	background:#02ac41;
+	color:#fff;
+}
+
 .calendar-header a
 {
 	float:right;
@@ -72,7 +123,6 @@
 	width: 20px;
 	height:20px;
 	text-align:center;
-	content: "<span></span>";
 	border:solid 1px #ccc;
 	border-radius:3px;
 	margin:0px 0px 0px 5px;
@@ -102,6 +152,52 @@
 	border-right:7px solid #000;
 }
 
+.minutes li
+{
+	margin:5px;
+	padding:5px;
+	line-height:15px;
+	font-family: 'Didact Gothic', sans-serif;
+}
+
+.minutes li:hover
+{
+	background:#00b03e;
+	color:#fff;
+}
+
+.minutes li input[type=checkbox]
+{
+	margin:0px;
+}
+
+.doctor-schedule-wrapper .buttons
+{
+	margin:10px 0px;
+}
+
+.buttons a
+{
+	float:right;
+	color:#02ac41;
+	text-decoration:underline;
+	font-weight:normal;
+	line-height:30px;
+}
+
+.buttons a.submit-button
+{
+	background:#02ac41;
+	color:#fff;
+	text-decoration:none;
+	padding:5px 10px;
+	margin:0px 0px 0px 20px;
+	text-transform:uppercase;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	line-height:normal;
+}
 
 </style>
 
@@ -116,7 +212,7 @@
 
 <hr />
 
-<div class="service-fee">Service: Free Consultation Phone Call on Dec 23, 09:20 AM or Dec. 23, 04:00 PMA</div>
+<div class="service-fee">Service: Free Consultation Phone Call on Dec 23, 09:20 AM or Dec. 23, 04:00 PM</div>
 
 <h2>Your preferred time (suggest up to 3) <span>20 minutes</span></h2>
 
@@ -255,6 +351,13 @@ $break_end = mktime(13, 0, 0, date("m"), date("d"), date("Y"));
 
 </div>
 
+<div style="clear:both"></div>
+
+<div class="buttons">
+	<a class="submit-button">Submit</a>
+    <a class="close-button">Close</a>
+</div>
+
 </div><!-- wrapper -->
 
 <script>
@@ -276,6 +379,11 @@ $(document).ready(function()
 				$('.doctor-calendar').html(data.html);
 			}
 		});
+	});
+	
+	$('.close-button').bind('click', function()
+	{
+		$.fancybox.close();
 	});
 })
 </script>
