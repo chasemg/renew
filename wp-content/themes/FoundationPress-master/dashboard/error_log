@@ -1,2 +1,5 @@
 [29-Sep-2014 14:43:55 UTC] WordPress database error Unknown column 'date' in 'order clause' for query SELECT * FROM rmh_immunizations WHERE user_id='2' ORDER BY date DESC LIMIT 1
 [29-Sep-2014 14:45:31 UTC] WordPress database error Unknown column 'date' in 'order clause' for query SELECT * FROM rmh_immunizations WHERE user_id='2' ORDER BY date DESC LIMIT 1
+[19-Jan-2015 18:24:57 UTC] WordPress database error Unknown column 'date' in 'field list' for query SELECT *, date_format(date, '%m/%d/%Y') as date FROM rmh_immunizations WHERE user_id='2'
+[19-Jan-2015 18:26:00 UTC] WordPress database error Unknown column 'date' in 'field list' for query SELECT *, date_format(date, '%m/%d/%Y') as date FROM rmh_immunizations WHERE user_id='2'
+[19-Jan-2015 18:26:04 UTC] WordPress database error Table 'renew_1.rmh_schedule' doesn't exist for query SELECT concat(date_format(date, '%m/%d/%Y'), ' ', startime,'-',endtime) as date, u.display_name as doctor_name, if(s.status = 0, 'Request sent', 'Confirmed') as status FROM rmh_schedule s JOIN rmh_users u ON u.ID = s.doctor_id WHERE patient_id = 2 ORDER BY date DESC
