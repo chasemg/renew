@@ -128,18 +128,15 @@ function user_dashboard()	{
 				}); 
 			});
 			$(".search_patients_lg").click(function()	{
+			
 				if($(".patient_results").html() == '')	{
 					patient_list();
 				}
-				//$(".search_box_lg").animate({
-					//height: "250px"
-				//},200);
-				$(".search_box_lg").delay(200).fadeIn('slow');
-				$(".close_search_lg").delay(200).fadeIn('slow');
-			});
-			$(".close_search_lg").click(function()	{
-				$(".search_box_lg").fadeOut();
-				$(".close_search_lg").fadeOut();
+				$(".left_widget").animate({
+					width: "250px"
+				},200);
+				$(".search_box").delay(200).fadeIn('slow');	
+				$(".close_search").delay(200).fadeIn('slow');
 			});
 			schedule_date();
 		},
@@ -331,8 +328,6 @@ function count_unread() {
 $(document).ready(function() {
 
 /******************* Dashboard *******************************/
-
-//Original location of patient_list()
 
 $(".search_patients").click(function()	{
 

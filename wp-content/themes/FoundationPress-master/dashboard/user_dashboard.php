@@ -264,13 +264,6 @@ if($_POST['patient_id'])	{
 						$html .= '<h3>Please select a patient to get started.</h3>';
 						$html .= '<img class="mag" src="'.get_template_directory_uri().'/assets/img/dashboard/search_lg.png">';
 						$html .= '<div class="link_btn lg_search_btn search_patients_lg">Patient Search</div>';
-						$html .= '<div class="search_box_lg">';
-							$html .= '<div class="close_search_lg">Close Search</div>';						
-							$html .= '<div class="search_results">';
-							$html .= '<input type="text" id="patient_input" placeholder="Enter patient name">';
-							$html .= '<button id="clear_search">Clear</button>';
-							$html .= '<div class="patient_results"></div>';		
-						$html .= '</div>';
 					$html .= '</div>';
 				$html .= '</div>';
 			$html .= '</div>';
