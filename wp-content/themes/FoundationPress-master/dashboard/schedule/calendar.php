@@ -37,8 +37,10 @@
     
 	for($list_day = 1; $list_day <= $days_in_month; $list_day++):
 	
+		$date = sprintf("%s-%s-%s", $year, $month, $list_day);
+	
 	?>
-		<td class="calendar-day">
+		<td data-value="<?php echo $date; ?>" class="calendar-day <?php echo ($current == $date) ? 'current' : ''; ?>">
 			<?php echo $list_day; ?>
 		</td>
         
@@ -96,5 +98,7 @@ $(document).ready(function()
 			}
 		});
 	});
+	
+	calendar_day_select();
 })
 </script>
