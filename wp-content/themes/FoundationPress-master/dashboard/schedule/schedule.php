@@ -415,6 +415,7 @@ function calendar_day_select()
 			success: function(data)
 			{
 				$('.doctor-availability').html(data.html);
+				calendar_minutes_select();
 			}
 		});
 		
