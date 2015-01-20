@@ -392,6 +392,7 @@ $(document).ready(function()
 	});
 	
 	calendar_day_select();
+	calendar_minutes_select();
 })
 
 
@@ -417,6 +418,21 @@ function calendar_day_select()
 			}
 		});
 		
+	});
+}
+
+function calendar_minutes_select()
+{
+	$('.doctor-availability input[type=checkbox]').bind('click', function()
+	{
+		if ($('.doctor-availability input:checked').length <= 3)
+		{
+			return true
+		}	
+		else
+		{
+			return false;
+		}
 	});
 }
 </script>
