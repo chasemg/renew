@@ -424,16 +424,24 @@ function calendar_day_select()
 
 function calendar_minutes_select()
 {
-	$('.doctor-availability input[type=checkbox]').bind('click', function()
+	$('.doctor-availability li').bind('click', function()
 	{
-		if ($('.doctor-availability input:checked').length <= 3)
+		if ($(this).find('input[type=checkbox]').is(':checked'))
 		{
-			return true
-		}	
+			$(this).find('input[type=checkbox]').prop('checked', false);
+		}
 		else
 		{
-			return false;
+			if ($('.doctor-availability input:checked').length < 3)
+			{
+				$(this).find('input[type=checkbox]').prop('checked', true);
+			}
 		}
+	});
+	
+	$('.doctor-availability input[type=checkbox]').bind('click', function()
+	{
+		$(this).parent().trigger('click');
 	});
 }
 </script>
