@@ -275,7 +275,7 @@ if($_POST['patient_id'])	{
 				$html .= '<div class="widget_row">';
 /******************** Scheduling ******************************/
 					$html .= '<div class="dashboard_small_widget">';
-						$html .= '<div class="dashboard_small_widget_content padding clearfix">';
+						$html .= '<div class="dashboard_small_widget_content padding schedule_mobile clearfix">';
 							$html .= '<div class="dashboard_small_widget_content_col">';
 								$html .= '<div class="schedule_date">';
 									$html .= '<div class="schedule_month"></div>';

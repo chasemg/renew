@@ -3783,6 +3783,29 @@ and (max-device-width : 413px) {
 		margin-bottom:10px;
 	}
 	.lg_search_btn {font-size:10px;}
+	.dashboard_small_widget_content.schedule_mobile {height:165px;}
+	.schedule_month {
+		font-size:10px;
+		margin-bottom:15px;
+	}
+	.schedule_day {font-size:16px;}
+	.schedule_day_no {
+		font-size:20px;
+		line-height: 38px;
+		height: 38px;
+		width: 48px;
+	}
+	.appointment_dates {height:80%;}
+	
+	#referral_add, #referral_view {font-size: 12px;}
+	#referral_add img {
+		width:23px;
+		height:23px;
+	}
+	#referral_view img {
+		width:27px;
+		height:21px;
+	}
 }
 
 @media only screen 
