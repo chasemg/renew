@@ -110,7 +110,9 @@
 	padding:4px;
 }
 
-.calendar td:hover
+.calendar td:hover,
+.calendar td.selected,
+.calendar td.current
 {
 	background:#02ac41;
 	color:#fff;
@@ -236,6 +238,7 @@
 	$day_counter = 0;
 	$dates_array = array();
 	
+	
 	?>
 	<tr class="calendar-row"><td class="calendar-day-head"><?php echo implode('</td><td class="calendar-day-head">',$headings); ?></td></tr>
 
@@ -257,8 +260,10 @@
     
 	for($list_day = 1; $list_day <= $days_in_month; $list_day++):
 	
+		$date = sprintf("%s-%s-%s", $year, $month, $list_day);
+	
 	?>
-		<td class="calendar-day">
+		<td data-value="<?php echo $date; ?>"  class="calendar-day <?php echo ($current == $date) ? 'current' : ''; ?>">
 			<?php echo $list_day; ?>
 		</td>
         
@@ -371,7 +376,7 @@ $(document).ready(function()
 		$.ajax(
 		{
 			url: 'wp-content/themes/FoundationPress-master/parts/doctor_schedule_calendar.php',
-			data: 'doctor_id=<?php echo $doctor_i; ?>&month=' + m + '&year=' + y,
+			data: 'doctor_id=<?php echo $doctor_id; ?>&month=' + m + '&year=' + y,
 			type: 'post',
 			dataType: 'json',
 			success: function(data)
@@ -385,5 +390,58 @@ $(document).ready(function()
 	{
 		$.fancybox.close();
 	});
+	
+	calendar_day_select();
+	calendar_minutes_select();
 })
+
+
+function calendar_day_select()
+{
+	$('.calendar-day').bind('click', function()
+	{
+		var dd = $(this).attr('data-value');
+		
+		$('.calendar-day').removeClass('selected');
+		
+		$(this).addClass('selected');
+		
+		$.ajax(
+		{
+			url: 'wp-content/themes/FoundationPress-master/parts/doctor_calendar_day.php',
+			data: 'doctor_id=<?php echo $doctor_id; ?>&date=' + dd,
+			type: 'post',
+			dataType: 'json',
+			success: function(data)
+			{
+				$('.doctor-availability').html(data.html);
+				calendar_minutes_select();
+			}
+		});
+		
+	});
+}
+
+function calendar_minutes_select()
+{
+	$('.doctor-availability li').bind('click', function()
+	{
+		if ($(this).find('input[type=checkbox]').is(':checked'))
+		{
+			$(this).find('input[type=checkbox]').prop('checked', false);
+		}
+		else
+		{
+			if ($('.doctor-availability input:checked').length < 3)
+			{
+				$(this).find('input[type=checkbox]').prop('checked', true);
+			}
+		}
+	});
+	
+	$('.doctor-availability input[type=checkbox]').bind('click', function()
+	{
+		$(this).parent().trigger('click');
+	});
+}
 </script>
