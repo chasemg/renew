@@ -1499,11 +1499,15 @@ and (max-device-width : 1023px) {
 .right-off-canvas-menu * {-webkit-backface-visibility:hidden;}
 ul.off-canvas-list {list-style-type:none;padding:0;margin:0;}
 ul.off-canvas-list li label {display:block;padding:0.3rem 0.9375rem;color:#999999;text-transform:uppercase;font-size:0.75rem;font-weight:bold;background:#444444;border-top:1px solid #5e5e5e;border-bottom:none;margin:0;}
-ul.off-canvas-list li a, ul.off-canvas-list li div.dashboard_icons {display:block;padding:0.66667rem;color:rgba(255, 255, 255, 0.7);border-bottom:1px solid #262626;transition:background 300ms ease;}
+ul.off-canvas-list li a, ul.off-canvas-list li div.dashboard_icons,
+ul.off-canvas-list li a, ul.off-canvas-list li div.dashboard_icons_disabled {display:block;padding:0.66667rem;color:rgba(255, 255, 255, 0.7);border-bottom:1px solid #262626;transition:background 300ms ease;}
+ul.off-canvas-list li a, ul.off-canvas-list li div.dashboard_icons_disabled {text-align:left;margin-bottom:0px;opacity:1;color:rgba(255, 255, 255, 0.2);}
 ul.off-canvas-list li a:hover, ul.off-canvas-list li div.dashboard_icons:hover {background:#242424;}
 ul.off-canvas-list li div.dashboard_icons,
-ul.off-canvas-list li div.dashboard_icons.search_patients {cursor:pointer;}
-ul.off-canvas-list li div.dashboard_icons.search_patients {text-align:left;}
+ul.off-canvas-list li div.dashboard_icons.search_patients,
+ul.off-canvas-list li div#user_dashboard.doctor_dash {cursor:pointer;text-align:left;}
+#menu-mobile div.close_search {color:rgba(255, 255, 255, 0.7);}
+.mobile-logout {color:rgba(255, 255, 255, 0.7) !important;}
 .move-right>.inner-wrap {-ms-transform:translate(15.625rem, 0);-webkit-transform:translate3d(15.625rem, 0, 0);-moz-transform:translate3d(15.625rem, 0, 0);-ms-transform:translate3d(15.625rem, 0, 0);-o-transform:translate3d(15.625rem, 0, 0);transform:translate3d(15.625rem, 0, 0);}
 .move-right .exit-off-canvas {-webkit-backface-visibility:hidden;transition:background 300ms ease;cursor:pointer;box-shadow:-4px 0 4px rgba(0, 0, 0, 0.5),4px 0 4px rgba(0, 0, 0, 0.5);display:block;position:absolute;background:rgba(255, 255, 255, 0.2);top:0;bottom:0;left:0;right:0;z-index:1002;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
 @media only screen and (min-width:40.063em){
@@ -2478,7 +2482,6 @@ and (max-width: 980px)
 
 
 .dashboard_icons > img,
-#referrals.dashboard_icons,		/* to be removed once image icons are available */
 #user_dashboard.doctor_dash {	/* to be removed once image icons are available */
 	display:block;
 	min-height:36px;
@@ -2630,7 +2633,7 @@ and (max-width: 980px)
 	display: block;
 	position: relative;
 	border-top: 5px solid #c7c6c6;
-	z-index: 100;
+	z-index: 0;
 }
 .dashboard_small_widget_content .title	{
 	font-family: 'montserratbold';
@@ -3180,6 +3183,13 @@ and (max-width: 980px)
 #patient_input	{
 	margin: 0;
 }
+/*---  Mobile Patient Search classes ---*/
+#menu-mobile .patient_search_name {color:rgba(255,255,255,0.7);}
+#patient_input,
+#clear_search {border-radius:3px;}
+#menu-mobile ul#patients {margin:0;}
+#menu-mobile .patient {border-bottom:1px solid #262626;}
+/*---  END Mobile Patient Search classes ---*/
 .messages	{
 	margin: 0;
 	padding: 0;
@@ -3429,6 +3439,16 @@ input.time
 .unread_span	{
 	display: none;
 }
+/*--- Mobile Push Notification ---*/
+#menu-mobile .dashboard_icons .unread_ctn {
+	display:inline;
+	position:inherit;
+	text-align:center;
+	margin:0 0 0 10px;
+	border-radius:50%;
+}
+/*--- END Mobile Push Notification ---*/
+
 .doctor_greet span {color:#00AF41;}
 /********************** Search Large Widget *************************************/
 .large_search {
@@ -3452,6 +3472,7 @@ input.time
 }
 
 .link_btn,
+.link_btn:link,
 .link_btn:active,
 .link_btn:visited {
 	display:block;
@@ -3578,10 +3599,10 @@ input.time
 
 /********************** Lab Dashboard Widget ************************************/
 .lab-link {
-	font-size:14px;
+	font-size:14px !important;
 	text-transform:uppercase;
 	display:block;
-	padding:5px 9px;
+	padding:5px 9px !important;
 	width:100px;
 	margin:0px auto;
 }
@@ -3733,6 +3754,35 @@ and (max-device-width : 413px) {
 	.settings_container div.profile_info {width:100%; margin-top:15px;}
 	.settings_container div.password_change {font-size:13px;}
 	.container.new-message-box {padding:15px;}
+	/*--- Doctor Dashboard classes ---*/
+	.dashboard_goals.doctor {padding:15px 0px;}
+	.user_image.doctor {
+		margin-left:9.5%;
+		margin-right:4%;
+		width:22%;
+	}
+	.user_image.doctor img {
+		width:60px;
+		height:60px;
+	}
+	.doctor_greet {
+		font-size: 16px;
+		padding:10px 0px 0px 0px;
+		width:55%;
+		margin-right:9.5%;
+	}
+	.large_search {
+		padding:15px 0px;
+	}
+	.large_search h3 {
+		font-size:14px;
+		margin-bottom:10px;
+	}
+	.large_search img.mag {
+		width:46px;
+		margin-bottom:10px;
+	}
+	.lg_search_btn {font-size:10px;}
 }
 
 @media only screen 

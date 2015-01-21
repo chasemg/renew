@@ -123,8 +123,9 @@ function dashboard($user_id) {
 		echo "<ul id='menu-mobile' class='off-canvas-list'>";
 		
 			if(get_user_role() == 'doctor')	{
-				echo '<li><div class="dashboard_icons search_patients">Search Patients</div></li>';
-				echo '<div class="close_search"><-</div>';
+				// echo '<li><div class="doctor_dash mobile-link" id="user_dashboard">Back to Dashboard</div></li>';
+				echo '<li><div class="dashboard_icons search_patients">Patient Search</div></li>';
+				echo '<div class="close_search">Close Search</div>';
 				echo '<div class="search_box">';
 				echo '<div class="search_results">';
 				echo '<input type="text" id="patient_input" placeholder="Enter patient name">';
@@ -133,15 +134,14 @@ function dashboard($user_id) {
 				echo '</div>';		
 				echo '</div>'; // End .search_box
 				echo '<li><div class="dashboard_icons_disabled" id="soap_notes">SOAP Note</div></li>';
+				echo '<li><div class="dashboard_icons_disabled" id="labs">Lab Results</div></li>';
 				echo '<li><div class="dashboard_icons_disabled" id="meds">Medications</div></li>';
-				echo '<li><div class="dashboard_icons mobile-link" id="communications">Communications<div class="unread_ctn"div></div></li>';
-				echo '<li><div class="dashboard_icons mobile-link" id="referrals">Referrals</div></li>';
 				echo '<li><div class="dashboard_icons mobile-link" id="schedule">Scheduling</div></li>';
-				echo '<li><div class="doctor_dash mobile-link" id="user_dashboard">Dashboard</div></li>';
-				echo '<li><div class="dashboard_icons mobile-link" id="labs">Lab Results</div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="communications">Messaging<div class="unread_ctn"></div></li>';
+				echo '<li><div class="dashboard_icons mobile-link" id="referrals">Referrals</div></li>';
 				echo '<li><label></label></li>';
 				echo '<li><div class="dashboard_icons mobile-link" id="settings">Settings</div></li>';
-				echo '<li><a href="'. wp_logout_url('index.php') .'">Logout</a></li>';				
+				echo '<li><a class="mobile-logout" href="'. wp_logout_url('index.php') .'">Logout</a></li>';				
 			}
 		
 			if(get_user_role() == 'subscriber')	{
