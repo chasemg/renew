@@ -5,8 +5,16 @@ include '../dashboard/db_include.php';
 $doctor_id = $_POST['doctor_id'];
 $patient_id = $_POST['patient_id'];
 
-$file = $_SERVER['DOCUMENT_ROOT']. '/wp-content/themes/FoundationPress-master/dashboard/schedule/json/doctor_' . $doctor_id . '.js';
-$file2 = $_SERVER['DOCUMENT_ROOT']. '/wp-content/themes/FoundationPress-master/dashboard/schedule/json/patient_' . $patient_id . '.js';
+if ($_SERVER['HTTP_HOST'] == 'renew.local')
+{
+	$file = $_SERVER['DOCUMENT_ROOT']. '/wp-content/themes/FoundationPress-master/dashboard/schedule/json/doctor_' . $doctor_id . '.js';
+	$file2 = $_SERVER['DOCUMENT_ROOT']. '/wp-content/themes/FoundationPress-master/dashboard/schedule/json/patient_' . $patient_id . '.js';
+}
+else
+{
+	$file =  '/home/renew/renew/wp-content/themes/FoundationPress-master/dashboard/schedule/json/doctor_' . $doctor_id . '.js';
+	$file2 = '/home/renew/renew/wp-content/themes/FoundationPress-master/dashboard/schedule/json/patient_' . $patient_id . '.js';
+}
 
 $json = array();
 $json2 = array();
