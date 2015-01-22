@@ -3,8 +3,10 @@
 Author: Kevin Griffiths
 URL: http://chasemg.com
 */
-
 include "db_include.php";
+
+define(DOCUMENT_ROOT, $_SERVER['DOCUMENT_ROOT']);
+
 $id = $_POST['id'];
 $patient_id = $_POST['patient_id'];
 $doctors = get_doctors_by_practice($practice);
@@ -33,7 +35,33 @@ else
         
          <div class="schedule_list">
          
-         	<?php if (get_user_role() == 'subscriber') {          
+         	<?php if (get_user_role() == 'subscriber') {  
+			
+				$file = DOCUMENT_ROOT . '/wp-content/themes/FoundationPress-master/dashboard/schedule/json/patient_' . $patient_id . '.js';
+				
+				$results = array();
+				
+				if (file_exists($file))
+				{
+					$handle = fopen($file, "r");
+					$json = fread($handle, filesize($file));
+					
+					foreach(json_decode($json) as $obj)
+					{
+						$doctor = get_doctor_info($obj->doctor_id, $practice);
+						
+						foreach($obj->dates as $dates)
+						{
+							$date = sprintf("%s at %s", date("m/d/y", strtotime($dates->date)), date("h:i A", strtotime($dates->date)));
+							
+							$results[] = array('date' => $date,
+											   'status' => $dates->status,
+											   'doctor' => sprintf("Dr. %s", $doctor->lname));
+						}
+					}
+				}
+				
+			        
           
           		include('schedule/patient.php');
 				

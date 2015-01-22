@@ -41,6 +41,40 @@
 	margin:0 auto 20px;
 	padding:5px 0px;
 }
+
+.schedule-list h2
+{
+	color:#01af40;
+	font-size:16px;
+	margin:0;
+	padding:5px 0px;
+	border-bottom:solid 1px #eee;
+}
+
+.schedule-list-detail
+{
+	margin:5px 0px 10px 5px;
+}
+
+.schedule-list-detail .status
+{
+	font-size:12px;
+}
+
+.schedule-list-detail .pending
+{
+	color: #FF0;
+}
+
+.schedule-list-detail .cancelled
+{
+	color: #F00;
+}
+
+.schedule-list-detail .confirmed
+{
+	color: #060;
+}
 </style>
 <div class="schedule-today">
 
@@ -59,4 +93,10 @@
 
 <div class="schedule-list">
 <h2>Scheduled appointments</h2>
+<?php foreach($results as $result) { ?>
+<div class="schedule-list-detail">
+	<div class="time"><?php echo $result['date']; ?></div>
+    <div class="status <?php echo strtolower($result['status']); ?>"><?php echo $result['status']; ?> with <?php echo $result['doctor']; ?></div>
+</div>
+<?php } ?>
 </div>
