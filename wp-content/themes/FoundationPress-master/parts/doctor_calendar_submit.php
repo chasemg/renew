@@ -47,19 +47,26 @@ if (file_exists($file2))
 	foreach($results as $row)
 	{
 		$json2[] = array('patient_id' => $row->patient_id,
-						'dates' => $row->dates,
-						'doctor_id' => $row->doctor_id);
+						 'dates' => $row->dates,
+						 'doctor_id' => $row->doctor_id);
 	}
 	
 }
 
+$dates = array();
+
+foreach($_POST['dates'] as $date)
+{
+	$dates[] = array('date' => $date, 'status' => 'Pending');
+}
+
 $json[] = array('patient_id' => $patient_id,
 				'doctor_id' => $doctor_id,
-				'dates' => $_POST['dates']);
+				'dates' => $dates);
 				
 $json2[] = array('patient_id' => $patient_id,
 				'doctor_id' => $doctor_id,
-				'dates' => $_POST['dates']);				
+				'dates' => $dates);				
 
 $handle = fopen($file, "w");
 $handle2 = fopen($file2, "w");

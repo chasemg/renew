@@ -4,15 +4,30 @@
 	width:33%;
 	float:left;
 	text-align:center;
+	padding:15px 0px;
+}
+.doctor-list > div > .image
+{
+	margin:0px 0px 10px;
+}
+
+.doctor-list a,
+a.select-a-doctor
+{
+	color:#01af40;
 }
 </style>
+
+<div style="padding:10px 10px;" >
 <?php if (!$doctors) { ?>
 
 There are no doctor for this practice
 
 <?php } else { ?>
 
-Here is a list of doctors currently at the practice you have chosen. <a>Select a Doctor</a> below to schedule, reschedule or change an appointment.
+Here is a list of doctors currently at the practice you have chosen. <a class="select-a-doctor">Select a Doctor</a> below to schedule, reschedule or change an appointment.
+
+</div>
 
 <div class="doctor-list">
 
