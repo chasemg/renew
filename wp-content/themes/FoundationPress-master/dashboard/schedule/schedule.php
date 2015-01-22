@@ -229,7 +229,11 @@
 <input type="hidden" name="doctor_id" value="<?php echo $doctor_id; ?>">
 <input type="hidden" name="patient_id" value="<?php echo $patient_id; ?>">
 
+<div class="minutes-list">
+
 <?php include('minutes.php'); ?>
+
+</div>
 
 </div>
 
@@ -320,7 +324,7 @@ function calendar_day_select()
 			dataType: 'json',
 			success: function(data)
 			{
-				$('.doctor-availability').html(data.html);
+				$('.minutes-list').html(data.html);
 				calendar_minutes_select();
 			}
 		});
