@@ -37,7 +37,7 @@ $('.doctor-list a').bind('click', function()
 	$.ajax(
 	{
 		url: 'wp-content/themes/FoundationPress-master/parts/doctor_schedule.php',
-		data: 'doctor_id=' + id,
+		data: 'patient_id=<?php echo $patient_id; ?>&doctor_id=' + id,
 		type: 'post',
 		dataType: 'json',
 		success: function(data)

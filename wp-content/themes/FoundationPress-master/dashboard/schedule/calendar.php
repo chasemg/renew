@@ -78,27 +78,3 @@
 
 	</table>
 
-<script>
-$(document).ready(function()
-{
-	$('.calendar-header a').click(function()
-	{
-		var m = $(this).attr('data-month');
-		var y = $(this).attr('data-year');
-		
-		$.ajax(
-		{
-			url: 'wp-content/themes/FoundationPress-master/parts/doctor_schedule_calendar.php',
-			data: 'doctor_id=<?php echo $doctor_i; ?>&month=' + m + '&year=' + y,
-			type: 'post',
-			dataType: 'json',
-			success: function(data)
-			{
-				$('.doctor-calendar').html(data.html);
-			}
-		});
-	});
-	
-	calendar_day_select();
-})
-</script>
