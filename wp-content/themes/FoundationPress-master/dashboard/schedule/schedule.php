@@ -268,6 +268,8 @@ $(document).ready(function()
 	{
 		var params = $('.doctor-availability input[type=hidden], .doctor-availability input[type=checkbox]:checked');
 		
+		$('.buttons').append('<div class="notification">Sending request, please wait...</div>');
+		
 		$.ajax(
 		{
 			url: 'wp-content/themes/FoundationPress-master/parts/doctor_calendar_submit.php',
@@ -276,7 +278,8 @@ $(document).ready(function()
 			dataType: 'json',
 			success: function(data)
 			{
-				
+				alert('Request successfully sent to doctor');		
+				$('.buttons .notification').remove();
 			}
 		})
 	});

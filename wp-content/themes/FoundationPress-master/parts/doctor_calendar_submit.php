@@ -77,4 +77,6 @@ fwrite($handle2, json_encode($json2));
 fclose($handle);
 fclose($handle2);
 
+echo 1;
+
 ?>
