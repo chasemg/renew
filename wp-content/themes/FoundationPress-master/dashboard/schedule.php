@@ -46,8 +46,6 @@ else
 					$file = '/home/renew/renew/wp-content/themes/FoundationPress-master/dashboard/schedule/json/patient_' . $patient_id . '.js';
 				}
 				
-				echo $file;
-				
 				$results = array();
 				
 				if (file_exists($file))
