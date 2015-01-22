@@ -244,7 +244,7 @@ if($_POST['patient_id'])	{
 			$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$id");
 		
 			foreach($lookup as $lu)	{
-				$html .= '<div class="dashboard_goals">';
+				$html .= '<div class="dashboard_goals doctor">';
 					$html .= '<div class="goal_container">';
 						$html .= '<div class="user_image doctor default">';
 							$html .= '<img src="'.get_template_directory_uri().'/assets/img/dashboard/doctor_default.png">';
@@ -275,7 +275,7 @@ if($_POST['patient_id'])	{
 				$html .= '<div class="widget_row">';
 /******************** Scheduling ******************************/
 					$html .= '<div class="dashboard_small_widget">';
-						$html .= '<div class="dashboard_small_widget_content padding clearfix">';
+						$html .= '<div class="dashboard_small_widget_content padding schedule_mobile clearfix">';
 							$html .= '<div class="dashboard_small_widget_content_col">';
 								$html .= '<div class="schedule_date">';
 									$html .= '<div class="schedule_month"></div>';
