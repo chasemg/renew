@@ -220,141 +220,24 @@
 
 <div class="doctor-calendar">
 
-<div class="calendar-header">
-<?php echo date("F Y", mktime(0,0,0, $month, 1, $year)); ?>
-<a data-month="<?php echo $next_month; ?>" data-year="<?php echo $next_year; ?>" class="next"><span></span></a>
-<a data-month="<?php echo $prev_month; ?>" data-year="<?php echo $prev_year; ?>" class="prev"><span></span></a>
-</div>
-
-<table cellpadding="0" cellspacing="0" class="calendar">
-
-	<?php
-    
-	/* table headings */
-	$headings = array('Sun','Mon','Tue','Wed','Thu','Fri','Sat');
-	$running_day = date('w',mktime(0,0,0,$month,1,$year));
-	$days_in_month = date('t',mktime(0,0,0,$month,1,$year));
-	$days_in_this_week = 1;
-	$day_counter = 0;
-	$dates_array = array();
-	
-	
-	?>
-	<tr class="calendar-row"><td class="calendar-day-head"><?php echo implode('</td><td class="calendar-day-head">',$headings); ?></td></tr>
-
-	<tr class="calendar-row">
-
-	<?php  for($x = 0; $x < $running_day; $x++): ?>
-	
-		<td class="calendar-day-np"> </td>
-     
-    <?php    
-		
-		$days_in_this_week++;
-		
-	endfor;
-	
-	?>
-
-	<?php
-    
-	for($list_day = 1; $list_day <= $days_in_month; $list_day++):
-	
-		$date = sprintf("%s-%s-%s", $year, $month, $list_day);
-	
-	?>
-		<td data-value="<?php echo $date; ?>"  class="calendar-day <?php echo ($current == $date) ? 'current' : ''; ?>">
-			<?php echo $list_day; ?>
-		</td>
-        
-    <?php if($running_day == 6): ?>
-	
-    </tr>
-    
-    <?php if(($day_counter+1) != $days_in_month): ?>
-	
-    <tr class="calendar-row">
-    
-    <?php endif; 
-			$running_day = -1;
-			$days_in_this_week = 0;
-		endif;
-		$days_in_this_week++; $running_day++; $day_counter++;
-	endfor;
-	
-	?>
-
-	
-	<?php if($days_in_this_week < 8): ?>
-	<?php	for($x = 1; $x <= (8 - $days_in_this_week); $x++): ?>
-			<td class="calendar-day-np"> </td>
-            
-    <?php
-	        
-		endfor;
-	endif;
-
-	?>
-    
-	</tr>
-
-
-	</table>
+<?php include('calendar.php'); ?>
     
 </div>
 
 <div class="doctor-availability">
 
-<h4>Availability for <?php echo date("l F jS"); ?></h4>
+<input type="hidden" name="doctor_id" value="<?php echo $doctor_id; ?>">
+<input type="hidden" name="patient_id" value="<?php echo $patient_id; ?>">
 
-<?php 
+<div class="minutes-list">
 
-$start = mktime(9, 0, 0, date("m"), date("d"), date("Y")); 
-$end = mktime(17, 0, 0, date("m"), date("d"), date("Y")); 
-$interval = 20 * 60; 
-$row = 0; 
-$break_start = mktime(12, 0, 0, date("m"), date("d"), date("Y")); 
-$break_end = mktime(13, 0, 0, date("m"), date("d"), date("Y")); 
+<?php include('minutes.php'); ?>
 
-?>
-
-<div class="minutes">
-	
-    <ul>
-
-	<?php for($i = $start; $i < $end; $i+=$interval) { ?>
-    
-    <?php if ($i < $break_start  || $i >= $break_end) { ?>
-
-	<li><input type="checkbox"> <?php echo date("h:i A", $i); ?></li>
-    
-    <?php if ($row == 6) { ?>
-    
-    </ul>
-    
-    </div>
-    
-    <div class="minutes">
-    
-    <ul>
-    
-    <?php $row = 0; ?>
-    
-    <?php } else { ?>
-    
-    <?php $row++; ?>
-    
-    <?php } ?>
-    
-    <?php } ?>
-    
-	<?php } ?>
-
-	</ul>
-    
 </div>
 
 </div>
+
+
 
 <div style="clear:both"></div>
 
@@ -366,7 +249,43 @@ $break_end = mktime(13, 0, 0, date("m"), date("d"), date("Y"));
 </div><!-- wrapper -->
 
 <script>
+
+
+
 $(document).ready(function()
+{
+	
+	calendar_header();
+	calendar_day_select();
+	calendar_minutes_select();
+	
+	$('.close-button').bind('click', function()
+	{
+		$.fancybox.close();
+	});
+	
+	$('.submit-button').click(function()
+	{
+		var params = $('.doctor-availability input[type=hidden], .doctor-availability input[type=checkbox]:checked');
+		
+		$('.buttons').append('<div class="notification">Sending request, please wait...</div>');
+		
+		$.ajax(
+		{
+			url: 'wp-content/themes/FoundationPress-master/parts/doctor_calendar_submit.php',
+			data: params,
+			type: 'post',
+			dataType: 'json',
+			success: function(data)
+			{
+				alert('Request successfully sent to doctor');		
+				$('.buttons .notification').remove();
+			}
+		})
+	});
+})
+
+function calendar_header()
 {
 	$('.calendar-header a').click(function()
 	{
@@ -382,18 +301,12 @@ $(document).ready(function()
 			success: function(data)
 			{
 				$('.doctor-calendar').html(data.html);
+				calendar_header();
+				calendar_day_select();
 			}
 		});
 	});
-	
-	$('.close-button').bind('click', function()
-	{
-		$.fancybox.close();
-	});
-	
-	calendar_day_select();
-	calendar_minutes_select();
-})
+}
 
 
 function calendar_day_select()
@@ -414,13 +327,14 @@ function calendar_day_select()
 			dataType: 'json',
 			success: function(data)
 			{
-				$('.doctor-availability').html(data.html);
+				$('.minutes-list').html(data.html);
 				calendar_minutes_select();
 			}
 		});
 		
 	});
 }
+
 
 function calendar_minutes_select()
 {

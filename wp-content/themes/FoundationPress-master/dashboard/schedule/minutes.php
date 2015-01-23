@@ -20,8 +20,10 @@ $break_end = mktime(13, 0, 0, $month, $day, $year);
 	<?php for($i = $start; $i < $end; $i+=$interval) { ?>
     
     <?php if ($i < $break_start  || $i >= $break_end) { ?>
+    
+    <?php $value = date("Y-m-d h:i A", $i); ?>
 
-	<li><input type="checkbox"> <?php echo date("h:i A", $i); ?></li>
+	<li><input name="dates[]" type="checkbox" value="<?php echo $value; ?>"> <?php echo date("h:i A", $i); ?></li>
     
     <?php if ($row == 6) { ?>
     
