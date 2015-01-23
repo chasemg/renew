@@ -49,7 +49,7 @@ if (file_exists($file2))
 	{
 		foreach($ss->dates as $dd)
 		{
-			$user_time[$dd->date] = $dd->status;
+			$user_time[$dd->date] = array('status' => $dd->status, 'doctor_id' => $ss->doctor_id);
 			
 		}
 	}

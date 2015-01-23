@@ -22,10 +22,32 @@ $break_end = mktime(13, 0, 0, $month, $day, $year);
     <?php if ($i < $break_start  || $i >= $break_end) { ?>
     
     <?php $value = date("Y-m-d h:i A", $i); ?>
-
-	<li>
+    
+    
+	<?php if (array_key_exists($value, $user_time)) { ?>
+    
+    <?php if ($user_time[$value]['doctor_id'] == $doctor_id) { ?>
+    
+     <li>
+        
+    <?php } else { ?>
+    
+     <li class="disabled">
+        
+    <?php } ?>
+    
+    <?php } else { ?>
+    
+    <li>
+    
+    <?php } ?>
+    
     	<?php if (array_key_exists($value, $user_time)) { ?>
+        <?php if ($user_time[$value]['doctor_id'] == $doctor_id) { ?>
         <input name="dates[]" type="checkbox" value="<?php echo $value; ?>" checked="checked">  <?php echo date("h:i A", $i); ?>
+        <?php } else { ?>
+        <input name="dates[]" type="checkbox" value="<?php echo $value; ?>" disabled="disabled" >  <?php echo date("h:i A", $i); ?>
+        <?php } ?>
         <?php } else { ?>
     	<input name="dates[]" type="checkbox" value="<?php echo $value; ?>"> <?php echo date("h:i A", $i); ?>
         <?php } ?>
