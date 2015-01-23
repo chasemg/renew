@@ -3,6 +3,7 @@
 include '../dashboard/db_include.php';
 
 $doctor_id = $_POST['doctor_id'];
+$patient_id = $_POST['patient_id'];
 
 $doctor = $pdb->get_row("SELECT * FROM ".$wpdb->prefix."doctors WHERE user_id = " . $doctor_id, OBJECT);
 
@@ -14,6 +15,7 @@ $image = get_bloginfo('template_url') . '/assets/img/doctor-green-icon.png';
 
 $month = date("m");
 $year = date("Y");
+$day = date("d");
 
 $current = date("Y-m-d");
 

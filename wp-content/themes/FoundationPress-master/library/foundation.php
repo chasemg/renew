@@ -336,6 +336,20 @@ function get_doctors_by_practice($practice_id)
 	return $results;
 }
 
+function get_doctor_info($doctor_id, $practice_id)
+{
+	global $wpdb;
+	
+	$pdb = new wpdb(DB_USER,DB_PASSWORD,'renew_' . $practice_id,DB_HOST);
+	
+	//echo $practice_id;
+	//echo "SELECT * FROM ".$wpdb->prefix."doctors where doctor_id = " . $doctor_id;
+	
+	$result = $pdb->get_row("SELECT * FROM ".$wpdb->prefix."doctors where user_id = " . $doctor_id, OBJECT);
+	
+	return $result;
+}
+
 
 /*******************************************************************************/
 ?>
