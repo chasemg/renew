@@ -4159,6 +4159,67 @@ and (max-device-width : 979px) {
 	.schedule_list form {margin: 15px 60px 0px;}
 	.schedule_list form table {width:100%;}
 	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
+	/*--- Doctor Dashboard classes ---*/
+	.dashboard_goals.doctor {padding:15px 0px;}
+	.dashboard_goals.doctor div.goal_container {
+		max-width:none;
+		width:100%;
+	}
+	.user_image.doctor {
+		margin-left:9.5%;
+		margin-right:2%;
+		width:22%;
+	}
+	.user_image.doctor img {
+		width:100px;
+		height:100px;
+	}
+	.doctor_greet {
+		font-size: 22px;
+		padding:35px 0px 0px 0px;
+		width:57%;
+		margin-right:9.5%;
+	}
+	.large_search h3 {font-size:20px;}
+	.dashboard_small_widget_content.schedule_mobile,
+	.dashboard_small_widget_content.messaging_mobile,
+	.dashboard_small_widget_content.lab_mobile,
+	.dashboard_small_widget_content.referral_mobile {height:165px;}
+	.schedule_month {
+		font-size:10px;
+		margin-bottom:15px;
+	}
+	.schedule_day {font-size:16px;}
+	.schedule_day_no {
+		font-size:20px;
+		line-height: 38px;
+		height: 38px;
+		width: 48px;
+	}
+	.appointment_dates {height:80%;}
+	.appointment_dates ul li {font-size:11px;}
+	.logo_drFirst {
+		width:137px;
+	}
+	#dashboard_messages .message {height:40px;}
+	#dashboard_messages {padding: 0px 8px;}
+	#dashboard_messages .subject,
+	#dashboard_messages .from {font-size:9px;}
+	#dashboard_messages .message_date {font-size:10px;}
+	.logo_drFirst {width:137px;}
+	.referral_container {padding:0 8px;}
+	#referral_add, #referral_view {
+		font-size: 12px;
+		margin-bottom:10px;
+	}
+	#referral_add img {
+		width:23px;
+		height:23px;
+	}
+	#referral_view img {
+		width:27px;
+		height:21px;
+	}
 }
 
 @media only screen
