@@ -1,1 +1,0 @@
-[{"patient_id":"2","doctor_id":"4","dates":[{"date":"2015-01-13 09:00 AM","status":"Pending"},{"date":"2015-01-13 09:20 AM","status":"Pending"},{"date":"2015-01-13 09:40 AM","status":"Pending"}]}]
