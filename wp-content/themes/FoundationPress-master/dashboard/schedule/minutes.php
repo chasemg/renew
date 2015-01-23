@@ -16,14 +16,20 @@ $break_end = mktime(13, 0, 0, $month, $day, $year);
 <div class="minutes">
 	
     <ul>
-
-	<?php for($i = $start; $i < $end; $i+=$interval) { ?>
+    
+    <?php for($i = $start; $i < $end; $i+=$interval) { ?>
     
     <?php if ($i < $break_start  || $i >= $break_end) { ?>
     
     <?php $value = date("Y-m-d h:i A", $i); ?>
 
-	<li><input name="dates[]" type="checkbox" value="<?php echo $value; ?>"> <?php echo date("h:i A", $i); ?></li>
+	<li>
+    	<?php if (array_key_exists($value, $user_time)) { ?>
+        <input name="dates[]" type="checkbox" value="<?php echo $value; ?>" checked="checked">  <?php echo date("h:i A", $i); ?>
+        <?php } else { ?>
+    	<input name="dates[]" type="checkbox" value="<?php echo $value; ?>"> <?php echo date("h:i A", $i); ?>
+        <?php } ?>
+    </li>
     
     <?php if ($row == 6) { ?>
     
