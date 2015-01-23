@@ -171,7 +171,8 @@
 	font-family: 'Didact Gothic', sans-serif;
 }
 
-.minutes li:hover
+.minutes li:hover,
+.minutes li.disabled
 {
 	background:#00b03e;
 	color:#fff;
@@ -349,15 +350,17 @@ function calendar_minutes_select()
 {
 	$('.doctor-availability li').bind('click', function()
 	{
-		if ($(this).find('input[type=checkbox]').is(':checked'))
+		var inp = $(this).find('input[type=checkbox]');
+		
+		if ($(inp).is(':checked'))
 		{
-			$(this).find('input[type=checkbox]').prop('checked', false);
+			$(inp).prop('checked', false);
 		}
-		else
+		else 
 		{
-			if ($('.doctor-availability input:checked').length < 3)
+			if ($('.doctor-availability input:checked').length < 3 && !$(inp).prop('disabled'))
 			{
-				$(this).find('input[type=checkbox]').prop('checked', true);
+				$(inp).prop('checked', true);
 			}
 		}
 	});
