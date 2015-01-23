@@ -296,7 +296,7 @@ if($_POST['patient_id'])	{
 					$html .= '</div>';
 /******************** Messaging *******************************/
 					$html .= '<div class="dashboard_small_widget last">';
-						$html .= '<div class="dashboard_small_widget_content">';
+						$html .= '<div class="dashboard_small_widget_content messaging_mobile clearfix">';
 						$html .= '<div class="title">Messages <span class="unread_span">(<div class="unread_ctn"></div>)</span></div>';
 						$html .= '<div id="dashboard_messages">';
 						$html .= "<ul class='messages'>";
@@ -349,8 +349,8 @@ if($_POST['patient_id'])	{
 				$html .= '<div class="widget_row">';
 /******************** Labs ************************************/
 					$html .= '<div class="dashboard_small_widget">';
-						$html .= '<div class="dashboard_small_widget_content padding clearfix">';
-						$html .= '<img style="display:block;margin:20px auto 10px auto;" src="'.get_template_directory_uri().'/assets/img/dashboard/logo_DrFirst.jpg" />';
+						$html .= '<div class="dashboard_small_widget_content lab_mobile padding clearfix">';
+						$html .= '<img class="logo_drFirst" src="'.get_template_directory_uri().'/assets/img/dashboard/logo_DrFirst.jpg" />';
 						$html .= '<a class="link_btn lab-link">Launch</a>';
 						$html .= '</div>';
 						$html .= '<div class="dashboard_small_widget_lip" id="labs">';
@@ -359,7 +359,7 @@ if($_POST['patient_id'])	{
 					$html .= '</div>';
 /******************** Referrals *******************************/
 					$html .= '<div class="dashboard_small_widget last">';
-						$html .= '<div class="dashboard_small_widget_content clearfix">';
+						$html .= '<div class="dashboard_small_widget_content referral_mobile clearfix">';
 						$html .= '<div class="title">Referrals</div>';
 						
 						$html .= '<div class="referral_container">';

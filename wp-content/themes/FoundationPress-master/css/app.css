@@ -3606,7 +3606,10 @@ input.time
 	width:100px;
 	margin:0px auto;
 }
-
+.logo_drFirst {
+	display:block;
+	margin:20px auto 10px auto;
+}
 /********************** Referral Dashboard Widget *******************************/
 .referral_container {padding:12px 8px;}
 .referral_container hr {margin:0px 0px 10px 0px !important;}
@@ -3756,9 +3759,13 @@ and (max-device-width : 413px) {
 	.container.new-message-box {padding:15px;}
 	/*--- Doctor Dashboard classes ---*/
 	.dashboard_goals.doctor {padding:15px 0px;}
+	.dashboard_goals.doctor div.goal_container {
+		max-width:none;
+		width:100%;
+	}
 	.user_image.doctor {
 		margin-left:9.5%;
-		margin-right:4%;
+		margin-right:3%;
 		width:22%;
 	}
 	.user_image.doctor img {
@@ -3768,7 +3775,7 @@ and (max-device-width : 413px) {
 	.doctor_greet {
 		font-size: 16px;
 		padding:10px 0px 0px 0px;
-		width:55%;
+		width:56%;
 		margin-right:9.5%;
 	}
 	.large_search {
@@ -3783,7 +3790,9 @@ and (max-device-width : 413px) {
 		margin-bottom:10px;
 	}
 	.lg_search_btn {font-size:10px;}
-	.dashboard_small_widget_content.schedule_mobile {height:165px;}
+	.dashboard_small_widget_content.schedule_mobile,
+	.dashboard_small_widget_content.lab_mobile,
+	.dashboard_small_widget_content.referral_mobile {height:165px;}
 	.schedule_month {
 		font-size:10px;
 		margin-bottom:15px;
@@ -3796,8 +3805,15 @@ and (max-device-width : 413px) {
 		width: 48px;
 	}
 	.appointment_dates {height:80%;}
-	
-	#referral_add, #referral_view {font-size: 12px;}
+	.appointment_dates ul li {font-size:11px;}
+	.logo_drFirst {
+		width:137px;
+	}
+	.referral_container {padding:0 8px;}
+	#referral_add, #referral_view {
+		font-size: 12px;
+		margin-bottom:10px;
+	}
 	#referral_add img {
 		width:23px;
 		height:23px;
@@ -3806,6 +3822,9 @@ and (max-device-width : 413px) {
 		width:27px;
 		height:21px;
 	}
+	#dashboard_messages .subject,
+	#dashboard_messages .from {font-size:9px;}
+	#dashboard_messages .message_date {font-size:10px;}
 }
 
 @media only screen 
@@ -3857,6 +3876,38 @@ and (max-device-width : 479px) {
 	.settings_container div.profile_info {width:100%; margin-top:15px;}
 	.settings_container div.password_change {font-size:13px;}
 	.container.new-message-box {padding:15px;}
+	/*--- Doctor Dashboard classes ---*/
+	.dashboard_goals.doctor {padding:15px 0px;}
+	.dashboard_goals.doctor div.goal_container {
+		max-width:none;
+		width:100%;
+	}
+	.user_image.doctor {
+		margin-left:9.5%;
+		margin-right:3%;
+		width:22%;
+	}
+	.user_image.doctor img {
+		width:82px;
+		height:82px;
+	}
+	.doctor_greet {
+		font-size: 16px;
+		padding:30px 0px 0px 0px;
+		width:56%;
+		margin-right:9.5%;
+	}
+	.large_search {
+		padding:15px 0px;
+	}
+	.large_search h3 {
+		font-size:16px;
+		margin-bottom:10px;
+	}
+	.large_search img.mag {
+		width:46px;
+		margin-bottom:10px;
+	}
 }
 
 @media only screen 
@@ -3904,6 +3955,28 @@ and (max-device-width : 519px) {
 	.schedule_list form table {width:100%;}
 	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 	.container.new-message-box {padding:15px 30px;}
+	/*--- Doctor Dashboard classes ---*/
+	.dashboard_goals.doctor {padding:15px 0px;}
+	.dashboard_goals.doctor div.goal_container {
+		max-width:none;
+		width:100%;
+	}
+	.user_image.doctor {
+		margin-left:9.5%;
+		margin-right:3%;
+		width:22%;
+	}
+	.user_image.doctor img {
+		width:82px;
+		height:82px;
+	}
+	.doctor_greet {
+		font-size: 20px;
+		padding:30px 0px 0px 0px;
+		width:56%;
+		margin-right:9.5%;
+	}
+	.large_search h3 {font-size:20px;}
 }
 @media only screen 
 and (min-device-width : 520px)
@@ -3943,6 +4016,67 @@ and (max-device-width : 639px) {
 	.schedule_list form table {width:100%;}
 	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 	.container.new-message-box {padding:15px 40px;}
+	/*--- Doctor Dashboard classes ---*/
+	.dashboard_goals.doctor {padding:15px 0px;}
+	.dashboard_goals.doctor div.goal_container {
+		max-width:none;
+		width:100%;
+	}
+	.user_image.doctor {
+		margin-left:9.5%;
+		margin-right:0;
+		width:22%;
+	}
+	.user_image.doctor img {
+		width:100px;
+		height:100px;
+	}
+	.doctor_greet {
+		font-size: 22px;
+		padding:35px 0px 0px 0px;
+		width:59%;
+		margin-right:9.5%;
+	}
+	.large_search h3 {font-size:22px;}
+	.dashboard_small_widget_content.schedule_mobile,
+	.dashboard_small_widget_content.messaging_mobile,
+	.dashboard_small_widget_content.lab_mobile,
+	.dashboard_small_widget_content.referral_mobile {height:165px;}
+	.schedule_month {
+		font-size:10px;
+		margin-bottom:15px;
+	}
+	.schedule_day {font-size:16px;}
+	.schedule_day_no {
+		font-size:20px;
+		line-height: 38px;
+		height: 38px;
+		width: 48px;
+	}
+	.appointment_dates {height:80%;}
+	.appointment_dates ul li {font-size:11px;}
+	.logo_drFirst {
+		width:137px;
+	}
+	#dashboard_messages .message {height:40px;}
+	#dashboard_messages {padding: 0px 8px;}
+	#dashboard_messages .subject,
+	#dashboard_messages .from {font-size:9px;}
+	#dashboard_messages .message_date {font-size:10px;}
+	.logo_drFirst {width:137px;}
+	.referral_container {padding:0 8px;}
+	#referral_add, #referral_view {
+		font-size: 12px;
+		margin-bottom:10px;
+	}
+	#referral_add img {
+		width:23px;
+		height:23px;
+	}
+	#referral_view img {
+		width:27px;
+		height:21px;
+	}
 }
 
 @media only screen 
@@ -3965,6 +4099,27 @@ and (max-device-width : 767px) {
 	.schedule_list form table {width:100%;}
 	.schedule_list form table input[type="submit"] {font-size: 14px !important;text-transform: capitalize;}
 	.container.new-message-box {padding:15px 60px;}
+	/*--- Doctor Dashboard classes ---*/
+	.dashboard_goals.doctor {padding:15px 0px;}
+	.dashboard_goals.doctor div.goal_container {
+		max-width:none;
+		width:100%;
+	}
+	.user_image.doctor {
+		margin-left:9.5%;
+		margin-right:2%;
+		width:22%;
+	}
+	.user_image.doctor img {
+		width:126px;
+		height:126px;
+	}
+	.doctor_greet {
+		font-size: 26px;
+		padding:45px 0px 0px 0px;
+		width:57%;
+		margin-right:9.5%;
+	}
 }
 
 @media only screen
