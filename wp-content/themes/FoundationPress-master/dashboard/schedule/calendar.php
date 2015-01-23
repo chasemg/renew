@@ -4,7 +4,7 @@
 <a data-month="<?php echo $prev_month; ?>" data-year="<?php echo $prev_year; ?>" class="prev"><span></span></a>
 </div>
 
-<table cellpadding="0" cellspacing="0" class="calendar">
+<table cellpadding="0" cellspacing="2" class="calendar">
 
 	<?php
     
@@ -38,9 +38,20 @@
 	for($list_day = 1; $list_day <= $days_in_month; $list_day++):
 	
 		$date = sprintf("%s-%s-%s", $year, $month, $list_day);
+		
+		$class = "";
+		
+		if ($date == date("Y-m-d"))
+		{
+			$class = 'current';
+		}
+		else if (in_array($date, $dates))
+		{
+			$class = 'gray';
+		}
 	
 	?>
-		<td data-value="<?php echo $date; ?>" class="calendar-day <?php echo ($current == $date) ? 'current' : ''; ?>">
+		<td data-value="<?php echo $date; ?>" class="calendar-day <?php echo $class; ?>">
 			<?php echo $list_day; ?>
 		</td>
         

@@ -12,6 +12,8 @@ if(!isset($wpdb))
 	foreach($practice_id as $pid)	{
 		$practice = $pid->practice_id;
 	}
+	
+	define(DOCUMENT_ROOT, $_SERVER['DOCUMENT_ROOT']);
 
 	$pdb = new wpdb(DB_USER,DB_PASSWORD,'renew_' . $practice,DB_HOST);
 }

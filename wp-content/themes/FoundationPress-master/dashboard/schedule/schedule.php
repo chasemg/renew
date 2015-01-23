@@ -108,14 +108,23 @@
 {
 	font-family: 'Didact Gothic', sans-serif;
 	padding:4px;
+	width:10px;
 }
 
 .calendar td:hover,
+.calendar td.gray:hover,
 .calendar td.selected,
-.calendar td.current
+.calendar td.current,
+.calendar td.gray.selected
 {
 	background:#02ac41;
 	color:#fff;
+}
+
+.calendar td.gray
+{
+	background:#e1e1e1;
+	border:solid 1px #cbcbcb;
 }
 
 .calendar-header a
@@ -322,7 +331,7 @@ function calendar_day_select()
 		$.ajax(
 		{
 			url: 'wp-content/themes/FoundationPress-master/parts/doctor_calendar_day.php',
-			data: 'doctor_id=<?php echo $doctor_id; ?>&date=' + dd,
+			data: 'patient_id=<?php echo $patient_id; ?>&doctor_id=<?php echo $doctor_id; ?>&date=' + dd,
 			type: 'post',
 			dataType: 'json',
 			success: function(data)
