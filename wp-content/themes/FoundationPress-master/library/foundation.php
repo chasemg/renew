@@ -123,7 +123,7 @@ function dashboard($user_id) {
 		echo "<ul id='menu-mobile' class='off-canvas-list'>";
 		
 			if(get_user_role() == 'doctor')	{
-				// echo '<li><div class="doctor_dash mobile-link" id="user_dashboard">Back to Dashboard</div></li>';
+				//echo '<li><div class="doctor_dash mobile-link" id="user_dashboard">Back to Dashboard</div></li>';
 				echo '<li><div class="dashboard_icons search_patients">Patient Search</div></li>';
 				echo '<div class="close_search">Close Search</div>';
 				echo '<div class="search_box">';
@@ -205,6 +205,7 @@ function dashboard($user_id) {
 	?>
 	
 	<div class="center-dashboard">
+    	<a href="#" class="btnToTop"></a>
 		<div id="dashboard">
 			
 		</div>

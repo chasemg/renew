@@ -8,7 +8,7 @@ $id = $_POST['id'];
 $message_id = $_POST['message_id'];
 $html = '';
 $html .= '<div class="dashboard_large_widget" style="max-width: 600px;">';
-$html .= '<div class="container" style="width: auto; padding: 20px 50px;">';
+$html .= '<div class="container new-message-box">';
 $html .= '<input type="hidden" id="message_id" value="'.$message_id.'">';
 $html .= $message_id;
 $message = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "communication WHERE id='$message_id'");

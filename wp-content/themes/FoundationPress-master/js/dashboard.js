@@ -285,6 +285,7 @@ function patient_list()	{
 			$(".patient_results").html(success);
 			$('#patient_input').fastLiveFilter('#patients');
 			$(".patient").click(function()	{
+				$(".exit-off-canvas").trigger("click");
 				$("#dashboard").empty().hide();
 				$.ajax({
 					type: 'post',
@@ -298,8 +299,8 @@ function patient_list()	{
 						},200);
 						$("#dashboard").html(success).delay(200).fadeIn();
 						$(".doctor_dash").removeClass('dashboard_icons_disabled');
-						$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
-						$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+						//$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+						//$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
 						$(".doctor_dash").click(function()	{
 							$("#patient_id").val('');
 							$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
@@ -402,7 +403,17 @@ $("#clear_search").click(function()	{
 	$("#patient_input").val('');
 	patient_list();
 });
-
+$(window).scroll(function(){
+	if ($(this).scrollTop() > 100) {
+		$('.btnToTop').fadeIn();
+	} else {
+		$('.btnToTop').fadeOut();
+	}
+});
+$('.btnToTop').click(function(){
+	$('html, body').animate({scrollTop : 0},700);
+	return false;
+});
 /*************************** Functions *******************************************/
 function drFirst()	{
 	var user_id = $("#user_id").val();

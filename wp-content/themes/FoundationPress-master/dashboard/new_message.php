@@ -8,7 +8,7 @@ $id = $_POST['id'];
 $message_id = $_POST['message_id'];
 $html = '';
 $html .= '<div class="dashboard_large_widget" style="max-width: 600px;">';
-$html .= '<div class="container" style="width: auto; padding: 20px 50px;">';
+$html .= '<div class="container new-message-box">';
 $html .= "<div class='message_error'></div>";
 
 if($_POST['message_id'] != 0)	{
