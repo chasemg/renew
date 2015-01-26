@@ -299,6 +299,7 @@ function patient_list()	{
 						$(".left_widget").delay(200).animate({
 							width: "75px"
 						},200);
+						$(".left_widget .dashboard_icons_disabled, .left_widget .dashboard_icons, .left_widget .search_patients").delay(200).fadeIn();
 						$("#dashboard").html(success).delay(200).fadeIn();
 						$(".doctor_dash").removeClass('dashboard_icons_disabled');
 						//$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
