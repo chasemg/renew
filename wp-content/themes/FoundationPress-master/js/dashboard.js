@@ -285,22 +285,32 @@ function patient_list()	{
 			$(".patient_results").html(success);
 			$('#patient_input').fastLiveFilter('#patients');
 			$(".patient").click(function()	{
-				var patient = $(this).attr('id');
-				$("#patient_id").val(patient);
-				user_dashboard();
-				$(".search_box").fadeOut();
-				$(".close_search").fadeOut();
-				$(".left_widget").delay(200).animate({
-					width: "75px"
-				},200);	
-				$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
-				$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
-				$(".doctor_dash").click(function()	{
-					$("#patient_id").val('');
-					$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
-					$("#meds").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
-					user_dashboard();
-				});				
+				$("#dashboard").empty().hide();
+				$.ajax({
+					type: 'post',
+					data: 'id',
+					url: 'wp-content/themes/FoundationPress-master/dashboard/patient.php',
+					success: function(success) {
+						$(".search_box").fadeOut();
+						$(".close_search").fadeOut();
+						$(".left_widget").delay(200).animate({
+							width: "75px"
+						},200);
+						$("#dashboard").html(success).delay(200).fadeIn();
+						$(".doctor_dash").removeClass('dashboard_icons_disabled');
+						$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+						$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+						$(".doctor_dash").click(function()	{
+							$("#patient_id").val('');
+							$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
+							$("#meds").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
+							user_dashboard();
+						});			
+					},
+					error: function(error)	{
+						console.log(error);
+					}
+				});
 				dashboard_icons();
 			});
 		},
@@ -309,6 +319,40 @@ function patient_list()	{
 		}
 	});
 }
+//function patient_list()	{
+//	var doctor_id = $("#user_id").val();
+//	$.ajax({
+//		type: 'POST',
+//		data: 'id='+doctor_id,
+//		url: 'wp-content/themes/FoundationPress-master/dashboard/patient_list.php',
+//		success: function(success)	{
+//			$(".patient_results").html(success);
+//			$('#patient_input').fastLiveFilter('#patients');
+//			$(".patient").click(function()	{
+//				var patient = $(this).attr('id');
+//				$("#patient_id").val(patient);
+//				user_dashboard();
+//				$(".search_box").fadeOut();
+//				$(".close_search").fadeOut();
+//				$(".left_widget").delay(200).animate({
+//					width: "75px"
+//				},200);	
+//				$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+//				$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+//				$(".doctor_dash").click(function()	{
+//					$("#patient_id").val('');
+//					$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
+//					$("#meds").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
+//					user_dashboard();
+//				});				
+//				dashboard_icons();
+//			});
+//		},
+//		error: function(error)	{
+//			console.log(error);
+//		}
+//	});
+//}
 function schedule_date() {
 	var monthNames = [ "January", "February", "March", "April", "May", "June",
 		"July", "August", "September", "October", "November", "December" ];
