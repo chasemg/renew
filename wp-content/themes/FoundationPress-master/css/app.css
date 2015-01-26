@@ -3430,11 +3430,15 @@ input.time
 	display: none;
 	position: absolute;
 	margin-top: -115px;
-	padding: 4px 10px;
-	border-radius: 100px;
+	padding: 4px 4px;
+	border-radius: 50%;
 	background: #ff0000;
 	color: #fff;
-	margin-left: 40px;
+	margin-left: 45px;
+	width:15px;
+	height:15px;
+	text-align:center;
+	line-height:12px;
 }
 .unread_span	{
 	display: none;
@@ -3446,6 +3450,7 @@ input.time
 	text-align:center;
 	margin:0 0 0 10px;
 	border-radius:50%;
+	padding: 1px 10px 5px 10px;
 }
 /*--- END Mobile Push Notification ---*/
 
