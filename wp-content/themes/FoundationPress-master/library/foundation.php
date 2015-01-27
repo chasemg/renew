@@ -177,7 +177,7 @@ function dashboard($user_id) {
 		echo '</div>';		
 		echo '</div>'; // End .search_box
 		
-		echo '<div class="dashboard_icons_disabled" id="soap_inactive"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/soap_icon.png"></div>';
+		echo '<div class="dashboard_icons_disabled" id="soap_notes"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/soap_icon.png"></div>';
 		echo '<div class="dashboard_icons_disabled"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';
 		echo '<div class="dashboard_icons_disabled"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="schedule"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/sched_icon.png"></div>';
@@ -220,7 +220,7 @@ function dashboard($user_id) {
 	echo "<div class='right_widget'>";
 	if(get_user_role() == 'doctor')	{
 		//echo '<div class="doctor_dash" id="user_dashboard">Dashboard</div>';
-		echo '<div class="dashboard_icons" id="soap_notes">SOAP Note</div>';
+		//echo '<div class="dashboard_icons" id="soap_notes">SOAP Note</div>';
 		//echo '<div class="dashboard_icons" id="labs"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';
 		echo '<div id="user_dashboard" class="doctor_dash"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/backdash_icon.png"></div>';		
 		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/messages_icon.png"><div class="unread_ctn"></div></div>';
