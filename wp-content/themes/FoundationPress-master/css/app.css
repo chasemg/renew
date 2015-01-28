@@ -2535,7 +2535,7 @@ and (max-width: 980px)
 	cursor: pointer;
 }
 
-#soap_inactive {margin-top:60px;}
+#soap_notes {margin-top:60px;}
 
 #dashboard {}
 
@@ -3138,6 +3138,7 @@ and (max-width: 980px)
 }
 .search_results	{
 	width: 100%;
+	text-align:center;
 }
 .patient_results	{
 	margin-top: 10px;
@@ -3179,6 +3180,9 @@ and (max-width: 980px)
 	margin: 0;
 	background: #00af41;
 	border: 1px solid #00af41;
+	display: inline-block;
+	max-width: 100px;
+	margin-top: 5px;	
 }
 #patient_input	{
 	margin: 0;
@@ -3652,6 +3656,29 @@ and (max-device-width : 979px) {
 
 @media only screen 
 and (max-device-width : 767px) {
+	.btnToTop {				/* scroll to top button */
+		display:none;
+		position:fixed;
+		background:rgba(0,0,0,0.5);
+		width:40px;
+		height:40px;
+		right:10px;
+		bottom:22px;
+		border-radius:4px;
+		z-index:10000;
+	}
+	
+	.btnToTop:after {
+		position:relative;
+		content:" ";
+		width: 0; 
+		height: 0; 
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;	
+		border-bottom: 10px solid #fff;
+		bottom:6px;
+		left:10px;
+	}
 	.dashboard_container {width:100%;}
 	.center-dashboard {
 		width:100%;
@@ -4271,6 +4298,7 @@ button.cancel_message:hover,
 button.message_send:hover,
 .message_go_back:hover,
 .message_reply:hover,
+.message_reply_bar button.message:hover,
 .schedule_list input[type="submit"]:hover {
 	color:#00AF41 !important;
 	background:#fff;
@@ -4278,8 +4306,11 @@ button.message_send:hover,
 }
 
 button.cancel_message,
-button.message_send {
-	font-size:16px;
+button.message_send,
+button.message_go_back,
+.message_reply_bar button.message,
+button.message_reply {
+	font-size:16px !important;
 	border: 1px solid #00AF41;
 	border-radius:3px;
 }

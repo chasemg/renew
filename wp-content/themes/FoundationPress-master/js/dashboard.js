@@ -285,6 +285,9 @@ function patient_list()	{
 			$(".patient_results").html(success);
 			$('#patient_input').fastLiveFilter('#patients');
 			$(".patient").click(function()	{
+				var patient = $(this).attr('id');
+				$("#patient_id").val(patient);				
+				$(".exit-off-canvas").trigger("click");
 				$("#dashboard").empty().hide();
 				$.ajax({
 					type: 'post',
@@ -296,10 +299,13 @@ function patient_list()	{
 						$(".left_widget").delay(200).animate({
 							width: "75px"
 						},200);
+						$(".left_widget .dashboard_icons_disabled, .left_widget .dashboard_icons, .left_widget .search_patients").delay(200).fadeIn();
 						$("#dashboard").html(success).delay(200).fadeIn();
 						$(".doctor_dash").removeClass('dashboard_icons_disabled');
-						$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
-						$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+						//$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+						$("#soap_notes").removeClass('dashboard_icons_disabled');
+						$("#soap_notes").addClass('dashboard_icons');
+						//$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
 						$(".doctor_dash").click(function()	{
 							$("#patient_id").val('');
 							$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
@@ -378,11 +384,13 @@ $(".search_patients").click(function()	{
 	if($(".patient_results").html() == '')	{
 		patient_list();
 	}
+	$(".left_widget .dashboard_icons_disabled, .left_widget .dashboard_icons, .left_widget .search_patients").fadeOut();	
 	$(".left_widget").animate({
 		width: "250px"
 	},200);
-	$(".search_box").delay(200).fadeIn('slow');	
-	$(".close_search").delay(200).fadeIn('slow');
+	$(".search_box").delay(300).fadeIn('slow');	
+	$(".close_search").delay(300).fadeIn('slow');
+
 });
 $(".close_search").click(function()	{
 	$(".search_box").fadeOut();
@@ -390,7 +398,7 @@ $(".close_search").click(function()	{
 	$(".left_widget").delay(200).animate({
 		width: "75px",
 	},200);		
-
+	$(".left_widget .dashboard_icons_disabled, .left_widget .dashboard_icons, .left_widget .search_patients").delay(200).fadeIn();	
 });
 $(".doctor_dash").click(function()	{
 	$("#patient_id").val('');
@@ -402,7 +410,17 @@ $("#clear_search").click(function()	{
 	$("#patient_input").val('');
 	patient_list();
 });
-
+$(window).scroll(function(){
+	if ($(this).scrollTop() > 100) {
+		$('.btnToTop').fadeIn();
+	} else {
+		$('.btnToTop').fadeOut();
+	}
+});
+$('.btnToTop').click(function(){
+	$('html, body').animate({scrollTop : 0},700);
+	return false;
+});
 /*************************** Functions *******************************************/
 function drFirst()	{
 	var user_id = $("#user_id").val();
@@ -774,6 +792,13 @@ function drFirst()	{
 				"max-height": "100%",
 				"height": doc_height
 			});
+			var iframe = $('#drfirst').contents();
+			iframe.find("a").click(function(){
+				//if($(this).hasClass("menuItem") && $(this).html() == "Return to EMR")	{
+					alert("test");
+				//}
+			});
+
 }
 function dashboard_icons()	{
 	$(".dashboard_icons").click(function()	{
