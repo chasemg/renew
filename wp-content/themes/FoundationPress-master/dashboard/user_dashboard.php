@@ -315,7 +315,7 @@ if($_POST['patient_id'])	{
 									$html .= '<div class="container">';
 									$html .= "<div class='subject_container'>";
 									$subject = $message->subject;
-									$stripped_subject = (strlen($subject) > 50) ? substr($subject,0,50).'...' : $subject;
+									$stripped_subject = (strlen($subject) > 25) ? substr($subject,0,25).'...' : $subject;
 									$html .= "<div class='subject'>".$stripped_subject."</div><br>";
 									$from = $message->from;
 									$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");

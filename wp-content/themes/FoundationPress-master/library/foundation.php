@@ -226,7 +226,6 @@ function dashboard($user_id) {
 		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/messages_icon.png"><div class="unread_ctn"></div></div>';
 		echo '<div class="dashboard_icons" id="referrals"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/referrals_icon.png"></div>';				
 		echo '<div class="dashboard_bottom_icons">';
-		
 	}
 	else if (get_user_role() == 'lab_doctor') {
 	?>
