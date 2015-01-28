@@ -1,16 +1,23 @@
 <?php
 
-if ($_SERVER['HTTP_HOST'] == 'localhost')
+switch ($_SERVER['HTTP_HOST'])
 {
-define('DB_NAME', 'renew');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '');	
-}
-else
-{
-define('DB_NAME', 'renew_wp');
-define('DB_USER', 'renew_wp');
-define('DB_PASSWORD', 'dyVL.^&LG^L!');
+	case 'localhost':
+	case 'renew.local':
+	
+		define('DB_NAME', 'renew');
+		define('DB_USER', 'root');
+		define('DB_PASSWORD', '');	
+
+	
+	break;
+	
+	default:
+	
+		define('DB_NAME', 'renew_wp');
+		define('DB_USER', 'renew_wp');
+		define('DB_PASSWORD', 'dyVL.^&LG^L!');
+
 }
 
 
