@@ -5,8 +5,6 @@ URL: http://chasemg.com
 */
 include "db_include.php";
 
-
-
 $id = $_POST['id'];
 $patient_id = $_POST['patient_id'];
 $doctors = get_doctors_by_practice($practice);
@@ -20,6 +18,8 @@ else
 {
 	$schedules = $pdb->get_results("SELECT concat(date_format(date, '%m/%d/%Y'), ' ', startime,'-',endtime) as date, u.display_name as doctor_name, u2.display_name as patient_name, if(s.status = 0, 'Request sent', 'Confirmed') as status FROM ".$wpdb->prefix."schedule s JOIN ".$wpdb->prefix."users u ON u.ID = s.doctor_id JOIN ".$wpdb->prefix."users u2 ON u2.ID = s.patient_id WHERE doctor_id = " . $id . " ORDER BY date DESC");
 }
+
+
 ?>
 
 <div class="dashboard_large_widget">
@@ -80,7 +80,62 @@ else
             <?php
 				include('schedule/doctors.php');
                 
-             } ?>      
+             } ?>     
+             
+             
+           <?php if (get_user_role() == 'doctor' ) { 
+           		
+				
+				if ($_SERVER['HTTP_HOST'] == 'renew.local')
+				{
+					$file = DOCUMENT_ROOT . '/wp-content/themes/FoundationPress-master/dashboard/schedule/json/doctor_' . $id . '.js';
+				}
+				else
+				{
+					$file = '/home/renew/renew/wp-content/themes/FoundationPress-master/dashboard/schedule/json/doctor_' . $id . '.js';
+				}
+				
+				$results = array();
+				$today = array();
+				
+				if (file_exists($file))
+				{
+					$handle = fopen($file, "r");
+					$json = fread($handle, filesize($file));
+					
+					foreach(json_decode($json) as $obj)
+					{
+						$info = get_patient_info($obj->patient_id, $practice);
+						
+						foreach($obj->dates as $dates)
+						{
+							$date = sprintf("%s at %s", date("m/d/y", strtotime($dates->date)), date("h:i A", strtotime($dates->date)));
+							
+							if (date("Y-m-d", strtotime($dates->date)) == date("Y-m-d"))
+							{
+								$today[] = array('date' => $date,
+											     'status' => $dates->status,
+												 'name' => $info['name']);
+							}
+							else
+							{
+								$results[] = array('date' => $date,
+												   'status' => $dates->status,
+												   'name' => $info['name']);
+							}
+						}
+					}
+				}
+				
+				
+                 include('schedule/today.php'); ?>
+           
+           		<hr>
+                
+                <?php include('schedule/request.php'); ?>
+           
+           
+           <?php } ?>  
          
          </div>
         

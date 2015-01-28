@@ -351,5 +351,17 @@ function get_doctor_info($doctor_id, $practice_id)
 }
 
 
+function get_patient_info($patient_id, $practice_id)
+{
+	$result = array();
+	
+	$meta = get_user_meta($patient_id);
+	
+	$result['name'] = sprintf("%s %s", $meta['first_name'][0], $meta['last_name'][0]);
+	
+	return $result;
+}
+
+
 /*******************************************************************************/
 ?>
