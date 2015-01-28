@@ -4298,6 +4298,7 @@ button.cancel_message:hover,
 button.message_send:hover,
 .message_go_back:hover,
 .message_reply:hover,
+.message_reply_bar button.message:hover,
 .schedule_list input[type="submit"]:hover {
 	color:#00AF41 !important;
 	background:#fff;
@@ -4307,6 +4308,7 @@ button.message_send:hover,
 button.cancel_message,
 button.message_send,
 button.message_go_back,
+.message_reply_bar button.message,
 button.message_reply {
 	font-size:16px !important;
 	border: 1px solid #00AF41;

@@ -187,8 +187,8 @@ function dashboard($user_id) {
 		
 	} 
 	elseif(get_user_role() == 'subscriber')	{
-		echo '<div class="dashboard_icons" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"></div>';
-		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/comm_icon.png"><div class="unread_ctn"></div></div>';
+		echo '<div class="dashboard_icons" id="user_dashboard"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/backdash_icon.png"></div>';
+		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/messages_icon.png"><div class="unread_ctn"></div></div>';
 		echo '<div class="dashboard_icons" id="medical_history"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/hist_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="labs"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';
 		echo '<div class="dashboard_icons" id="meds"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/med_icon.png"></div>';
@@ -220,9 +220,15 @@ function dashboard($user_id) {
 	echo "<div class='right_widget'>";
 	if(get_user_role() == 'doctor')	{
 		//echo '<div class="doctor_dash" id="user_dashboard">Dashboard</div>';
+<<<<<<< HEAD
+		echo '<div id="user_dashboard" class="doctor_dash"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/backdash_icon.png"></div>';	
+		echo '<div class="dashboard_icons" id="soap_notes"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/soap_icon.png"></div>';
+		//echo '<div class="dashboard_icons" id="labs"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';	
+=======
 		//echo '<div class="dashboard_icons" id="soap_notes">SOAP Note</div>';
 		//echo '<div class="dashboard_icons" id="labs"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';
 		echo '<div id="user_dashboard" class="doctor_dash"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/backdash_icon.png"></div>';		
+>>>>>>> daf26a3e60af9914f1ce5253a35e30b724195f85
 		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/messages_icon.png"><div class="unread_ctn"></div></div>';
 		echo '<div class="dashboard_icons" id="referrals"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/referrals_icon.png"></div>';				
 		echo '<div class="dashboard_bottom_icons">';
@@ -347,6 +353,18 @@ function get_doctor_info($doctor_id, $practice_id)
 	//echo "SELECT * FROM ".$wpdb->prefix."doctors where doctor_id = " . $doctor_id;
 	
 	$result = $pdb->get_row("SELECT * FROM ".$wpdb->prefix."doctors where user_id = " . $doctor_id, OBJECT);
+	
+	return $result;
+}
+
+
+function get_patient_info($patient_id, $practice_id)
+{
+	$result = array();
+	
+	$meta = get_user_meta($patient_id);
+	
+	$result['name'] = sprintf("%s %s", $meta['first_name'][0], $meta['last_name'][0]);
 	
 	return $result;
 }
