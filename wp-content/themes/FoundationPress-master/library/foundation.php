@@ -22,7 +22,6 @@ function FoundationPress_pagination() {
 	$paginate_links = str_replace( "<li><span class='page-numbers current'>", "<li class='current'><a href='#'>", $paginate_links );
 	$paginate_links = str_replace( "</span>", "</a>", $paginate_links );
 	$paginate_links = preg_replace( "/\s*page-numbers/", "", $paginate_links );
-
 	// Display the pagination if more than one page is found
 	if ( $paginate_links ) {
 		echo '<div class="pagination-centered">';
@@ -30,7 +29,6 @@ function FoundationPress_pagination() {
 		echo '</div><!--// end .pagination -->';
 	}
 }
-
 /**
  * A fallback when no navigation is selected by default.
  */
@@ -47,7 +45,6 @@ function FoundationPress_menu_fallback() {
   	);
   	echo '</div>';
 }
-
 // Add Foundation 'active' class for the current menu item
 function FoundationPress_active_nav_class( $classes, $item ) {
     if ( $item->current == 1 || $item->current_item_ancestor == true ) {
@@ -56,36 +53,24 @@ function FoundationPress_active_nav_class( $classes, $item ) {
     return $classes;
 }
 add_filter( 'nav_menu_css_class', 'FoundationPress_active_nav_class', 10, 2 );
-
 /**
  * Use the active class of ZURB Foundation on wp_list_pages output.
  * From required+ Foundation http://themes.required.ch
  */
 function FoundationPress_active_list_pages_class( $input ) {
-
 	$pattern = '/current_page_item/';
     $replace = 'current_page_item active';
-
     $output = preg_replace( $pattern, $replace, $input );
-
     return $output;
 }
 add_filter( 'wp_list_pages', 'FoundationPress_active_list_pages_class', 10, 2 );
-
-
 /**************************************** Dashboard **************************************************************/
-
-
-
 function get_user_role() {
 	global $current_user;
-
 	$user_roles = $current_user->roles;
 	$user_role = array_shift($user_roles);
-
 	return $user_role;
 }
-
 function dashboard($user_id) {
 	
 	echo "<head>\n";
@@ -198,7 +183,6 @@ function dashboard($user_id) {
 		echo '<div class="dashboard_icons" id="logout"><a href="'. wp_logout_url('index.php') .'"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/logout_icon.png"></a></div>';
 		echo '</div>';
 	} 
-
 	echo "</div>";
 	
 	// Center Dashboard
@@ -220,19 +204,12 @@ function dashboard($user_id) {
 	echo "<div class='right_widget'>";
 	if(get_user_role() == 'doctor')	{
 		//echo '<div class="doctor_dash" id="user_dashboard">Dashboard</div>';
-//<<<<<<< HEAD
-		echo '<div id="user_dashboard" class="doctor_dash"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/backdash_icon.png"></div>';	
-		echo '<div class="dashboard_icons" id="soap_notes"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/soap_icon.png"></div>';
-		//echo '<div class="dashboard_icons" id="labs"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';	
-//=======
 		//echo '<div class="dashboard_icons" id="soap_notes">SOAP Note</div>';
 		//echo '<div class="dashboard_icons" id="labs"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/lab_icon.png"></div>';
 		echo '<div id="user_dashboard" class="doctor_dash"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/backdash_icon.png"></div>';		
-//>>>>>>> daf26a3e60af9914f1ce5253a35e30b724195f85
 		echo '<div class="dashboard_icons" id="communications"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/messages_icon.png"><div class="unread_ctn"></div></div>';
 		echo '<div class="dashboard_icons" id="referrals"><img src="' . get_template_directory_uri() . '/assets/img/dashboard/referrals_icon.png"></div>';				
 		echo '<div class="dashboard_bottom_icons">';
-		
 	}
 	else if (get_user_role() == 'lab_doctor') {
 	?>
@@ -262,28 +239,24 @@ function dashboard($user_id) {
   echo "<script> jQuery(document).foundation(); </script>";
   echo '<script> jQuery(".mobile-link").on("click", function() { jQuery(".exit-off-canvas").trigger("click"); }); </script>';
 }
-
 function get_patient_list()
 {
 	$list = get_users(array('role' => 'subscriber'));	
 	
 	return $list;
 }
-
 function get_labdoctor_list()
 {
 	$list = get_users(array('role' => 'lab_doctor'));
 	
 	return $list;
 }
-
 function get_doctors_list()
 {
 	$list = get_users(array('role' => 'doctor'));
 	
 	return $list;
 }
-
 function form_dropdown($name, $array, $value, $extra = "")
 {
 	$html = '<select name="'.$name.'" '.$extra.'>';	
@@ -304,25 +277,19 @@ function form_dropdown($name, $array, $value, $extra = "")
 	
 	return $html;
 }
-
-
 function get_states()
 {
 	global $wpdb;
 	
 	return $wpdb->get_results("SELECT name as text, abbreviation as id FROM ".$wpdb->prefix."state WHERE country = 'USA' ORDER BY name");
 }
-
-
 add_filter( 'avatar_defaults', 'doctor_avatar' );
-
 function doctor_avatar ($avatar_defaults) 
 {
     $myavatar = get_bloginfo('url') . '/images/doctor-icons.png';
 	$avatar_defaults[$myavatar] = "Doctor Avatar";
     return $avatar_defaults;
 }
-
 function get_doctor_titles()
 {
 	global $wpdb;
@@ -331,7 +298,6 @@ function get_doctor_titles()
 	
 	return $results;
 }
-
 function get_doctors_by_practice($practice_id)
 {
 	global $wpdb;
@@ -342,7 +308,6 @@ function get_doctors_by_practice($practice_id)
 	
 	return $results;
 }
-
 function get_doctor_info($doctor_id, $practice_id)
 {
 	global $wpdb;
@@ -356,7 +321,15 @@ function get_doctor_info($doctor_id, $practice_id)
 	
 	return $result;
 }
-
-
+function get_patient_info($patient_id, $practice_id)
+{
+	$result = array();
+	
+	$meta = get_user_meta($patient_id);
+	
+	$result['name'] = sprintf("%s %s", $meta['first_name'][0], $meta['last_name'][0]);
+	
+	return $result;
+}
 /*******************************************************************************/
 ?>
