@@ -289,8 +289,8 @@ function patient_list()	{
 				$("#patient_id").val(patient);				
 				$(".exit-off-canvas").trigger("click");
 				$("#dashboard").empty().hide();
-var user_id = $("#user_id").val();
-	var patient_id = $("#patient_id").val();
+				var user_id = $("#user_id").val();
+				var patient_id = $("#patient_id").val();
 				$.ajax({
 					type: 'post',
 					data: 'id='+ user_id+'&patient_id='+patient_id,
@@ -308,6 +308,18 @@ var user_id = $("#user_id").val();
 						$("#soap_notes").removeClass('dashboard_icons_disabled');
 						$("#soap_notes").addClass('dashboard_icons');
 						//$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+						$(".select_patient").click(function()	{
+							if($(".patient_results").html() == '')	{
+								patient_list();
+							}
+							$(".left_widget .dashboard_icons_disabled, .left_widget .dashboard_icons, .left_widget .search_patients").fadeOut();	
+							$(".left_widget").animate({
+								width: "250px"
+							},200);
+							$(".search_box").delay(300).fadeIn('slow');	
+							$(".close_search").delay(300).fadeIn('slow');
+						
+						});
 						$(".doctor_dash").click(function()	{
 							$("#patient_id").val('');
 							$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
@@ -381,7 +393,7 @@ $(document).ready(function() {
 
 /******************* Dashboard *******************************/
 
-$(".search_patients, .select_patient").click(function()	{
+$(".search_patients").click(function()	{
 
 	if($(".patient_results").html() == '')	{
 		patient_list();
