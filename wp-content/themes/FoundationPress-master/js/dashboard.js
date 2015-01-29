@@ -289,9 +289,11 @@ function patient_list()	{
 				$("#patient_id").val(patient);				
 				$(".exit-off-canvas").trigger("click");
 				$("#dashboard").empty().hide();
+var user_id = $("#user_id").val();
+	var patient_id = $("#patient_id").val();
 				$.ajax({
 					type: 'post',
-					data: 'id',
+					data: 'id='+ user_id+'&patient_id='+patient_id,
 					url: 'wp-content/themes/FoundationPress-master/dashboard/patient.php',
 					success: function(success) {
 						$(".search_box").fadeOut();
@@ -379,7 +381,7 @@ $(document).ready(function() {
 
 /******************* Dashboard *******************************/
 
-$(".search_patients").click(function()	{
+$(".search_patients, .select_patient").click(function()	{
 
 	if($(".patient_results").html() == '')	{
 		patient_list();

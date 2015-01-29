@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER['HTTP_HOST'] == 'localhost')
+if ($_SERVER['HTTP_HOST'] == 'renew.local')
 {
 define('DB_NAME', 'renew');
 define('DB_USER', 'root');
