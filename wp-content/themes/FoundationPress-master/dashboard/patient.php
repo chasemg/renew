@@ -35,6 +35,26 @@ if($_POST['patient_id'])	{
 		$html .= '</div>';
 		$html .= '</div>';
 		
+		$html .= '<div class="dashboard_large_widget" style="margin-bottom:8px;">'; // Soap Notes
+		$html .= '<h5>soap notes</h5>';
+		$html .= '<div id="soap-note-container" class="clearfix">';
+		$html .= '<div class="visit_record clearfix">'; // Visit Record
+			$html .= '<div class="name">';
+				$html .= '<h3>Patient Name:</h3><h4>John Doe</h4>';
+			$html .= '</div>';
+			$html .= '<div class="date">';
+				$html .= '<h3>Date of visit:</h3><h4>11/10/2014</h4>';
+			$html .= '</div>';
+			$html .= '<div class="diagnosis">';
+			$html .= '<h3>Diagnosis 11/10/2014</h3><p>Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel</p>';
+			$html .= '</div>';
+			$html .= '<div class="fullnote">';
+			$html .= '<div class="btn_soapfullnote">See Full Soap Note</div>';
+			$html .= '</div>';
+		$html .= '</div>';
+		$html .= '</div>';
+		$html .= '</div>';
+		
 		$html .= '<div class="small_widget_container">';
 			$html .= '<div class="widget_row">';
 /********************** Social History ***************************************/
