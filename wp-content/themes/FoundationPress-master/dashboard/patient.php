@@ -173,5 +173,6 @@ if($_POST['patient_id'])	{
 	}
 	
 	echo $html;
+	
 }
 ?>
