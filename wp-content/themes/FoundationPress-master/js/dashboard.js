@@ -307,8 +307,7 @@ function patient_list()	{
 						//$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
 						$("#soap_notes").removeClass('dashboard_icons_disabled');
 						$("#soap_notes").addClass('dashboard_icons');
-						//$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
-						selected_patient ();
+						//$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');						
 						$(".select_patient").click(function()	{
 							if($(".patient_results").html() == '')	{
 								patient_list();
@@ -326,13 +325,13 @@ function patient_list()	{
 							$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
 							$("#meds").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
 							user_dashboard();
-						});			
+						});
+						selected_patient();
 					},
 					error: function(error)	{
 						console.log(error);
 					}
 				});
-				//$("#patient_id").val('');
 				dashboard_icons();
 			});
 		},

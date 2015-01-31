@@ -17,7 +17,7 @@ if($_POST['patient_id'])	{
 	
 	foreach($lookup as $lu)	{
 			
-		$html .= '<div class="dashboard_goals">';
+		$html .= '<div class="dashboard_goals doctor">';
 		$html .= '<div class="goal_container">';
 		$patient = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "patients WHERE user_id=$patient_id");
 			$html .= '<div class="user_image doctor">';
@@ -32,6 +32,8 @@ if($_POST['patient_id'])	{
 		
 		$html .= '<div class="doctor_greet current_patient">Current patient: <span>' . $lu->display_name . '</span></div>';
 		$html .= '<div class="link_btn select_patient">Select New Patient</div>';
+		
+		
 		$html .= '</div>';
 		$html .= '</div>';
 		
