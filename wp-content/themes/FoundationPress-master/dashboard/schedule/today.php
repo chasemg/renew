@@ -42,7 +42,8 @@
 	padding:5px 0px;
 }
 
-.schedule-list h2
+.schedule-list h2,
+.schedule_list h2
 {
 	color:#01af40;
 	font-size:16px;
@@ -75,6 +76,8 @@
 {
 	color: #060;
 }
+
+
 </style>
 <div class="schedule-today">
 
@@ -93,10 +96,14 @@
 
 <div class="schedule-list">
 <h2>Scheduled appointments</h2>
+<?php if ($today) { ?>
 <?php foreach($today as $result) { ?>
 <div class="schedule-list-detail">
 	<div class="time"><?php echo $result['date']; ?></div>
     <div class="status <?php echo strtolower($result['status']); ?>"><?php echo $result['status']; ?> with <?php echo $result['name']; ?></div>
 </div>
+<?php } ?>
+<?php } else { ?>
+<div class="no-schedule-today">No appointment today</div>
 <?php } ?>
 </div>
