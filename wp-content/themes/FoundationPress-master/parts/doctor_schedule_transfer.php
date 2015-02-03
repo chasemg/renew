@@ -79,7 +79,7 @@ $('.transfer .doctor-list a').click(function()
 	{
 		$.ajax(
 		{
-			url: '/wp-content/themes/FoundationPress-master/parts/doctor_schedule_transfer_doctor.php',
+			url: 'wp-content/themes/FoundationPress-master/parts/doctor_schedule_transfer_doctor.php',
 			data: {doctor_to:doctor_id_to, doctor_from:doctor_id_from, patient_id:patient_id, date:date},
 			type: 'post',
 			dataType: 'json',
