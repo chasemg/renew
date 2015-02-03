@@ -120,7 +120,9 @@ else
 							{
 								$today[] = array('date' => $date,
 											     'status' => $dates->status,
-												 'name' => $info['name']);
+												 'name' => $info['name'],
+												 'patient_id' => $obj->patient_id,
+												 'date2' => $dates->date);
 							}
 							else if ($ss >= $now)
 							{

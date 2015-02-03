@@ -7,6 +7,8 @@ $patient_id = $_POST['patient_id'];
 $date = $_POST['date'];
 $status = $_POST['action'];
 
+//print_r($_POST);
+
 if ($_SERVER['HTTP_HOST'] == 'renew.local')
 {
 	$file = DOCUMENT_ROOT . '/wp-content/themes/FoundationPress-master/dashboard/schedule/json/doctor_' . $doctor_id . '.js';
@@ -90,8 +92,10 @@ if (file_exists($file))
 			if (date("Y-m-d", strtotime($dates->date)) == date("Y-m-d") && $dates->status == 'Confirmed')
 			{
 				$today[] = array('date' => $date,
-					     'status' => $dates->status,
-						 'name' => $info['name']);
+							     'status' => $dates->status,
+								 'name' => $info['name'],
+								 'patient_id' => $obj->patient_id,
+								 'date2' => $dates->date);
 			}
 			else if ($ss >= $now)
 			{
