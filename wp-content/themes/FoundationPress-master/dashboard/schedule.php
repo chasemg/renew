@@ -103,29 +103,39 @@ else
 					$handle = fopen($file, "r");
 					$json = fread($handle, filesize($file));
 					
+					$now = strtotime(date("Y-m-d"));
+					
 					foreach(json_decode($json) as $obj)
 					{
 						$info = get_patient_info($obj->patient_id, $practice);
 						
 						foreach($obj->dates as $dates)
 						{
+							
+							$ss = strtotime(date("Y-m-d", strtotime($dates->date)));
+							
 							$date = sprintf("%s at %s", date("m/d/y", strtotime($dates->date)), date("h:i A", strtotime($dates->date)));
 							
-							if (date("Y-m-d", strtotime($dates->date)) == date("Y-m-d"))
+							if (date("Y-m-d", strtotime($dates->date)) == date("Y-m-d") && $dates->status == 'Confirmed')
 							{
 								$today[] = array('date' => $date,
 											     'status' => $dates->status,
-												 'name' => $info['name']);
+												 'name' => $info['name'],
+												 'patient_id' => $obj->patient_id,
+												 'date2' => $dates->date);
 							}
-							else
+							else if ($ss >= $now)
 							{
 								$results[] = array('date' => $date,
 												   'status' => $dates->status,
+												   'date2' => $dates->date,
+												   'patient_id' => $obj->patient_id,
 												   'name' => $info['name']);
 							}
 						}
 
 					}
+					
 				}
 				
 				

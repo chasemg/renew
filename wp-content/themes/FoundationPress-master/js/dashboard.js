@@ -307,7 +307,7 @@ function patient_list()	{
 						//$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
 						$("#soap_notes").removeClass('dashboard_icons_disabled');
 						$("#soap_notes").addClass('dashboard_icons');
-						//$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
+						//$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');						
 						$(".select_patient").click(function()	{
 							if($(".patient_results").html() == '')	{
 								patient_list();
@@ -325,7 +325,8 @@ function patient_list()	{
 							$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
 							$("#meds").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
 							user_dashboard();
-						});			
+						});
+						selected_patient();
 					},
 					error: function(error)	{
 						console.log(error);
@@ -339,40 +340,58 @@ function patient_list()	{
 		}
 	});
 }
-//function patient_list()	{
-//	var doctor_id = $("#user_id").val();
-//	$.ajax({
-//		type: 'POST',
-//		data: 'id='+doctor_id,
-//		url: 'wp-content/themes/FoundationPress-master/dashboard/patient_list.php',
-//		success: function(success)	{
-//			$(".patient_results").html(success);
-//			$('#patient_input').fastLiveFilter('#patients');
-//			$(".patient").click(function()	{
-//				var patient = $(this).attr('id');
-//				$("#patient_id").val(patient);
-//				user_dashboard();
-//				$(".search_box").fadeOut();
-//				$(".close_search").fadeOut();
-//				$(".left_widget").delay(200).animate({
-//					width: "75px"
-//				},200);	
-//				$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
-//				$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
-//				$(".doctor_dash").click(function()	{
-//					$("#patient_id").val('');
-//					$("#soap_notes").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
-//					$("#meds").removeClass('dashboard_icons').addClass('dashboard_icons_disabled');
-//					user_dashboard();
-//				});				
-//				dashboard_icons();
-//			});
-//		},
-//		error: function(error)	{
-//			console.log(error);
-//		}
-//	});
-//}
+function selected_patient ()	{
+	$(".dashboard_small_widget_lip").click(function()	{
+		var function_name = $(this).attr('id');
+		$("#dashboard").empty().hide();
+		var user_id = $("#user_id").val();
+		var patient_id = $("#patient_id").val();
+		$.ajax({
+			type: 'post',
+			data: 'id='+ user_id+'&patient_id='+patient_id,
+			url: 'wp-content/themes/FoundationPress-master/dashboard/'+function_name+'.php',
+			success: function(success)	{
+				$("#dashboard").html(success).fadeIn();			
+				$(".goback img").click(function()	{
+					$("#patient_id").val('');
+					user_dashboard();
+				});					
+				$(".add_entry").click(function()	{
+					var this_table = $(this).closest('table').attr('id');
+					console.log(this_table);
+					if(this_table == "family_conditions")	{
+						$("#"+this_table+" tr:last-child").before("<tr><td><input type='text' name='new_family_condition'></td><td><select><option>Father</option><option>Mother</option><option>Sibling</option></select></td><td><div class='save'>Save</div></td></tr>");
+					}
+					else if(this_table == "family_history")	{
+						$("#"+this_table+" tr:last-child").before("<tr><td><select name='family_member'><option value='Father'>Father</option><option value='Mother'>Mother</option><option value='Sibling'>Sibling</option></select></td><td><select name='alive'><option value='1'>Living: Yes</option><option value='2'>Living: No</option></select></td><td><input name='age' type='number'></td><td><div class='save'>Save</div></td></tr>");
+					}
+					$(".save").click(function()	{
+						var data = [];
+						var xx = 0;
+						var ii = 0;
+						var yy = 0;
+						var tdCount = $("#"+this_table).children('tr:nth-child(2) :input').length;
+						$("#"+this_table+" tr").each(function()	{
+							var subarray = [];
+							if(xx > tdCount)	{
+								data.push(subarray);
+								xx = 0;
+							} else {
+								var tableInputs = $(this).find(':input').val();
+								subarray.push(tableInputs);
+								xx++;
+							}
+						});
+						console.log(tdCount);
+					});
+				});						
+			},
+			error: function(error)	{
+				console.log(error);
+			}
+		}); 
+	});	
+}
 function schedule_date() {
 	var monthNames = [ "January", "February", "March", "April", "May", "June",
 		"July", "August", "September", "October", "November", "December" ];
