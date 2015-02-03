@@ -98,7 +98,7 @@ $(document).ready(function()
 				{
 					$.ajax(
 					{
-						url: '/wp-content/themes/FoundationPress-master/parts/doctor_schedule_submit.php',
+						url: 'wp-content/themes/FoundationPress-master/parts/doctor_schedule_submit.php',
 						data: {practice:practice,action:action, date:date, patient_id:id, doctor_id:<?php echo $id; ?>},
 						type: 'post',
 						success: function(html)
@@ -117,7 +117,7 @@ $(document).ready(function()
 				{
 					$.ajax(
 					{
-						url: '/wp-content/themes/FoundationPress-master/parts/doctor_schedule_submit.php',
+						url: 'wp-content/themes/FoundationPress-master/parts/doctor_schedule_submit.php',
 						data: {practice:practice,action:action, date:date, patient_id:id, doctor_id:<?php echo $id; ?>},
 						type: 'post',
 						success: function(html)
@@ -135,7 +135,7 @@ $(document).ready(function()
 				{
 					$.ajax(
 					{
-						url: '/wp-content/themes/FoundationPress-master/parts/doctor_schedule_transfer.php',
+						url: 'wp-content/themes/FoundationPress-master/parts/doctor_schedule_transfer.php',
 						data: {practice:practice, action:action, date:date, patient_id:id, doctor_id:<?php echo $id; ?>},
 						type: 'post',
 						success: function(html)
