@@ -176,3 +176,11 @@
 [28-Oct-2014 21:34:14 UTC] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
 [28-Oct-2014 22:54:18 UTC] PHP Warning:  Unknown: open(/tmp/sess_a82948db94ed3c9564ee87021889df40, O_RDWR) failed: Permission denied (13) in Unknown on line 0
 [28-Oct-2014 22:54:18 UTC] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[03-Feb-2015 20:27:58 UTC] PHP Warning:  Unknown: open(/tmp/sess_9b068e69778f6c80e15fe43d7b2375e4, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[03-Feb-2015 20:27:58 UTC] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[03-Feb-2015 20:30:30 UTC] PHP Warning:  Unknown: open(/tmp/sess_9b068e69778f6c80e15fe43d7b2375e4, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[03-Feb-2015 20:30:30 UTC] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[03-Feb-2015 20:32:29 UTC] PHP Warning:  Unknown: open(/tmp/sess_9b068e69778f6c80e15fe43d7b2375e4, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[03-Feb-2015 20:32:29 UTC] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[03-Feb-2015 20:32:33 UTC] PHP Warning:  Unknown: open(/tmp/sess_9b068e69778f6c80e15fe43d7b2375e4, O_RDWR) failed: Permission denied (13) in Unknown on line 0
+[03-Feb-2015 20:32:33 UTC] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
