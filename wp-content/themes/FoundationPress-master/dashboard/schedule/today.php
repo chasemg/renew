@@ -9,13 +9,11 @@
 	width:60%;
 	float:left;
 }
-
 .date-today
 {
 	margin:0px 20px 20px 0px;
 	border:solid 1px #bcbdbf;
 }
-
 .month-year
 {
 	color:#fff;
@@ -23,14 +21,12 @@
 	text-align:center;
 	padding:5px;
 }
-
 .day-text
 {
 	text-align:center;
 	padding:5px;
 	margin:30px 0px 10px 0px;
 }
-
 .day-number
 {
 	text-align:center;
@@ -41,7 +37,6 @@
 	margin:0 auto 20px;
 	padding:5px 0px;
 }
-
 .schedule-list h2,
 .schedule_list h2
 {
@@ -51,27 +46,22 @@
 	padding:5px 0px;
 	border-bottom:solid 1px #eee;
 }
-
 .schedule-list-detail
 {
 	margin:5px 0px 10px 5px;
 }
-
 .schedule-list-detail .status
 {
 	font-size:12px;
 }
-
 .schedule-list-detail .pending
 {
 	color: #FF0;
 }
-
 .schedule-list-detail .cancelled
 {
 	color: #F00;
 }
-
 .schedule-list-detail .confirmed
 {
 	color: #060;

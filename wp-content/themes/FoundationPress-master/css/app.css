@@ -3413,6 +3413,11 @@ input.time
 	color:#808080;
 	padding:50px 0px 0px 30px;
 }
+.doctor_greet.current_patient {
+	font-size:22px;
+	padding-top:35px;
+	margin-bottom:15px;
+}
 .overlay	{
 	background: rgba(0,0,0,0.8);
 	display: none;
@@ -3459,6 +3464,69 @@ input.time
 /*--- END Mobile Push Notification ---*/
 
 .doctor_greet span {color:#00AF41;}
+
+/********************** Doctor Patient Select Page ******************************/
+
+#soap-note-container {
+	display:block;
+	width:100%;
+	padding:0px 25px;
+	margin-bottom:15px;
+	box-sizing:border-box;
+	font-family:'adellelight';
+	font-weight:300;
+	color:#404041;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+}
+
+.visit_record {
+	background-color:#f7f7f7;
+	border-top:5px solid #00af41;
+	padding:20px 15px 15px;
+	margin-bottom:5px;
+}
+.visit_record > div.name,
+.visit_record > div.date {
+	display:block;
+	float:left;
+	width:49%;
+	margin-bottom:15px;
+}
+.visit_record > div.name {margin-right:1%;}
+.visit_record > div.date {margin-left:1%;}
+.visit_record > div.name h3,
+.visit_record > div.date h3 {font-size:11px;}
+.visit_record > div.name h4,
+.visit_record > div.date h4 {font-size:20px;}
+.visit_record h4 {font-weight:500;}
+.visit_record > div.diagnosis {margin-bottom:12px;}
+.visit_record > div.diagnosis h3 {font-size:12px;color:#00af41;}
+.visit_record > div.diagnosis p {font-size:15px;line-height:20px;padding:5px;}
+.visit_record > div.fullnote {
+}
+.btn_soapfullnote {
+	display:block;
+	width:119px;
+	font-family: "montserratbold";
+	font-size:10px;
+	color:#fff;
+	background-color:#b72025;
+	padding:6px 14px;
+	margin:0 auto;
+	text-transform:uppercase;
+	border:1px solid #b72025;
+	transition: background-color 300ms ease-out 0s;
+	cursor:pointer;
+}
+.btn_soapfullnote:after {
+	content:" +";
+}
+.btn_soapfullnote:hover {
+	color: #b72025;
+	background-color:#fff;
+}
+
 /********************** Search Large Widget *************************************/
 .large_search {
 	text-align:center;
@@ -3516,6 +3584,18 @@ input.time
     padding: 5px 10px;
     text-transform: uppercase;
     width: 140px;
+}
+
+.select_patient,
+.select_patient:active {
+	display:inline;
+	font-size:10px;
+	font-weight:bold;
+	padding: 4px 10px;
+	margin-left:30px;
+	text-transform:uppercase;
+	letter-spacing:2px;
+	border-radius:7px;
 }
 /* .search_box_lg {
 	display:none;
@@ -3734,7 +3814,7 @@ and (max-device-width : 413px) {
 	.goal_text_second_line {font-size:13px;}
 	.goals_button img {width:70%;}
 	.user_image {
-		width:58px;
+		width:58px !important;
 		height:58px;
 	}
 	.dashboard_vitals_row {
@@ -3857,6 +3937,28 @@ and (max-device-width : 413px) {
 	#dashboard_messages .subject,
 	#dashboard_messages .from {font-size:9px;}
 	#dashboard_messages .message_date {font-size:10px;}
+	/*--- Selected Patient classes ---*/
+	.doctor_greet.current_patient {
+	    font-size: 16px;
+    	padding-top: 10px;
+		margin-bottom:30px;
+	}
+	.select_patient, .select_patient:active {
+		display:table;
+		font-size:9px;
+		margin:0 auto;
+	}
+	#soap-note-container {padding:0 5px;}
+	.visit_record > div.name, .visit_record > div.date {
+		float:none;
+		width:100%;
+		margin:0 0 15px 0;
+	}
+	.visit_record > div.name h4, .visit_record > div.date h4 {font-size:18px;}
+	.visit_record > div.diagnosis p {
+    	font-size: 14px;
+    	line-height: 18px;
+	}
 }
 
 @media only screen 
@@ -3872,7 +3974,7 @@ and (max-device-width : 479px) {
 	.goal_text_second_line {font-size:16px;}
 	.goals_button img {width:70%;}
 	.user_image {
-		width:82px;
+		width:82px !important;
 		height:82px;
 	}
 	.dashboard_vitals_row {margin:8px 40px 0px;}
@@ -3940,6 +4042,29 @@ and (max-device-width : 479px) {
 		width:46px;
 		margin-bottom:10px;
 	}
+	/*--- Selected Patient classes ---*/
+	.doctor_greet.current_patient {
+	    font-size: 16px;
+    	padding-top: 15px;
+		margin-bottom:15px;
+		margin-right:8.8%;
+	}
+	.select_patient, .select_patient:active {
+		display:inline;
+		font-size:9px;
+		margin:0 auto;
+	}
+	#soap-note-container {padding:0 5px;}
+	.visit_record > div.name, .visit_record > div.date {
+		float:none;
+		width:100%;
+		margin:0 0 15px 0;
+	}
+	.visit_record > div.name h4, .visit_record > div.date h4 {font-size:18px;}
+	.visit_record > div.diagnosis p {
+    	font-size: 14px;
+    	line-height: 18px;
+	}
 }
 
 @media only screen 
@@ -3954,7 +4079,7 @@ and (max-device-width : 519px) {
 	.goal_text_second_line {font-size:16px;}
 	.goals_button img {width:90%;}
 	.user_image {
-		width:82px;
+		width:82px !important;
 		height:82px;
 	}
 	.dashboard_vitals_row {margin:8px auto 0 auto;}
@@ -4009,13 +4134,35 @@ and (max-device-width : 519px) {
 		margin-right:9.5%;
 	}
 	.large_search h3 {font-size:20px;}
+	/*--- Selected Patient classes ---*/
+	.doctor_greet.current_patient {
+	    font-size: 20px;
+    	padding-top: 10px;
+		margin-bottom:15px;
+	}
+	.select_patient, .select_patient:active {
+		display:inline;
+		font-size:9px;
+		margin:0 auto;
+	}
+	#soap-note-container {padding:0 5px;}
+	.visit_record > div.name, .visit_record > div.date {
+		float:none;
+		width:100%;
+		margin:0 0 15px 0;
+	}
+	.visit_record > div.name h4, .visit_record > div.date h4 {font-size:18px;}
+	.visit_record > div.diagnosis p {
+    	font-size: 14px;
+    	line-height: 18px;
+	}
 }
 @media only screen 
 and (min-device-width : 520px)
 and (max-device-width : 639px) {
 	.dashboard_goals {padding:12px 40px;}
 	.center-dashboard {padding-bottom:127px;}
-	.user_image {width:100px;height:100px;}
+	.user_image {width:100px !important;height:100px;}
 	.goal_text {margin: 0 0 0 5%;font-size:22px;}
 	.goal_text_second_line {font-size:19px;}
 	.goals_button {width:100px;}
@@ -4056,7 +4203,7 @@ and (max-device-width : 639px) {
 	}
 	.user_image.doctor {
 		margin-left:9.5%;
-		margin-right:0;
+		margin-right:12px;
 		width:22%;
 	}
 	.user_image.doctor img {
@@ -4109,6 +4256,28 @@ and (max-device-width : 639px) {
 		width:27px;
 		height:21px;
 	}
+	/*--- Selected Patient classes ---*/
+	.doctor_greet.current_patient {
+	    font-size: 20px;
+    	padding-top: 20px;
+		margin-bottom:15px;
+		margin-right:8%;
+	}
+	.select_patient, .select_patient:active {
+		display:table;
+		font-size:9px;
+	}
+	#soap-note-container {padding:0 5px;}
+	.visit_record > div.name, .visit_record > div.date {
+		float:none;
+		width:100%;
+		margin:0 0 15px 0;
+	}
+	.visit_record > div.name h4, .visit_record > div.date h4 {font-size:18px;}
+	.visit_record > div.diagnosis p {
+    	font-size: 14px;
+    	line-height: 18px;
+	}
 }
 
 @media only screen 
@@ -4151,6 +4320,18 @@ and (max-device-width : 767px) {
 		padding:45px 0px 0px 0px;
 		width:57%;
 		margin-right:9.5%;
+	}
+	/*--- Selected Patient classes ---*/
+	.user_image.doctor {width:126px;}
+	.doctor_greet.current_patient {
+	    font-size: 20px;
+    	padding-top: 30px;
+		margin-bottom:15px;
+		margin-right:8%;
+	}
+	.select_patient, .select_patient:active {
+		display:table;
+		font-size:10px;
 	}
 }
 

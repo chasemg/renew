@@ -4,14 +4,10 @@ Author: Kevin Griffiths
 URL: http://chasemg.com
 */
 include "db_include.php";
-
 $html = '';
-
 $id = $_POST['id'];
 $patient_id = $_POST['patient_id'];
-
-if($_POST['patient_id'])	{
-
+if(get_user_role() == 'patient')	{
 		$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$patient_id");
 		foreach($lookup as $lu)	{
 			$html .= '<div class="dashboard_goals">';
@@ -90,7 +86,6 @@ if($_POST['patient_id'])	{
 			
 /********************** Allergies ***************************************/
 			//$html .= '<div class="widgets_right">';
-
 			$html .= '<div class="dashboard_small_widget last">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Allergies</div>';
@@ -120,10 +115,8 @@ if($_POST['patient_id'])	{
 			$html .= '</div>';
 			$html .= '</div>';	
 			$html .= '</div>';	// END OF .widget_row
-
 /********************** Labs ***************************************/
 			$html .= '<div class="widget_row">';
-
 			$html .= '<div class="dashboard_small_widget">';
 			$html .= '<div class="dashboard_small_widget_content">';
 			$html .= '<div class="title">Lab Results</div>';
@@ -145,7 +138,6 @@ if($_POST['patient_id'])	{
 			foreach($exam_dates as $exam)	{
 				$exam_date = $exam->exam_date;
 			}
-
 			$medical = $pdb->get_results("SELECT * FROM ".$wpdb->prefix. "medical_history WHERE user_id='$patient_id' LIMIT 1");
 			foreach($medical as $m)	{
 				$html .= '<div class="last_exam">Date of last physical exam: <span>'.date("m/d/Y", $exam_date).'</span></div>';
@@ -181,7 +173,6 @@ if($_POST['patient_id'])	{
 			$html .= '</div>';
 			
 			//$html .= '</div>';
-
 /********************** Social Life ***************************************/
 			$html .= '<div class="dashboard_small_widget last">';
 			$html .= '<div class="dashboard_small_widget_content">';
@@ -256,7 +247,6 @@ if($_POST['patient_id'])	{
 				$html .= '</div>'; // End .dashboard_goals
 				
 			$html .= '<hr>';
-
 			$html .= '<div class="widget_row">';			
 				$html .= '<div class="dashboard_large_widget">';
 					$html .= '<h5>soap notes</h5>';
@@ -315,7 +305,7 @@ if($_POST['patient_id'])	{
 									$html .= '<div class="container">';
 									$html .= "<div class='subject_container'>";
 									$subject = $message->subject;
-									$stripped_subject = (strlen($subject) > 50) ? substr($subject,0,50).'...' : $subject;
+									$stripped_subject = (strlen($subject) > 25) ? substr($subject,0,25).'...' : $subject;
 									$html .= "<div class='subject'>".$stripped_subject."</div><br>";
 									$from = $message->from;
 									$from_query = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID='$from'");
@@ -392,6 +382,5 @@ if($_POST['patient_id'])	{
 		}
 		
 	}
-
 }
 ?>
