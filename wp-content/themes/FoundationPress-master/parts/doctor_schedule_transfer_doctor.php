@@ -43,7 +43,6 @@ if (file_exists($file))
 }
 
 
-
 $name = sprintf("Dr. %s %s", $doctor->fname, $doctor->lname);
 
 $title = "OD"; //$doctor->title;
