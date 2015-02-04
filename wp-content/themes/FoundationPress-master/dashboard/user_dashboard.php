@@ -7,7 +7,7 @@ include "db_include.php";
 $html = '';
 $id = $_POST['id'];
 $patient_id = $_POST['patient_id'];
-if(get_user_role() == 'patient')	{
+if(get_user_role() == 'subscriber')	{
 		$lookup = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix. "users WHERE ID=$patient_id");
 		foreach($lookup as $lu)	{
 			$html .= '<div class="dashboard_goals">';

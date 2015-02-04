@@ -7,8 +7,8 @@ Authorize.Net provides this code "as is" without warranty of any kind, either ex
 Authorize.Net owns and retains all right, title and interest in and to the Automated Recurring Billing intellectual property.
 */
 
-$g_loginname = "YourApiLogin"; // Keep this secure.
-$g_transactionkey = "YourTransactionKey"; // Keep this secure.
+$g_loginname = "5s9FGhk4dhYq"; // Keep this secure.
+$g_transactionkey = "78Z9c7n6AR7fHs8q"; // Keep this secure.
 $g_apihost = "apitest.authorize.net";
 $g_apipath = "/xml/v1/request.api";
 
