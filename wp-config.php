@@ -3,6 +3,12 @@
 switch ($_SERVER['HTTP_HOST'])
 {
 	case 'localhost':
+	
+		define('DB_NAME', 'renew');
+		define('DB_USER', 'root');
+		define('DB_PASSWORD', '');	
+	break;
+	
 	case 'renew.local':
 	
 		define('DB_NAME', 'renew');
