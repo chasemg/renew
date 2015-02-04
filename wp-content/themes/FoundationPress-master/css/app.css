@@ -4214,7 +4214,7 @@ and (max-device-width : 639px) {
 		font-size: 22px;
 		padding:35px 0px 0px 0px;
 		width:59%;
-		margin-right:9.5%;
+		margin-right:9%;
 	}
 	.large_search h3 {font-size:22px;}
 	.dashboard_small_widget_content.schedule_mobile,
@@ -4307,9 +4307,8 @@ and (max-device-width : 767px) {
 		width:100%;
 	}
 	.user_image.doctor {
-		margin-left:9.5%;
+		margin-left:12%;
 		margin-right:2%;
-		width:22%;
 	}
 	.user_image.doctor img {
 		width:126px;
@@ -4319,15 +4318,15 @@ and (max-device-width : 767px) {
 		font-size: 26px;
 		padding:45px 0px 0px 0px;
 		width:57%;
-		margin-right:9.5%;
+		margin-right:9.2%;
+		box-sizing:border-box;
 	}
 	/*--- Selected Patient classes ---*/
-	.user_image.doctor {width:126px;}
 	.doctor_greet.current_patient {
 	    font-size: 20px;
     	padding-top: 30px;
 		margin-bottom:15px;
-		margin-right:8%;
+		margin-right:7%;
 	}
 	.select_patient, .select_patient:active {
 		display:table;
@@ -4340,7 +4339,7 @@ and (min-device-width : 768px)
 and (max-device-width : 979px) {
 	.center-dashboard {padding-bottom:127px;}
 	.user_image	{
-		width:100px;
+		width:100px !important;
 		height:100px;
 	}
 	.goal_text {margin: 0 0 0 5%;font-size:22px;}
@@ -4432,6 +4431,17 @@ and (max-device-width : 979px) {
 	#referral_view img {
 		width:27px;
 		height:21px;
+	}
+	/*--- Selected Patient classes ---*/
+	.doctor_greet.current_patient {
+	    font-size: 20px;
+    	padding-top: 30px;
+		margin-bottom:15px;
+		margin-right:7%;
+	}
+	.select_patient, .select_patient:active {
+		display:table;
+		font-size:10px;
 	}
 }
 

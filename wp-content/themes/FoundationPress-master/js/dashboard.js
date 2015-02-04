@@ -307,7 +307,7 @@ function patient_list()	{
 						//$("#soap_notes").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');
 						$("#soap_notes").removeClass('dashboard_icons_disabled');
 						$("#soap_notes").addClass('dashboard_icons');
-						//$("#meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');						
+						$(".left_widget #meds").removeClass('dashboard_icons_disabled').addClass('dashboard_icons');						
 						$(".select_patient").click(function()	{
 							if($(".patient_results").html() == '')	{
 								patient_list();

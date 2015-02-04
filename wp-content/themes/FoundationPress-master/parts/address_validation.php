@@ -322,7 +322,7 @@ function mapAddress(result) {
     PatientMarker.setMap(map);
 	markerLookup(PatientMarker);
     map.fitBounds(result.geometry.viewport);	
-	map.setZoom(15);
+	map.setZoom(9);
 }	
 	
 

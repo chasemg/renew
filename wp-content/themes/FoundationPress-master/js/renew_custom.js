@@ -264,7 +264,9 @@ $(window).scroll(function(){ // bind window scroll event
 										//console.log(hiddenContent);
 										$('#map_canvas').animate({
 											height: "550px"
-										},200);					
+										},200, function()   {
+											google.maps.event.trigger(map, 'resize');
+										});	
 										$('.header_image').animate({
 											height: "0px"
 										}, 200);
@@ -275,7 +277,9 @@ $(window).scroll(function(){ // bind window scroll event
 										$('.header_map').animate({
 											height: "550px",
 											maxHeight: "550px"
-										},200);	
+										},200, function()   {
+											google.maps.event.trigger(map, 'resize');
+										});	
 									} else {
 										$('#map_canvas').animate({
 											height: "0px"
