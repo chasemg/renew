@@ -53,13 +53,21 @@ else
 					$handle = fopen($file, "r");
 					$json = fread($handle, filesize($file));
 					
+					//print_r(json_decode($json));
+					
 					foreach(json_decode($json) as $obj)
 					{
 						$doctor = get_doctor_info($obj->doctor_id, $practice);
 						
+						//echo sprintf("%s<br >", $obj->doctor_id);
+						
+						//print_r($obj->dates);
+						
 						foreach($obj->dates as $dates)
 						{
-							if (date("Y-m-d", strtotime($dates->date)) == date("Y-m-d"))
+							//echo sprintf("%s<br >", $dates->date);
+							
+							if (!isset($dates->transfer_to) && date("Y-m-d", strtotime($dates->date)) == date("Y-m-d"))
 							{
 								$date = sprintf("%s at %s", date("m/d/y", strtotime($dates->date)), date("h:i A", strtotime($dates->date)));
 							
@@ -68,6 +76,8 @@ else
 												   'doctor' => sprintf("Dr. %s", $doctor->lname));
 							}
 						}
+						
+						//print_r($results);
 					}
 				}
 				
