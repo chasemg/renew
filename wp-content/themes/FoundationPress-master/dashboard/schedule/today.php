@@ -111,7 +111,10 @@
 <?php if ($today) { ?>
 <?php foreach($today as $result) { ?>
 <div class="schedule-list-detail">
-	<div class="schedule-time"><?php echo $result['date']; ?> <a data-practice="<?php echo $practice; ?>" data-action="Cancel" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>">Cancel</a> <a data-action="Transfer" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>">Transfer</a></div>
+	<div class="schedule-time"><?php echo $result['date']; ?> 
+    	<a data-practice="<?php echo $practice; ?>" data-action="Cancel" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>">Cancel</a> 
+        <a data-practice="<?php echo $practice; ?>" data-action="Transfer" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>">Transfer</a>
+    </div>
     <div class="status <?php echo strtolower($result['status']); ?>"><?php echo $result['status']; ?> with <?php echo $result['name']; ?></div>
 </div>
 <?php } ?>
@@ -156,12 +159,12 @@ $('.schedule-time a').click(function()
 				$.ajax(
 				{
 					url: 'wp-content/themes/FoundationPress-master/parts/doctor_schedule_transfer.php',
-					data: {practic:practice,action:action, date:date, patient_id:id, doctor_id:<?php echo $id; ?>},
+					data: {practice:practice, action:action, date:date, patient_id:id, doctor_id:<?php echo $id; ?>},
 					type: 'post',
 					success: function(html)
 					{
-						
-					}		
+						$.fancybox(html);
+					}	
 				});
 			}
 		

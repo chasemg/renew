@@ -37,7 +37,7 @@
     
 	for($list_day = 1; $list_day <= $days_in_month; $list_day++):
 	
-		$date = sprintf("%s-%s-%s", $year, $month, $list_day);
+		$date = sprintf("%s-%s-%02s", $year, $month, $list_day);
 		
 		$class = "";
 		

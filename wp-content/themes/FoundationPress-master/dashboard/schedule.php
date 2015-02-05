@@ -118,19 +118,25 @@ else
 							
 							if (date("Y-m-d", strtotime($dates->date)) == date("Y-m-d") && $dates->status == 'Confirmed')
 							{
-								$today[] = array('date' => $date,
-											     'status' => $dates->status,
-												 'name' => $info['name'],
-												 'patient_id' => $obj->patient_id,
-												 'date2' => $dates->date);
+								if (!isset($dates->transfer_to))
+								{
+									$today[] = array('date' => $date,
+												     'status' => $dates->status,
+													 'name' => $info['name'],
+													 'patient_id' => $obj->patient_id,
+													 'date2' => $dates->date);
+								}
 							}
 							else if ($ss >= $now)
 							{
-								$results[] = array('date' => $date,
-												   'status' => $dates->status,
-												   'date2' => $dates->date,
-												   'patient_id' => $obj->patient_id,
-												   'name' => $info['name']);
+								if (!isset($dates->transfer_to))
+								{
+									$results[] = array('date' => $date,	
+													   'status' => $dates->status,
+													   'date2' => $dates->date,
+													   'patient_id' => $obj->patient_id,
+													   'name' => $info['name']);
+								}
 							}
 						}
 
