@@ -81,7 +81,7 @@ if (file_exists($file2))
 
 $json2[] = array('patient_id' => $patient_id,
 				 'doctor_id' => $doctor_id,
-				 'dates' => array('date' => $date, 'status' => 'Pending', 'transfer_from' => $doctor_from));
+				 'dates' => array(array('date' => $date, 'status' => 'Pending', 'transfer_from' => $doctor_from)));
 
 
 if (file_exists($file3))
