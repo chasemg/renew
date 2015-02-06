@@ -55,6 +55,7 @@ if (file_exists($file2))
 	foreach($schedule as $row)
 	{
 		$r_patient_id = $row['patient_id'];
+		
 		$r_doctor_id = $row['doctor_id'];
 		
 		$r_dates = $row['dates'];
@@ -76,6 +77,8 @@ if (file_exists($file2))
 		
 		
 		$json2[] = $row;
+		
+		
 	}
 }
 
