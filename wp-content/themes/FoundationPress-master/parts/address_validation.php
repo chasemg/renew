@@ -10,15 +10,15 @@ $email = $_POST['email'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-// $userdata = array(
-//    'user_login'	=>  $username,
-//    'user_pass'		=>  $password,
-//	'user_email'	=>	$email,
-//	'first_name'	=>	$fname,
-//	'last_name'		=>	$lname,
-//);
+$userdata = array(
+    'user_login'	=>  $username,
+    'user_pass'		=>  $password,
+	'user_email'	=>	$email,
+	'first_name'	=>	$fname,
+	'last_name'		=>	$lname,
+);
 
-//wp_insert_user( $userdata ) ;
+wp_insert_user( $userdata ) ;
 
 $html = '';
 $html .= '<div id="address_validated">';
@@ -173,14 +173,14 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 							$(".calculate_costs").show();
 							scrollToAnchor('calculate_costs');
 							
-						$.ajax({
-							type: 'POST',
-							data: 'username='+username+'email='+email+'&fname='+fname+'&lname='+lname+'&practice='+practice,
-							url: 'wp-content/themes/FoundationPress-master/parts/patient_create.php',
-							success: function(success)	{
+					//	$.ajax({
+					//		type: 'POST',
+					//		data: 'username='+username+'email='+email+'&fname='+fname+'&lname='+lname+'&practice='+practice,
+					//		url: 'wp-content/themes/FoundationPress-master/parts/patient_create.php',
+					//		success: function(success)	{
 	
-							},
-						});
+					//		},
+					//	});
 							
 						});
 
