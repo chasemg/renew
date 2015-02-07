@@ -25,25 +25,33 @@
 .request-list li .buttons
 {
 	margin:0px;
+	float:right;
 }
 
-.request-list li .buttons a
+.request-list li .buttons a,
+.request-list li.cancelled .buttons a
 {
-	text-transform:lowercase;
-	margin:10px 10px 10px 0px;
 	display:inline-block;
-	padding:5px 15px;
+	padding:0px 10px;
 	text-align:center;
-	color:#fff;
-	background:#01af40;
+	color:#01af40;
 	border-radius:10px;
-	display:none;
 }
 
 
 .request-list li:hover .buttons a
 {
 	display:inline-block;
+}
+
+.request-list .buttons a:hover
+{
+	text-decoration:underline;
+}
+
+.request-list li.cancelled a
+{
+	color:#bbd323;
 }
 
 
@@ -58,14 +66,14 @@
 <ul class="request-list">
 
 	<?php foreach($results as $result) { ?>
-    
-    <li>
-    	<a data-action="details" data-practice="<?php echo $practice; ?>" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>"><?php echo $result['name']; ?>: <?php echo $result['date']; ?></a><br />
+    <li class="<?php echo strtolower($result['status']); ?>">
+    	<a data-action="details" data-practice="<?php echo $practice; ?>" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>"><?php echo $result['name']; ?>: <?php echo $result['date']; ?></a>
         
         <div class="buttons">
         	<a data-practice="<?php echo $practice; ?>" data-action="Confirmed" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>">Accept</a> 
-            <a data-practice="<?php echo $practice; ?>" data-action="Cancelled" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>">Decline</a>  
-            <a data-practice="<?php echo $practice; ?>" data-action="Transfer" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>">Transfer</a></div>
+            <a style="color:#F00" data-practice="<?php echo $practice; ?>" data-action="Cancelled" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>">Decline</a>  
+            <a data-practice="<?php echo $practice; ?>" data-action="Transfer" data-date="<?php echo $result['date2']; ?>" data-patient-id="<?php echo $result['patient_id']; ?>">Transfer</a>
+        </div>
     
     </li>
     

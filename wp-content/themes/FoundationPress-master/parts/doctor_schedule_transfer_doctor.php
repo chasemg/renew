@@ -21,7 +21,7 @@ else
 {
 	$file = '/home/renew/renew/wp-content/themes/FoundationPress-master/dashboard/schedule/json/doctor_' . $doctor_id . '.js';
 	$file2 = '/home/renew/renew/wp-content/themes/FoundationPress-master/dashboard/schedule/json/patient_' . $patient_id . '.js';
-	$file3 = DOCUMENT_ROOT . '/wp-content/themes/FoundationPress-master/dashboard/schedule/json/doctor_' . $doctor_from . '.js';
+	$file3 = '/home/renew/renew/wp-content/themes/FoundationPress-master/dashboard/schedule/json/doctor_' . $doctor_from . '.js';
 }
 
 $json = array();
@@ -55,6 +55,7 @@ if (file_exists($file2))
 	foreach($schedule as $row)
 	{
 		$r_patient_id = $row['patient_id'];
+		
 		$r_doctor_id = $row['doctor_id'];
 		
 		$r_dates = $row['dates'];
@@ -76,12 +77,14 @@ if (file_exists($file2))
 		
 		
 		$json2[] = $row;
+		
+		
 	}
 }
 
 $json2[] = array('patient_id' => $patient_id,
 				 'doctor_id' => $doctor_id,
-				 'dates' => array('date' => $date, 'status' => 'Pending', 'transfer_from' => $doctor_from));
+				 'dates' => array(array('date' => $date, 'status' => 'Pending', 'transfer_from' => $doctor_from)));
 
 
 if (file_exists($file3))
