@@ -7,5 +7,6 @@ $ssn = $_POST['ssn'];
 $encrypted_ssn = encrypt_decrypt('encrypt', $ssn);
 
 echo $html;
+
 include 'authorize/cim/profile_create.php';
 ?>

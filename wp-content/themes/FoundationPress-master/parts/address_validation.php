@@ -1,12 +1,25 @@
 <?php
 
 include '../dashboard/db_include.php';
+
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $dob = $_POST['dob'];
 $ssn = $_POST['ssn'];
 $email = $_POST['email'];
 $username = $_POST['username'];
+$password = $_POST['password'];
+
+$userdata = array(
+    'user_login'	=>  $username,
+    'user_pass'		=>  $password,
+	'user_email'	=>	$email,
+	'first_name'	=>	$fname,
+	'last_name'		=>	$lname,
+);
+
+wp_insert_user( $userdata ) ;
+
 $html = '';
 $html .= '<div id="address_validated">';
 if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
@@ -38,6 +51,7 @@ if($_POST['street'] && $_POST['city'] && $_POST['state'] && $_POST['zip'])	{
 
 	$html .= '</ul>';
 	$html .= '</div>';
+	
 ?>
 
 
@@ -235,6 +249,15 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 						return false;
 					}
 					
+					$.ajax({
+						type: 'POST',
+						data: 'new_username='+new_username+'&new_email='+new_email+'&new_fname='+new_fname+'&new_lname='+new_lname,
+						url: 'wp-content/themes/FoundationPress-master/parts/addcost_user.php',
+						success: function(success)	{
+
+						},
+					});
+					
 					$(".calculate_costs table tr:first").before("<tr><td style='padding-top: 15px;'><font style='color: #ccc;'>M/F</font><br>"+patientSex+"<input type='hidden' id='sex["+ v +"]' value='"+sex+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>D.O.B</font><br>"+dob+"<input type='hidden' id='dob["+ v +"]' value='"+dob+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>First Name</font><br>"+new_fname+"<input type='hidden' id='new_fname["+ v +"]' value='"+new_fname+"'></td><td style='padding-top: 15px;'><font style='color: #ccc;'>Last Name</font><br>"+new_lname+"<input type='hidden' id='new_lname["+ v +"]' value='"+new_lname+"'></td></tr><tr><td style='padding-bottom: 15px;'><font style='color: #ccc;'>Username</font><br>"+new_username+"<input type='hidden' id='new_username["+ v +"]' value='"+new_username+"'></td><td colspan='2' style='padding-bottom: 15px;'><font style='color: #ccc;'>Email Address</font><br>"+new_email+"<input id='access["+ v +"]' type='hidden' value='"+new_email+"'></td><td style='padding-bottom: 15px;'><font style='color: #ccc;'>Account Access:</font><br>"+access_level+"<input id='access["+ v +"]' type='hidden' value='"+access+"'></td></tr>");
 					$(".access_table input[name='access']").prop('checked',false);
 					$('#new_dob').val('');
@@ -242,7 +265,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 					$('#new_lname').val('');
 					$('#new_email').val('');
 					$("#new_patient_sex").val('M');
-					$("#new_username").val('');
+					$("#new_username").val('');	
 					v++;
 					$(".calculate_costs table tr:first").css('border-top','1px solid #e5e5e5');
 								} else {
@@ -334,9 +357,8 @@ validate();
 
 	$html .= '<div class="chosen">';
 	$html .= 'You have selected: <div id="doctor_selected"></div>';
-	$html .= '</div>';
+	$html .= '</div>';		
 	$html .= '<div class="calculate_costs">';
-
 	$html .= '<h1 id="calculate_costs">Calculate your costs.</h1>';
 	$html .= '<div>';
 	$html .= '<div style="padding: 30px 0;"><font style="font-size: 18px; font-weight: bold;">To add additional individuals:</font><br>Fill out the information below and click "add".<br>When you are done, click "calculate" to get your total.</div>';
