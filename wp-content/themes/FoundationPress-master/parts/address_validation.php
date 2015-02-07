@@ -172,8 +172,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 							$(".chosen").show();
 							$(".calculate_costs").show();
 							scrollToAnchor('calculate_costs');
-						});
-
+							
 						$.ajax({
 							type: 'POST',
 							data: 'username='+username+'email='+email+'&fname='+fname+'&lname='+lname+'&practice='+practice,
@@ -182,6 +181,10 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 	
 							},
 						});
+							
+						});
+
+
 
 					} else {
 						$(this).hide();
