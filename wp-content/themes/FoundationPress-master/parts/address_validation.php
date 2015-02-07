@@ -18,7 +18,7 @@ $userdata = array(
 	'last_name'		=>	$lname,
 );
 
-wp_insert_user( $userdata ) ;
+$user_id = wp_insert_user( $userdata ) ;
 
 $html = '';
 $html .= '<div id="address_validated">';
@@ -173,14 +173,14 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 							$(".calculate_costs").show();
 							scrollToAnchor('calculate_costs');
 							
-					//	$.ajax({
-					//		type: 'POST',
-					//		data: 'username='+username+'email='+email+'&fname='+fname+'&lname='+lname+'&practice='+practice,
-					//		url: 'wp-content/themes/FoundationPress-master/parts/patient_create.php',
-					//		success: function(success)	{
-	
-					//		},
-					//	});
+							$.ajax({
+								   type: 'POST',
+								   data: 'userid=<?php echo $userid; ?>&fname=<?php echo $fname; ?>&lname=<?php echo $lname;?>&practice='+practice,
+								   url: 'wp-content/themes/FoundationPress-master/parts/patient_create.php',
+								   success: function(success) {
+							 
+								   },
+							});
 							
 						});
 
