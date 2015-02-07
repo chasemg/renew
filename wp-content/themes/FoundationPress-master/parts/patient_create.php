@@ -10,7 +10,8 @@ include '../dashboard/db_include.php';
 $pdb->query("INSERT INTO ". $wpdb->prefix."patients
 	SET user_id = '".$userid."',
 	fname = '".$fname."',
-	lname = '".$lname."'"
+	lname = '".$lname."',
+	practice_id = '".$practice."'"
 );
 
 ?>
