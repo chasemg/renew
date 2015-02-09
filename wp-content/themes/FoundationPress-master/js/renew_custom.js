@@ -253,7 +253,7 @@ $(window).scroll(function(){ // bind window scroll event
 						console.log("valid email address");
 						$.ajax({
 							type: 'POST',
-							data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone+'&email='+email+'&username='+username,
+							data: 'street='+street+'&city='+city+'&state='+state+'&zip='+zip+'&fname='+fname+'&lname='+lname+'&dob='+dob+'&ssn='+ssn+'&mobil_phone='+mobil_phone+'&primary_phone='+primary_phone+'&email='+email+'&username='+username+'&password='+pass1,
 							url: 'wp-content/themes/FoundationPress-master/parts/address_validation.php',
 							success: function(success)	{
 								$('#form_two').html(success);
