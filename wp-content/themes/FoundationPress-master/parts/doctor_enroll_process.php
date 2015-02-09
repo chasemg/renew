@@ -26,12 +26,15 @@ $json = array();
 
 if ($practice_id > 0)
 {
+	$json['practice_id'] = $practice_id;
 
 	$wpdb->query("CREATE DATABASE IF NOT EXISTS renew_" . $practice_id);
 
 	$results = $pdb1->get_results("SHOW TABLES FROM renew_1");
 
 	$pdb = new wpdb(DB_USER,DB_PASSWORD,'renew_' . $practice_id,DB_HOST);
+	
+	print_r($results);
 
 	foreach($results as $result)
 	{
@@ -45,7 +48,8 @@ if ($practice_id > 0)
 
 	$user_id = username_exists( $user_name );
 
-	//create doctor account
+	//create doctor account;
+	
 
 	if ( !$user_id and email_exists($user_name) == false ) 
 	{
