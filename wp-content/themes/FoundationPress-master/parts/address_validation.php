@@ -172,6 +172,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 							$(".chosen").show();
 							$(".calculate_costs").show();
 							scrollToAnchor('calculate_costs');
+							practiceID = practice;
 							$.ajax({
 								   type: 'POST',
 								   data: 'userid=<?php echo $userid; ?>&fname=<?php echo $fname; ?>&lname=<?php echo $lname;?>&practice='+practice,
@@ -258,7 +259,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 					var practice = "<?php echo $practice_id; ?>";
 					$.ajax({
 						type: 'POST',
-						data: 'new_username='+new_username+'&new_email='+new_email+'&new_fname='+new_fname+'&new_lname='+new_lname+'&practice='+practice,
+						data: 'new_username='+new_username+'&new_email='+new_email+'&new_fname='+new_fname+'&new_lname='+new_lname+'&practice='+practiceID,
 						url: 'wp-content/themes/FoundationPress-master/parts/addcost_user.php',
 						success: function(success)	{
 							console.log(success);
