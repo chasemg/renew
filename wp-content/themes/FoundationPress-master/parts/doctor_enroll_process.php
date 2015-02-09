@@ -27,6 +27,8 @@ $json = array();
 if ($practice_id > 0)
 {
 	$json['practice_id'] = $practice_id;
+	
+	$wpdb->show_errors();
 
 	$wpdb->query("CREATE DATABASE IF NOT EXISTS renew_" . $practice_id);
 
@@ -36,7 +38,7 @@ if ($practice_id > 0)
 	
 	foreach($results as $result)
 	{
-		echo "CREATE TABLE renew_".$practice_id.".".$result->Tables_in_renew_1." LIKE renew_1.".$result->Tables_in_renew_1;
+		//echo "CREATE TABLE renew_".$practice_id.".".$result->Tables_in_renew_1." LIKE renew_1.".$result->Tables_in_renew_1;
 		$pdb->query("CREATE TABLE renew_".$practice_id.".".$result->Tables_in_renew_1." LIKE renew_1.".$result->Tables_in_renew_1);
 	}
 
