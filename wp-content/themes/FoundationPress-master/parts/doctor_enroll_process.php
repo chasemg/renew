@@ -34,11 +34,9 @@ if ($practice_id > 0)
 
 	$pdb = new wpdb(DB_USER,DB_PASSWORD,'renew_' . $practice_id,DB_HOST);
 	
-	print_r($results);
-
 	foreach($results as $result)
 	{
-		//echo "CREATE TABLE renew_".$practice_id.".".$result->Tables_in_renew_1." LIKE renew_1.".$result->Tables_in_renew_1;
+		echo "CREATE TABLE renew_".$practice_id.".".$result->Tables_in_renew_1." LIKE renew_1.".$result->Tables_in_renew_1;
 		$pdb->query("CREATE TABLE renew_".$practice_id.".".$result->Tables_in_renew_1." LIKE renew_1.".$result->Tables_in_renew_1);
 	}
 
