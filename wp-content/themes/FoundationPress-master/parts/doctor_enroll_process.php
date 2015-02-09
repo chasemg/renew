@@ -29,6 +29,8 @@ if ($practice_id > 0)
 	$json['practice_id'] = $practice_id;
 	
 	$wpdb->show_errors();
+	
+	$wpdb->query("GRANT ALL PRIVILEGES ON renew_" . $practice_id . "* to ".DB_USER.'@'.DB_HOST." IDENTIFIED BY '".DB_PASSWORD."'");
 
 	$wpdb->query("CREATE DATABASE IF NOT EXISTS renew_" . $practice_id);
 
