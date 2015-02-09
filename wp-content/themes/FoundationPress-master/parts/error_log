@@ -38,3 +38,5 @@
 [09-Feb-2015 19:03:44 UTC] WordPress database error Access denied for user 'renew_wp'@'localhost' to database 'renew_4' for query CREATE DATABASE IF NOT EXISTS renew_4
 [09-Feb-2015 19:07:05 UTC] WordPress database error Access denied for user 'renew_wp'@'localhost' to database 'renew_5' for query CREATE DATABASE IF NOT EXISTS renew_5
 [09-Feb-2015 19:12:46 UTC] WordPress database error Access denied for user 'renew_wp'@'localhost' to database 'renew_6' for query CREATE DATABASE IF NOT EXISTS renew_6
+[09-Feb-2015 19:17:03 UTC] WordPress database error Access denied for user 'renew_wp'@'localhost' to database 'renew_7' for query CREATE DATABASE IF NOT EXISTS renew_7
+[09-Feb-2015 19:19:05 UTC] WordPress database error Access denied for user 'renew_wp'@'localhost' to database 'renew_8' for query CREATE DATABASE IF NOT EXISTS renew_8
