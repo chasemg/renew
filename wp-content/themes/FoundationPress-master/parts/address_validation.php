@@ -10,9 +10,12 @@ $email = $_POST['email'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
+$safepassword = mysql_escape_string($password);
+$encrypted = md5($safepassword);
+
 $userdata = array(
     'user_login'	=>  $username,
-    'user_pass'		=>  $password,
+    'user_pass'		=>  $encrypted,
 	'user_email'	=>	$email,
 	'first_name'	=>	$fname,
 	'last_name'		=>	$lname,
