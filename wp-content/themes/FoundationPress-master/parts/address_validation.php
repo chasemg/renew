@@ -229,6 +229,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 							type: 'POST',
 							data: 'username='+new_username+'&email='+new_email,
 							url: 'wp-content/themes/FoundationPress-master/parts/account_registration_check.php',
+
 							success: function(success)	{
 								console.log(success);
 								if(success == 11)	{
@@ -254,10 +255,10 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 						$('.access_table').addClass('error_hightlight');
 						return false;
 					}
-					
+					var practice = "<?php echo $practice_id; ?>";
 					$.ajax({
 						type: 'POST',
-						data: 'new_username='+new_username+'&new_email='+new_email+'&new_fname='+new_fname+'&new_lname='+new_lname,
+						data: 'new_username='+new_username+'&new_email='+new_email+'&new_fname='+new_fname+'&new_lname='+new_lname+'&practice='+practice,
 						url: 'wp-content/themes/FoundationPress-master/parts/addcost_user.php',
 						success: function(success)	{
 							console.log(success);
@@ -407,7 +408,8 @@ validate();
 	$html .= '<tr>';
 	$html .= '<td colspan="4"><div class="add_cost" id="add_cost">+ add</div></td>';
 	$html .= '</tr>';
-	$html .= '</table>';	
+	$html .= '</table>';
+	$html .= '<div>The practice ID is:' .$practice_id. '</div>';
 	$html .= '<div style="text-align: left;"><button class="button" id="calculate_price">calculate</button></div>';
 	$html .= '</div>';
 	$html .= '<div class="calculated_price" id="calculated"></div>';
