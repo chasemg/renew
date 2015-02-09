@@ -10,9 +10,12 @@ $email = $_POST['email'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
+$safepassword = mysql_escape_string($password);
+$encrypted = md5($safepassword);
+
 $userdata = array(
     'user_login'	=>  $username,
-    'user_pass'		=>  $password,
+    'user_pass'		=>  $encrypted,
 	'user_email'	=>	$email,
 	'first_name'	=>	$fname,
 	'last_name'		=>	$lname,
@@ -239,7 +242,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 								console.log(success);
 								if(success == 11)	
 								{
-									/*	( !validateEmail(new_email) ) ? console.log('no') : console.log('yes'); 
+									//	( !validateEmail(new_email) ) ? console.log('no') : console.log('yes'); 
 									if(!validateEmail(new_email) || new_email == '')	
 									{
 										$('#new_email').addClass('error_hightlight');
@@ -270,7 +273,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 										$('.access_table').addClass('error_hightlight');
 										return false;
 									}
-									*/
+									
 									
 									$.ajax(
 									{
@@ -279,7 +282,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 										url: 'wp-content/themes/FoundationPress-master/parts/addcost_user.php',
 										success: function(success)	
 										{
-											console.log(success);
+											//console.log(success);
 										},
 									});
 					
@@ -431,7 +434,6 @@ validate();
 	$html .= '<td colspan="4"><div class="add_cost" id="add_cost">+ add</div></td>';
 	$html .= '</tr>';
 	$html .= '</table>';
-	$html .= '<div>The practice ID is:' .$practice_id. '</div>';
 	$html .= '<div style="text-align: left;"><button class="button" id="calculate_price">calculate</button></div>';
 	$html .= '</div>';
 	$html .= '<div class="calculated_price" id="calculated"></div>';
