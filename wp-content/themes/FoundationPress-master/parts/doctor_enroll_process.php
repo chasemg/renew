@@ -1,4 +1,7 @@
 <?php
+
+$practice = 1;
+
 include '../dashboard/db_include.php';
 
 $pdb1 = new wpdb(DB_USER,DB_PASSWORD,'renew_1', DB_HOST);

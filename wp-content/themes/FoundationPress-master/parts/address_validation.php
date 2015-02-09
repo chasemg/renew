@@ -279,7 +279,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 										url: 'wp-content/themes/FoundationPress-master/parts/addcost_user.php',
 										success: function(success)	
 										{
-											console.log(success);
+											//console.log(success);
 										},
 									});
 					
