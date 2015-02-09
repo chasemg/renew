@@ -35,3 +35,5 @@
 [03-Feb-2015 20:41:09 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /home/renew/renew/wp-content/themes/FoundationPress-master/parts/doctor_schedule_submit.php on line 69
 [03-Feb-2015 20:41:09 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/renew/renew/wp-content/themes/FoundationPress-master/parts/doctor_schedule_submit.php on line 81
 [03-Feb-2015 20:45:01 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/renew/renew/wp-content/themes/FoundationPress-master/parts/doctor_schedule_transfer.php on line 49
+[09-Feb-2015 19:03:44 UTC] WordPress database error Access denied for user 'renew_wp'@'localhost' to database 'renew_4' for query CREATE DATABASE IF NOT EXISTS renew_4
+[09-Feb-2015 19:07:05 UTC] WordPress database error Access denied for user 'renew_wp'@'localhost' to database 'renew_5' for query CREATE DATABASE IF NOT EXISTS renew_5

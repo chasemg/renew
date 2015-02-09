@@ -184,3 +184,4 @@
 [03-Feb-2015 20:32:29 UTC] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
 [03-Feb-2015 20:32:33 UTC] PHP Warning:  Unknown: open(/tmp/sess_9b068e69778f6c80e15fe43d7b2375e4, O_RDWR) failed: Permission denied (13) in Unknown on line 0
 [03-Feb-2015 20:32:33 UTC] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[09-Feb-2015 19:00:09 UTC] WordPress database error Table 'renew_wp.rmh_titles' doesn't exist for query SELECT * FROM rmh_titles ORDER BY title_definition made by require('wp-blog-header.php'), require_once('wp-includes/template-loader.php'), include('/themes/FoundationPress-master/page-doctor-enrollment.php'), get_doctor_titles
