@@ -165,6 +165,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 					var practice = $(this).attr('data');
 					if(doctorID == practice)	{
 						$(this).show();
+						practiceID = practice;
 						$(this).click(function()	{
 							var doctorID = $(this).attr('id');
 							var doctorName = $("#doctor_name_"+doctorID).val();
@@ -274,7 +275,7 @@ $('html,body').animate({scrollTop: '0px'},'slow');
 									$.ajax(
 									{
 										type: 'POST',
-										data: 'new_username='+new_username+'&new_email='+new_email+'&new_fname='+new_fname+'&new_lname='+new_lname+'&practice='+practice,
+										data: 'new_username='+new_username+'&new_email='+new_email+'&new_fname='+new_fname+'&new_lname='+new_lname+'&practice='+practiceID,
 										url: 'wp-content/themes/FoundationPress-master/parts/addcost_user.php',
 										success: function(success)	
 										{
